@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyBus</title>
+    <link rel="shortcut icon" href="./media/ico.ico" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 200vh;
+        }
+
+        header {
+            /* background-color: #fabc3d; */
+            border-bottom: 2px solid #00000033;
+            background: whitesmoke;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+        }
+
+        header nav span {
+            display: inline-block;
+        }
+
+        header nav span a {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header nav span a img {
+            width: 60px;
+            padding: 0;
+            margin: 0;
+            margin-right: 10px;
+
+        }
+
+        header nav span a h1 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #f4492a;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 5px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            display: inline-block;
+            color: #f4492a;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 1px solid #55555533;
+            border-radius: 5px;
+        }
+
+        header nav ul li a:hover {
+            background-color: #55555522;
+        }
+
+        /* ////////////////////////////////// Body Container //////////////////////////////////// */
+
+        .body-container {
+            margin: 2rem 0;
+        }
+
+        .body-container form .form-group {
+            display: inline-block;
+        }
+
+        .body-container form .form-group:first-child {
+            margin-right: 50px;
+        }
+
+        .body-container form .form-group label {
+            display: inline-block;
+        }
+
+        .body-container form .form-group label span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+
+        .body-container form .form-group label span img {
+            width: 35px;
+            margin-left: 5px;
+        }
+
+        .animate {
+            animation: animateMapLocation1 0.5s ease-in-out 1 forwards;
+        }
+
+        .animateRM {
+            animation: animateMapLocation1RM 0.5s ease-in-out 1 forwards;
+        }
+
+        @keyframes animateMapLocation1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(40deg);
+            }
+        }
+
+        @keyframes animateMapLocation1RM {
+            0% {
+                transform: rotate(40deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .body-container form .form-group input {
+            border-radius: 5px;
+            font-size: 1.2em;
+            padding: 10px;
+            color: #4a4343;
+            font-weight: 500;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .body-container form .form-group input:focus {
+            outline: none;
+        }
+
+        /* ///////////coloring to input forms */
+
+        .body-container form .fromLocation label span {
+            color: #f4492a;
+        }
+
+        .body-container form .fromLocation input {
+            border: 2px solid #f4492a81;
+        }
+
+        .body-container form .fromLocation input:focus {
+            border: 2px solid #f4492a;
+        }
+
+        .body-container form .toLocation label span {
+            color: #2a49f4;
+        }
+
+        .body-container form .toLocation input {
+            border: 2px solid #2a49f491;
+        }
+
+        .body-container form .toLocation input:focus {
+            border: 2px solid #2a49f4;
+        }
+
+        /* ////////////////////////////////// Card Component //////////////////////////////////// */
+        .cardList {
+            padding: 0 50px;
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .cardList .card {
+            border: 3px solid #00000055;
+            margin: 20px 0;
+            padding: 20px 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            transition: all ease-in-out 0.1s;
+            position: relative;
+            color: #4a4343;
+        }
+
+        .cardList .card:hover {
+            outline: 3px solid #00000033;
+            transform: scale(1.032, 1.052);
+            background: #f0f8ffaa;
+        }
+
+        .cardList .card .left {
+            width: 90%;
+        }
+
+        .cardList .card .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cardList .card .right a {
+            margin-left: 20px;
+            display: inline-block;
+            background-color: whitesmoke;
+            text-decoration: none;
+
+            padding: 1.8rem 1.6rem;
+            font-size: 1.15em;
+            border-radius: 10px;
+            border: 2px solid #2a49f4;
+            color: #2a49f4;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all ease-in-out 0.15s;
+        }
+
+        .cardList .card .right a:focus {
+            border: 2px solid #2a49f4;
+            outline: 4px solid #2a48f481;
+        }
+
+        .cardList .card .right a:hover {
+            background: #2a49f4;
+            color: white;
+        }
+
+        .cardList .card .left hr {
+            margin: .5rem 0;
+            border-color: #55555522;
+        }
+
+        .cardList .card .left .card-head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cardList .card .left .card-head h1 {
+            font-size: 1.8em;
+        }
+
+        .cardList .card .left .card-head h1 img {
+            width: 22px;
+            margin-right: 10px;
+        }
+
+        .cardList .card .left .card-head h2 {
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .cardList .card .left .card-head h2 img {
+            width: 22px;
+            margin-right: 5px;
+        }
+
+        .cardList .card .left p {
+            font-size: 1.16rem;
+        }
+
+        .imp {
+            color: #f4492add;
+        }
+
+        .imp0 {
+            color: #f4492a;
+        }
+
+        .imp1 {
+            color: #2a49f4dd;
+        }
+
+
+        .disabled {
+            color: #4a4343 !important;
+            border-color: #4a4343 !important;
+            pointer-events: none !important;
+        }
+
+        .available {
+            color: #08c024dd;
+            /* color: #00000066; */
+            font-weight: 600 !important;
+            font-size: 1em !important;
+        }
+
+        .not-available {
+            color: #f4492a;
+            /* color: #00000099; */
+            font-weight: 600 !important;
+            font-size: 1em !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span>
+                <a href="./">
+                    <img src="./media/bus2.svg" />
+                    <h1>BookMyBus</h1>
+                </a>
+            </span>
+
+            <ul>
+                <!-- <li><a href="./">Home</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <div class="body-container">
+        <form action="">
+            <center>
+                <div class="form-group fromLocation">
+                    <label for="fromLocationInput">
+                        <span>
+                            From
+                            <img id="mapLocation1" src="./media/map-location1.1.svg" />
+                        </span>
+                    </label>
+                    <input autocomplete="false" list="fromLocation" name="fromLocation" value="Osmanabad"
+                        id="fromLocationInput" onfocus="animateMapLocation1()" onblur="animateMapLocation1RM()">
+                    <datalist id="fromLocation">
+                        <option value="Pune">
+                        <option value="Osmanabad">
+                        <option value="Solapur">
+                        <option value="Aurangabad">
+                        <option value="Nagpur">
+                        <option value="Satara">
+                        <option value="Mumbai">
+                        <option value="Delhi">
+                        <option value="Goa">
+                        <option value="Nanded">
+                    </datalist>
+                </div>
+                <div class="form-group toLocation">
+                    <label for="toLocationInput">
+                        <span>
+                            To
+                            <img src="./media/map-location2.svg" />
+                        </span>
+                    </label>
+                    <input autocomplete="false" list="toLocation" name="toLocation" value="Pune" id="toLocationInput">
+                    <datalist id="toLocation">
+                        <option value="Pune">
+                        <option value="Osmanabad">
+                        <option value="Solapur">
+                        <option value="Aurangabad">
+                        <option value="Nagpur">
+                        <option value="Satara">
+                        <option value="Mumbai">
+                        <option value="Delhi">
+                        <option value="Goa">
+                        <option value="Nanded">
+                    </datalist>
+                </div>
+            </center>
+        </form>
+        <hr style="width: 80%; margin:2rem auto; margin-bottom:0; border-color: #55555533;" />
+        <ul class="cardList">
+            <li class="card">
+                <div class="left">
+                    <div class="card-head">
+                        <h1><img src="./media/bus-icon.svg" />Shree Sairam Travels</h1>
+                        <h2>
+                            <img src="./media/date.svg" />
+                            Date:
+                            <span class="imp">15/01/2002</span>
+                            <span style="margin:0 10px">|</span>
+                            <img src="./media/clock.svg" />
+                            Time:
+                            <span class="imp">10:00 <span class="imp0"> AM</span></span>
+                        </h2>
+                    </div>
+                    <hr />
+                    <div class="card-head">
+                        <p>From: <strong class="imp">Pune </strong> | To: <strong class="imp1">Osmanabad</strong></p>
+                        <p class="available">Available Seats: <strong>50</strong></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="./bookbus">Book</a>
+                </div>
+            </li>
+            <li class="card">
+                <div class="left">
+                    <div class="card-head">
+                        <h1><img src="./media/bus-icon.svg" />Black Oasis Travels</h1>
+                        <h2>
+                            <img src="./media/date.svg" />
+                            Date:
+                            <span class="imp">15/01/2002</span>
+                            <span style="margin:0 10px">|</span>
+                            <img src="./media/clock.svg" />
+                            Time:
+                            <span class="imp">12:30 <span class="imp0"> PM</span></span>
+                        </h2>
+                    </div>
+                    <hr />
+                    <div class="card-head">
+                        <p>From: <strong class="imp">Pune </strong> | To: <strong class="imp1">Osmanabad</strong></p>
+                        <p class="available">Available Seats: <strong>50</strong></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="./bookbus">Book</a>
+                </div>
+            </li>
+            <li class="card">
+                <div class="left">
+                    <div class="card-head">
+                        <h1><img src="./media/bus-icon.svg" />Sangitam Travels</h1>
+                        <h2>
+                            <img src="./media/date.svg" />
+                            Date:
+                            <span class="imp">15/01/2002</span>
+                            <span style="margin:0 10px">|</span>
+                            <img src="./media/clock.svg" />
+                            Time:
+                            <span class="imp">01:45 <span class="imp0"> PM</span></span>
+                        </h2>
+                    </div>
+                    <hr />
+                    <div class="card-head">
+                        <p>From: <strong class="imp">Pune </strong> | To: <strong class="imp1">Osmanabad</strong></p>
+                        <p class="not-available"><strong>Not Available</strong></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <a class="disabled" href="./bookbus">Book</a>
+                </div>
+            </li>
+            <li class="card">
+                <div class="left">
+                    <div class="card-head">
+                        <h1><img src="./media/bus-icon.svg" />Night Owl Travels</h1>
+                        <h2>
+                            <img src="./media/date.svg" />
+                            Date:
+                            <span class="imp">15/01/2002</span>
+                            <span style="margin:0 10px">|</span>
+                            <img src="./media/clock.svg" />
+                            Time:
+                            <span class="imp">5:30 <span class="imp0"> AM</span></span>
+                        </h2>
+                    </div>
+                    <hr />
+                    <div class="card-head">
+                        <p>From: <strong class="imp">Pune </strong> | To: <strong class="imp1">Osmanabad</strong></p>
+                        <p class="available">Available Seats: <strong>50</strong></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="./bookbus">Book</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function animateMapLocation1() {
+            img = document.getElementById("mapLocation1");
+            img.classList.add("animate");
+            img.classList.remove("animateRM");
+        }
+
+        function animateMapLocation1RM() {
+            img = document.getElementById("mapLocation1");
+            img.classList.add("animateRM");
+            img.classList.remove("animate");
+        }
+    </script>
+</body>
+
+</html>

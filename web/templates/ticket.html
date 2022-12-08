@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyBus</title>
+    <link rel="shortcut icon" href="./media/ico.ico" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 200vh;
+        }
+
+        header {
+            /* background-color: #fabc3d; */
+            border-bottom: 2px solid #00000033;
+            background: whitesmoke;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+        }
+
+        header nav span {
+            display: inline-block;
+        }
+
+        header nav span a {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header nav span a img {
+            width: 60px;
+            padding: 0;
+            margin: 0;
+            margin-right: 10px;
+
+        }
+
+        header nav span a h1 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #f4492a;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 5px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            display: inline-block;
+            color: #f4492a;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 1px solid #55555533;
+            border-radius: 5px;
+        }
+
+        header nav ul li a:hover {
+            background-color: #55555522;
+        }
+        
+        /* ////////////ABOVE HEADER////////////// */
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .main-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .banner{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: xx-large;
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        .ticket{
+            height: 45%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            align-items: center;
+            width: 30%;
+            padding: 1%;
+            justify-content: space-evenly;
+        }
+
+        .ticket-partition-1 {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            font-size: large
+        }
+
+        .ticket-partition-2 {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            word-break: break-all;
+            line-height: 24px;
+        }
+
+        .ticket-partition-3 {
+            width: 100%;
+            text-align: center;
+        }
+        .partition-line{
+            width: 95%;
+            height: 2px;
+            background-color: black;
+            margin-top: .5%;
+            margin-bottom: .5%;
+        }
+
+        .image-partition{
+            display: flex;
+            align-items: center;
+
+        }
+        .ticket-svg{
+            height: 25px;
+            transform: rotate(-45deg);
+            margin-right: 10px;
+        }
+        .ticket-name{
+            font-size: 1.5em;
+        }
+        .print-btn{
+            text-decoration: none;
+            display: inline-block;
+            color: #f4492a;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 1px solid #55555533;
+            border-radius: 5px;
+        }
+
+        .print-btn:hover {
+            background-color: #55555522;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <span>
+                <a href="./">
+                    <img src="./media/bus2.svg" />
+                    <h1>BookMyBus</h1>
+                </a>
+            </span>
+
+            <ul>
+                <li><a href="./">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="banner">
+            <div class="banner-1">
+                🎉 Congratulations 🎉
+            </div>
+            <div class="banner-1">
+                You Successfully Booked a Ticket
+            </div>
+        </div>
+        <div class="ticket">
+            <div class="ticket-partition-1">
+                <div class="image-partition">
+                    <img class="ticket-svg" src="./media/tickit.svg">
+                    <div class="ticket-name">
+                        Ticket
+                    </div>
+                </div>
+                <div>
+                    Ticket No : MH-1887-05
+                </div>
+            </div>
+            <div class="partition-line">
+            </div>
+            <div class="ticket-partition-2">
+                <div>
+                    Seat No
+                </div>
+                <div>
+                    5, 6
+                </div>
+                <div>
+                    Bus Name
+                </div>
+                <div>
+                    Sangitam Travels
+                </div>
+                <div>
+                    From : Pune
+                </div>
+                <div>
+                    To : Dhule
+                </div>
+                <div>
+                    Date : 30/08/2022
+                </div>
+                <div>
+                    Time : 08:00 PM
+                </div>
+            </div>
+            <div class="partition-line">
+            </div>
+            <div class="ticket-partition-3">
+                <button onclick="print()" class="print-btn">
+                    Print
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

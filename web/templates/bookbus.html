@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyBus</title>
+    <link rel="shortcut icon" href="./media/ico.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            height: 200vh;
+        }
+
+        header {
+            /* background-color: #fabc3d; */
+            border-bottom: 2px solid #00000033;
+            background: whitesmoke;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+        }
+
+        header nav span {
+            display: inline-block;
+        }
+
+        header nav span a {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header nav span a img {
+            width: 60px;
+            padding: 0;
+            margin: 0;
+            margin-right: 10px;
+
+        }
+
+        header nav span a h1 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #f4492a;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 5px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            display: inline-block;
+            color: #f4492a;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 1px solid #55555533;
+            border-radius: 5px;
+        }
+
+        header nav ul li a:hover {
+            background-color: #55555522;
+        }
+
+        /* ////////////////////////////////// */
+
+        .body-container {
+            margin: 2rem 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0px;
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0 20% 0 20%;
+        }
+
+        .bus-details {
+            font-size: 18px;
+        }
+
+        .busname {}
+
+        .more-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+            margin-top: 5px;
+        }
+
+        .more-details p {
+            margin-top: 5px;
+        }
+
+        .center {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .bus {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            text-align: center;
+            border: 2px solid rgb(195, 227, 255);
+            flex-shrink: 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .front {
+            background-color: #f4492a;
+            color: aliceblue;
+            padding: 10px;
+            border-radius: 5px;
+            text-transform: capitalize;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .front:hover {
+            background: #d53316;
+        }
+
+        .front:active {
+            background-color: #f4492a;
+        }
+
+        .back {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seat-row {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr .5fr 1fr 1fr;
+        }
+
+        .seat-row:last-of-type {
+            grid-template-columns: 1fr 1fr 0fr 1fr 1fr;
+            margin-bottom: 5px;
+        }
+
+        .seat {
+            cursor: pointer;
+            background-color: aliceblue;
+            color: #2a49f4;
+            font-size: 1.05em;
+            font-weight: 500;
+            border-radius: 5px;
+            padding: 8px 10px;
+            margin: 0 1px;
+            border: 2px solid #2a49f411;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .seat:hover {
+            outline: 2px solid #2a49f4;
+            background: #55555511;
+            color: #2a49f4;
+        }
+
+        .selected-seat {
+            outline: 2px solid #f4492a;
+            background: #f4492a11;
+            color: #f4492a;
+        }
+
+        .selected-seat:hover {
+            outline: 2px solid #f4492a;
+            background: #55555511;
+            color: #f4492a;
+        }
+
+        .booked-seat {
+            background: white;
+            color: #55555588;
+        }
+
+        .booked-seat:hover {
+            background: white;
+            color: #55555588;
+            outline: 2px solid #fff;
+            cursor: default;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .main-container {
+                padding: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span>
+                <a href="./">
+                    <img src="./media/bus2.svg" />
+                    <h1>BookMyBus</h1>
+                </a>
+            </span>
+
+            <ul>
+                <li><a href="./">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <div class="main-container ">
+        <div class="bus-details">
+            <div class="busname">
+                <strong>Bus Name</strong>: Night Owl Travels
+            </div>
+            <div class="more-details">
+                <p>
+                    <strong>From</strong> : Pune
+                </p>
+                <p style="text-align:right">
+                    <strong>Date</strong> : 15/01/2002
+                </p>
+                <p>
+                    <strong>To</strong> : Osmanabad
+                </p>
+                <p style="text-align:right">
+                    <strong>Time</strong> : 5:30 AM
+                </p>
+            </div>
+        </div>
+        <!-- <hr style="margin:1em 0"> -->
+        <br>
+        <div class="center">
+            <div class="bus">
+                <a class="front" href="./login">
+                    Click here to Book
+                </a>
+                <div class="back">
+                    <div class="seat-row">
+                        <button class="seat booked-seat">
+                            1
+                        </button>
+                        <button class="seat">
+                            2
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat booked-seat">
+                            3
+                        </button>
+                        <button class="seat booked-seat">
+                            4
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat selected-seat">
+                            5
+                        </button>
+                        <button class="seat selected-seat">
+                            6
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            7
+                        </button>
+                        <button class="seat">
+                            8
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            9
+                        </button>
+                        <button class="seat">
+                            10
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            11
+                        </button>
+                        <button class="seat">
+                            12
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat booked-seat">
+                            13
+                        </button>
+                        <button class="seat">
+                            14
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            15
+                        </button>
+                        <button class="seat">
+                            16
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            17
+                        </button>
+                        <button class="seat">
+                            18
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            19
+                        </button>
+                        <button class="seat">
+                            20
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat booked-seat">
+                            21
+                        </button>
+                        <button class="seat booked-seat">
+                            22
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            23
+                        </button>
+                        <button class="seat">
+                            24
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            25
+                        </button>
+                        <button class="seat">
+                            26
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            27
+                        </button>
+                        <button class="seat">
+                            28
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            29
+                        </button>
+                        <button class="seat">
+                            30
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            31
+                        </button>
+                        <button class="seat">
+                            32
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            33
+                        </button>
+                        <button class="seat">
+                            34
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            35
+                        </button>
+                        <button class="seat">
+                            36
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            37
+                        </button>
+                        <button class="seat">
+                            38
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            39
+                        </button>
+                        <button class="seat">
+                            40
+                        </button>
+                    </div>
+                    <div class="seat-row">
+                        <button class="seat">
+                            41
+                        </button>
+                        <button class="seat">
+                            42
+                        </button>
+                        <div>
+                        </div>
+                        <button class="seat">
+                            43
+                        </button>
+                        <button class="seat">
+                            44
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".seat").forEach(seat=>{
+            seat.addEventListener("click", ()=>{
+                if(!seat.classList.contains("booked-seat")) {
+                    seat.classList.toggle("selected-seat")
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
