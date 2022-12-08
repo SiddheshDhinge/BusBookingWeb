@@ -1,15 +1,7 @@
 import psycopg2
 import json
-from secret import db_username
-from secret import db_password
-from queries import sql_check_db_exists
-from queries import sql_create_db
-from queries import sql_create_users_table
-from queries import sql_create_bus_table
-from queries import sql_create_passenger_table
-from queries import sql_create_ticket_table
-from queries import sql_insert_user
-from queries import sql_select_exists_user
+import os
+from queries import sql_insert_bus
 from queries import sql_select_all_bus
 from queries import sql_select_from_to_bus
 from queries import sql_select_from_bus
@@ -17,36 +9,20 @@ from queries import sql_insert_passenger
 from queries import sql_select_booked_seats
 from queries import sql_select_ticket_no
 from queries import sql_insert_ticket
+from dotenv import load_dotenv
+from database_schema import create_template_schema
+load_dotenv()
+
+import bus
+import owner
+
+db_username = os.getenv('db_username')
+db_password = os.getenv('db_password')
 
 # connection
 con = None
 # cursor
 cur = None
-
-# create db and table if not exists
-def create_template_schema():
-    con = psycopg2.connect(dbname='postgres', user=db_username, host='localhost', password=db_password)
-    con.autocommit = True
-    cur = con.cursor()
-
-    cur.execute(sql_check_db_exists)
-    if(cur.fetchone()[0] == False):
-        cur.execute(sql_create_db)
-
-    cur.close()
-    con.close()
-
-    con = psycopg2.connect(dbname='db_bus', user=db_username, host='localhost', password=db_password)
-    cur = con.cursor()
-
-    cur.execute(sql_create_users_table)
-    cur.execute(sql_create_bus_table)
-    cur.execute(sql_create_passenger_table)
-    cur.execute(sql_create_ticket_table)
-
-    con.commit()
-    cur.close()
-    con.close()
 
 # configure con and cur global objects
 def configure():
@@ -55,10 +31,10 @@ def configure():
     con = psycopg2.connect(dbname='db_bus', user=db_username, host='localhost', password=db_password)
     cur = con.cursor()
 
-# create a user
-def create_user(user_username, user_password):
-    cur.execute(sql_insert_user, (user_username, user_password))
-    con.commit()
+# # create a user
+# def create_user(user_username, user_password):
+#     cur.execute(sql_insert_user, (user_username, user_password))
+#     con.commit()
 
 # returns true for success login else false
 def login(user_username, user_password):
@@ -107,6 +83,10 @@ def bookTicket(users_username, users_password, passenger_name, passenger_gender,
     cur.execute(sql_insert_ticket, (ticket_ticket_no, users_username, bus_id, passger_p_id, seatno))
     con.commit()
 
+def insertBus(bus_numberPlate, bus_totalSeats, bus_type, owner_username):
+    cur.execute(bus.Bus.sql_insert_bus, (bus_numberPlate, bus_totalSeats, bus_type, owner_username))
+    print(cur.fetchone())
+
 
 def main():
     configure()
@@ -119,7 +99,9 @@ def main():
     # print(addPassenger('sanjay', 'f', 20, '815142425555'))
     # print(getBookedSeats('id1'))
     # print(createTicketNo('id2', 22))
-    print(bookTicket('sid', 'aaa', 'sid', 'm', 20, '8888888', 'id2', 22))
+    # print(bookTicket('sid', 'aaa', 'sid', 'm', 20, '8888888', 'id2', 22))
+    # insertBus('1', 20, 'SEAT', 'sid')
+    owner.Owner('sid', '321', 'siddhesh', '987456321').createOwner()
 
 if __name__ == "__main__":
     main()

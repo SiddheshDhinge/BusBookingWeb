@@ -1,27 +1,23 @@
 import psycopg2
-# from secret import db_username
-# from secret import db_password
-from queries2 import sql_check_db_exists
-from queries2 import sql_create_db
-from queries2 import sql_create_operator_table
-from queries2 import sql_create_bus_table
-from queries2 import sql_create_passenger_table
-from queries2 import sql_create_customer_table
-from queries2 import sql_create_owner_table
-from queries2 import sql_create_landmark_table
-from queries2 import sql_create_stop_table
-from queries2 import sql_create_schedule_table
-from queries2 import sql_create_booking_table
-from queries2 import sql_create_at_table
 import os
+from queries import sql_create_db
+from queries import sql_check_db_exists
+from queries import sql_create_operator_table
+from queries import sql_create_bus_table
+from queries import sql_create_passenger_table
+from queries import sql_create_customer_table
+from queries import sql_create_owner_table
+from queries import sql_create_landmark_table
+from queries import sql_create_stop_table
+from queries import sql_create_schedule_table
+from queries import sql_create_booking_table
+from queries import sql_create_at_table
 from dotenv import load_dotenv
 load_dotenv()
 
 db_username = os.getenv('db_username')
 db_password = os.getenv('db_password')
-hello = os.getenv('db_password')
 
-print(db_username, db_password, hello)
 # create db and table if not exists
 def create_template_schema():
     con = psycopg2.connect(dbname='postgres', user=db_username, host='localhost', password=db_password)

@@ -118,13 +118,9 @@ sql_create_at_table = '''
     );
 '''
 
-sql_insert_owner = "insert into Owner(User_username, User_password, User_name, User_contact) values(%s, %s, %s, %s);"
-
 sql_insert_customer = "insert into Customer(Customer_username, Customer_password, Customer_name, Customer_contact) values(%s, %s, %s, %s);"
 
 sql_insert_operator = "insert into Operator(Operator_username, Operator_password, Operator_name, Operator_contact, Operator_address) values(%s, %s, %s, %s, %s);"
-
-sql_insert_bus = "insert into Bus(Bus_numberPlate, Bus_totalSeats, Bus_type, Owner_username) values(%s, %s, %s, %s);"
 
 sql_insert_passenger = '''
     insert into Passenger(Passenger_id, Passenger_name, Passenger_gender, Passenger_age, Passenger_contact, Customer_username) values(%s, %s, %s, %s, %s, %s);
@@ -137,7 +133,8 @@ sql_insert_stop = "insert into Stop(Stop_id, Stop_name, Stop_address, Landmark_i
 
 sql_insert_booking = "insert into Booking(Schedule_id, Passenger_id, Booking_seatNo) values(%s, %s, %s);"
 
-sql_select_exists_user = "select exists(select * from users where username = %s and pass = %s);"
+sql_insert_bus = "insert into Bus(Bus_numberPlate, Bus_totalSeats, Bus_type, Owner_username) values(%s, %s, %s, %s);"
+
 # here till don3
 # write next a procedure
 
