@@ -1,9 +1,7 @@
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
-
-Base = declarative_base()
+from session_manager import getSessionStatus, addActiveSession
+from database import Base, DB_session
 
 class Passenger(Base):
     __tablename__ = 'Passenger'

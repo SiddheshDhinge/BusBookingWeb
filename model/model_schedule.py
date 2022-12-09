@@ -1,17 +1,15 @@
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
-
-Base = declarative_base()
+from session_manager import getSessionStatus, addActiveSession
+from database import Base, DB_session
 
 class Schedule(Base):
     __tablename__ = 'Schedule'
     __table_args__ = (
-        CheckConstraint('(fromDate < toDate) OR ((fromDate == toDate) AND departureTime < dropTime)'),
+        CheckConstraint('("fromDate" < "toDate") OR (("fromDate" = "toDate") AND "departureTime" < "dropTime")'),
     )
 
-    scheduleId = Column('scheduleId', String(16), primary_key=True, autoincrement=True)
+    scheduleId = Column('scheduleId', Integer, primary_key=True, autoincrement=True)
     fromDate = Column('fromDate', Date, nullable=False)
     toDate = Column('toDate', Date, nullable=False)
     departureTime = Column('departureTime', Time, nullable=False)

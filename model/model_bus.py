@@ -1,10 +1,7 @@
-# import database
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
-
-Base = declarative_base()
+from session_manager import getSessionStatus, addActiveSession
+from database import Base, DB_session
 
 class Bus(Base):
     __tablename__ = 'Bus'
@@ -23,7 +20,7 @@ class Bus(Base):
     def __repr__(self):
         return f"{self.__tablename__} => ({self.numberPlate}) : {self.totalSeats}, {self.busType}, {self.username}"
  
-    def createBus(self, DB_session):
+    def createBus(self):
         try:
             DB_session.add(self)
             DB_session.commit()
