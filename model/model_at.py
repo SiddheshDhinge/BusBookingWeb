@@ -13,7 +13,7 @@ class At(Base):
         PrimaryKeyConstraint(scheduleId, stopId),
     )
 
-    def __init__(self, scheduleId, stopId):
+    def __init__(self, scheduleId: int, stopId: int):
         self.scheduleId = scheduleId
         self.stopId = stopId
 

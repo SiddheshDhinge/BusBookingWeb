@@ -1,6 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
+from model import session_manager
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__, static_url_path="", static_folder="web/static", template_folder="web/templates")
+app.secret_key = os.environ['app_secret']
 
 @app.route('/')
 def index():
@@ -21,6 +26,12 @@ def details():
 @app.route('/ticket')
 def ticket():
     return render_template('ticket.html')
+
+@app.route('/debug')
+def debug():
+    sess = session_manager.addActiveSession("@siddhesh")
+    session_manager.getSessionStatus(session['session-id'])
+    return f'Session : {sess}'
 
 if __name__ == "__main__":
     app.run(debug=True)

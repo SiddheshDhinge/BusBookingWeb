@@ -16,7 +16,7 @@ class Owner(Base):
     name = Column('name', String(64), nullable=False)
     contact = Column('contact', String(10), nullable=False)
 
-    def __init__(self, username, password, name, contact, currentSesssion = None):
+    def __init__(self, username: str, password: str, name: str, contact: str, currentSesssion: str = None):
         self.username = username
         self.password = password
         self.name = name
@@ -47,9 +47,9 @@ class Owner(Base):
             return (False, None)
         
     def loadSession(self):
-        val = getSessionStatus(self.currentSession)
+        val = getSessionStatus()
         if(val[0] == False):
             return False
-
+            
         self.username = val[1]
         return True

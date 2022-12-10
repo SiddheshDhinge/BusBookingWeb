@@ -1,18 +1,21 @@
-import hashlib
-import time
-import random
-
-activeSessionMapper = {}
+from flask import session
+from base64 import b64encode
+from os import urandom
 
 def addActiveSession(username):
-    hashString = f'{username}{time.time()}{random.randbytes(32)}'
-    hash = hashlib.sha256(hashString.encode())
-    session_id = hash.hexdigest()
-    activeSessionMapper[session_id] = username
+    hash = b64encode(urandom(256)).decode('utf-8')
+    session_id = hash
+    session['session-id'] = session_id
+    session['user-name'] = username
     return session_id
     
-def getSessionStatus(session_id):
-    if(session_id in activeSessionMapper):
-        return (True, activeSessionMapper[session_id])
+def getSessionStatus():
+    if('session-id' in session):
+        return (True, session['user-name'])
     else:
         return (False, None)
+
+def remveSession():
+    session.pop('session-id', None)
+    session.pop('user-id', None)
+    

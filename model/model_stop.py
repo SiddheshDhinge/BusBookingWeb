@@ -11,7 +11,7 @@ class Stop(Base):
     address = Column('address', String(128), nullable=False)
     landmarkId = Column('landmarkId', Integer, ForeignKey('Landmark.landmarkId'), nullable=False)
     
-    def __init__(self, stopId, name, address, landmarkId):
+    def __init__(self, stopId: int, name: str, address: str, landmarkId: int):
         self.stopId = stopId
         self.name = name
         self.address = address

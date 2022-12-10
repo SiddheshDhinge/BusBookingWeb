@@ -11,7 +11,7 @@ class Bus(Base):
     busType = Column('busType', String(16), nullable=False)
     username = Column('username', String(16), ForeignKey('Owner.username'), nullable=False)
 
-    def __init__(self, numberPlate, totalSeats, bustype, username):
+    def __init__(self, numberPlate: str, totalSeats: int, bustype: str, username: str):
         self.numberPlate = numberPlate
         self.totalSeats = totalSeats
         self.busType = bustype

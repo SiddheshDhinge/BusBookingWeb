@@ -14,7 +14,7 @@ class Booking(Base):
         PrimaryKeyConstraint(seatNo, scheduleId, passengerId),
     )
 
-    def __init__(self, seatNo, scheduleId, passengerId):
+    def __init__(self, seatNo: int, scheduleId: int, passengerId: int):
         self.seatNo = seatNo
         self.scheduleId = scheduleId
         self.passengerId = passengerId

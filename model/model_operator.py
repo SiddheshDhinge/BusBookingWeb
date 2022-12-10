@@ -16,7 +16,7 @@ class Operator(Base):
     address = Column('address', String(128), nullable=False)
     contact = Column('contact', String(10), nullable=False)
     
-    def __init__(self, username, password, name, address, contact):
+    def __init__(self, username: str, password: str, name: str, address: str, contact: str):
         self.username = username
         self.password = password
         self.name = name
@@ -25,3 +25,31 @@ class Operator(Base):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.username}) : {self.password}, {self.name}, {self.address}, {self.contact}"
+
+    def createOperator(self):
+        try:
+            DB_session.add(self)
+            DB_session.commit()
+        except(exc.IntegrityError):
+            DB_session.rollback()
+            return False
+        except:
+            print(f'{self}')
+            return False
+        else:
+            return True
+        
+    def loginOperator(self):
+        qry = DB_session.query(Operator).filter(Operator.username == self.username, Operator.password == self.password)
+        if(DB_session.query(qry.exists()).scalar() == True):
+            return (True, addActiveSession(self.username))
+        else:
+            return (False, None)
+        
+    def loadSession(self):
+        val = getSessionStatus()
+        if(val[0] == False):
+            return False
+            
+        self.username = val[1]
+        return True

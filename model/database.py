@@ -23,3 +23,6 @@ def connectDB():
 
 def createAllTables():
     Base.metadata.create_all(bind=DB_engine)
+
+def dropAllTables():
+    Base.metadata.drop_all(bind=DB_engine)

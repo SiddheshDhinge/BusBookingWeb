@@ -6,7 +6,6 @@ from database import Base, DB_session
 class Passenger(Base):
     __tablename__ = 'Passenger'
     __table_args__ = (
-        UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
     )
 
@@ -17,7 +16,7 @@ class Passenger(Base):
     contact = Column('contact', String(10), nullable=False)
     username = Column('username', String(16), ForeignKey('Customer.username'), nullable=False)
     
-    def __init__(self, name, gender, age, contact, username):
+    def __init__(self, name: str, gender: str, age: int, contact: str, username: str):
         self.name = name
         self.gender = gender
         self.age = age
@@ -26,3 +25,16 @@ class Passenger(Base):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.passengerId}) : {self.name}, {self.gender}, {self.age}, {self.contact}, {self.username}"
+
+    def createPassenger(self):
+        try:
+            DB_session.add(self)
+            DB_session.commit()
+        except(exc.IntegrityError):
+            DB_session.rollback()
+            return False
+        except:
+            print(f'{self}')
+            return False
+        else:
+            return True

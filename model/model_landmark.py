@@ -9,7 +9,7 @@ class Landmark(Base):
     LandmarkId = Column('landmarkId', Integer, primary_key=True)
     name = Column('name', String(64), nullable=False)
     
-    def __init__(self, landmarkId, name):
+    def __init__(self, landmarkId: int, name: str):
         self.LandmarkId = landmarkId
         self.name = name
 
