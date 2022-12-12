@@ -1,5 +1,5 @@
 from sqlalchemy import exc
-from database import DB_session
+from .database import DB_session
 
 class Common:
     def createObject(self):

@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
 from sqlalchemy import exc
-from session_manager import getSessionStatus, addActiveSession
-from database import Base, DB_session
-from common import Common
+from .session_manager import getSessionStatus, addActiveSession, removeSession
+from .database import Base, DB_session
+from .common import Common
 
 class Landmark(Base, Common):
     __tablename__ = 'Landmark'

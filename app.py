@@ -3,8 +3,8 @@ from flask import Flask, render_template, session
 from model.database import connectDB, createAllTables, dropAllTables
 
 #Establish database session
-# connectDB()
-# createAllTables()
+connectDB()
+createAllTables()
 
 # from model.session_manager import getSessionStatus, addActiveSession
 import controller_owner
