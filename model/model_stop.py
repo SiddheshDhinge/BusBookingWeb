@@ -2,17 +2,17 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from session_manager import getSessionStatus, addActiveSession
 from database import Base, DB_session
+from common import Common
 
-class Stop(Base):
+class Stop(Base, Common):
     __tablename__ = 'Stop'
 
-    stopId = Column('stopId', Integer, primary_key=True)
+    stopId = Column('stopId', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(64), nullable=False)
     address = Column('address', String(128), nullable=False)
     landmarkId = Column('landmarkId', Integer, ForeignKey('Landmark.landmarkId'), nullable=False)
     
-    def __init__(self, stopId: int, name: str, address: str, landmarkId: int):
-        self.stopId = stopId
+    def __init__(self, name: str, address: str, landmarkId: int):
         self.name = name
         self.address = address
         self.landmarkId = landmarkId

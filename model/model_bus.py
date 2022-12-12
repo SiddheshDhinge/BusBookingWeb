@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
 from sqlalchemy import exc
-from session_manager import getSessionStatus, addActiveSession
+from session_manager import getSessionStatus, addActiveSession, removeSession
 from database import Base, DB_session
+from common import Common
 
-class Bus(Base):
+class Bus(Base, Common):
     __tablename__ = 'Bus'
 
     numberPlate = Column('numberPlate', String(16), primary_key=True)
@@ -19,16 +20,3 @@ class Bus(Base):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.numberPlate}) : {self.totalSeats}, {self.busType}, {self.username}"
- 
-    def createBus(self):
-        try:
-            DB_session.add(self)
-            DB_session.commit()
-        except(exc.IntegrityError):
-            DB_session.rollback()
-            return False
-        except:
-            print(f'CREATE BUS : {self}')
-            return False
-        else:
-            return True

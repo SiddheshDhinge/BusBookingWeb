@@ -2,8 +2,9 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from session_manager import getSessionStatus, addActiveSession
 from database import Base, DB_session
+from common import Common
 
-class Schedule(Base):
+class Schedule(Base, Common):
     __tablename__ = 'Schedule'
     __table_args__ = (
         CheckConstraint('("fromDate" < "toDate") OR (("fromDate" = "toDate") AND "departureTime" < "dropTime")'),

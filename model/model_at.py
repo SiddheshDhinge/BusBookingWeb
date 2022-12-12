@@ -2,8 +2,9 @@ from sqlalchemy import create_engine, PrimaryKeyConstraint, ForeignKey, Column, 
 from sqlalchemy import exc
 from session_manager import getSessionStatus, addActiveSession
 from database import Base, DB_session
+from common import Common
 
-class At(Base):
+class At(Base, Common):
     __tablename__ = 'At'
 
     scheduleId = Column('scheduleId', Integer, ForeignKey('Schedule.scheduleId'), nullable=False)

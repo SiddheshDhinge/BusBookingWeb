@@ -2,8 +2,9 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from session_manager import getSessionStatus, addActiveSession
 from database import Base, DB_session
+from common import Common
 
-class Passenger(Base):
+class Passenger(Base, Common):
     __tablename__ = 'Passenger'
     __table_args__ = (
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -25,16 +26,3 @@ class Passenger(Base):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.passengerId}) : {self.name}, {self.gender}, {self.age}, {self.contact}, {self.username}"
-
-    def createPassenger(self):
-        try:
-            DB_session.add(self)
-            DB_session.commit()
-        except(exc.IntegrityError):
-            DB_session.rollback()
-            return False
-        except:
-            print(f'{self}')
-            return False
-        else:
-            return True

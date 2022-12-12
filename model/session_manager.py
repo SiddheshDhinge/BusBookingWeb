@@ -15,7 +15,6 @@ def getSessionStatus():
     else:
         return (False, None)
 
-def remveSession():
+def removeSession():
     session.pop('session-id', None)
     session.pop('user-id', None)
-    
