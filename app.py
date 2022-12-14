@@ -1,15 +1,14 @@
 print("\n\n\nSTARTED\n\n\n")
-from flask import Flask, render_template, session
-from model.database import connectDB, createAllTables, dropAllTables
+from flask import Flask, render_template, session, flash
+from app.model.database import connectDB, createAllTables, dropAllTables
 
-#Establish database session
+# Establish database session
 connectDB()
 createAllTables()
-
 # from model.session_manager import getSessionStatus, addActiveSession
-import controller_owner
-import controller_customer
-import controller_operator
+from app import controller_owner
+from app import controller_customer
+from app import controller_operator
 
 import os
 from dotenv import load_dotenv
@@ -53,11 +52,11 @@ def operator():
 
 
 
-# @app.route('/debug')
-# def debug():
-#     sess = addActiveSession("@siddhesh")
-#     getSessionStatus(session['session-id'])
-#     return f'Session : {sess}'
+@app.route('/debug')
+def debug():
+    # flash('YES OWNER!!!')
+    # getSessionStatus(session[model.label.])
+    return f'Session : '
 
 if __name__ == "__main__":
     app.run(debug=True)

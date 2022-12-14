@@ -56,3 +56,19 @@ class Owner(Base):
     
     def logoutOwner(self):
         removeSession()
+
+    def updateInformation(self):
+        try:
+            DB_session.query(Owner).filter(Owner.username == self.username).update(
+                {
+                    Owner.name : self.name,
+                    Owner.contact : self.contact
+                }
+            )
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
