@@ -3,6 +3,7 @@ from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
 from .common import Common
+from .. import label
 
 class Stop(Base, Common):
     __tablename__ = 'Stop'
@@ -19,3 +20,11 @@ class Stop(Base, Common):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.stopId}) : {self.name} {self.address} {self.landmarkId}"
+    
+    def serialize(self):
+        return {
+            label.stop_id : self.stopId,
+            label.stop_name : self.name,
+            label.stop_address : self.address,
+            label.landmark_id : self.landmarkId,
+        }

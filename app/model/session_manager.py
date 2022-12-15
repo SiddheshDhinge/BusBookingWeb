@@ -11,7 +11,7 @@ def addActiveSession(username):
     return session_id
     
 def getSessionStatus():
-    if(label.session in session):
+    if(label.session in session and label.username in session):
         return (True, session[label.username])
     else:
         return (False, None)
@@ -20,3 +20,6 @@ def removeSession():
     session.pop(label.session, None)
     session.pop(label.username, None)
     session.clear()
+
+def isLoggedOn():
+    return getSessionStatus()[0]

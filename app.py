@@ -6,16 +6,16 @@ from app.model.database import connectDB, createAllTables, dropAllTables
 connectDB()
 createAllTables()
 # from model.session_manager import getSessionStatus, addActiveSession
-from app import controller_owner
+from app.controller_owner import ControllerOwner
 from app import controller_customer
-from app import controller_operator
+from app.controller_operator import ControllerOperator
 
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
-app = Flask(__name__, static_url_path="", static_folder="web/static", template_folder="web/templates")
+app = Flask(__name__, static_url_path="", static_folder="app/web/static", template_folder="app/web/templates")
 app.secret_key = os.environ['app_secret']
 
 @app.route('/')
@@ -40,7 +40,7 @@ def ticket():
 
 @app.route('/owner', methods=['POST'])
 def owner():
-    return controller_owner.handleRequest()
+    return ControllerOwner().handleRequest()
 
 @app.route('/customer', methods=['POST'])
 def customer():
@@ -48,7 +48,7 @@ def customer():
 
 @app.route('/operator', methods=['POST'])
 def operator():
-    return controller_operator.handleRequest()
+    return ControllerOperator().handleRequest()
 
 
 

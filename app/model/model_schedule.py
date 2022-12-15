@@ -3,6 +3,7 @@ from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
 from .common import Common
+from .. import label
 
 class Schedule(Base, Common):
     __tablename__ = 'Schedule'
@@ -30,3 +31,15 @@ class Schedule(Base, Common):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.scheduleId}) : {self.fromDate}, {self.toDate}, {self.departureTime}, {self.dropTime}, {self.fairFees}, {self.numberPlate}, {self.username}"
+    
+    def serialize(self):
+        return {
+            label.schedule_id : self.scheduleId,
+            label.schedule_fromDate : f'{self.fromDate:%m/%d/%Y}',
+            label.schedule_toDate : f'{self.toDate:%m/%d/%Y}',
+            label.schedule_departureTime : f'{self.departureTime:%H:%M:%S}',
+            label.schedule_dropTime : f'{self.dropTime:%H:%M:%S}',
+            label.schedule_fairFees : self.fairFees,
+            label.schedule_numberPlate : self.numberPlate,
+            label.username : self.username
+        }

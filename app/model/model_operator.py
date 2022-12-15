@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
+from .. import label
 
 class Operator(Base):
     __tablename__ = 'Operator'
@@ -56,3 +57,28 @@ class Operator(Base):
             
     def logoutOperator(self):
         removeSession()
+
+    def updateInformation(self):
+        try:
+            DB_session.query(Operator).filter(Operator.username == self.username).update(
+                {
+                    Operator.name : self.name,
+                    Operator.address : self.address,
+                    Operator.contact : self.contact
+                }
+            )
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
+
+    def serialize(self):
+        return {
+            label.username: self.username,
+            label.name: self.name,
+            label.contact: self.contact,
+            label.operator_address: self.address
+        }
