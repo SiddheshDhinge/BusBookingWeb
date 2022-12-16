@@ -5,6 +5,7 @@ from .database import Base, DB_session
 
 class Customer(Base):
     __tablename__ = 'Customer'
+    accessType = 'customer'
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -40,7 +41,7 @@ class Customer(Base):
     def loginCustomer(self):
         qry = DB_session.query(Customer).filter(Customer.username == self.username, Customer.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(self.username))
+            return (True, addActiveSession(username= self.username, accessType= Customer.accessType))
         else:
             return (False, None)
         
@@ -54,3 +55,12 @@ class Customer(Base):
         
     def logoutCustomer(self):
         removeSession()
+
+    @staticmethod
+    def isLoggedOn():
+        retVal = getSessionStatus()
+        if(retVal[0] == False):
+            return False
+        if(retVal[1] != Customer.accessType):
+            return False
+        return True

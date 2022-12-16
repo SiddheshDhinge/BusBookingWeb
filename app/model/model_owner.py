@@ -6,6 +6,7 @@ from .. import label
 
 class Owner(Base):
     __tablename__ = 'Owner'
+    accessType = 'owner'
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -43,7 +44,7 @@ class Owner(Base):
     def loginOwner(self):
         qry = DB_session.query(Owner).filter(Owner.username == self.username, Owner.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(self.username))
+            return (True, addActiveSession(username= self.username, accessType= Owner.accessType))
         else:
             return (False, None)
         
@@ -80,3 +81,12 @@ class Owner(Base):
             label.name: self.name,
             label.contact: self.contact
         }
+
+    @staticmethod
+    def isLoggedOn():
+        retVal = getSessionStatus()
+        if(retVal[0] == False):
+            return False
+        if(retVal[1] != Owner.accessType):
+            return False
+        return True

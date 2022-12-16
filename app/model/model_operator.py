@@ -6,6 +6,7 @@ from .. import label
 
 class Operator(Base):
     __tablename__ = 'Operator'
+    accessType = 'operator'
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -43,7 +44,7 @@ class Operator(Base):
     def loginOperator(self):
         qry = DB_session.query(Operator).filter(Operator.username == self.username, Operator.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(self.username))
+            return (True, addActiveSession(username= self.username, accessType= Operator.accessType))
         else:
             return (False, None)
         
@@ -82,3 +83,12 @@ class Operator(Base):
             label.contact: self.contact,
             label.operator_address: self.address
         }
+
+    @staticmethod
+    def isLoggedOn():
+        retVal = getSessionStatus()
+        if(retVal[0] == False):
+            return False
+        if(retVal[1] != Operator.accessType):
+            return False
+        return True

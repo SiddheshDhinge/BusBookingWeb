@@ -10,7 +10,7 @@ from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
 from .model.database import DB_session
-from .model.session_manager import getSessionStatus, isLoggedOn
+from .model.session_manager import getSessionStatus
 # from model.session_manager import getSessionStatus, addActiveSession
 
 from . import label
@@ -54,7 +54,6 @@ class ControllerOwner:
         elif(service_id == 8):
             #add a Stop
             self.handleStopCreation()
-            pass
 
         elif(service_id == 9):
             #view all stop
@@ -96,7 +95,7 @@ class ControllerOwner:
         self.response_data[label.session] = req[1]
 
     def handleLogout(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         try:
@@ -107,7 +106,7 @@ class ControllerOwner:
             self.response_data[label.success] = True
 
     def handleBusRegistration(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
             
@@ -120,18 +119,17 @@ class ControllerOwner:
 
     def handleViewBus(self):
         # get all owners registered bus
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
 
         username = session[label.username]
         busObjLst = DB_session.query(Bus).filter(Bus.username == username).all()
         self.response_data = [busObj.serialize() for busObj in busObjLst]
-        print(self.response_data)
-
+        
     def handleUpdateAccountProfile(self):
-        if isLoggedOn() == False:
-            self.self.response_data[label.success] = label.authReq
+        if Owner.isLoggedOn() == False:
+            self.response_data[label.success] = label.authReq
             return
         
         name = request.form.get(label.name)
@@ -140,10 +138,10 @@ class ControllerOwner:
         ownerObj = Owner(username=username, password=None, name=name, contact=contact)
         ownerObj.loadSession()
         res = ownerObj.updateInformation()
-        self.self.response_data[label.success] = res
+        self.response_data[label.success] = res
 
     def handleViewLandmark(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
 
@@ -151,7 +149,7 @@ class ControllerOwner:
         self.response_data = [landmarkObj.serialize() for landmarkObj in landmarkObjList]
 
     def handleViewStop(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         
@@ -159,7 +157,7 @@ class ControllerOwner:
         self.response_data = [stopObj.serialize() for stopObj in stopObjList]
 
     def handleLandmarkCreation(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
 
@@ -168,7 +166,7 @@ class ControllerOwner:
         self.response_data[label.success] = val
 
     def handleStopCreation(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         
@@ -179,7 +177,7 @@ class ControllerOwner:
         self.response_data[label.success] = val
 
     def handleScheduleCreation(self):
-        if isLoggedOn() == False:
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
 
@@ -198,7 +196,10 @@ class ControllerOwner:
         self.response_data[label.success] = retVal
 
     def handleViewSchedule(self):
-        if isLoggedOn() == False:
+        print(session.keys())
+        print(session[label.username],
+        session[label.session])
+        if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         

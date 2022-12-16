@@ -10,7 +10,7 @@ from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
 from .model.database import DB_session
-from .model.session_manager import getSessionStatus, isLoggedOn
+from .model.session_manager import getSessionStatus
 # from model.session_manager import getSessionStatus, addActiveSession
 
 from . import label
@@ -24,55 +24,28 @@ class ControllerOperator:
         service_id = int(request.form.get(label.service))
 
         if(service_id == 1):
-            # create Owner
+            # create Operator
             self.handleAccountCreation()
 
         elif(service_id == 2):
-            #login
+            #login Operator
             self.handleLogin()
 
         elif(service_id == 3):
-            #logout
+            #logout Operator
             self.handleLogout()
 
         elif(service_id == 4):
-            #register bus
-            self.handleBusRegistration()
-
-        elif(service_id == 5):
-            #View All Registered Bus
-            self.handleViewBus()
-
-        elif(service_id == 6):
-            #add a Landmark
-            self.handleLandmarkCreation()
-        
-        elif(service_id == 7):
-            #view all LandMark
-            self.handleViewLandmark()
-
-        elif(service_id == 8):
-            #add a Stop
-            self.handleStopCreation()
-            pass
-
-        elif(service_id == 9):
-            #view all stop
-            self.handleViewStop()
-        
-        elif(service_id == 10):
-            #add a schedule
-            self.handleScheduleCreation()
-            pass
-
-        elif(service_id == 11):
             #view schedules
             self.handleViewSchedule()
-            pass
 
-        elif(service_id == 12):
+        elif(service_id == 5):
             #update profile
             self.handleUpdateAccountProfile()
+
+        elif(service_id == 6):
+            # View All Operators
+            self.handleViewAllOperator()
 
         else:
             self.response_data[label.success] = label.invalid
@@ -97,7 +70,7 @@ class ControllerOperator:
         self.response_data[label.session] = req[1]
 
     def handleLogout(self):
-        if isLoggedOn() == False:
+        if Operator.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         try:
@@ -108,8 +81,8 @@ class ControllerOperator:
             self.response_data[label.success] = True
 
     def handleUpdateAccountProfile(self):
-        if isLoggedOn() == False:
-            self.self.response_data[label.success] = label.authReq
+        if Operator.isLoggedOn() == False:
+            self.response_data[label.success] = label.authReq
             return
         
         name = request.form.get(label.name)
@@ -122,7 +95,7 @@ class ControllerOperator:
         self.response_data[label.success] = res
 
     def handleViewSchedule(self):
-        if isLoggedOn() == False:
+        if Operator.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
         
@@ -139,3 +112,11 @@ class ControllerOperator:
                 Landmark.__tablename__ : landmarkObj.serialize()
             } for (scheduleObj, busObj, ownerObj, stopObj, landmarkObj) in qryResult
         ]
+
+    def handleViewAllOperator(self):
+        if Operator.isLoggedOn() == False:
+            self.response_data[label.success] = label.authReq
+            return
+
+        qryResult = DB_session.query(Operator).all()
+        self.response_data = [operatorObj.serialize() for operatorObj in qryResult]

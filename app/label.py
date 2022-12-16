@@ -37,3 +37,4 @@ passenger_age = 'passenger-age'
 passenger_contact = 'passenger-contact'
 
 customer_username = 'customer-username'
+accessType = 'access-type'
