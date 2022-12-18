@@ -1,8 +1,7 @@
 success = 'request-status'
 service = 'service-id'
 session = 'user-session-id'
-invalid = 'invalid-service'
-authReq = 'invalid-authentication'
+details = 'detail-information'
 
 username = 'user-username'
 password = 'user-password'
@@ -38,3 +37,8 @@ passenger_contact = 'passenger-contact'
 
 customer_username = 'customer-username'
 accessType = 'access-type'
+
+owner_username = 'owner-username'
+owner_password = 'owner-password'
+owner_name = 'owner_name'
+owner_contact = 'owner_contact'

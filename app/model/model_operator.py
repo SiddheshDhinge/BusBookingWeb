@@ -57,7 +57,12 @@ class Operator(Base):
         return True
             
     def logoutOperator(self):
-        removeSession()
+        try:
+            removeSession()
+        except:
+            return False
+        else:
+            return True
 
     def updateInformation(self):
         try:

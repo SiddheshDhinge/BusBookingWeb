@@ -44,9 +44,10 @@ class Owner(Base):
     def loginOwner(self):
         qry = DB_session.query(Owner).filter(Owner.username == self.username, Owner.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(username= self.username, accessType= Owner.accessType))
+            addActiveSession(username= self.username, accessType= Owner.accessType)
+            return True
         else:
-            return (False, None)
+            return False
         
     def loadSession(self):
         val = getSessionStatus()
@@ -57,7 +58,12 @@ class Owner(Base):
         return True
     
     def logoutOwner(self):
-        removeSession()
+        try:
+            removeSession()
+        except:
+            return False
+        else:
+            return True
 
     def updateInformation(self):
         try:

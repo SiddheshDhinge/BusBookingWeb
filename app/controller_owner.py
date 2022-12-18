@@ -9,11 +9,10 @@ from .model.model_landmark import Landmark
 from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
-from .model.database import DB_session
 from .model.session_manager import getSessionStatus
-# from model.session_manager import getSessionStatus, addActiveSession
+from .model.complex_operations import ComplexOperation
 
-from . import label
+from . import label, label_reason
 
 class ControllerOwner:
 
@@ -84,30 +83,37 @@ class ControllerOwner:
         password = request.form.get(label.password)
         name = request.form.get(label.name)
         contact = request.form.get(label.contact)
-        res = Owner(username=username, password=password, name=name, contact=contact).createOwner()
-        self.response_data[label.success] = res
+        result = Owner(username=username, password=password, name=name, contact=contact).createOwner()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.userCreationFailed
 
     def handleLogin(self):
         username = request.form.get(label.username)
         password = request.form.get(label.password)
-        req = Owner(username=username, password=password, name=None, contact=None, currentSesssion=None).loginOwner()
-        self.response_data[label.success] = req[0]
-        self.response_data[label.session] = req[1]
+        result = Owner(username=username, password=password, name=None, contact=None, currentSesssion=None).loginOwner()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLoginSuccess
+        else:
+            self.response_data[label.details] = label_reason.userLogoutFailed
 
     def handleLogout(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
-        try:
-            Owner(None, None, None, None, currentSesssion=None).logoutOwner()
-        except:
-            self.response_data[label.success] = False
+        result = Owner(None, None, None, None, currentSesssion=None).logoutOwner()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLogoutSuccess
         else:
-            self.response_data[label.success] = True
+            self.response_data[label.details] = label_reason.userLogoutFailed
 
     def handleBusRegistration(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
             
         numberPlate = request.form.get(label.bus_numberPlate)
@@ -115,70 +121,88 @@ class ControllerOwner:
         busType = request.form.get(label.bus_busType)
         username = session[label.username]
         busObj = Bus(numberPlate=numberPlate, totalSeats=totalSeats, bustype=busType, username=username)
-        self.response_data[label.success] = busObj.createObject()
+        result = busObj.createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.busRegistrationSuccess
+        else:
+            self.response_data[label.details] = label_reason.busRegistrationFailed
+
 
     def handleViewBus(self):
         # get all owners registered bus
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
 
         username = session[label.username]
-        busObjLst = DB_session.query(Bus).filter(Bus.username == username).all()
-        self.response_data = [busObj.serialize() for busObj in busObjLst]
+        queryResult = ComplexOperation().getOwnerBuses(ownerUsername= username)
+        self.response_data = [busObj.serialize() for busObj in queryResult]
         
     def handleUpdateAccountProfile(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         name = request.form.get(label.name)
         contact = request.form.get(label.contact)
         username = session[label.username]
         ownerObj = Owner(username=username, password=None, name=name, contact=contact)
-        ownerObj.loadSession()
-        res = ownerObj.updateInformation()
-        self.response_data[label.success] = res
+        result = ownerObj.updateInformation()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+        else:
+            self.response_data[label.details] = label_reason.userAccountUpdateFailed
 
     def handleViewLandmark(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
 
-        landmarkObjList = DB_session.query(Landmark).all()
-        self.response_data = [landmarkObj.serialize() for landmarkObj in landmarkObjList]
+        queryResult = ComplexOperation().getAllLandmarks()
+        self.response_data = [landmarkObj.serialize() for landmarkObj in queryResult]
 
     def handleViewStop(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
-        stopObjList = DB_session.query(Stop).all()
-        self.response_data = [stopObj.serialize() for stopObj in stopObjList]
+        queryResult = ComplexOperation().getAllStops()
+        self.response_data = [stopObj.serialize() for stopObj in queryResult]
 
     def handleLandmarkCreation(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
 
         landmark_name = request.form.get(label.landmark_name)
-        val = Landmark(landmark_name).createObject()
-        self.response_data[label.success] = val
+        result = Landmark(landmark_name).createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.landmarkCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.landmarkCreationFailed
 
     def handleStopCreation(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         stop_name = request.form.get(label.stop_name)
         stop_address = request.form.get(label.stop_address)
         landmark_id = request.form.get(label.landmark_id)
-        val = Stop(name= stop_name, address= stop_address, landmarkId= landmark_id).createObject()
-        self.response_data[label.success] = val
+        result = Stop(name= stop_name, address= stop_address, landmarkId= landmark_id).createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.stopCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.stopCreationFailed
+
 
     def handleScheduleCreation(self):
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
 
         operator_username = request.form.get(label.username)
@@ -192,25 +216,27 @@ class ControllerOwner:
             fromDate=fromDate, toDate=toDate, departureTime=departureTime, dropTime=dropTime, 
             fairFees=fairFees, numberPlate=numberPlate, username=operator_username
         )
-        retVal = scheduleObj.createObject()
-        self.response_data[label.success] = retVal
+        result = scheduleObj.createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.scheduleCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.scheduleCreationFailed
 
     def handleViewSchedule(self):
         print(session.keys())
         print(session[label.username],
         session[label.session])
         if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         username = session[label.username]
-        qryResult = DB_session.query(Schedule, Bus, Owner).select_from(Schedule).join(Bus, Owner).filter(
-            Owner.username == username
-        ).all()
+        queryResult = ComplexOperation().getOwnerSchedules(ownerUsername= username)
         self.response_data = [
             {
                 Schedule.__tablename__ : scheduleObj.serialize(),
                 Bus.__tablename__ : busObj.serialize(),
                 Owner.__tablename__ : ownerObj.serialize()
-            } for (scheduleObj, busObj, ownerObj) in qryResult
+            } for (scheduleObj, busObj, ownerObj) in queryResult
         ]

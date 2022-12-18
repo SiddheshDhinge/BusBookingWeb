@@ -9,10 +9,10 @@ def addActiveSession(username,accessType):
     session[label.session] = session_id
     session[label.username] = username
     session[label.accessType] = accessType
-    return session_id
+    return True
     
 def getSessionStatus():
-    if(label.session in session and label.username in session, label.accessType in session):
+    if(label.session in session and label.username in session and label.accessType in session):
         return (True, session[label.accessType])
     else:
         return (False, None)

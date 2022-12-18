@@ -9,7 +9,7 @@ from .model.model_landmark import Landmark
 from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
-from .model.database import DB_session
+from .model.complex_operations import ComplexOperation
 from .model.session_manager import getSessionStatus
 # from model.session_manager import getSessionStatus, addActiveSession
 
@@ -43,10 +43,6 @@ class ControllerOperator:
             #update profile
             self.handleUpdateAccountProfile()
 
-        elif(service_id == 6):
-            # View All Operators
-            self.handleViewAllOperator()
-
         else:
             self.response_data[label.success] = label.invalid
 
@@ -73,12 +69,8 @@ class ControllerOperator:
         if Operator.isLoggedOn() == False:
             self.response_data[label.success] = label.authReq
             return
-        try:
-            Operator(username=None, password=None, name=None, address=None, contact=None).logoutOperator()
-        except:
-            self.response_data[label.success] = False
-        else:
-            self.response_data[label.success] = True
+        result = Operator(username=None, password=None, name=None, address=None, contact=None).logoutOperator()
+        self.response_data[label.success] = result
 
     def handleUpdateAccountProfile(self):
         if Operator.isLoggedOn() == False:
@@ -100,9 +92,7 @@ class ControllerOperator:
             return
         
         username = session[label.username]
-        qryResult = DB_session.query(Schedule, Bus, Owner, Stop, Landmark).select_from(Schedule).join(Bus, Owner, At, Stop, Landmark).filter(
-            Schedule.username == username
-        ).all()
+        qryResult = ComplexOperation().getOperatorSchedules(operatorUsername= username)
         self.response_data = [
             {
                 Schedule.__tablename__ : scheduleObj.serialize(),
@@ -113,10 +103,10 @@ class ControllerOperator:
             } for (scheduleObj, busObj, ownerObj, stopObj, landmarkObj) in qryResult
         ]
 
-    def handleViewAllOperator(self):
-        if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
-            return
+    # def handleViewAllOperator(self):
+    #     if Operator.isLoggedOn() == False:
+    #         self.response_data[label.success] = label.authReq
+    #         return
 
-        qryResult = DB_session.query(Operator).all()
-        self.response_data = [operatorObj.serialize() for operatorObj in qryResult]
+    #     qryResult = ComplexOperation().getAllOperators()
+    #     self.response_data = [operatorObj.serialize() for operatorObj in qryResult]

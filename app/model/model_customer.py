@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
+from .. import label
 
 class Customer(Base):
     __tablename__ = 'Customer'
@@ -54,7 +55,35 @@ class Customer(Base):
         return True
         
     def logoutCustomer(self):
-        removeSession()
+        try:
+            removeSession()
+        except:
+            return False
+        else:
+            return True
+            
+    def updateInformation(self):
+        try:
+            DB_session.query(Customer).filter(Customer.username == self.username).update(
+                {
+                    Customer.name : self.name,
+                    Customer.contact : self.contact
+                }
+            )
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
+
+    def serialize(self):
+        return {
+            label.username: self.username,
+            label.name: self.name,
+            label.contact: self.contact
+        }
 
     @staticmethod
     def isLoggedOn():
