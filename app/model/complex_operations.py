@@ -42,3 +42,7 @@ class ComplexOperation:
     def getAllOperators(self):
         queryResult = DB_session.query(Operator).all()
         return queryResult
+
+    def getCustomerPassengers(self, customerUsername):
+        queryResult = DB_session.query(Passenger).filter(Passenger.username == customerUsername).all()
+        return queryResult

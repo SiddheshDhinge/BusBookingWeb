@@ -44,9 +44,10 @@ class Operator(Base):
     def loginOperator(self):
         qry = DB_session.query(Operator).filter(Operator.username == self.username, Operator.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(username= self.username, accessType= Operator.accessType))
+            addActiveSession(username= self.username, accessType= Operator.accessType)
+            return True
         else:
-            return (False, None)
+            return False
         
     def loadSession(self):
         val = getSessionStatus()

@@ -11,9 +11,8 @@ from .model.model_booking import Booking
 from .model.model_at import At
 from .model.database import DB_session
 from .model.session_manager import getSessionStatus
-# from model.session_manager import getSessionStatus, addActiveSession
-
-from . import label
+from .model.complex_operations import ComplexOperation
+from . import label, label_reason
 
 class ControllerCustomer:
 
@@ -44,11 +43,10 @@ class ControllerCustomer:
             self.handleUpdateAccountProfile()
 
         else:
-            self.response_data[label.success] = label.invalid
+            self.response_data[label.success] = False
 
         return jsonify(self.response_data)
         
-
     def handleAccountCreation(self):
         username = request.form.get(label.username)
         password = request.form.get(label.password)
@@ -56,44 +54,78 @@ class ControllerCustomer:
         contact = request.form.get(label.contact)
         result = Customer(username=username, password=password, name=name, contact=contact).createCustomer()
         self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.userCreationFailed
 
     def handleLogin(self):
         username = request.form.get(label.username)
         password = request.form.get(label.password)
-        req = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
-        self.response_data[label.success] = req[0]
-        self.response_data[label.session] = req[1]
-        if(req[0] == False):
-            self.response_data[label.reason] = "faile"
+        result = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLoginSuccess
+        else:
+            self.response_data[label.details] = label_reason.userLoginFailed
+
 
     def handleLogout(self):
         if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         result = Customer(username=None, password=None, name=None, address=None, contact=None).logoutCustomer()
         self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLogoutSuccess
+        else:
+            self.response_data[label.details] = label_reason.userLogoutFailed
+
 
     def handleUpdateAccountProfile(self):
         if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         name = request.form.get(label.name)
         contact = request.form.get(label.contact)
         username = session[label.username]
         customerObj = Customer(username=username, password=None, name=name, contact=contact)
-        res = customerObj.updateInformation()
-        self.response_data[label.success] = res
+        result = customerObj.updateInformation()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+        else:
+            self.response_data[label.details] = label_reason.userAccountUpdateFailed
+
 
     def handleAddPassenger(self):
-        pass
+        name = request.form.get(label.passenger_name)
+        contact = request.form.get(label.passenger_contact)
+        gender = request.form.get(label.passenger_gender)
+        age = int(request.form.get(label.passenger_age))
+        username = session[label.username]
+        result = Passenger(name= name, gender= gender, age= age, contact=contact, username= username).createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.passengerCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.passengerCreationFailed
+
+
+    def handleViewPassenger(self):
+        username = session[label.username]
+        queryResult = ComplexOperation().getCustomerPassengers(customerUsername= username)
+        self.response_data = [passengerObj.serialize() for passengerObj in queryResult]
+
 
     def handleAddBooking(self):
         pass
 
+
     def handleViewSchedule(self):
         if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         username = session[label.username]

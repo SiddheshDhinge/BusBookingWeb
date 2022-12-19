@@ -13,7 +13,7 @@ from .model.complex_operations import ComplexOperation
 from .model.session_manager import getSessionStatus
 # from model.session_manager import getSessionStatus, addActiveSession
 
-from . import label
+from . import label, label_reason
 
 class ControllerOperator:
 
@@ -44,7 +44,7 @@ class ControllerOperator:
             self.handleUpdateAccountProfile()
 
         else:
-            self.response_data[label.success] = label.invalid
+            self.response_data[label.success] = False
 
         return jsonify(self.response_data)
         
@@ -55,26 +55,40 @@ class ControllerOperator:
         name = request.form.get(label.name)
         address = request.form.get(label.operator_address)
         contact = request.form.get(label.contact)
-        res = Operator(username=username, password=password, name=name, address=address, contact=contact).createOperator()
-        self.response_data[label.success] = res
+        result = Operator(username=username, password=password, name=name, address=address, contact=contact).createOperator()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.userCreationFailed
+
 
     def handleLogin(self):
         username = request.form.get(label.username)
         password = request.form.get(label.password)
-        req = Operator(username=username, password=password, name=None, address=None, contact=None).loginOperator()
-        self.response_data[label.success] = req[0]
-        self.response_data[label.session] = req[1]
+        result = Operator(username=username, password=password, name=None, address=None, contact=None).loginOperator()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLoginSuccess
+        else:
+            self.response_data[label.details] = label_reason.userLoginFailed
+
 
     def handleLogout(self):
         if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         result = Operator(username=None, password=None, name=None, address=None, contact=None).logoutOperator()
         self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userLogoutSuccess
+        else:
+            self.response_data[label.details] = label_reason.userLogoutFailed
+
 
     def handleUpdateAccountProfile(self):
         if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         name = request.form.get(label.name)
@@ -82,13 +96,17 @@ class ControllerOperator:
         contact = request.form.get(label.contact)
         username = session[label.username]
         operatorObj = Operator(username=username, password=None, name=name, address=address, contact=contact)
-        operatorObj.loadSession()
-        res = operatorObj.updateInformation()
-        self.response_data[label.success] = res
+        result = operatorObj.updateInformation()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+        else:
+            self.response_data[label.details] = label_reason.userAccountUpdateFailed
+
 
     def handleViewSchedule(self):
         if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label.authReq
+            self.response_data[label.success] = label_reason.loginInRequired
             return
         
         username = session[label.username]

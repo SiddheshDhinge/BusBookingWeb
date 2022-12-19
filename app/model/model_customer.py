@@ -42,9 +42,10 @@ class Customer(Base):
     def loginCustomer(self):
         qry = DB_session.query(Customer).filter(Customer.username == self.username, Customer.password == self.password)
         if(DB_session.query(qry.exists()).scalar() == True):
-            return (True, addActiveSession(username= self.username, accessType= Customer.accessType))
+            addActiveSession(username= self.username, accessType= Customer.accessType)
+            return True 
         else:
-            return (False, None)
+            return False
         
     def loadSession(self):
         val = getSessionStatus()

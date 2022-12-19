@@ -73,7 +73,7 @@ class ControllerOwner:
             self.handleUpdateAccountProfile()
 
         else:
-            self.response_data[label.success] = label.invalid
+            self.response_data[label.success] = False
 
         return jsonify(self.response_data)
         

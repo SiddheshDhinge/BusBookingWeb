@@ -55,16 +55,16 @@ def operator():
 @app.route('/loginOwner', methods=['GET', 'POST'])
 def loginOwner():
     if(request.method == 'POST'):
-        obj = ControllerOwner()
-        obj.handleLogin()
-        if(obj.response_data[label.success] == False):
-            flash(label.invalid)    
+        controllerObj = ControllerOwner()
+        controllerObj.handleLogin()
+        if(controllerObj.response_data[label.success] == False):
+            flash(controllerObj.response_data[label.details])    
             return render_template('loginOwner.html', 
                 username = label.username,
                 password = label.password
             )
         else:
-            flash('Logined success !!!')
+            flash(controllerObj.response_data[label.details])
             session.permanent = True
             return redirect('/')
 
@@ -77,9 +77,16 @@ def loginOwner():
 
 @app.route('/logoutOwner', methods=['GET'])
 def logoutOwner():
-    var = ControllerOwner()
-    var.handleLogout()
-    return jsonify(var.response_data)
+    controllerObj = ControllerOwner()
+    controllerObj.handleLogout()
+    if(controllerObj.response_data[label.success] == True):
+        flash(controllerObj.response_data[label.details])
+        return render_template('loginOwner.html',
+            username = label.username,
+            password = label.password
+        )
+    else:
+        flash(controllerObj.response_data[label.details])
     
 @app.route('/debug')
 def debug():
