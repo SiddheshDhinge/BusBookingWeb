@@ -23,24 +23,40 @@ class ControllerCustomer:
         service_id = int(request.form.get(label.service))
 
         if(service_id == 1):
-            # create Operator
+            # create Customer
             self.handleAccountCreation()
 
         elif(service_id == 2):
-            #login Operator
+            #login Customer
             self.handleLogin()
 
         elif(service_id == 3):
-            #logout Operator
+            #logout Customer
             self.handleLogout()
 
         elif(service_id == 4):
-            #view schedules
-            self.handleViewSchedule()
+            #view All schedules
+            self.handleViewAllSchedule()
 
         elif(service_id == 5):
             #update profile
             self.handleUpdateAccountProfile()
+
+        elif(service_id == 6):
+            #Add a passenger
+            self.handleAddPassenger()
+
+        elif(service_id == 7):
+            #View all passenger
+            self.handleViewPassenger()
+            
+        elif(service_id == 8):
+            #Add a booking
+            self.handleAddBooking()
+
+        elif(service_id == 9):
+            #View My All booking
+            self.handleViewBooking()
 
         else:
             self.response_data[label.success] = False
@@ -100,6 +116,10 @@ class ControllerCustomer:
 
 
     def handleAddPassenger(self):
+        if Customer.isLoggedOn() == False:
+            self.response_data[label.success] = label_reason.loginInRequired
+            return
+        
         name = request.form.get(label.passenger_name)
         contact = request.form.get(label.passenger_contact)
         gender = request.form.get(label.passenger_gender)
@@ -114,24 +134,54 @@ class ControllerCustomer:
 
 
     def handleViewPassenger(self):
+        if Customer.isLoggedOn() == False:
+            self.response_data[label.success] = label_reason.loginInRequired
+            return
+        
         username = session[label.username]
         queryResult = ComplexOperation().getCustomerPassengers(customerUsername= username)
         self.response_data = [passengerObj.serialize() for passengerObj in queryResult]
 
 
     def handleAddBooking(self):
-        pass
+        if Customer.isLoggedOn() == False:
+            self.response_data[label.success] = label_reason.loginInRequired
+            return
+
+        seatNo = int(request.form.get(label.booking_seatNo))
+        passengerId = request.form.get(label.passenger_id)
+        scheduleId = request.form.get(label.schedule_id)
+
+        result = Booking(seatNo= seatNo, scheduleId= scheduleId, passengerId= passengerId).createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            self.response_data[label.details] = label_reason.bookingCreationSuccess
+        else:
+            self.response_data[label.details] = label_reason.bookingCreationFailed
 
 
-    def handleViewSchedule(self):
+    def handleViewBooking(self):
         if Customer.isLoggedOn() == False:
             self.response_data[label.success] = label_reason.loginInRequired
             return
         
         username = session[label.username]
-        qryResult = DB_session.query(Schedule, Bus, Owner, Stop, Landmark).select_from(Schedule).join(Bus, Owner, At, Stop, Landmark).filter(
-            Schedule.username == username
-        ).all()
+        queryResult = ComplexOperation().getCustomerBooking(customerUsername= username)
+        self.response_data = [
+            {
+                Booking.__tablename__ : bookingObj.serialize(),
+                Passenger.__tablename__ : passengerObj.serialize(),
+                Customer.__tablename__ : customerObj.serialize()
+            } for (bookingObj, passengerObj, customerObj) in queryResult
+        ]
+
+
+    def handleViewAllSchedule(self):
+        if Customer.isLoggedOn() == False:
+            self.response_data[label.success] = label_reason.loginInRequired
+            return
+        
+        qryResult = ComplexOperation().getAllSchedules()
         self.response_data = [
             {
                 Schedule.__tablename__ : scheduleObj.serialize(),

@@ -42,3 +42,5 @@ owner_username = 'owner-username'
 owner_password = 'owner-password'
 owner_name = 'owner_name'
 owner_contact = 'owner_contact'
+
+booking_seatNo = 'booking-seat-no'

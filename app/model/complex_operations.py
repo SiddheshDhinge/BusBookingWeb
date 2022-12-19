@@ -46,3 +46,11 @@ class ComplexOperation:
     def getCustomerPassengers(self, customerUsername):
         queryResult = DB_session.query(Passenger).filter(Passenger.username == customerUsername).all()
         return queryResult
+
+    def getAllSchedules(self):
+        queryResult = DB_session.query(Schedule, Bus, Owner, Stop, Landmark).select_from(Schedule).join(Bus, Owner, At, Stop, Landmark).all()
+        return queryResult
+
+    def getCustomerBooking(self, customerUsername):
+        queryResult = DB_session.query(Booking, Passenger, Customer).join(Booking, Passenger, Customer).filter(Customer.username == customerUsername).all()
+        return queryResult

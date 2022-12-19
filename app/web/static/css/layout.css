@@ -1,0 +1,130 @@
+/* HEADER START */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* height: 200vh; */
+}
+
+header {
+    height: 12vh;
+    /* background-color: #fabc3d; */
+    border-bottom: 2px solid #00000033;
+    background: whitesmoke;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+header nav span {
+    display: inline-block;
+}
+
+header nav span a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+header nav span a img {
+    width: 60px;
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+
+}
+
+header nav span a h1 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #f4492a;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0 5px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #f4492a;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1px solid #55555533;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    background-color: #55555522;
+}
+
+/* HEADER END */
+
+/* FLASH MESSAGE START */
+
+.flash-message-error{
+    background-color: lightcoral;
+}
+.flash-message-success{
+    background-color: lightgreen;
+}
+#flash-message-container{
+    position: fixed;
+    z-index: 1000;
+    top: 12vh;
+    left: 0;
+    right: 0;
+    height: 7vh;
+    border: 1px solid #55555533;
+    border-radius: 1px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 5px 8px;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#flash-message-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 75%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+/* FLASH MESSAGE END */
+
+/* MAIN CONTENT START */
+.main-container-layout{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+/* MAIN CONTENT END */

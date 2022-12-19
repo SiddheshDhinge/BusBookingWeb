@@ -98,7 +98,7 @@ class ControllerOwner:
         if(result == True):
             self.response_data[label.details] = label_reason.userLoginSuccess
         else:
-            self.response_data[label.details] = label_reason.userLogoutFailed
+            self.response_data[label.details] = label_reason.userLoginFailed
 
     def handleLogout(self):
         if Owner.isLoggedOn() == False:

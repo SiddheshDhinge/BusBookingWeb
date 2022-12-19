@@ -7,7 +7,7 @@ connectDB()
 createAllTables()
 # from model.session_manager import getSessionStatus, addActiveSession
 from app.controller_owner import ControllerOwner
-from app import controller_customer, label
+from app import controller_customer, label, label_reason
 from app.controller_operator import ControllerOperator
 
 
@@ -57,16 +57,16 @@ def loginOwner():
     if(request.method == 'POST'):
         controllerObj = ControllerOwner()
         controllerObj.handleLogin()
-        if(controllerObj.response_data[label.success] == False):
-            flash(controllerObj.response_data[label.details])    
+        flash(controllerObj.response_data[label.details])    
+
+        if(controllerObj.response_data[label.success] == True):
+            session.permanent = True
+            return redirect('/')
+        else:
             return render_template('loginOwner.html', 
                 username = label.username,
                 password = label.password
             )
-        else:
-            flash(controllerObj.response_data[label.details])
-            session.permanent = True
-            return redirect('/')
 
     else:
         return render_template('loginOwner.html', 
@@ -79,20 +79,25 @@ def loginOwner():
 def logoutOwner():
     controllerObj = ControllerOwner()
     controllerObj.handleLogout()
+    flash(controllerObj.response_data[label.details])
     if(controllerObj.response_data[label.success] == True):
-        flash(controllerObj.response_data[label.details])
         return render_template('loginOwner.html',
             username = label.username,
             password = label.password
         )
     else:
-        flash(controllerObj.response_data[label.details])
-    
+        pass
+
 @app.route('/debug')
 def debug():
     # flash('YES OWNER!!!')
     # getSessionStatus(session[model.label.])
     return f'Session : '
+
+@app.route('/layout')
+def lay1():
+    flash(label_reason.loginInRequired)
+    return render_template('layout.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
