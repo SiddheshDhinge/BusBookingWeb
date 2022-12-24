@@ -68,7 +68,7 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     display: inline-block;
-    color: #f4492a;
+    color: #2a82f4;
     font-weight: 600;
     padding: 10px 20px;
     border: 1px solid #55555533;
@@ -78,6 +78,13 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: #55555522;
 }
+
+
+header nav ul li:nth-of-type(2) a {
+    color: #f4492a;
+}
+
+
 
 /* HEADER END */
 
