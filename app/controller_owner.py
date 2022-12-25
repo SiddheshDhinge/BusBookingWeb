@@ -170,29 +170,17 @@ class ControllerOwner:
         return redirect('landingOwner')
 
 
-    def handleViewStop(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
-        queryResult = ComplexOperation().getAllStops()
-        self.response_data = [stopObj.serialize() for stopObj in queryResult]
-
-
     def handleStopCreation(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
         stop_name = request.form.get(label.stop_name)
         stop_address = request.form.get(label.stop_address)
         city_id = request.form.get(label.city_id)
         result = Stop(name= stop_name, address= stop_address, cityId= city_id).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.stopCreationSuccess
+            flash(label_reason.stopCreationSuccess)
         else:
-            self.response_data[label.details] = label_reason.stopCreationFailed
+            flash(label_reason.stopCreationFailed)
+        return redirect('landingOwner')
 
 
     def handleScheduleCreation(self):
@@ -219,13 +207,6 @@ class ControllerOwner:
             self.response_data[label.details] = label_reason.scheduleCreationFailed
 
     def handleViewSchedule(self):
-        print(session.keys())
-        print(session[label.username],
-        session[label.session])
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
         username = session[label.username]
         queryResult = ComplexOperation().getOwnerSchedules(ownerUsername= username)
         self.response_data = [
@@ -235,4 +216,3 @@ class ControllerOwner:
                 Owner.__tablename__ : ownerObj.serialize()
             } for (scheduleObj, busObj, ownerObj) in queryResult
         ]
-

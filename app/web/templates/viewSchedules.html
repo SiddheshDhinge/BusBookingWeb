@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+{% block css %}
+    <style>
+        .component-main{
+            font-size: larger;
+            text-align: center;
+        }
+        .main-table-grid {
+            background-color: black;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            row-gap: 1px;
+        }
+
+        .table-cell {
+            background-color: lightgreen;
+            padding: 2vh;
+            border: 1px solid black;
+        }
+
+        .table-cell-header{
+            background-color: burlywood;
+        }
+    </style>
+{% endblock %}
+
+'''
+    filters[fromCity] = cityName
+    filters[toCity] = cityName
+    filters[timeblock] = morning / afternoon / evening / night / all
+    filters[busType] = sleep / seat / all
+    filters[owner] = ownerUsername / all
+    filters[sortPrice] = asc / desc / none
+'''
+
+filterFromCity = 'filter-from-city'
+filterToCity = 'filter-to-city'
+filterTimeBlock = 'filter-time-block'
+filterBusType = 'filter-bus-type'
+filterSortPrice = 'filter-sort-price'
+
+timeBlockMorning = 'time-morning'
+timeBlockNoon = 'time-noon'
+timeBlockEvening = 'time-evening'
+timeBlockNight = 'time-night'
+
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            <form action={{url_for('viewSchedules')}} method="POST">
+                
+                <label for="fromcity">From City:</label>
+                <input id="fromcity" type="text" name="filter-from-city" list="fromcityList" />
+                <datalist id="fromcityList">
+                    {% for city in response_data['data']['city'] %}
+                        <option value={{city['city-id']}}> {{city['city-name']}} </option>
+                    {% endfor %}
+                </datalist>
+
+                <label for="tocity">To City:</label>
+                <input id="tocity" type="text" name="filter-to-city" list="tocityList" />
+                <datalist id="tocityList">
+                    {% for city in response_data['data']['city'] %}
+                        <option value={{city['city-id']}}> {{city['city-name']}} </option>
+                    {% endfor %}
+                </datalist>
+
+                <label for="agency">Owner:</label>
+                <input id="agency" type="text" name="owner-username" list="ownerList" />
+                <datalist id="ownerList">
+                    {% for owner in response_data['data']['owner'] %}
+                        <option value={{owner['username']}}> {{owner['username']}} </option>
+                    {% endfor %}
+                </datalist>
+
+                <label for="timegroup">Time:</label>
+                <fieldset id="timegroup">
+                    <label for="time-morning">Morning:</label>
+                    <input id="time-morning" type="radio" value="time-morning" name="filter-time-block">
+                    <label for="time-noon">Noon:</label>
+                    <input id="time-noon" type="radio" value="time-noon" name="filter-time-block">
+                    <label for="time-evening">Evening:</label>
+                    <input id="time-evening" type="radio" value="time-evening" name="filter-time-block">
+                    <label for="time-night">Night:</label>
+                    <input id="time-night" type="radio" value="time-night" name="filter-time-block">
+                    <label for="time-all">All:</label>
+                    <input id="time-all" type="radio" value="all" name="filter-time-block" checked>
+                </fieldset>
+
+                <label for="bustype">Bus Type:</label>
+                <fieldset id="bustype">
+                    <label for="sleep">SLEEP:</label>
+                    <input id="sleep" type="radio" value="SLEEP" name="filter-bus-type">
+                    <label for="seat">SEAT:</label>
+                    <input id="seat" type="radio" value="SEAT" name="filter-bus-type">
+                    <label for="all">all:</label>
+                    <input id="all" type="radio" value="all" name="filter-bus-type" checked>
+                </fieldset>
+
+                <label for="sortprice">Sort Price:</label>
+                <fieldset id="sortprice">
+                    <label for="sortasc">Ascending:</label>
+                    <input id="sortasc" type="radio" value="asc" name="filter-sort-price">
+                    <label for="sortdesc">Descending:</label>
+                    <input id="sortdesc" type="radio" value="desc" name="filter-sort-price">
+                    <label for="nosort">Don't Sort:</label>
+                    <input id="nosort" type="radio" value="no" name="filter-sort-price" checked>
+                </fieldset>
+
+                <input type="submit">
+            </form>
+            View Schedules
+        </div>
+        <div class="main-table-grid">
+            <div class="table-cell-header table-cell">
+                Schedule
+            </div>
+            <div class="table-cell-header table-cell">
+                Bus
+            </div>
+            <div class="table-cell-header table-cell">
+                Owner
+            </div>
+            <div class="table-cell-header table-cell">
+                Stop
+            </div>
+            <div class="table-cell-header table-cell">
+                City
+            </div>
+
+            {% for rowObj in response_data['data'] %}
+                    {% if rowObj['Schedule'] %}
+                    <div class="table-cell">
+                        {{rowObj['Schedule']['schedule-id']}} <br> {{rowObj['Schedule']['schedule-number-plate']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['Schedule']['schedule-from-city-id']}} <br> {{rowObj['Schedule']['schedule-to-city-id']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['Schedule']['schedule-departure-time']}} <br> {{rowObj['Schedule']['schedule-drop-time']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['Schedule']['schedule-fair-fees']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['Schedule']['schedule-from-date']}} <br> {{rowObj['Schedule']['schedule-to-date']}}
+                    </div>
+                <!-- <div class="table-cell">
+                    {{rowObj['Schedule']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['Bus']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['Owner']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['Stop']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['Landmark']}}
+                </div> -->
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -9,7 +9,7 @@
     .main-table-grid {
         background-color: black;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         row-gap: 1px;
     }
 
@@ -27,27 +27,40 @@
 {% block content %}
     <div class="component-main">
         <div class="main-title">
-            View Cities
-            <form action={{ url_for('viewCity') }} method="POST">
-                <label for="name">City Name: </label>
+            View Stops
+            <form action={{ url_for('viewStop') }} method="POST">
+                <label for="name">Stop Name: </label>
                 <input type="text" name="search">
                 <button type="submit">Search</button>
             </form>
         </div>
+        
         <div class="main-table-grid">
             <div class="table-cell-header table-cell">
-                City ID
+                Stop ID
             </div>
             <div class="table-cell-header table-cell">
-                City Name
+                Stop Name
+            </div>
+            <div class="table-cell-header table-cell">
+                Stop Address
+            </div>
+            <div class="table-cell-header table-cell">
+                In City
             </div>
 
-            {% for rowObj in response_data['data']['city'] %}
+            {% for rowObj in response_data['data'] %}
             <div class="table-cell">
-                {{rowObj['city-id']}}
+                {{rowObj['stop']['stop-id']}}
             </div>
             <div class="table-cell">
-                {{rowObj['city-name']}}
+                {{rowObj['stop']['stop-name']}}
+            </div>
+            <div class="table-cell">
+                {{rowObj['stop']['stop-address']}}
+            </div>
+            <div class="table-cell">
+                {{rowObj['city']['city-name']}}
             </div>
             {% endfor %}
         </div>

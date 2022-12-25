@@ -119,9 +119,9 @@ class ControllerOperator:
 
 
     def handleViewSchedule(self):
-        if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
+        # if Operator.isLoggedOn() == False:
+        #     self.response_data[label.success] = label_reason.loginInRequired
+        #     return
         
         username = session[label.username]
         qryResult = ComplexOperation().getOperatorSchedules(operatorUsername= username)
@@ -134,6 +134,7 @@ class ControllerOperator:
                 City.__tablename__ : cityObj.serialize()
             } for (scheduleObj, busObj, ownerObj, stopObj, cityObj) in qryResult
         ]
+        print(self.response_data)
 
     # def handleViewAllOperator(self):
     #     if Operator.isLoggedOn() == False:

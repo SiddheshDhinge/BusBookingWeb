@@ -94,11 +94,31 @@ class Tests(unittest.TestCase):
         assert Bus('MH 12 AB 1242', 40, 'SEAT', 'Sahil').createObject() == True
         assert Bus('MH 12 AB 1243', 40, 'SLEEP', 'Shubham').createObject() == True
         
-        assert Schedule('2019-12-01', '2019-12-31', '10:00:00', '11:00:00', 10000, 1, 6, 'MH 12 AB 1234', 'Manish').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '11:00:00', '12:00:00', 5000, 2, 7, 'MH 12 AB 1235', 'Ketan').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '13:00:00', 9000, 3, 8, 'MH 12 AB 1236', 'Lokesh').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '13:00:00', '14:00:00', 7000, 4, 9, 'MH 12 AB 1237', 'Akshay').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '14:00:00', '15:00:00', 8000, 5, 10, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '11:00:00', 5000, 1, 6, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '11:00:00', 6000, 2, 7, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '16:00:00', '11:00:00', 7000, 3, 8, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '20:00:00', '11:00:00', 8000, 4, 9, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '1:00:00', '11:00:00', 9000, 5, 10, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '12:00:00', 10000, 1, 6, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '12:00:00', 10000, 2, 7, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '16:00:00', '12:00:00', 9000, 3, 8, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '20:00:00', '12:00:00', 8000, 4, 9, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '1:00:00', '12:00:00', 7000, 5, 10, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '13:00:00', 6000, 1, 6, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '13:00:00', 5000, 2, 7, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '13:00:00', 5000, 3, 8, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '16:00:00', '13:00:00', 7000, 4, 9, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '20:00:00', '13:00:00', 9000, 5, 10, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '1:00:00', '14:00:00', 10000, 1, 6, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '14:00:00', 8000, 2, 7, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '14:00:00', 6000, 3, 8, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '16:00:00', '14:00:00', 6000, 4, 9, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '20:00:00', '14:00:00', 7000, 5, 10, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '1:00:00', '15:00:00', 9000, 1, 6, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '15:00:00', 5000, 2, 7, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '15:00:00', 10000, 3, 8, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '16:00:00', '15:00:00', 4000, 4, 9, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '20:00:00', '15:00:00', 6000, 5, 10, 'MH 12 AB 1238', 'Guarav').createObject() == True
 
         assert At(1, 1).createObject() == True
         assert At(2, 3).createObject() == True

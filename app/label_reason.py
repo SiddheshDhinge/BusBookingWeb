@@ -15,6 +15,7 @@ userAccountUpdateFailed = 'Account updation failed'
 
 #service
 busRegistrationSuccess = 'Successfully registered the bus!'
+busInvalidTypeFailed = 'Invalid bus type!'
 busRegistrationFailed = 'Bus registration Failed!'
 cityCreationSuccess = 'Successfully created the City!'
 cityCreationFailed = 'City creation Failed!'

@@ -11,6 +11,9 @@ contact = 'user-contact-no'
 bus_numberPlate = 'number-plate'
 bus_totalSeats = 'bus-total-seats'
 bus_busType = 'bus-type'
+bus_typeSleep = 'SLEEP'
+bus_typeSeat = 'SEAT'
+
 
 city_id = 'city-id'
 city_name = 'city-name'
@@ -55,3 +58,13 @@ optionsUserLogout = ('logOut')
 
 data = 'data'
 search = 'search'
+
+filterSortPrice = 'filter-sort-price'
+filterFromCity = 'filter-from-city'
+filterToCity = 'filter-to-city'
+filterTimeBlock = 'filter-time-block'
+filterBusType = 'filter-bus-type'
+timeBlockMorning = 'time-morning'
+timeBlockNoon = 'time-noon'
+timeBlockEvening = 'time-evening'
+timeBlockNight = 'time-night'
