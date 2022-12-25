@@ -11,6 +11,9 @@ from app.controller_owner import ControllerOwner
 from app.controller_operator import ControllerOperator
 from app.controller_customer import ControllerCustomer
 
+from app.model.model_owner import Owner
+from app.model.model_operator import Operator
+from app.model.model_customer import Customer
 
 import os
 from dotenv import load_dotenv
@@ -21,6 +24,7 @@ app = Flask(__name__, static_url_path="", static_folder="app/web/static", templa
 app.secret_key = os.environ['app_secret']
 app.permanent_session_lifetime = timedelta(minutes= 5)
 
+@app.route('/index')
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -49,92 +53,76 @@ def customer():
 def operator():
     return ControllerOperator().handleRequest()
 
+@app.route('/chooselogin', methods=['GET'])
+def chooseLogin():
+    return render_template('chooseLogin.html')
+
 @app.route('/login/<role>', methods=['GET', 'POST'])
 def login(role):
-    if(role == 'owner'):
-        return ControllerOwner().handleLogin()
-    elif(role == 'operator'):
-        return ControllerOperator().handleLogin()
-    elif(role == 'customer'):
-        return ControllerCustomer().handleLogin()
-    else:
-        return '404'
     if(request.method == 'POST'):
-        controllerObj = ControllerOwner()
-        controllerObj.handleLogin()
-        flash(controllerObj.response_data[label.details])    
-
-        if(controllerObj.response_data[label.success] == True):
-            session.permanent = True
-            return redirect('/')
+        if(role == Owner.accessType):
+            return ControllerOwner().handleLogin()
+        elif(role == Operator.accessType):
+            return ControllerOperator().handleLogin()
+        elif(role == Customer.accessType):
+            return ControllerCustomer().handleLogin()
         else:
-            return render_template('login.html', 
-                username = label.username,
-                password = label.password,
-                toUrl = 'loginOwner'
-            )
-
+            return label_reason.error
     else:
+        if role not in (Owner.accessType, Customer.accessType, Operator.accessType):
+            return render_template('chooselogin.html')
         return render_template('login.html', 
             username = label.username,
             password = label.password,
-            toUrl = 'loginOwner'
+            role = role
         )
 
 
-@app.route('/logoutOwner', methods=['GET'])
-def logoutOwner():
-    controllerObj = ControllerOwner()
-    controllerObj.handleLogout()
-    flash(controllerObj.response_data[label.details])
-    if(controllerObj.response_data[label.success] == True):
-        return render_template('login.html',
-            username = label.username,
-            password = label.password,
-            toUrl = 'loginOwner'
-        )
+@app.route('/logout', methods=['POST'])
+def logout():
+    role = session.get(label.accessType, None)
+    if(role == Owner.accessType):
+        return ControllerOwner().handleLogout()
+    elif(role == Operator.accessType):
+        return ControllerOperator().handleLogout()
+    elif(role == Customer.accessType):
+        return ControllerCustomer().handleLogout()
     else:
-        pass
+        return label_reason.error
+    
 
+# OWNER BEGIN
 
-@app.route('/loginOperator', methods=['GET', 'POST'])
-def loginOperator():
+@app.route('/landingOwner')
+@Owner.requireLogin
+def landingOwner():
+    return render_template('landingOwner.html')
+
+@app.route('/registerbus', methods=['GET', 'POST'])
+@Owner.requireLogin
+def registerBus():
     if(request.method == 'POST'):
-        controllerObj = ControllerOperator()
-        controllerObj.handleLogin()
-        flash(controllerObj.response_data[label.details])    
-
-        if(controllerObj.response_data[label.success] == True):
-            session.permanent = True
-            return redirect('/')
-        else:
-            return render_template('login.html', 
-                username = label.username,
-                password = label.password,
-                toUrl = 'loginOperator'
-            )
-
+        return ControllerOwner().handleBusRegistration()
     else:
-        return render_template('login.html', 
-            username = label.username,
-            password = label.password,
-            toUrl = 'loginOperator'
-        )
+        return render_template('registerBusForm.html')
 
+@app.route('/viewbus', methods=['GET'])
+@Owner.requireLogin
+def viewBus():
+    return ControllerOwner().handleViewBus()
 
-@app.route('/logoutOperator', methods=['GET'])
-def logoutOperator():
-    controllerObj = ControllerOperator()
-    controllerObj.handleLogout()
-    flash(controllerObj.response_data[label.details])
-    if(controllerObj.response_data[label.success] == True):
-        return render_template('login.html',
-            username = label.username,
-            password = label.password,
-            toUrl = 'loginOperator'
-        )
+@app.route('/updateownerprofile', methods=['GET', 'POST'])
+@Owner.requireLogin
+def updateOwnerProfle():
+    if(request.method == 'POST'):
+        return ControllerOwner().handleUpdateAccountProfile()
     else:
-        pass
+        return render_template('updateOwnerProfile.html')
+
+
+
+# OWNER END
+
 
 @app.route('/viewSchedules')
 def viewSchedules():

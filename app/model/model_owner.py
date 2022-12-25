@@ -1,8 +1,9 @@
+from flask import flash, redirect
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
-from .. import label
+from .. import label, label_reason
 
 class Owner(Base):
     __tablename__ = 'Owner'
@@ -67,12 +68,23 @@ class Owner(Base):
 
     def updateInformation(self):
         try:
-            DB_session.query(Owner).filter(Owner.username == self.username).update(
+            print('==> ' , type(self.name), type(self.contact))
+            if((self.name is not None) and (self.contact is not None)):
+                DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.name : self.name,
                     Owner.contact : self.contact
-                }
-            )
+                })
+            elif(self.name is not None):
+                DB_session.query(Owner).filter(Owner.username == self.username).update(
+                {
+                    Owner.name : self.name
+                })
+            elif(self.contact is not None):
+                DB_session.query(Owner).filter(Owner.username == self.username).update(
+                {
+                    Owner.contact : self.contact
+                })
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -96,3 +108,17 @@ class Owner(Base):
         if(retVal[1] != Owner.accessType):
             return False
         return True
+
+    @staticmethod
+    def requireLogin(func):
+        def wrap(*args, **kwargs):
+            if Owner.isLoggedOn() == False:
+                #Not logged in 
+                flash(label_reason.loginInRequired)
+                return redirect('login/owner')
+            else:
+                #Owner is Logined
+                return func(*args, **kwargs)
+
+        wrap.__name__ = func.__name__
+        return wrap

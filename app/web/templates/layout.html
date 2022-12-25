@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookMyBus</title>
-    <link rel="shortcut icon" href="./media/ico.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/layout.css"/>
+    <link rel="shortcut icon" href="/media/ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/layout.css"/>
     
     <!-- Add Css for different components -->
     {% block css %}
@@ -21,15 +21,28 @@
         <header>
             <nav>
                 <span>
-                    <a href="./">
-                        <img src="./media/bus2.svg" />
+                    <a href="/">
+                        <img src="/media/bus2.svg" />
                         <h1>BookMyBus</h1>
                     </a>
                 </span>
-                <ul class >
-                    <li class="login-btn"><a href="./">Login</a></li>
-                    <li class="logout-btn"><a href="./">Logout</a></li>
+                <ul>
+                    <li>
+                        <form method="get" action="chooselogin">
+                            <button class="login-btn">Login</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="POST" action="logout">
+                            <button class="logout-btn">Logout</button>
+                        </form>
+                    </li>
                 </ul>
+                
+                <!-- <ul class >
+                    <li class="login-btn"><a href="/">Login</a></li>
+                    <li class="logout-btn"><a href="/logout">Logout</a></li>
+                </ul> -->
             </nav>
         </header>
         <!-- Flash message rendering component -->

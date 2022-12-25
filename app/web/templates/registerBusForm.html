@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action={{ url_for('registerBus') }} method="post">
+
+    <label for="plate">Number Plate:</label>
+    <input type="text" id="plate" name="number-plate"><br><br>
+
+    <label for="seats">Total Seats:</label>
+    <input type="text" id="seats" name="bus-total-seats"><br><br>
+
+    <label for="seatType">SEAT:</label>
+    <input id="seatType" type="radio" name="bus-type" value="SEAT"><br><br>
+    <label for="sleepType">SLEEP:</label>
+    <input id="sleepType"type="radio" name="bus-type" value="SLEEP"><br><br>
+
+    <input type="submit">
+
+</form>
+{% endblock %}

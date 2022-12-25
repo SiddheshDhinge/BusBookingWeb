@@ -9,7 +9,8 @@ class Common:
         except(exc.IntegrityError):
             DB_session.rollback()
             return False
-        except:
+        except Exception as e:
+            print(e)
             print(f'{self}')
             return False
         else:

@@ -65,7 +65,7 @@ header nav ul li {
     margin: 0 5px;
 }
 
-header nav ul li a {
+header nav ul li button {
     text-decoration: none;
     display: inline-block;
     color: #2a82f4;
@@ -75,13 +75,20 @@ header nav ul li a {
     border-radius: 5px;
 }
 
-header nav ul li a:hover {
+header nav ul li button:hover {
     background-color: #55555522;
+    cursor: pointer;
 }
 
 
-header nav ul li:nth-of-type(2) a {
+header nav ul li:last-of-type button {
     color: #f4492a;
+}
+
+header nav ul li form {
+    margin:0px;
+    padding:0px;
+    display:inline;
 }
 
 

@@ -1,4 +1,4 @@
-from flask import render_template, session, request, jsonify
+from flask import render_template, session, request, jsonify, flash, redirect
 from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
@@ -76,15 +76,29 @@ class ControllerCustomer:
             self.response_data[label.details] = label_reason.userCreationFailed
 
     def handleLogin(self):
-        username = request.form.get(label.username)
-        password = request.form.get(label.password)
-        result = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
-        self.response_data[label.success] = result
-        if(result == True):
-            self.response_data[label.details] = label_reason.userLoginSuccess
+        if(request.method == 'POST'):
+            username = request.form.get(label.username)
+            password = request.form.get(label.password)
+            result = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
+            self.response_data[label.success] = result
+            
+            if(result == True):
+                flash(label_reason.userLoginSuccess)
+                session.permanent = True
+                return redirect('/')
+            else:   
+                flash(label_reason.userLoginFailed)
+                return render_template('login.html', 
+                    username = label.username,
+                    password = label.password,
+                    role = Customer.accessType
+                )
         else:
-            self.response_data[label.details] = label_reason.userLoginFailed
-
+            return render_template('login.html', 
+                username = label.username,
+                password = label.password,
+                role = Customer.accessType
+            )
 
     def handleLogout(self):
         if Customer.isLoggedOn() == False:

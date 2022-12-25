@@ -1,4 +1,4 @@
-from flask import render_template, session, request, jsonify
+from flask import render_template, session, request, jsonify, flash, redirect, url_for
 from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
@@ -81,8 +81,8 @@ class ControllerOwner:
     def handleAccountCreation(self):
         username = request.form.get(label.username)
         password = request.form.get(label.password)
-        name = request.form.get(label.name)
-        contact = request.form.get(label.contact)
+        name = request.form.get(label.owner_name)
+        contact = request.form.get(label.owner_contact)
         result = Owner(username=username, password=password, name=name, contact=contact).createOwner()
         self.response_data[label.success] = result
         if(result == True):
@@ -95,27 +95,33 @@ class ControllerOwner:
         password = request.form.get(label.password)
         result = Owner(username=username, password=password, name=None, contact=None, currentSesssion=None).loginOwner()
         self.response_data[label.success] = result
+        
         if(result == True):
-            self.response_data[label.details] = label_reason.userLoginSuccess
+            flash(label_reason.userLoginSuccess)
+            session.permanent = True
+            return redirect(url_for('landingOwner'))
         else:
-            self.response_data[label.details] = label_reason.userLoginFailed
-
+            flash(label_reason.userLoginFailed)
+            return render_template('login.html', 
+                username = label.username,
+                password = label.password,
+                role = Owner.accessType
+            )
+    
+    @Owner.requireLogin
     def handleLogout(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
         result = Owner(None, None, None, None, currentSesssion=None).logoutOwner()
         self.response_data[label.success] = result
+
         if(result == True):
-            self.response_data[label.details] = label_reason.userLogoutSuccess
+            flash(label_reason.userLogoutSuccess)
+            return redirect(url_for('chooseLogin'))
         else:
-            self.response_data[label.details] = label_reason.userLogoutFailed
+            flash(label_reason.userLogoutFailed)
+            return redirect(url_for('index'))
+
 
     def handleBusRegistration(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-            
         numberPlate = request.form.get(label.bus_numberPlate)
         totalSeats = request.form.get(label.bus_totalSeats)
         busType = request.form.get(label.bus_busType)
@@ -123,37 +129,39 @@ class ControllerOwner:
         busObj = Bus(numberPlate=numberPlate, totalSeats=totalSeats, bustype=busType, username=username)
         result = busObj.createObject()
         self.response_data[label.success] = result
+
         if(result == True):
-            self.response_data[label.details] = label_reason.busRegistrationSuccess
+            flash(label_reason.busRegistrationSuccess)
         else:
-            self.response_data[label.details] = label_reason.busRegistrationFailed
+            flash(label_reason.busRegistrationFailed)
+        return redirect(url_for('landingOwner'))
 
 
     def handleViewBus(self):
         # get all owners registered bus
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-
         username = session[label.username]
         queryResult = ComplexOperation().getOwnerBuses(ownerUsername= username)
         self.response_data = [busObj.serialize() for busObj in queryResult]
-        
+        return render_template('viewBus.html', response_data= self.response_data)
+
+
     def handleUpdateAccountProfile(self):
         if Owner.isLoggedOn() == False:
             self.response_data[label.success] = label_reason.loginInRequired
             return
         
-        name = request.form.get(label.name)
-        contact = request.form.get(label.contact)
+        name = request.form.get(label.owner_name, default=None)
+        contact = request.form.get(label.owner_contact, default=None)
         username = session[label.username]
+
         ownerObj = Owner(username=username, password=None, name=name, contact=contact)
         result = ownerObj.updateInformation()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+            flash(label_reason.userAccountUpdateSuccess)
         else:
-            self.response_data[label.details] = label_reason.userAccountUpdateFailed
+            flash(label_reason.userAccountUpdateFailed)
+        return redirect(url_for('landingOwner'))
 
     def handleViewLandmark(self):
         if Owner.isLoggedOn() == False:
@@ -240,3 +248,4 @@ class ControllerOwner:
                 Owner.__tablename__ : ownerObj.serialize()
             } for (scheduleObj, busObj, ownerObj) in queryResult
         ]
+
