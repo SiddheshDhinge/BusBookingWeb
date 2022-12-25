@@ -1,5 +1,5 @@
 print("\n\n\nSTARTED\n\n\n")
-from flask import Flask, render_template, session, flash, request, jsonify, redirect
+from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
 from app.model.database import connectDB, createAllTables, dropAllTables
 from datetime import timedelta
 # Establish database session
@@ -14,6 +14,7 @@ from app.controller_customer import ControllerCustomer
 from app.model.model_owner import Owner
 from app.model.model_operator import Operator
 from app.model.model_customer import Customer
+from app.model.complex_operations import ComplexOperation
 
 import os
 from dotenv import load_dotenv
@@ -27,7 +28,9 @@ app.permanent_session_lifetime = timedelta(minutes= 5)
 @app.route('/index')
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', response_data= {
+        label.options : label.optionsAll
+    })
 
 @app.route('/bookbus')
 def bookbus():
@@ -53,9 +56,44 @@ def customer():
 def operator():
     return ControllerOperator().handleRequest()
 
+
+@app.route('/choosesignup')
+def chooseSignUp():
+    return render_template('chooseSignUp.html', response_data= {
+        label.options : label.optionsUserLogin
+    })
+
+
+@app.route('/signUp/<role>', methods=['GET', 'POST'])
+def signUp(role):
+    if(request.method == 'POST'):
+        if(role == Owner.accessType):
+            return ControllerOwner().handleAccountCreation()
+        elif(role == Operator.accessType):
+            return ControllerOperator().handleAccountCreation()
+        elif(role == Customer.accessType):
+            return ControllerCustomer().handleAccountCreation()
+        else:
+            return label_reason.error
+    else:
+        if role not in (Owner.accessType, Customer.accessType, Operator.accessType):
+            #Tried to access invalid role, returned role choice
+            return redirect(url_for('chooseSignUp'))
+        #Returned valid role login
+        return render_template('signUp.html', response_data={
+            'username' : label.username,
+            'password' : label.password,
+            'name' : label.owner_name,
+            'contact' : label.owner_contact, 
+            'role' : role
+        })
+
+
 @app.route('/chooselogin', methods=['GET'])
 def chooseLogin():
-    return render_template('chooseLogin.html')
+    return render_template('chooseLogin.html', response_data= {
+        label.options : label.optionsUserSignUp
+    })
 
 @app.route('/login/<role>', methods=['GET', 'POST'])
 def login(role):
@@ -70,12 +108,14 @@ def login(role):
             return label_reason.error
     else:
         if role not in (Owner.accessType, Customer.accessType, Operator.accessType):
-            return render_template('chooselogin.html')
-        return render_template('login.html', 
-            username = label.username,
-            password = label.password,
-            role = role
-        )
+            #Tried to access invalid role, returned role choice
+            return redirect(url_for('chooseLogin'))
+        #Returned valid role login
+        return render_template('login.html', response_data={
+            'username' : label.username,
+            'password' : label.password,
+            'role' : role
+        })
 
 
 @app.route('/logout', methods=['POST'])
@@ -96,7 +136,9 @@ def logout():
 @app.route('/landingOwner')
 @Owner.requireLogin
 def landingOwner():
-    return render_template('landingOwner.html')
+    return render_template('landingOwner.html', response_data= {
+        label.options : label.optionsUserLogout
+    })
 
 @app.route('/registerbus', methods=['GET', 'POST'])
 @Owner.requireLogin
@@ -104,7 +146,9 @@ def registerBus():
     if(request.method == 'POST'):
         return ControllerOwner().handleBusRegistration()
     else:
-        return render_template('registerBusForm.html')
+        return render_template('registerBusForm.html', response_data= {
+            label.options : label.optionsUserLogout
+        })
 
 @app.route('/viewbus', methods=['GET'])
 @Owner.requireLogin
@@ -117,9 +161,28 @@ def updateOwnerProfle():
     if(request.method == 'POST'):
         return ControllerOwner().handleUpdateAccountProfile()
     else:
-        return render_template('updateOwnerProfile.html')
+        return render_template('updateOwnerProfile.html', response_data= {
+            label.options : label.optionsUserLogout
+        })
 
+@app.route('/viewlandmarks', methods=['GET', 'POST'])
+@Owner.requireLogin
+def viewLandmarks():
+    search = request.form.get(label.search)
+    response_data = ComplexOperation().getAllLandmarks(search=search)
+    response_data[label.options] = label.optionsUserLogout
+    return render_template('viewLandmark.html', response_data= response_data)
+        
 
+@app.route('/addLandmark', methods=['GET', 'POST'])
+@Owner.requireLogin
+def addLandmark():
+    if(request.method == 'POST'):
+        return ControllerOwner().handleLandmarkCreation()
+    else:
+        return render_template('addLandmark.html', response_data= {
+            label.options: label.optionsUserLogout
+        })
 
 # OWNER END
 
@@ -135,6 +198,13 @@ def debug():
     # flash('YES OWNER!!!')
     # getSessionStatus(session[model.label.])
     return f'Session : '
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # fallback handler in case of not found
+    return render_template('404.html', response_data={
+        label.options: label.optionsAll
+    })
 
 @app.route('/layout')
 def lay1():

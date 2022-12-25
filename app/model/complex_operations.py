@@ -15,9 +15,16 @@ class ComplexOperation:
     def __init__(self):
         pass
 
-    def getAllLandmarks(self):
-        queryResult = DB_session.query(Landmark).all()
-        return queryResult
+    def getAllLandmarks(self, search):
+        response_data = {}
+        if(search):
+            search = f'%{search}%'
+            queryResult = DB_session.query(Landmark).filter(Landmark.name.ilike(search)).all()
+        else:
+            queryResult = DB_session.query(Landmark).all()
+        response_data['data'] = [landmarkObj.serialize() for landmarkObj in queryResult]
+        print(response_data)
+        return response_data
 
     def getAllStops(self):
         queryResult = DB_session.query(Stop).all()

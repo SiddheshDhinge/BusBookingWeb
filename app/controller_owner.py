@@ -86,9 +86,11 @@ class ControllerOwner:
         result = Owner(username=username, password=password, name=name, contact=contact).createOwner()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.userCreationSuccess
+            flash(label_reason.userCreationSuccess)
+            return redirect(url_for('login', role= Owner.accessType))
         else:
-            self.response_data[label.details] = label_reason.userCreationFailed
+            flash(label_reason.userCreationFailed)
+            return redirect(url_for('signUp', role= Owner.accessType))
 
     def handleLogin(self):
         username = request.form.get(label.username)
@@ -102,11 +104,7 @@ class ControllerOwner:
             return redirect(url_for('landingOwner'))
         else:
             flash(label_reason.userLoginFailed)
-            return render_template('login.html', 
-                username = label.username,
-                password = label.password,
-                role = Owner.accessType
-            )
+            return redirect(url_for('login', role= Owner.accessType))
     
     @Owner.requireLogin
     def handleLogout(self):
@@ -141,15 +139,12 @@ class ControllerOwner:
         # get all owners registered bus
         username = session[label.username]
         queryResult = ComplexOperation().getOwnerBuses(ownerUsername= username)
-        self.response_data = [busObj.serialize() for busObj in queryResult]
+        self.response_data[label.data] = [busObj.serialize() for busObj in queryResult]
+        self.response_data[label.options] = label.optionsUserLogout
         return render_template('viewBus.html', response_data= self.response_data)
 
 
     def handleUpdateAccountProfile(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
         name = request.form.get(label.owner_name, default=None)
         contact = request.form.get(label.owner_contact, default=None)
         username = session[label.username]
@@ -163,13 +158,17 @@ class ControllerOwner:
             flash(label_reason.userAccountUpdateFailed)
         return redirect(url_for('landingOwner'))
 
-    def handleViewLandmark(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
 
-        queryResult = ComplexOperation().getAllLandmarks()
-        self.response_data = [landmarkObj.serialize() for landmarkObj in queryResult]
+    def handleLandmarkCreation(self):
+        landmark_name = request.form.get(label.landmark_name)
+        result = Landmark(landmark_name).createObject()
+        self.response_data[label.success] = result
+        if(result == True):
+            flash(label_reason.landmarkCreationSuccess)
+        else:
+            flash(label_reason.landmarkCreationFailed)
+        return redirect('landingOwner')
+
 
     def handleViewStop(self):
         if Owner.isLoggedOn() == False:
@@ -179,18 +178,6 @@ class ControllerOwner:
         queryResult = ComplexOperation().getAllStops()
         self.response_data = [stopObj.serialize() for stopObj in queryResult]
 
-    def handleLandmarkCreation(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-
-        landmark_name = request.form.get(label.landmark_name)
-        result = Landmark(landmark_name).createObject()
-        self.response_data[label.success] = result
-        if(result == True):
-            self.response_data[label.details] = label_reason.landmarkCreationSuccess
-        else:
-            self.response_data[label.details] = label_reason.landmarkCreationFailed
 
     def handleStopCreation(self):
         if Owner.isLoggedOn() == False:

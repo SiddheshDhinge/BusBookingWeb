@@ -44,3 +44,12 @@ owner_name = 'owner_name'
 owner_contact = 'owner_contact'
 
 booking_seatNo = 'booking-seat-no'
+
+options = 'options'
+optionsAll = ('signUp', 'logIn')
+optionsUserSignUp = ('signUp')
+optionsUserLogin = ('logIn')
+optionsUserLogout = ('logOut')
+
+data = 'data'
+search = 'search'

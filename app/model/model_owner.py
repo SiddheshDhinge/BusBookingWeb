@@ -68,19 +68,18 @@ class Owner(Base):
 
     def updateInformation(self):
         try:
-            print('==> ' , type(self.name), type(self.contact))
-            if((self.name is not None) and (self.contact is not None)):
+            if(self.name and self.contact):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.name : self.name,
                     Owner.contact : self.contact
                 })
-            elif(self.name is not None):
+            elif(self.name):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.name : self.name
                 })
-            elif(self.contact is not None):
+            elif(self.contact):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.contact : self.contact
