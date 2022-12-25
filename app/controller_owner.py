@@ -5,7 +5,7 @@ from .model.model_operator import Operator
 from .model.model_bus import Bus
 from .model.model_passenger import Passenger
 from .model.model_schedule import Schedule
-from .model.model_landmark import Landmark
+from .model.model_city import City
 from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
@@ -43,12 +43,12 @@ class ControllerOwner:
             self.handleViewBus()
 
         elif(service_id == 6):
-            #add a Landmark
-            self.handleLandmarkCreation()
+            #add a City
+            self.handleCityCreation()
         
         elif(service_id == 7):
-            #view all LandMark
-            self.handleViewLandmark()
+            #view all City
+            self.handleViewCity()
 
         elif(service_id == 8):
             #add a Stop
@@ -159,14 +159,14 @@ class ControllerOwner:
         return redirect(url_for('landingOwner'))
 
 
-    def handleLandmarkCreation(self):
-        landmark_name = request.form.get(label.landmark_name)
-        result = Landmark(landmark_name).createObject()
+    def handleCityCreation(self):
+        city_name = request.form.get(label.city_name)
+        result = City(name= city_name).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.landmarkCreationSuccess)
+            flash(label_reason.cityCreationSuccess)
         else:
-            flash(label_reason.landmarkCreationFailed)
+            flash(label_reason.cityCreationFailed)
         return redirect('landingOwner')
 
 
@@ -186,8 +186,8 @@ class ControllerOwner:
         
         stop_name = request.form.get(label.stop_name)
         stop_address = request.form.get(label.stop_address)
-        landmark_id = request.form.get(label.landmark_id)
-        result = Stop(name= stop_name, address= stop_address, landmarkId= landmark_id).createObject()
+        city_id = request.form.get(label.city_id)
+        result = Stop(name= stop_name, address= stop_address, cityId= city_id).createObject()
         self.response_data[label.success] = result
         if(result == True):
             self.response_data[label.details] = label_reason.stopCreationSuccess

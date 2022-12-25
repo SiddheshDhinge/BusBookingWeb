@@ -1,30 +1,28 @@
 import colorama
 colorama.init()
 from termcolor import colored
-print(colored("\n\n\nSTARTED TESTS: \n\n\n", "green"))
 #Establish database session
-from model.database import connectDB, createAllTables, dropAllTables
+from app.model.database import connectDB, createAllTables, dropAllTables
 connectDB()
 # Import All other Models
-from model.model_owner import Owner
-from model.model_customer import Customer
-from model.model_operator import Operator
-from model.model_bus import Bus
-from model.model_passenger import Passenger
-from model.model_schedule import Schedule
-from model.model_landmark import Landmark
-from model.model_stop import Stop
-from model.model_booking import Booking
-from model.model_at import At
+from app.model.model_owner import Owner
+from app.model.model_customer import Customer
+from app.model.model_operator import Operator
+from app.model.model_bus import Bus
+from app.model.model_passenger import Passenger
+from app.model.model_schedule import Schedule
+from app.model.model_city import City
+from app.model.model_stop import Stop
+from app.model.model_booking import Booking
+from app.model.model_at import At
+from app.model.session_manager import getSessionStatus, addActiveSession
 
-from model.session_manager import getSessionStatus, addActiveSession
-
+import sys
 import unittest
-#create Database schema if not exists
-createAllTables()
 
 class Tests(unittest.TestCase):
     def setUp(self):
+        print(colored("\n\n\nSTARTED TESTS: \n\n\n", "green"))
         dropAllTables()
         createAllTables()
 
@@ -58,16 +56,16 @@ class Tests(unittest.TestCase):
         assert Passenger('P5', 'M', 26, '8811667725', 'Omkar').createObject() == True
         assert Passenger('P1', 'M', 23, '7414714714', 'Omkar').createObject() == True
 
-        assert Landmark('Landmark #1').createObject() == True
-        assert Landmark('Landmark #2').createObject() == True
-        assert Landmark('Landmark #3').createObject() == True
-        assert Landmark('Landmark #4').createObject() == True
-        assert Landmark('Landmark #5').createObject() == True
-        assert Landmark('Landmark #6').createObject() == True
-        assert Landmark('Landmark #7').createObject() == True
-        assert Landmark('Landmark #8').createObject() == True
-        assert Landmark('Landmark #9').createObject() == True
-        assert Landmark('Landmark #10').createObject() == True
+        assert City('Mumbai').createObject() == True
+        assert City('Pune').createObject() == True
+        assert City('Nagpur').createObject() == True
+        assert City('Nashik').createObject() == True
+        assert City('Aurangabad').createObject() == True
+        assert City('Amravati').createObject() == True
+        assert City('Kolhapur').createObject() == True
+        assert City('Thane').createObject() == True
+        assert City('Ahmednagar').createObject() == True
+        assert City('Jalgaon').createObject() == True
 
         assert Stop('Stop #1', 'P.O. Box 142, 4327 Tincidunt Ave', 1).createObject() == True
         assert Stop('Stop #2', 'Ap #185-7832 Quisque St.', 2).createObject() == True
@@ -96,11 +94,11 @@ class Tests(unittest.TestCase):
         assert Bus('MH 12 AB 1242', 40, 'SEAT', 'Sahil').createObject() == True
         assert Bus('MH 12 AB 1243', 40, 'SLEEP', 'Shubham').createObject() == True
         
-        assert Schedule('2019-12-01', '2019-12-31', '10:00:00', '11:00:00', 10000, 'MH 12 AB 1234', 'Manish').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '11:00:00', '12:00:00', 5000, 'MH 12 AB 1235', 'Ketan').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '13:00:00', 9000, 'MH 12 AB 1236', 'Lokesh').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '13:00:00', '14:00:00', 7000, 'MH 12 AB 1237', 'Akshay').createObject() == True
-        assert Schedule('2019-12-01', '2019-12-31', '14:00:00', '15:00:00', 8000, 'MH 12 AB 1238', 'Guarav').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '10:00:00', '11:00:00', 10000, 1, 6, 'MH 12 AB 1234', 'Manish').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '11:00:00', '12:00:00', 5000, 2, 7, 'MH 12 AB 1235', 'Ketan').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '12:00:00', '13:00:00', 9000, 3, 8, 'MH 12 AB 1236', 'Lokesh').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '13:00:00', '14:00:00', 7000, 4, 9, 'MH 12 AB 1237', 'Akshay').createObject() == True
+        assert Schedule('2019-12-01', '2019-12-31', '14:00:00', '15:00:00', 8000, 5, 10, 'MH 12 AB 1238', 'Guarav').createObject() == True
 
         assert At(1, 1).createObject() == True
         assert At(2, 3).createObject() == True
@@ -119,10 +117,27 @@ class Tests(unittest.TestCase):
         assert Booking(10, 5, 9).createObject() == True
         assert Booking(11, 5, 10).createObject() == True
         
-
 def main():
     unittest.main(verbosity=2)
 
 if __name__ == "__main__":
-    main()
-    # dropAllTables()
+    if(len(sys.argv) <= 1):
+        print(colored('Script needs Args :-', 'red'))
+        print(colored('runtest', 'yellow'))
+        print(colored('dropall', 'yellow'))
+        exit()
+    if(sys.argv[1] == 'runtest'):
+        sys.argv.pop()
+        main()
+    elif(sys.argv[1] == 'createall'):
+        createAllTables()
+        print(colored('CREATED ALL SCHEMA', 'green'))
+    elif(sys.argv[1] == 'dropall'):
+        dropAllTables()
+        print(colored('DROPPED DB SCHEMA', 'green'))
+    else:
+        print(colored('INVALID ARGS', 'red'))
+        print(colored('Script needs Args :-', 'red'))
+        print(colored('runtest', 'yellow'))
+        print(colored('dropall', 'yellow'))
+        exit()

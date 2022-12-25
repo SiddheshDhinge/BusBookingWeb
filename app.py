@@ -165,22 +165,22 @@ def updateOwnerProfle():
             label.options : label.optionsUserLogout
         })
 
-@app.route('/viewlandmarks', methods=['GET', 'POST'])
+@app.route('/viewcity', methods=['GET', 'POST'])
 @Owner.requireLogin
-def viewLandmarks():
+def viewCity():
     search = request.form.get(label.search)
-    response_data = ComplexOperation().getAllLandmarks(search=search)
+    response_data = ComplexOperation().getAllCity(search=search)
     response_data[label.options] = label.optionsUserLogout
-    return render_template('viewLandmark.html', response_data= response_data)
+    return render_template('viewCity.html', response_data= response_data)
         
 
-@app.route('/addLandmark', methods=['GET', 'POST'])
+@app.route('/addCity', methods=['GET', 'POST'])
 @Owner.requireLogin
-def addLandmark():
+def addCity():
     if(request.method == 'POST'):
-        return ControllerOwner().handleLandmarkCreation()
+        return ControllerOwner().handleCityCreation()
     else:
-        return render_template('addLandmark.html', response_data= {
+        return render_template('addCity.html', response_data= {
             label.options: label.optionsUserLogout
         })
 

@@ -5,7 +5,7 @@ from .model.model_operator import Operator
 from .model.model_bus import Bus
 from .model.model_passenger import Passenger
 from .model.model_schedule import Schedule
-from .model.model_landmark import Landmark
+from .model.model_city import City
 from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
@@ -202,6 +202,6 @@ class ControllerCustomer:
                 Bus.__tablename__ : busObj.serialize(),
                 Owner.__tablename__ : ownerObj.serialize(),
                 Stop.__tablename__ : stopObj.serialize(),
-                Landmark.__tablename__ : landmarkObj.serialize()
-            } for (scheduleObj, busObj, ownerObj, stopObj, landmarkObj) in qryResult
+                City.__tablename__ : cityObj.serialize()
+            } for (scheduleObj, busObj, ownerObj, stopObj, cityObj) in qryResult
         ]

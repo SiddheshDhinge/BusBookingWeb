@@ -5,20 +5,20 @@ from .database import Base, DB_session
 from .common import Common
 from .. import label
 
-class Landmark(Base, Common):
-    __tablename__ = 'Landmark'
+class City(Base, Common):
+    __tablename__ = 'City'
 
-    landmarkId = Column('landmarkId', Integer, primary_key=True, autoincrement=True)
+    cityId = Column('cityId', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(64), nullable=False)
     
     def __init__(self, name: str):
         self.name = name
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.LandmarkId}) : {self.name}"
+        return f"{self.__tablename__} => ({self.cityId}) : {self.name}"
 
     def serialize(self):
         return {
-            label.landmark_id : self.landmarkId,
-            label.landmark_name : self.name
+            label.city_id : self.cityId,
+            label.city_name : self.name
         }

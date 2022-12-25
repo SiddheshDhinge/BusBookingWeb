@@ -11,20 +11,20 @@ class Stop(Base, Common):
     stopId = Column('stopId', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(64), nullable=False)
     address = Column('address', String(128), nullable=False)
-    landmarkId = Column('landmarkId', Integer, ForeignKey('Landmark.landmarkId'), nullable=False)
+    cityId = Column('cityId', Integer, ForeignKey('City.cityId'), nullable=False)
     
-    def __init__(self, name: str, address: str, landmarkId: int):
+    def __init__(self, name: str, address: str, cityId: int):
         self.name = name
         self.address = address
-        self.landmarkId = landmarkId
+        self.cityId = cityId
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.stopId}) : {self.name} {self.address} {self.landmarkId}"
+        return f"{self.__tablename__} => ({self.stopId}) : {self.name} {self.address} {self.cityId}"
     
     def serialize(self):
         return {
             label.stop_id : self.stopId,
             label.stop_name : self.name,
             label.stop_address : self.address,
-            label.landmark_id : self.landmarkId,
+            label.city_id : self.cityId,
         }

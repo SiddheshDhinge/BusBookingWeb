@@ -17,20 +17,24 @@ class Schedule(Base, Common):
     departureTime = Column('departureTime', Time, nullable=False)
     dropTime = Column('dropTime', Time, nullable=False)
     fairFees = Column('fairFees', Integer, nullable=False)
+    fromCity = Column('fromCity', Integer, ForeignKey('City.cityId'), nullable=False)
+    toCity = Column('toCity', Integer, ForeignKey('City.cityId'), nullable=False)
     numberPlate = Column('numberPlate', String(16), ForeignKey('Bus.numberPlate'), nullable=False)
     username = Column('username', String(16), ForeignKey('Operator.username'), nullable=False)
 
-    def __init__(self, fromDate, toDate, departureTime, dropTime, fairFees, numberPlate, username):
+    def __init__(self, fromDate, toDate, departureTime, dropTime, fairFees, fromCity, toCity, numberPlate, username):
         self.fromDate = fromDate
         self.toDate = toDate
         self.departureTime = departureTime
         self.dropTime = dropTime
         self.fairFees = fairFees
+        self.fromCity = fromCity
+        self.toCity = toCity
         self.numberPlate = numberPlate
         self.username = username
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.scheduleId}) : {self.fromDate}, {self.toDate}, {self.departureTime}, {self.dropTime}, {self.fairFees}, {self.numberPlate}, {self.username}"
+        return f"{self.__tablename__} => ({self.scheduleId}) : {self.fromDate}, {self.toDate}, {self.departureTime}, {self.dropTime}, {self.fairFees}, {self.fromCity}, {self.toCity}, {self.numberPlate}, {self.username}"
     
     def serialize(self):
         return {
@@ -40,6 +44,8 @@ class Schedule(Base, Common):
             label.schedule_departureTime : f'{self.departureTime:%H:%M:%S}',
             label.schedule_dropTime : f'{self.dropTime:%H:%M:%S}',
             label.schedule_fairFees : self.fairFees,
+            label.schedule_fromCity : self.fromCity,
+            label.schedule_toCity : self.toCity,
             label.schedule_numberPlate : self.numberPlate,
             label.username : self.username
         }
