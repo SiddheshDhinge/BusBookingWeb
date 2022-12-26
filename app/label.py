@@ -8,7 +8,7 @@ password = 'user-password'
 name = 'user-person-name'
 contact = 'user-contact-no'
 
-bus_numberPlate = 'number-plate'
+bus_numberPlate = 'bus-number-plate'
 bus_totalSeats = 'bus-total-seats'
 bus_busType = 'bus-type'
 bus_typeSleep = 'SLEEP'
@@ -32,6 +32,8 @@ schedule_toCity = 'schedule-to-city-id'
 schedule_fairFees = 'schedule-fair-fees'
 schedule_numberPlate = 'schedule-number-plate'
 
+operator_username = 'operator-username'
+operator_name = 'operator-name'
 operator_address = 'operator-address'
 
 passenger_id = 'passenger-id'

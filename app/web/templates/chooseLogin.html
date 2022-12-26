@@ -2,17 +2,17 @@
 {% block content %}
 <ul>
     <li>
-        <form method="get" action={{ url_for('login', role='owner') }}>
+        <form method="get" action="{{ url_for('login', role='owner') }}">
             <button class="login-btn">Login Owner</button>
         </form>
     </li>
     <li>
-        <form method="get" action={{ url_for('login', role='operator') }}>
+        <form method="get" action="{{ url_for('login', role='operator') }}">
             <button class="login-btn">Login Operator</button>
         </form>
     </li>
     <li>
-        <form method="get" action={{ url_for('login', role='customer') }}>
+        <form method="get" action="{{ url_for('login', role='customer') }}">
             <button class="login-btn">Login Customer</button>
         </form>
     </li>

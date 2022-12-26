@@ -7,6 +7,8 @@ from .. import label
 class Customer(Base):
     __tablename__ = 'Customer'
     accessType = 'customer'
+    objName = __tablename__.lower()
+
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -34,6 +36,7 @@ class Customer(Base):
             DB_session.rollback()
             return False
         except:
+            DB_session.rollback()
             print(f'{self}')
             return False
         else:

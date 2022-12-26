@@ -8,6 +8,8 @@ from .. import label, label_reason
 class Owner(Base):
     __tablename__ = 'Owner'
     accessType = 'owner'
+    objName = __tablename__.lower()
+
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -37,6 +39,7 @@ class Owner(Base):
             DB_session.rollback()
             return False
         except:
+            DB_session.rollback()
             print(f'{self}')
             return False
         else:

@@ -7,6 +7,7 @@ from .. import label
 
 class City(Base, Common):
     __tablename__ = 'City'
+    objName = __tablename__.lower()
 
     cityId = Column('cityId', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(64), nullable=False)

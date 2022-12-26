@@ -47,28 +47,14 @@ class ControllerOwner:
             self.handleCityCreation()
         
         elif(service_id == 7):
-            #view all City
-            self.handleViewCity()
-
-        elif(service_id == 8):
             #add a Stop
             self.handleStopCreation()
 
-        elif(service_id == 9):
-            #view all stop
-            self.handleViewStop()
-        
-        elif(service_id == 10):
+        elif(service_id == 8):
             #add a schedule
             self.handleScheduleCreation()
-            pass
 
-        elif(service_id == 11):
-            #view schedules
-            self.handleViewSchedule()
-            pass
-
-        elif(service_id == 12):
+        elif(service_id == 9):
             #update profile
             self.handleUpdateAccountProfile()
 
@@ -138,8 +124,7 @@ class ControllerOwner:
     def handleViewBus(self):
         # get all owners registered bus
         username = session[label.username]
-        queryResult = ComplexOperation().getOwnerBuses(ownerUsername= username)
-        self.response_data[label.data] = [busObj.serialize() for busObj in queryResult]
+        self.response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
         self.response_data[label.options] = label.optionsUserLogout
         return render_template('viewBus.html', response_data= self.response_data)
 
@@ -167,7 +152,7 @@ class ControllerOwner:
             flash(label_reason.cityCreationSuccess)
         else:
             flash(label_reason.cityCreationFailed)
-        return redirect('landingOwner')
+        return redirect(url_for('landingOwner'))
 
 
     def handleStopCreation(self):
@@ -180,39 +165,27 @@ class ControllerOwner:
             flash(label_reason.stopCreationSuccess)
         else:
             flash(label_reason.stopCreationFailed)
-        return redirect('landingOwner')
+        return redirect(url_for('landingOwner'))
 
 
     def handleScheduleCreation(self):
-        if Owner.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-
-        operator_username = request.form.get(label.username)
+        operator_username = request.form.get(label.operator_username)
         fromDate = request.form.get(label.schedule_fromDate)
         toDate = request.form.get(label.schedule_toDate)
         departureTime = request.form.get(label.schedule_departureTime)
         dropTime = request.form.get(label.schedule_dropTime)
         fairFees = request.form.get(label.schedule_fairFees)
+        fromCity = request.form.get(label.schedule_fromCity)
+        toCity = request.form.get(label.schedule_toCity)
         numberPlate = request.form.get(label.schedule_numberPlate)
         scheduleObj = Schedule(
             fromDate=fromDate, toDate=toDate, departureTime=departureTime, dropTime=dropTime, 
-            fairFees=fairFees, numberPlate=numberPlate, username=operator_username
+            fairFees=fairFees, fromCity=fromCity, toCity=toCity, numberPlate=numberPlate, username=operator_username
         )
         result = scheduleObj.createObject()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.scheduleCreationSuccess
+            flash(label_reason.scheduleCreationSuccess)
         else:
-            self.response_data[label.details] = label_reason.scheduleCreationFailed
-
-    def handleViewSchedule(self):
-        username = session[label.username]
-        queryResult = ComplexOperation().getOwnerSchedules(ownerUsername= username)
-        self.response_data = [
-            {
-                Schedule.__tablename__ : scheduleObj.serialize(),
-                Bus.__tablename__ : busObj.serialize(),
-                Owner.__tablename__ : ownerObj.serialize()
-            } for (scheduleObj, busObj, ownerObj) in queryResult
-        ]
+            flash(label_reason.scheduleCreationFailed)
+        return redirect(url_for('landingOwner'))

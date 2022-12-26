@@ -30,28 +30,28 @@
 
 {% block content %}
     <main>
-        <form action= {{ url_for('signUp', role= response_data['role']) }} class="shadow-sm" method="POST">
+        <form action= "{{ url_for('signUp', role= response_data['role']) }}" class="shadow-sm" method="POST">
             <div class="mb-2">
                 <label for="username" class="form-label">Username</label>
-                <input required type="text" name={{response_data['username']}} id="username" class="form-control" placeholder="username">
+                <input required type="text" name="{{response_data['username']}}" id="username" class="form-control" placeholder="username">
             </div>
             <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
-                <input required type="password" name={{response_data['password']}} id="password" class="form-control"
+                <input required type="password" name="{{response_data['password']}}" id="password" class="form-control"
                     placeholder="password">
             </div>
             <div class="mb-2">
                 <label for="name" class="form-label">Name</label>
-                <input required type="text" name={{response_data['name']}} id="name" class="form-control" placeholder="John Doe">
+                <input required type="text" name="{{response_data['name']}}" id="name" class="form-control" placeholder="John Doe">
             </div>
             <div class="mb-2">
                 <label for="contact" class="form-label">Contact</label>
-                <input required type="text" name={{response_data['contact']}} id="contact" class="form-control" placeholder="1234567890">
+                <input required type="text" name="{{response_data['contact']}}" id="contact" class="form-control" placeholder="1234567890">
             </div>
             {% if response_data['role'] == 'operator' %}
                 <div class="mb-2">
                     <label for="address" class="form-label">Contact</label>
-                    <textarea required type="text" name={{response_data['contact']}} id="address" class="form-control" placeholder="XX Street, Near XXXX, XXXX City,..." rows="3"></textarea>
+                    <textarea required type="text" name="{{response_data['contact']}}" id="address" class="form-control" placeholder="XX Street, Near XXXX, XXXX City,..." rows="3"></textarea>
                 </div>
             {% endif %}
             <button type="submit" class="btn btn-primary">Sign Up</button>

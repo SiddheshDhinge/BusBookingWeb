@@ -7,6 +7,8 @@ from .. import label
 class Operator(Base):
     __tablename__ = 'Operator'
     accessType = 'operator'
+    objName = __tablename__.lower()
+
     __table_args__ = (
         UniqueConstraint('contact'), 
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
@@ -36,6 +38,7 @@ class Operator(Base):
             DB_session.rollback()
             return False
         except:
+            DB_session.rollback()
             print(f'{self}')
             return False
         else:
@@ -84,7 +87,7 @@ class Operator(Base):
 
     def serialize(self):
         return {
-            label.username: self.username,
+            label.operator_username: self.username,
             label.name: self.name,
             label.contact: self.contact,
             label.operator_address: self.address

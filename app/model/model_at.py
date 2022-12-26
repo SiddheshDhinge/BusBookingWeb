@@ -6,6 +6,7 @@ from .common import Common
 
 class At(Base, Common):
     __tablename__ = 'At'
+    objName = __tablename__.lower()
 
     scheduleId = Column('scheduleId', Integer, ForeignKey('Schedule.scheduleId'), nullable=False)
     stopId = Column('stopId', Integer, ForeignKey('Stop.stopId'), nullable=False)

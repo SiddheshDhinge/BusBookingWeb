@@ -14,14 +14,14 @@
 
 {% block content %}
     <main>
-        <form action= {{ url_for('login', role= response_data['role']) }} class="shadow-sm" method="POST">
+        <form action= "{{ url_for('login', role= response_data['role']) }}" class="shadow-sm" method="POST">
             <div class="mb-4">
                 <label for="username" class="form-label">Username</label>
-                <input required type="text" name={{response_data['username']}} id="username" class="form-control" placeholder="username">
+                <input required type="text" name="{{response_data['username']}}" id="username" class="form-control" placeholder="username">
             </div>
             <div class="mb-5">
                 <label for="password" class="form-label">Password</label>
-                <input required type="password" name={{response_data['password']}} id="password" class="form-control"
+                <input required type="password" name="{{response_data['password']}}" id="password" class="form-control"
                     placeholder="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>

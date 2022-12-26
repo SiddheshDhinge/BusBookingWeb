@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<form id='stopForm' action={{ url_for('addStop') }} method="POST" onS>
+<form id='stopForm' action="{{ url_for('addStop') }}" method="POST">
     <label for="name">Stop Name:</label>
     <input type="text" id="name" name="stop-name"><br><br>
 
@@ -11,7 +11,7 @@
     <input id="cid" type="text" name="city-id" list="cityList" />
     <datalist id="cityList">
         {% for city in response_data['data']['city'] %}
-            <option value={{city['city-id']}}> {{city['city-name']}} </option>
+            <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
         {% endfor %}
     </datalist>
     <input type="submit">

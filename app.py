@@ -140,6 +140,7 @@ def landingOwner():
         label.options : label.optionsUserLogout
     })
 
+
 @app.route('/registerbus', methods=['GET', 'POST'])
 @Owner.requireLogin
 def registerBus():
@@ -156,10 +157,12 @@ def registerBus():
             label.options : label.optionsUserLogout
         })
 
+
 @app.route('/viewbus', methods=['GET'])
 @Owner.requireLogin
 def viewBus():
     return ControllerOwner().handleViewBus()
+
 
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin
@@ -170,6 +173,7 @@ def updateOwnerProfle():
         return render_template('updateOwnerProfile.html', response_data= {
             label.options : label.optionsUserLogout
         })
+
 
 @app.route('/viewcity', methods=['GET', 'POST'])
 @Owner.requireLogin
@@ -226,12 +230,12 @@ def viewSchedules():
         #cant accept empty from and to city
         if not(fromCity and toCity):
             flash(label_reason.sourceDestinatioFailed)
-            return redirect('viewSchedules')
+            return redirect(url_for('viewSchedules'))
 
         #cant accept empty schedule date
         if not fromDate:
             flash(label_reason.scheduleDateFailed)
-            return redirect('viewSchedules')
+            return redirect(url_for('viewSchedules'))
 
         timeBlock = request.form.get(label.filterTimeBlock, 'all')
         busType = request.form.get(label.filterBusType, 'all')
@@ -249,8 +253,8 @@ def viewSchedules():
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
-        # return jsonify(response_data)
-        if(len(response_data['data']) == 0):
+        
+        if(len(response_data[label.data]) == 0):
             flash(label_reason.filterNoMatch)
         else:
             flash(label_reason.filterMatch)
@@ -261,23 +265,42 @@ def viewSchedules():
         return render_template('viewSchedules.html', response_data= response_data)
 
 
-
+@app.route('/addschedule', methods=['GET', 'POST'])
+@Owner.requireLogin
+def addSchedule():
+    if(request.method == 'POST'):
+        return ControllerOwner().handleScheduleCreation()
+    else:
+        username = session[label.username]
+        allCity = ComplexOperation().getAllCity(search= None)
+        response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
+        response_data[label.data].update(allCity[label.data])
+        response_data[label.options] = label.optionsUserLogout
+        return render_template('addSchedule.html', response_data= response_data)
 
 # OWNER END
 
 
-@app.route('/viewSchedulesD')
-def viewSchedulesD():
-    controllerObj = ControllerOperator()
-    controllerObj.handleViewSchedule()
-    print("y?")
-    return render_template('table.html', response_data= controllerObj.response_data)
+# @app.route('/viewSchedulesD')
+# def viewSchedulesD():
+#     controllerObj = ControllerOperator()
+#     controllerObj.handleViewSchedule()
+#     return render_template('table.html', response_data= controllerObj.response_data)
 
-@app.route('/debug')
-def debug():
-    # flash('YES OWNER!!!')
-    # getSessionStatus(session[model.label.])
-    return f'Session : '
+# @app.route('/debug')
+# def debug():
+#     flash('YES OWNER!!!')
+#     getSessionStatus(session[model.label.])
+#     return f'Session : '
+
+
+@app.route('/layout')
+def layout():
+    flash(label_reason.loginInRequired)
+    return render_template('easterEgg.html', response_data= {
+        label.options : label.optionsAll
+    })
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -286,10 +309,6 @@ def page_not_found(e):
         label.options: label.optionsAll
     })
 
-@app.route('/layout')
-def lay1():
-    flash(label_reason.loginInRequired)
-    return render_template('layout.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

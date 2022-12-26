@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action={{ url_for('registerBus') }} method="post">
+<form action="{{ url_for('registerBus') }}" method="post">
 
     <label for="plate">Number Plate:</label>
     <input type="text" id="plate" name="number-plate"><br><br>

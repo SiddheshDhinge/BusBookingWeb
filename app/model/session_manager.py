@@ -3,7 +3,7 @@ from base64 import b64encode
 from os import urandom
 from .. import label
 
-def addActiveSession(username,accessType):
+def addActiveSession(username, accessType):
     hash = b64encode(urandom(256)).decode('utf-8')
     session_id = hash
     session[label.session] = session_id

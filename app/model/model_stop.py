@@ -7,6 +7,7 @@ from .. import label
 
 class Stop(Base, Common):
     __tablename__ = 'Stop'
+    objName = __tablename__.lower()
 
     stopId = Column('stopId', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(64), nullable=False)

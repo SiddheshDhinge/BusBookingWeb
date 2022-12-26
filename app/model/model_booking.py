@@ -6,6 +6,7 @@ from .common import Common
 
 class Booking(Base, Common):
     __tablename__ = 'Booking'
+    objName = __tablename__.lower()
 
     seatNo = Column('seatNo', Integer, nullable=False)
     scheduleId = Column('scheduleId', Integer, ForeignKey('Schedule.scheduleId'), nullable=False)

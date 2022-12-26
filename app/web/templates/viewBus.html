@@ -40,9 +40,9 @@
                 Bus Type
             </div>
 
-            {% for rowObj in response_data['data'] %}
+            {% for rowObj in response_data['data']['bus'] %}
             <div class="table-cell">
-                {{rowObj['number-plate']}}
+                {{rowObj['bus-number-plate']}}
             </div>
             <div class="table-cell">
                 {{rowObj['bus-total-seats']}}

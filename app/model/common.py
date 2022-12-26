@@ -10,6 +10,7 @@ class Common:
             DB_session.rollback()
             return False
         except Exception as e:
+            DB_session.rollback()
             print(e)
             print(f'{self}')
             return False
