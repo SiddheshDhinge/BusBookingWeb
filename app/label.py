@@ -64,6 +64,8 @@ filterFromCity = 'filter-from-city'
 filterToCity = 'filter-to-city'
 filterTimeBlock = 'filter-time-block'
 filterBusType = 'filter-bus-type'
+filterDate = 'filter-date'
+
 timeBlockMorning = 'time-morning'
 timeBlockNoon = 'time-noon'
 timeBlockEvening = 'time-evening'

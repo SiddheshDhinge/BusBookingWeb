@@ -23,7 +23,7 @@ load_dotenv()
 
 app = Flask(__name__, static_url_path="", static_folder="app/web/static", template_folder="app/web/templates")
 app.secret_key = os.environ['app_secret']
-app.permanent_session_lifetime = timedelta(minutes= 5)
+app.permanent_session_lifetime = timedelta(minutes= 15)
 
 @app.route('/index')
 @app.route('/')
@@ -64,7 +64,7 @@ def chooseSignUp():
     })
 
 
-@app.route('/signUp/<role>', methods=['GET', 'POST'])
+@app.route('/signup/<role>', methods=['GET', 'POST'])
 def signUp(role):
     if(request.method == 'POST'):
         if(role == Owner.accessType):
@@ -133,7 +133,7 @@ def logout():
 
 # OWNER BEGIN
 
-@app.route('/landingOwner')
+@app.route('/landingowner')
 @Owner.requireLogin
 def landingOwner():
     return render_template('landingOwner.html', response_data= {
@@ -180,7 +180,7 @@ def viewCity():
     return render_template('viewCity.html', response_data= response_data)
         
 
-@app.route('/addCity', methods=['GET', 'POST'])
+@app.route('/addcity', methods=['GET', 'POST'])
 @Owner.requireLogin
 def addCity():
     if(request.method == 'POST'):
@@ -200,7 +200,7 @@ def viewStop():
     return render_template('viewStop.html', response_data= response_data)
         
 
-@app.route('/addStop', methods=['GET', 'POST'])
+@app.route('/addstop', methods=['GET', 'POST'])
 @Owner.requireLogin
 def addStop():
     if(request.method == 'POST'):
@@ -211,7 +211,7 @@ def addStop():
         return render_template('addStop.html', response_data= response_data)
 
 
-@app.route('/viewSchedules', methods=['GET', 'POST'])
+@app.route('/viewschedules', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewSchedules():
     response_data = ComplexOperation().getAllCity(search= None)
@@ -221,17 +221,25 @@ def viewSchedules():
         # create filters
         fromCity = request.form.get(label.filterFromCity, None)
         toCity = request.form.get(label.filterToCity, None)
-        
+        fromDate = request.form.get(label.filterDate, None)
+    
         #cant accept empty from and to city
         if not(fromCity and toCity):
+            flash(label_reason.sourceDestinatioFailed)
             return redirect('viewSchedules')
-        
+
+        #cant accept empty schedule date
+        if not fromDate:
+            flash(label_reason.scheduleDateFailed)
+            return redirect('viewSchedules')
+
         timeBlock = request.form.get(label.filterTimeBlock, 'all')
         busType = request.form.get(label.filterBusType, 'all')
         ownerUsername = request.form.get(label.owner_username, 'all')
         sortPrice = request.form.get(label.filterSortPrice, 'no')
         
         filters = {
+            label.filterDate : fromDate,
             label.filterFromCity : fromCity,
             label.filterToCity : toCity,
             label.filterTimeBlock : timeBlock,
@@ -241,13 +249,18 @@ def viewSchedules():
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
-        print('1==>', response_data)
+        # return jsonify(response_data)
+        if(len(response_data['data']) == 0):
+            flash(label_reason.filterNoMatch)
+        else:
+            flash(label_reason.filterMatch)
         return render_template('viewSchedules.html', response_data= response_data)
 
     else:
         # return form for schedules
-        print('2==>', response_data)
         return render_template('viewSchedules.html', response_data= response_data)
+
+
 
 
 # OWNER END

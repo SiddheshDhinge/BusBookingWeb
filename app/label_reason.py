@@ -27,3 +27,10 @@ passengerCreationSuccess = 'Successfully added Passenger!'
 passengerCreationFailed = 'Passenger addition Failed!'
 bookingCreationSuccess = 'Successfully completed Booking!'
 bookingCreationFailed = 'Booking Failed!'
+
+#filters
+enterFilter = 'Please enter required filters.'
+filterNoMatch = 'There are no matching results!'
+filterMatch = 'Here are some results!'
+scheduleDateFailed = 'Please Enter a valid Date!'
+sourceDestinatioFailed = 'Please Enter a valid Source and destination City!'

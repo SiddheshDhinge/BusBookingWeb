@@ -10,7 +10,7 @@ from .model_booking import Booking
 from .model_at import At
 from .database import DB_session
 from .session_manager import getSessionStatus
-
+from sqlalchemy.orm import aliased
 from .. import label
 
 class ComplexOperation:
@@ -25,6 +25,16 @@ class ComplexOperation:
         else:
             queryResult = DB_session.query(City).all()
         self.response_data['data']['city'] = [cityObj.serialize() for cityObj in queryResult]
+        return self.response_data
+
+
+    def getAllOwner(self, search):
+        if(search):
+            search = f'%{search}%'
+            queryResult = DB_session.query(Owner).filter(Owner.username.ilike(search)).all()
+        else:
+            queryResult = DB_session.query(Owner).all()
+        self.response_data['data']['owner'] = [ownerObj.serialize() for ownerObj in queryResult]
         return self.response_data
 
 
@@ -55,14 +65,22 @@ class ComplexOperation:
             filters[sortPrice] = asc / desc / none
         '''
 
-        #city based filtering
-        # queryResult = DB_session.query(Schedule, Bus, Owner, Stop, City).select_from(Schedule).join(Bus, Owner, At, Stop, City).filter(
-            
-        queryResult = DB_session.query(Schedule).filter(
-            Schedule.fromCity == filters[label.filterFromCity],
-            Schedule.toCity == filters[label.filterToCity]
-        )
+        #Join required tables
+        City1 = aliased(City)
+        City2 = aliased(City)
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+            .join(City1, City1.cityId == Schedule.fromCity)\
+            .join(City2, City2.cityId == Schedule.toCity)\
+            .join(Bus, Owner)\
         
+        #date based filtering
+        if(filters[label.filterDate]):
+            queryResult = queryResult.filter(Schedule.fromDate == filters[label.filterDate])
+        
+        #city based filtering
+        if(filters[label.filterFromCity] != 'all'):
+            queryResult = queryResult.filter(Schedule.fromCity == filters[label.filterFromCity], Schedule.toCity == filters[label.filterToCity])
+
         #time based filtering
         if(filters[label.filterTimeBlock] == label.timeBlockMorning):
             queryResult = queryResult.filter(Schedule.departureTime >= '03:00:00', Schedule.departureTime < '09:00:00')
@@ -74,13 +92,14 @@ class ComplexOperation:
             queryResult = queryResult.filter(Schedule.departureTime >= '15:00:00', Schedule.departureTime < '21:00:00')
 
         #bus type based filtering 
-        # if(filters[label.filterBusType] in (label.bus_typeSleep, label.bus_typeSeat)):
-        #     queryResult.filter(Bus.busType == filters[label.filterBusType])
+        if(filters[label.filterBusType] in (label.bus_typeSleep, label.bus_typeSeat)):
+            queryResult = queryResult.filter(Bus.busType == filters[label.filterBusType])
 
         #travel agency based filtering
-        # if(filters[label.owner_username] != 'all'):
-        #     username = f'%{[label.owner_username]}%'
-        #     queryResult.filter(Owner.username.ilike(username))
+        if(filters[label.owner_username]):
+            if(filters[label.owner_username] != 'all'):
+                username = f'%{filters[label.owner_username]}%'
+                queryResult = queryResult.filter(Owner.username.ilike(username))
         
         #sort according prices
         if(filters[label.filterSortPrice] == 'asc'):
@@ -94,12 +113,11 @@ class ComplexOperation:
         self.response_data['data'] = [
             {
                 Schedule.__tablename__ : scheduleObj.serialize(),
-            } for scheduleObj in queryResult
-            #     Bus.__tablename__ : busObj.serialize(),
-            #     Owner.__tablename__ : ownerObj.serialize(),
-            #     Stop.__tablename__ : stopObj.serialize(), 
-            #     City.__tablename__ : cityObj.serialize()
-            # } for (scheduleObj, busObj, ownerObj, stopObj, cityObj) in queryResult
+                Bus.__tablename__ : busObj.serialize(),
+                Owner.__tablename__ : ownerObj.serialize(),
+                f'from_{City.__tablename__}' : cityObj1.serialize(),
+                f'to_{City.__tablename__}' : cityObj2.serialize()
+            } for scheduleObj, busObj, ownerObj, cityObj1, cityObj2 in queryResult
         ]
         print(self.response_data)
         return self.response_data
