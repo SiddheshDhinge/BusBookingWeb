@@ -65,8 +65,8 @@ class ControllerOwner:
         
 
     def handleAccountCreation(self):
-        username = request.form.get(label.username)
-        password = request.form.get(label.password)
+        username = request.form.get(label.owner_username)
+        password = request.form.get(label.owner_password)
         name = request.form.get(label.owner_name)
         contact = request.form.get(label.owner_contact)
         result = Owner(username=username, password=password, name=name, contact=contact).createOwner()
@@ -78,9 +78,10 @@ class ControllerOwner:
             flash(label_reason.userCreationFailed)
             return redirect(url_for('signUp', role= Owner.accessType))
 
+
     def handleLogin(self):
-        username = request.form.get(label.username)
-        password = request.form.get(label.password)
+        username = request.form.get(label.owner_username)
+        password = request.form.get(label.owner_password)
         result = Owner(username=username, password=password, name=None, contact=None, currentSesssion=None).loginOwner()
         self.response_data[label.success] = result
         
@@ -92,6 +93,7 @@ class ControllerOwner:
             flash(label_reason.userLoginFailed)
             return redirect(url_for('login', role= Owner.accessType))
     
+    
     @Owner.requireLogin
     def handleLogout(self):
         result = Owner(None, None, None, None, currentSesssion=None).logoutOwner()
@@ -102,7 +104,23 @@ class ControllerOwner:
             return redirect(url_for('chooseLogin'))
         else:
             flash(label_reason.userLogoutFailed)
-            return redirect(url_for('index'))
+            return redirect(url_for('landingOwner'))
+
+
+    def handleUpdateAccountProfile(self):
+        name = request.form.get(label.owner_name, default=None)
+        contact = request.form.get(label.owner_contact, default=None)
+        username = session[label.username]
+
+        ownerObj = Owner(username=username, password=None, name=name, contact=contact)
+        result = ownerObj.updateInformation()
+        self.response_data[label.success] = result
+
+        if(result == True):
+            flash(label_reason.userAccountUpdateSuccess)
+        else:
+            flash(label_reason.userAccountUpdateFailed)
+        return redirect(url_for('landingOwner'))
 
 
     def handleBusRegistration(self):
@@ -125,23 +143,10 @@ class ControllerOwner:
         # get all owners registered bus
         username = session[label.username]
         self.response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
-        self.response_data[label.options] = label.optionsUserLogout
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
         return render_template('viewBus.html', response_data= self.response_data)
-
-
-    def handleUpdateAccountProfile(self):
-        name = request.form.get(label.owner_name, default=None)
-        contact = request.form.get(label.owner_contact, default=None)
-        username = session[label.username]
-
-        ownerObj = Owner(username=username, password=None, name=name, contact=contact)
-        result = ownerObj.updateInformation()
-        self.response_data[label.success] = result
-        if(result == True):
-            flash(label_reason.userAccountUpdateSuccess)
-        else:
-            flash(label_reason.userAccountUpdateFailed)
-        return redirect(url_for('landingOwner'))
 
 
     def handleCityCreation(self):

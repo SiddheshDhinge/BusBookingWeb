@@ -1,35 +1,48 @@
 print("\n\n\nSTARTED\n\n\n")
-from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
-from app.model.database import connectDB, createAllTables, dropAllTables
-from datetime import timedelta
-# Establish database session
+
+
+# Configure Database Connection
+from app.model.database import connectDB, createAllTables
 connectDB()
 createAllTables()
-# from model.session_manager import getSessionStatus, addActiveSession
+
+
+# Import Dependencies
+from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
+import os
+from dotenv import load_dotenv
+from datetime import timedelta
+load_dotenv()
+
+
+# Import App Modules
 from app import label, label_reason
 from app.controller_owner import ControllerOwner
 from app.controller_operator import ControllerOperator
 from app.controller_customer import ControllerCustomer
-
 from app.model.model_owner import Owner
 from app.model.model_operator import Operator
 from app.model.model_customer import Customer
 from app.model.complex_operations import ComplexOperation
+from app.model.session_manager import getSessionStatus
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-
+# Create App and Set Secret Key, session_lifetime
 app = Flask(__name__, static_url_path="", static_folder="app/web/static", template_folder="app/web/templates")
 app.secret_key = os.environ['app_secret']
 app.permanent_session_lifetime = timedelta(minutes= 15)
 
+
+# Start Routes
+
+
+# COMMON BEGIN
 @app.route('/index')
 @app.route('/')
 def index():
     return render_template('index.html', response_data= {
-        label.options : label.optionsAll
+        label.options : {
+            label.nav_btn : label.btn_login_signup
+        }
     })
 
 @app.route('/bookbus')
@@ -44,26 +57,31 @@ def details():
 def ticket():
     return render_template('ticket.html')
 
-@app.route('/owner', methods=['POST'])
-def owner():
-    return ControllerOwner().handleRequest()
+# deprecated
+# @app.route('/owner', methods=['POST'])
+# def owner():
+#     return ControllerOwner().handleRequest()
 
-@app.route('/customer', methods=['POST'])
-def customer():
-    return ControllerCustomer().handleRequest()
+# @app.route('/customer', methods=['POST'])
+# def customer():
+#     return ControllerCustomer().handleRequest()
 
-@app.route('/operator', methods=['POST'])
-def operator():
-    return ControllerOperator().handleRequest()
+# @app.route('/operator', methods=['POST'])
+# def operator():
+#     return ControllerOperator().handleRequest()
 
 
+# for selection of sign up type
 @app.route('/choosesignup')
 def chooseSignUp():
     return render_template('chooseSignUp.html', response_data= {
-        label.options : label.optionsUserLogin
+        label.options : {
+            label.nav_btn : label.btn_login
+        }
     })
 
 
+# Actual signup (Owner / Operator / Customer)
 @app.route('/signup/<role>', methods=['GET', 'POST'])
 def signUp(role):
     if(request.method == 'POST'):
@@ -76,25 +94,35 @@ def signUp(role):
         else:
             return label_reason.error
     else:
-        if role not in (Owner.accessType, Customer.accessType, Operator.accessType):
+        response_data = {
+            label.options : {}
+        }
+        if role == Owner.accessType:
+            response_data[label.name_labels] = label.owner_all_label
+        elif role == Operator.accessType:
+            response_data[label.name_labels] = label.operator_all_label
+        elif role == Customer.accessType:
+            response_data[label.name_labels] = label.customer_all_label
+        else:
             #Tried to access invalid role, returned role choice
             return redirect(url_for('chooseSignUp'))
+        
         #Returned valid role login
-        return render_template('signUp.html', response_data={
-            'username' : label.username,
-            'password' : label.password,
-            'name' : label.owner_name,
-            'contact' : label.owner_contact, 
-            'role' : role
-        })
+        response_data[label.role] = role
+        return render_template('signUp.html', response_data= response_data)
 
 
+# for selection of login type
 @app.route('/chooselogin', methods=['GET'])
 def chooseLogin():
     return render_template('chooseLogin.html', response_data= {
-        label.options : label.optionsUserSignUp
+        label.options : {
+            label.nav_btn : label.btn_signup
+        }
     })
 
+
+# Actual Login of type (Owner /  Operator / Customer)
 @app.route('/login/<role>', methods=['GET', 'POST'])
 def login(role):
     if(request.method == 'POST'):
@@ -107,17 +135,25 @@ def login(role):
         else:
             return label_reason.error
     else:
-        if role not in (Owner.accessType, Customer.accessType, Operator.accessType):
+        response_data = {
+            label.options : {}
+        }
+        if role == Owner.accessType:
+            response_data[label.name_labels] = label.owner_all_label
+        elif role == Operator.accessType:
+            response_data[label.name_labels] = label.operator_all_label
+        elif role == Customer.accessType:
+            response_data[label.name_labels] = label.customer_all_label
+        else:
             #Tried to access invalid role, returned role choice
             return redirect(url_for('chooseLogin'))
+        
         #Returned valid role login
-        return render_template('login.html', response_data={
-            'username' : label.username,
-            'password' : label.password,
-            'role' : role
-        })
+        response_data[label.role] = role
+        return render_template('login.html', response_data= response_data)
 
 
+# logout works with visiting url via POST, no Type needed
 @app.route('/logout', methods=['POST'])
 def logout():
     role = session.get(label.accessType, None)
@@ -131,16 +167,22 @@ def logout():
         return label_reason.error
     
 
+# COMMON END
+
 # OWNER BEGIN
 
+# Landing Page for Owner
 @app.route('/landingowner')
 @Owner.requireLogin
 def landingOwner():
     return render_template('landingOwner.html', response_data= {
-        label.options : label.optionsUserLogout
+        label.options : {
+            label.nav_btn : label.btn_logout
+        }
     })
 
 
+# Bus Registration
 @app.route('/registerbus', methods=['GET', 'POST'])
 @Owner.requireLogin
 def registerBus():
@@ -154,16 +196,20 @@ def registerBus():
             return ControllerOwner().handleBusRegistration()
     else:
         return render_template('registerBusForm.html', response_data= {
-            label.options : label.optionsUserLogout
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
         })
 
 
+# View All registered bus of the Owner
 @app.route('/viewbus', methods=['GET'])
 @Owner.requireLogin
 def viewBus():
     return ControllerOwner().handleViewBus()
 
 
+# Update Owners profile
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin
 def updateOwnerProfle():
@@ -171,19 +217,25 @@ def updateOwnerProfle():
         return ControllerOwner().handleUpdateAccountProfile()
     else:
         return render_template('updateOwnerProfile.html', response_data= {
-            label.options : label.optionsUserLogout
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
         })
 
 
+# View all registered Cities
 @app.route('/viewcity', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewCity():
     search = request.form.get(label.search)
     response_data = ComplexOperation().getAllCity(search=search)
-    response_data[label.options] = label.optionsUserLogout
+    response_data[label.options] = {
+        label.nav_btn : label.btn_logout
+    }
     return render_template('viewCity.html', response_data= response_data)
         
 
+# Register a City
 @app.route('/addcity', methods=['GET', 'POST'])
 @Owner.requireLogin
 def addCity():
@@ -191,19 +243,25 @@ def addCity():
         return ControllerOwner().handleCityCreation()
     else:
         return render_template('addCity.html', response_data= {
-            label.options: label.optionsUserLogout
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
         })
 
 
+# View all regisited Stop
 @app.route('/viewstop', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewStop():
     search = request.form.get(label.search)
     response_data = ComplexOperation().getAllStop(search=search)
-    response_data[label.options] = label.optionsUserLogout
+    response_data[label.options] = {
+        label.nav_btn : label.btn_logout
+    }
     return render_template('viewStop.html', response_data= response_data)
         
 
+# Register a Stop
 @app.route('/addstop', methods=['GET', 'POST'])
 @Owner.requireLogin
 def addStop():
@@ -211,15 +269,20 @@ def addStop():
         return ControllerOwner().handleStopCreation()
     else:
         response_data = ComplexOperation().getAllCity(search= None)
-        response_data[label.options] = label.optionsUserLogout 
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
         return render_template('addStop.html', response_data= response_data)
 
 
+# View All Schedules (works with filters => (see ComplexOperation))
 @app.route('/viewschedules', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewSchedules():
     response_data = ComplexOperation().getAllCity(search= None)
-    response_data[label.options] = label.optionsUserLogout
+    response_data[label.options] = {
+        label.nav_btn : label.btn_logout
+    }
     
     if(request.method == 'POST'):
         # create filters
@@ -242,6 +305,7 @@ def viewSchedules():
         ownerUsername = request.form.get(label.owner_username, 'all')
         sortPrice = request.form.get(label.filterSortPrice, 'no')
         
+        # Build filters object
         filters = {
             label.filterDate : fromDate,
             label.filterFromCity : fromCity,
@@ -253,18 +317,24 @@ def viewSchedules():
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
-        
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }        
         if(len(response_data[label.data]) == 0):
+            # No results
             flash(label_reason.filterNoMatch)
         else:
+            # Results found
             flash(label_reason.filterMatch)
+        # return jsonify(response_data)
         return render_template('viewSchedules.html', response_data= response_data)
 
     else:
-        # return form for schedules
+        # return form for filling filters of schedules
         return render_template('viewSchedules.html', response_data= response_data)
 
 
+# Add A new schedule
 @app.route('/addschedule', methods=['GET', 'POST'])
 @Owner.requireLogin
 def addSchedule():
@@ -275,12 +345,55 @@ def addSchedule():
         allCity = ComplexOperation().getAllCity(search= None)
         response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
         response_data[label.data].update(allCity[label.data])
-        response_data[label.options] = label.optionsUserLogout
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
         return render_template('addSchedule.html', response_data= response_data)
 
 # OWNER END
 
+# OPERATOR BEGIN
 
+# Landing Page for Owner
+@app.route('/landingoperator')
+@Operator.requireLogin
+def landingOperator():
+    return render_template('landingOperator.html', response_data= {
+        label.options : {
+            label.nav_btn : label.btn_logout
+        }
+    })
+
+
+
+# Update Operators profile
+@app.route('/updateoperatorprofile', methods=['GET', 'POST'])
+@Operator.requireLogin
+def updateOperatorProfile():
+    if(request.method == 'POST'):
+        return ControllerOperator().handleUpdateAccountProfile()
+    else:
+        return render_template('updateOperatorProfile.html', response_data= {
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
+        })
+
+
+# View all Operator's Assigned Schedules
+@app.route('/viewoperatorschedules')
+@Operator.requireLogin
+def viewOperatorSchedules():
+    username = session[label.username]
+    response_data = ComplexOperation().getOperatorSchedules(operatorUsername= username)
+    response_data[label.options] = {
+        label.nav_btn : label.btn_logout
+    }
+    return render_template('viewOperatorSchedules.html', response_data= response_data)
+
+# OPERATOR END
+
+# used for testing
 # @app.route('/viewSchedulesD')
 # def viewSchedulesD():
 #     controllerObj = ControllerOperator()
@@ -298,16 +411,30 @@ def addSchedule():
 def layout():
     flash(label_reason.loginInRequired)
     return render_template('easterEgg.html', response_data= {
-        label.options : label.optionsAll
+        label.options : {
+            label.nav_btn : label.btn_login_signup
+        }
     })
 
 
+# fallback handler in case of not found (404)
 @app.errorhandler(404)
 def page_not_found(e):
-    # fallback handler in case of not found
-    return render_template('404.html', response_data={
-        label.options: label.optionsAll
-    })
+    result = getSessionStatus()[0]
+    response_data = {label.options : {}}
+
+    if(result == True):
+        # User is logged In
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+    else:
+        # User is Anonymous (not logged in)
+        response_data[label.options] = {
+            label.nav_btn : label.btn_login_signup
+        }
+    
+    return render_template('404.html', response_data= response_data)
 
 
 if __name__ == "__main__":

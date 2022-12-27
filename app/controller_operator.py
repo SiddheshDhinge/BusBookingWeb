@@ -1,4 +1,4 @@
-from flask import render_template, session, request, jsonify, flash, redirect
+from flask import render_template, session, request, jsonify, flash, redirect, url_for
 from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
@@ -50,86 +50,70 @@ class ControllerOperator:
         
 
     def handleAccountCreation(self):
-        username = request.form.get(label.username)
-        password = request.form.get(label.password)
-        name = request.form.get(label.name)
+        username = request.form.get(label.operator_username)
+        password = request.form.get(label.operator_password)
+        name = request.form.get(label.operator_name)
+        contact = request.form.get(label.operator_contact)
         address = request.form.get(label.operator_address)
-        contact = request.form.get(label.contact)
         result = Operator(username=username, password=password, name=name, address=address, contact=contact).createOperator()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.userCreationSuccess
+            flash(label_reason.userCreationSuccess)
+            return redirect(url_for('login', role= Operator.accessType))
         else:
-            self.response_data[label.details] = label_reason.userCreationFailed
+            flash(label_reason.userCreationFailed)
+            return redirect(url_for('signUp', role= Operator.accessType))
 
 
     def handleLogin(self):
-        if(request.method == 'POST'):
-            username = request.form.get(label.username)
-            password = request.form.get(label.password)
-            result = Operator(username=username, password=password, name=None, address=None, contact=None).loginOperator()
-            self.response_data[label.success] = result
-            
-            if(result == True):
-                flash(label_reason.userLoginSuccess)
-                session.permanent = True
-                return redirect('/')
-            else:   
-                flash(label_reason.userLoginFailed)
-                return render_template('login.html', 
-                    username = label.username,
-                    password = label.password,
-                    role = Operator.accessType
-                )
+        username = request.form.get(label.operator_username)
+        password = request.form.get(label.operator_password)
+        result = Operator(username=username, password=password, name=None, address=None, contact=None).loginOperator()
+        self.response_data[label.success] = result
+          
+        if(result == True):
+            # Successful login redirect to landing page
+            flash(label_reason.userLoginSuccess)
+            session.permanent = True
+            return redirect(url_for('landingOperator'))
         else:
-            return render_template('login.html', 
-                username = label.username,
-                password = label.password,
-                role = Operator.accessType
-            )
+            # failed login try again
+            flash(label_reason.userLoginFailed)
+            return redirect(url_for('login', role= Operator.accessType))
+    
 
+    @Operator.requireLogin
     def handleLogout(self):
-        if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
         result = Operator(username=None, password=None, name=None, address=None, contact=None).logoutOperator()
         self.response_data[label.success] = result
+
         if(result == True):
-            self.response_data[label.details] = label_reason.userLogoutSuccess
+            # Logout Success
+            flash(label_reason.userLogoutSuccess)
+            return redirect(url_for('chooseLogin'))
         else:
-            self.response_data[label.details] = label_reason.userLogoutFailed
+            # Logout Failed
+            flash(label_reason.userLogoutFailed)
+            return redirect(url_for('landingOperator'))
 
 
     def handleUpdateAccountProfile(self):
-        if Operator.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
-        name = request.form.get(label.name)
-        address = request.form.get(label.operator_address)
-        contact = request.form.get(label.contact)
+        name = request.form.get(label.operator_name)
+        contact = request.form.get(label.operator_contact)
+        address = request.form.get(label.operator_address).strip()
         username = session[label.username]
+
         operatorObj = Operator(username=username, password=None, name=name, address=address, contact=contact)
         result = operatorObj.updateInformation()
         self.response_data[label.success] = result
+        
         if(result == True):
-            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+            flash(label_reason.userAccountUpdateSuccess)
         else:
-            self.response_data[label.details] = label_reason.userAccountUpdateFailed
+            flash(label_reason.userAccountUpdateFailed)
+        return redirect(url_for('landingOperator'))
 
-
-    def handleViewSchedule(self):
-        username = session[label.username]
-        qryResult = ComplexOperation().getOperatorSchedules(operatorUsername= username)
-        self.response_data = [
-            {
-                Schedule.__tablename__ : scheduleObj.serialize(),
-                Bus.__tablename__ : busObj.serialize(),
-                Owner.__tablename__ : ownerObj.serialize(),
-                Stop.__tablename__ : stopObj.serialize(),
-                City.__tablename__ : cityObj.serialize()
-            } for (scheduleObj, busObj, ownerObj, stopObj, cityObj) in qryResult
-        ]
+    
 
     # def handleViewAllOperator(self):
     #     if Operator.isLoggedOn() == False:

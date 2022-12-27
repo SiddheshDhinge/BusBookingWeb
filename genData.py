@@ -13,13 +13,13 @@ def pad(num):
 def randomPad(a, b):
     return pad(random.randint(a, b))
 
-for _ in range(1, 75):
+for _ in range(1, 151):
     # Bus
     # data = (f'MH {random.randint(5, 20)} AB {random.randint(5000, 9999)}' , random.randint(30, 50), pos[random.randint(0, 1)], own[random.randint(0, len(own) -1)])
 
     # Schedule
-    frmM = random.randint(1, 11)
-    frmD = random.randint(1, 29)
+    frmM = 12 #random.randint(1, 11)
+    frmD = random.randint(20, 30)
     toD = frmD+ 1
     data = (
         f'2022-{pad(frmM)}-{pad(frmD)}',
@@ -34,7 +34,7 @@ for _ in range(1, 75):
     )
 
     # At
-    # for __ in random.sample(range(1, 30), 10):
+    # for __ in random.sample(range(1, 30), random.randint(5, 10)):
     #     print(f'{_}, {__}')
 
     # Booking

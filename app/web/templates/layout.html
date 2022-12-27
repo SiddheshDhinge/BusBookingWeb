@@ -8,7 +8,8 @@
     <title>BookMyBus</title>
     <link rel="shortcut icon" href="/media/ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/layout.css"/>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
     <!-- Add Css for different components -->
     {% block css %}
     
@@ -27,21 +28,21 @@
                     </a>
                 </span>
                 <ul>
-                    {% if 'signUp' in response_data['options'] %}
+                    {% if 'signUp' in response_data['options']['nav-btn'] %}
                         <li>
                             <form method="get" action="{{url_for('chooseSignUp')}}">
                                 <button class="login-btn">SignUp</button>
                             </form>
                         </li>
                     {% endif %}
-                    {% if 'logIn' in response_data['options'] %}
+                    {% if 'logIn' in response_data['options']['nav-btn'] %}
                         <li>
                             <form method="get" action="{{url_for('chooseLogin')}}">
                                 <button class="login-btn">Login</button>
                             </form>
                         </li>
                     {% endif %}
-                    {% if 'logOut' in response_data['options'] %}
+                    {% if 'logOut' in response_data['options']['nav-btn'] %}
                         <li>
                             <form method="POST" action="{{url_for('logout')}}">
                                 <button class="logout-btn">Logout</button>

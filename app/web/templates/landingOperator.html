@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>
+    Welcome Operator!
+</h1>
+
+<a href="{{ url_for('updateOperatorProfile') }}"> Update Profile </a><br><br>
+<a href="{{ url_for('viewOperatorSchedules') }}"> View My Schedules </a><br><br>
+
+{% endblock %}

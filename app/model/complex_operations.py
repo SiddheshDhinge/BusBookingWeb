@@ -117,7 +117,8 @@ class ComplexOperation:
                 Bus.objName : busObj.serialize(),
                 Owner.objName : ownerObj.serialize(),
                 f'from_{City.objName}' : cityObj1.serialize(),
-                f'to_{City.objName}' : cityObj2.serialize()
+                f'to_{City.objName}' : cityObj2.serialize(),
+                Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId)
             } for scheduleObj, busObj, ownerObj, cityObj1, cityObj2 in queryResult
         ]
         
@@ -127,14 +128,40 @@ class ComplexOperation:
     def getOwnerBuses(self, ownerUsername):
         queryResult = DB_session.query(Bus).filter(Bus.username == ownerUsername).all()
         self.response_data[label.data][Bus.objName] = [busObj.serialize() for busObj in queryResult] 
-        print(self.response_data)
         return self.response_data
 
 
-    #needs changing
     def getOperatorSchedules(self, operatorUsername):
-        queryResult = DB_session.query(Schedule, Bus, Owner, Stop, City).select_from(Schedule).join(Bus, Owner, At, Stop, City).all()
-        return queryResult
+        City1 = aliased(City)
+        City2 = aliased(City)
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+            .join(City1, City1.cityId == Schedule.fromCity)\
+            .join(City2, City2.cityId == Schedule.toCity)\
+            .join(Bus, Owner)\
+            .filter(Schedule.username == operatorUsername)\
+            .all()
+        
+        self.response_data[label.data] = [
+            {
+                Schedule.objName : scheduleObj.serialize(),
+                Bus.objName : busObj.serialize(),
+                Owner.objName : ownerObj.serialize(),
+                Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId),
+                f'from_{City.objName}' : cityObj1.serialize(),
+                f'to_{City.objName}' : cityObj2.serialize()
+            } for (scheduleObj, busObj, ownerObj, cityObj1, cityObj2) in queryResult
+        ]
+        return self.response_data
+
+
+    def getSchedulesStop(self, search_scheduleId):
+        queryResult = DB_session.query(Stop)\
+            .join(At, At.stopId == Stop.stopId)\
+            .filter(At.scheduleId == search_scheduleId)\
+            .all()
+
+        stopObjList = [stopObj.serialize() for stopObj in queryResult]
+        return stopObjList
 
     def getAllOperators(self):
         queryResult = DB_session.query(Operator).all()

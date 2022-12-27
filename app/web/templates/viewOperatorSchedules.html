@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block css %}
+    <style>
+        .component-main{
+            font-size: larger;
+            text-align: center;
+        }
+        .main-table-grid {
+            background-color: black;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+            row-gap: 1px;
+        }
+
+        .table-cell {
+            background-color: lightgreen;
+            padding: 2vh;
+            border: 1px solid black;
+        }
+
+        .table-cell-header{
+            background-color: burlywood;
+        }
+
+        .stops{
+            text-align: start;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            My Schedules
+        </div>
+        <div class="main-table-grid">
+            <div class="table-cell-header table-cell">
+                Date / Time
+            </div>
+            <div class="table-cell-header table-cell">
+                City
+            </div>
+            <div class="table-cell-header table-cell">
+                Bus / Operator
+            </div>
+            <div class="table-cell-header table-cell">
+                Fair Fees
+            </div>
+            <div class="table-cell-header table-cell">
+                Stops
+            </div>
+
+            {% for rowObj in response_data['data'] %}
+                {% if rowObj['schedule'] %}
+                    <div class="table-cell">
+                        {{rowObj['schedule']['schedule-from-date']}} <br> 
+                        {{rowObj['schedule']['schedule-departure-time']}} <br>
+                         -To- <br> 
+                        {{rowObj['schedule']['schedule-to-date']}} <br> 
+                        {{rowObj['schedule']['schedule-drop-time']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['from_city']['city-name']}} <br>
+                         -To- <br>
+                        {{rowObj['to_city']['city-name']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['schedule']['operator-username']}} <br> -Driving- <br> {{rowObj['bus']['bus-number-plate']}}
+                    </div>
+                    <div class="table-cell">
+                        {{rowObj['schedule']['schedule-fair-fees']}}
+                    </div>
+                    <div class="table-cell stops">
+                        {% for stop in rowObj['stop'] %}
+                            {{stop['stop-name']}} => {{stop['stop-address']}} <br> 
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

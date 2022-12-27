@@ -1,4 +1,4 @@
-from flask import flash, redirect
+from flask import flash, redirect, url_for
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
@@ -117,7 +117,7 @@ class Owner(Base):
             if Owner.isLoggedOn() == False:
                 #Not logged in 
                 flash(label_reason.loginInRequired)
-                return redirect('login/owner')
+                return redirect(url_for('login', role='owner'))
             else:
                 #Owner is Logined
                 return func(*args, **kwargs)

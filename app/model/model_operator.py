@@ -2,7 +2,8 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
-from .. import label
+from .. import label, label_reason
+from flask import flash, redirect, url_for
 
 class Operator(Base):
     __tablename__ = 'Operator'
@@ -70,13 +71,24 @@ class Operator(Base):
 
     def updateInformation(self):
         try:
-            DB_session.query(Operator).filter(Operator.username == self.username).update(
-                {
-                    Operator.name : self.name,
-                    Operator.address : self.address,
-                    Operator.contact : self.contact
-                }
-            )
+            if(self.name):
+                DB_session.query(Operator).filter(Operator.username == self.username).update(
+                    {
+                        Operator.name : self.name
+                    }
+                )
+            elif(self.contact):
+                DB_session.query(Operator).filter(Operator.username == self.username).update(
+                    {
+                        Operator.contact : self.contact
+                    }
+                )
+            elif(self.address):
+                DB_session.query(Operator).filter(Operator.username == self.username).update(
+                    {
+                        Operator.address : self.address
+                    }
+                )
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -101,3 +113,17 @@ class Operator(Base):
         if(retVal[1] != Operator.accessType):
             return False
         return True
+    
+    @staticmethod
+    def requireLogin(func):
+        def wrap(*args, **kwargs):
+            if Operator.isLoggedOn() == False:
+                #Not logged in 
+                flash(label_reason.loginInRequired)
+                return redirect(url_for('login', role='operator'))
+            else:
+                #Operator is Logined
+                return func(*args, **kwargs)
+
+        wrap.__name__ = func.__name__
+        return wrap
