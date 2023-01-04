@@ -21,7 +21,7 @@ class ComplexOperation:
     def getAllCity(self, search):
         if(search):
             search = f'%{search}%'
-            queryResult = DB_session.query(City).filter(City.objName.ilike(search)).all()
+            queryResult = DB_session.query(City).filter(City.name.ilike(search)).all()
         else:
             queryResult = DB_session.query(City).all()
         self.response_data[label.data][City.objName] = [cityObj.serialize() for cityObj in queryResult]
