@@ -2,7 +2,8 @@ from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time,
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
-from .. import label
+from .. import label, label_reason
+from flask import flash, url_for, redirect
 
 class Customer(Base):
     __tablename__ = 'Customer'
@@ -66,14 +67,19 @@ class Customer(Base):
         else:
             return True
             
+            
     def updateInformation(self):
         try:
-            DB_session.query(Customer).filter(Customer.username == self.username).update(
+            if(self.name):
+                DB_session.query(Customer).filter(Customer.username == self.username).update(
                 {
-                    Customer.name : self.name,
+                    Customer.name : self.name
+                })
+            if(self.contact):
+                DB_session.query(Customer).filter(Customer.username == self.username).update(
+                {
                     Customer.contact : self.contact
-                }
-            )
+                })
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -89,6 +95,7 @@ class Customer(Base):
             label.contact: self.contact
         }
 
+
     @staticmethod
     def isLoggedOn():
         retVal = getSessionStatus()
@@ -97,3 +104,18 @@ class Customer(Base):
         if(retVal[1] != Customer.accessType):
             return False
         return True
+
+    
+    @staticmethod
+    def requireLogin(func):
+        def wrap(*args, **kwargs):
+            if Customer.isLoggedOn() == False:
+                #Not logged in 
+                flash(label_reason.loginInRequired)
+                return redirect(url_for('login', role='customer'))
+            else:
+                #Customer is Logined
+                return func(*args, **kwargs)
+
+        wrap.__name__ = func.__name__
+        return wrap

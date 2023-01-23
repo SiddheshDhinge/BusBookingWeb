@@ -78,14 +78,24 @@
 
     <!-- Script for handling flash message closing -->
     <script>
+        function removeFlashContainer()
+        {
+            const flashContainer = document.getElementById("flash-message-container");
+            if(flashContainer != null)
+                    flashContainer.remove();
+        }
+
         window.addEventListener('load', function(){
             setTimeout(function(){
-                document.getElementById("flash-message-container").remove();
+                removeFlashContainer();
             }, 5000);
         });
-        document.getElementById("flash-message-btn").addEventListener("click", function(){
-            document.getElementById("flash-message-container").remove();
-        });
+        
+        const flashContainer = document.getElementById("flash-message-btn");
+        if(flashContainer != null)
+            flashContainer.addEventListener("click", function(){
+                removeFlashContainer();
+            });
     </script>
 </body>
 </html>

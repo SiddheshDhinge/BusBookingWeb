@@ -77,13 +77,13 @@ class Operator(Base):
                         Operator.name : self.name
                     }
                 )
-            elif(self.contact):
+            if(self.contact):
                 DB_session.query(Operator).filter(Operator.username == self.username).update(
                     {
                         Operator.contact : self.contact
                     }
                 )
-            elif(self.address):
+            if(self.address):
                 DB_session.query(Operator).filter(Operator.username == self.username).update(
                     {
                         Operator.address : self.address

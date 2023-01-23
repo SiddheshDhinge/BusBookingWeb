@@ -71,18 +71,12 @@ class Owner(Base):
 
     def updateInformation(self):
         try:
-            if(self.name and self.contact):
-                DB_session.query(Owner).filter(Owner.username == self.username).update(
-                {
-                    Owner.name : self.name,
-                    Owner.contact : self.contact
-                })
-            elif(self.name):
+            if(self.name):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.name : self.name
                 })
-            elif(self.contact):
+            if(self.contact):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
                     Owner.contact : self.contact

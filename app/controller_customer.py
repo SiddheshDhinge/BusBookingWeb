@@ -1,4 +1,4 @@
-from flask import render_template, session, request, jsonify, flash, redirect
+from flask import render_template, session, request, jsonify, flash, redirect, url_for
 from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
@@ -63,70 +63,64 @@ class ControllerCustomer:
 
         return jsonify(self.response_data)
         
+
     def handleAccountCreation(self):
-        username = request.form.get(label.username)
-        password = request.form.get(label.password)
-        name = request.form.get(label.name)
-        contact = request.form.get(label.contact)
+        username = request.form.get(label.customer_username)
+        password = request.form.get(label.customer_password)
+        name = request.form.get(label.customer_name)
+        contact = request.form.get(label.customer_contact)
         result = Customer(username=username, password=password, name=name, contact=contact).createCustomer()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.userCreationSuccess
+            flash(label_reason.userCreationSuccess)
+            return redirect(url_for('login', role= Customer.accessType))
         else:
-            self.response_data[label.details] = label_reason.userCreationFailed
+            flash(label_reason.userCreationFailed)
+            return redirect(url_for('signUp', role= Customer.accessType))
+
 
     def handleLogin(self):
-        if(request.method == 'POST'):
-            username = request.form.get(label.username)
-            password = request.form.get(label.password)
-            result = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
-            self.response_data[label.success] = result
-            
-            if(result == True):
-                flash(label_reason.userLoginSuccess)
-                session.permanent = True
-                return redirect('/')
-            else:   
-                flash(label_reason.userLoginFailed)
-                return render_template('login.html', 
-                    username = label.username,
-                    password = label.password,
-                    role = Customer.accessType
-                )
-        else:
-            return render_template('login.html', 
-                username = label.username,
-                password = label.password,
-                role = Customer.accessType
-            )
-
-    def handleLogout(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        result = Customer(username=None, password=None, name=None, address=None, contact=None).logoutCustomer()
+        username = request.form.get(label.customer_username)
+        password = request.form.get(label.customer_password)
+        result = Customer(username=username, password=password, name=None, contact=None).loginCustomer()
         self.response_data[label.success] = result
+        
         if(result == True):
-            self.response_data[label.details] = label_reason.userLogoutSuccess
+            flash(label_reason.userLoginSuccess)
+            session.permanent = True
+            return redirect(url_for('landingCustomer'))
         else:
-            self.response_data[label.details] = label_reason.userLogoutFailed
+            flash(label_reason.userLoginFailed)
+            return redirect(url_for('login', role= Customer.accessType))
+            
+
+    @Customer.requireLogin
+    def handleLogout(self):
+        result = Customer(username=None, password=None, name=None, contact=None).logoutCustomer()
+        self.response_data[label.success] = result
+
+        if(result == True):
+            flash(label_reason.userLogoutSuccess)
+            return redirect(url_for('chooseLogin'))
+        else:
+            flash(label_reason.userLogoutFailed)
+            return redirect(url_for('landingCustomer'))
 
 
     def handleUpdateAccountProfile(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
-        name = request.form.get(label.name)
-        contact = request.form.get(label.contact)
+        name = request.form.get(label.customer_name)
+        contact = request.form.get(label.customer_contact)
         username = session[label.username]
+
         customerObj = Customer(username=username, password=None, name=name, contact=contact)
         result = customerObj.updateInformation()
         self.response_data[label.success] = result
+
         if(result == True):
-            self.response_data[label.details] = label_reason.userAccountUpdateSuccess
+            flash(label_reason.userAccountUpdateSuccess)
         else:
-            self.response_data[label.details] = label_reason.userAccountUpdateFailed
+            flash(label_reason.userAccountUpdateFailed)
+        return redirect(url_for('landingCustomer'))
 
 
     def handleAddPassenger(self):

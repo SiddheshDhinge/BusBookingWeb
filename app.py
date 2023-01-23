@@ -212,11 +212,12 @@ def viewBus():
 # Update Owners profile
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin
-def updateOwnerProfle():
+def updateOwnerProfile():
     if(request.method == 'POST'):
         return ControllerOwner().handleUpdateAccountProfile()
     else:
         return render_template('updateOwnerProfile.html', response_data= {
+            label.name_labels : label.owner_all_label,
             label.options : {
                 label.nav_btn : label.btn_logout
             }
@@ -352,9 +353,10 @@ def addSchedule():
 
 # OWNER END
 
+
 # OPERATOR BEGIN
 
-# Landing Page for Owner
+# Landing Page for Operator
 @app.route('/landingoperator')
 @Operator.requireLogin
 def landingOperator():
@@ -374,6 +376,7 @@ def updateOperatorProfile():
         return ControllerOperator().handleUpdateAccountProfile()
     else:
         return render_template('updateOperatorProfile.html', response_data= {
+            label.name_labels : label.operator_all_label,
             label.options : {
                 label.nav_btn : label.btn_logout
             }
@@ -392,6 +395,36 @@ def viewOperatorSchedules():
     return render_template('viewOperatorSchedules.html', response_data= response_data)
 
 # OPERATOR END
+
+
+# CUSTOMER BEGIN
+
+# Landing Page for Customer
+@app.route('/landingcustomer')
+@Customer.requireLogin
+def landingCustomer():
+    return render_template('landingCustomer.html', response_data= {
+        label.options : {
+            label.nav_btn : label.btn_logout
+        }
+    })
+
+
+# Update Customer profile
+@app.route('/updatecustomerprofile', methods=['GET', 'POST'])
+@Customer.requireLogin
+def updateCustomerProfile():
+    if(request.method == 'POST'):
+        return ControllerCustomer().handleUpdateAccountProfile()
+    else:
+        return render_template('updateCustomerProfile.html', response_data= {
+            label.name_labels : label.customer_all_label,
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
+        })
+
+# CUSTOMER END
 
 # used for testing
 # @app.route('/viewSchedulesD')

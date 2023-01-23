@@ -34,3 +34,11 @@ filterNoMatch = 'There are no matching results!'
 filterMatch = 'Here are some results!'
 scheduleDateFailed = 'Please Enter a valid Date!'
 sourceDestinatioFailed = 'Please Enter a valid Source and destination City!'
+
+
+#Custom Message flashing
+# NOT IMPLEMENTED
+from flask import flash
+
+def flashMessage(messageLabel):
+    flash(message= messageLabel[0], category= messageLabel[1])
