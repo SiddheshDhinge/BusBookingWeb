@@ -10,14 +10,16 @@ class At(Base, Common):
 
     scheduleId = Column('scheduleId', Integer, ForeignKey('Schedule.scheduleId'), nullable=False)
     stopId = Column('stopId', Integer, ForeignKey('Stop.stopId'), nullable=False)
-    
+    sequence = Column('sequence', Integer, nullable=False)
+
     __table_args__ = (
         PrimaryKeyConstraint(scheduleId, stopId),
     )
 
-    def __init__(self, scheduleId: int, stopId: int):
+    def __init__(self, scheduleId: int, stopId: int, sequence: int):
         self.scheduleId = scheduleId
         self.stopId = stopId
+        self.sequence = sequence
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.scheduleId}) : {self.stopId}"

@@ -71,6 +71,7 @@ schedule_dropTime = 'schedule-drop-time'
 schedule_fromCity = 'schedule-from-city-id'
 schedule_toCity = 'schedule-to-city-id'
 schedule_fairFees = 'schedule-fair-fees'
+schedule_isComplete = 'schedule-is-complete'
 schedule_numberPlate = 'schedule-number-plate'
 
 passenger_id = 'passenger-id'

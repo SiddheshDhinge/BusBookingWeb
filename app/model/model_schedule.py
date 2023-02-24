@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, UniqueConstraint, CheckConstraint
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Time, Date, CHAR, Boolean, UniqueConstraint, CheckConstraint
 from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
@@ -19,6 +19,7 @@ class Schedule(Base, Common):
     departureTime = Column('departureTime', Time, nullable=False)
     dropTime = Column('dropTime', Time, nullable=False)
     fairFees = Column('fairFees', Integer, nullable=False)
+    isComplete = Column('isComplete', Boolean, nullable=False, default=False)
     fromCity = Column('fromCity', Integer, ForeignKey('City.cityId'), nullable=False)
     toCity = Column('toCity', Integer, ForeignKey('City.cityId'), nullable=False)
     numberPlate = Column('numberPlate', String(16), ForeignKey('Bus.numberPlate'), nullable=False)
@@ -36,7 +37,7 @@ class Schedule(Base, Common):
         self.username = username
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.scheduleId}) : {self.fromDate}, {self.toDate}, {self.departureTime}, {self.dropTime}, {self.fairFees}, {self.fromCity}, {self.toCity}, {self.numberPlate}, {self.username}"
+        return f"{self.__tablename__} => ({self.scheduleId}) : {self.fromDate}, {self.toDate}, {self.departureTime}, {self.dropTime}, {self.fairFees}, {self.isComplete}, {self.fromCity}, {self.toCity}, {self.numberPlate}, {self.username}"
     
     def serialize(self):
         return {
@@ -46,6 +47,7 @@ class Schedule(Base, Common):
             label.schedule_departureTime : f'{self.departureTime:%H:%M:%S}',
             label.schedule_dropTime : f'{self.dropTime:%H:%M:%S}',
             label.schedule_fairFees : self.fairFees,
+            label.schedule_isComplete : self.isComplete,
             label.schedule_fromCity : self.fromCity,
             label.schedule_toCity : self.toCity,
             label.schedule_numberPlate : self.numberPlate,

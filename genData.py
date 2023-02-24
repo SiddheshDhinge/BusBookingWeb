@@ -13,35 +13,37 @@ def pad(num):
 def randomPad(a, b):
     return pad(random.randint(a, b))
 
-for _ in range(1, 151):
+for _ in range(101, 151):
     # Bus
     # data = (f'MH {random.randint(5, 20)} AB {random.randint(5000, 9999)}' , random.randint(30, 50), pos[random.randint(0, 1)], own[random.randint(0, len(own) -1)])
 
     # Schedule
-    frmM = 12 #random.randint(1, 11)
-    frmD = random.randint(20, 30)
-    toD = frmD+ 1
-    data = (
-        f'2022-{pad(frmM)}-{pad(frmD)}',
-        f'2022-{pad(frmM)}-{pad(toD)}',
-        f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
-        f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
-        random.randint(1000, 10000), 
-        random.randint(1, 3),
-        random.randint(1, 3),
-        f'{number[random.randint(0, len(number) -1)]}',
-        oper[random.randint(0, len(oper) -1)]
-    )
+    # frmM = 12 #random.randint(1, 11)
+    # frmD = random.randint(20, 30)
+    # toD = frmD+ 1
+    # data = (
+    #     f'2022-{pad(frmM)}-{pad(frmD)}',
+    #     f'2022-{pad(frmM)}-{pad(toD)}',
+    #     f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
+    #     f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
+    #     random.randint(1000, 10000), 
+    #     random.randint(1, 3),
+    #     random.randint(1, 3),
+    #     f'{number[random.randint(0, len(number) -1)]}',
+    #     oper[random.randint(0, len(oper) -1)]
+    # )
 
     # At
-    # for __ in random.sample(range(1, 30), random.randint(5, 10)):
-    #     print(f'{_}, {__}')
+    seq = 1
+    for __ in random.sample(range(1, 30), random.randint(5, 10)):
+        print(f'{_}, {__}, {seq}')
+        seq += 1
 
     # Booking
     # for seat in range(1, random.randint(1, 30)):
     #     data = (seat, _, random.randint(1, 35))
 
-    print(data)
+    # print(data)
 
 
 
