@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .stop-container-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .stop-container{
+        background-color: lightblue;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .single-stop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="stop-container-wrapper">
+    <div id="stop-container" class="stop-container">
+        <!--
+        <div class="single-stop">
+            <div class="city-selector">
+                <select>
+                    <option>Mumbai1</option>
+                    <option>Mumbai2</option>
+                    <option>Mumbai3</option>
+                    <option>Mumbai4</option>
+                    <option>Mumbai6</option>
+                </select>
+            </div>
+            <div class="stop-selector">
+                <select>
+                </select>
+            </div>
+            <button onclick="removeSingleStop(this)" type="button">REMOVE</button>
+        </div> 
+        -->
+    </div>
+    <div class="btn-wrapper">
+        <button id="addBtn" type="button">ADD</button>
+        <form action="{{url_for('updateStops')}}" method="POST">
+            <input id="data" name="data" type="hidden" />
+            <button>Save</button>
+        </form>
+    </div>
+<script>
+    let response_data = null
+    let stopIdArray = []
+    const data_url = "{{response_data['options']['ip']}}/getstopsbycity";
+    fetch(data_url)
+    .then((response) => response.json())
+    .then((json) => response_data = json);
+    
+    const stopContainer = document.getElementById('stop-container');
+    document.getElementById('addBtn').addEventListener('click', function(){
+        // Create single stop element 
+        const singleStopDiv = document.createElement("div");
+        singleStopDiv.classList.add("single-stop");
+        stopContainer.appendChild(singleStopDiv);
+
+        // create City selector element
+        const citySelectorDiv = document.createElement("div");
+        citySelectorDiv.classList.add("city-selector");
+        stopContainer.appendChild(citySelectorDiv);
+        const citySelectorSelect = document.createElement("select");
+        citySelectorSelect.addEventListener("change", citySelectionChanged);
+        citySelectorDiv.appendChild(citySelectorSelect);
+        singleStopDiv.appendChild(citySelectorDiv);
+
+        // create Stop selector element
+        const stopSelectorDiv = document.createElement("div");
+        stopSelectorDiv.classList.add("stop-selector");
+        const stopSelectorSelect = document.createElement("select");
+        stopSelectorSelect.addEventListener("change", updateStops);
+        stopSelectorDiv.appendChild(stopSelectorSelect);
+        singleStopDiv.appendChild(stopSelectorDiv);
+
+        // Add dummy selected option
+        const cityOption = document.createElement("option");
+        cityOption.value = -1;
+        cityOption.innerText = "--SELECT--";
+        citySelectorSelect.appendChild(cityOption);
+        stopSelectorSelect.appendChild(cityOption.cloneNode(deep=true));
+
+        // create Remove Button element
+        const removeButton = document.createElement("button");
+        removeButton.setAttribute('onclick','removeSingleStop(this)');
+        removeButton.innerHTML = "Remove";
+        singleStopDiv.appendChild(removeButton);
+
+        // add city options inside citySelector
+        Object.keys(response_data['data']).forEach(key => {
+            const cityOption = document.createElement("option");
+            cityOption.value = response_data['data'][key]['city-id']
+            cityOption.innerText = key;
+            citySelectorSelect.appendChild(cityOption);
+        });
+    });
+
+    function removeSingleStop(object)
+    {
+        stopContainer.removeChild(object.parentElement)
+    }
+
+    function citySelectionChanged(e)
+    {
+        cityId = e.target.value;
+        cityName = e.target.options[e.target.selectedIndex].text;
+        stopSelectorSelect = e.target.parentElement.nextElementSibling.firstElementChild;
+        stopSelectorSelect.innerHTML = "";
+
+        // Add dummy selected option
+        const stopOption = document.createElement("option");
+        stopOption.value = -1;
+        stopOption.innerText = "--SELECT--";
+        stopSelectorSelect.appendChild(stopOption);
+
+        // Add other options
+        response_data['data'][cityName]['stop'].forEach(stopObj => {
+            const stopOption = document.createElement("option");
+            stopOption.value = stopObj['stop-id'];
+            stopOption.innerText = stopObj['stop-name'];
+            stopSelectorSelect.appendChild(stopOption);
+        });
+    }
+
+    function updateStops()
+    {
+        stopIdArray = []
+        document.querySelectorAll(".stop-selector").forEach(element =>
+        {
+            stopIdArray.push(element.firstElementChild.value)
+        });
+
+        const payload = document.getElementById("data")
+        payload.value = "";
+        stopIdArray.forEach(element => {
+            payload.value += element + ",";
+        });
+
+        console.log(stopIdArray);
+    }
+</script>
+</div>
+
+
+{% endblock %}

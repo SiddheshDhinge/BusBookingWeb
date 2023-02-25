@@ -88,6 +88,7 @@ btn_login_signup = ('signUp', 'logIn')
 btn_signup = ('signUp')
 btn_login = ('logIn')
 btn_logout = ('logOut')
+ip = 'ip'
 
 data = 'data'
 search = 'search'

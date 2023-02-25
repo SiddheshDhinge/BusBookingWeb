@@ -118,6 +118,30 @@ sql_create_at_table = '''
     );
 '''
 
+sql_create_check_valid_seat_function = '''
+CREATE OR REPLACE FUNCTION check_valid_seat_function() RETURNS trigger AS $$
+declare totalSeatsPossible INT;
+BEGIN
+	SELECT "Bus"."totalSeats" INTO totalSeatsPossible FROM "Bus", "Schedule", "Booking" WHERE new."scheduleId" = "Schedule"."scheduleId" AND "Schedule"."numberPlate" = "Bus"."numberPlate";
+	IF totalSeatsPossible < new."seatNo" THEN
+		RAISE EXCEPTION 'Trying to Book Invalid Seat.';
+	END IF;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+'''
+
+sql_create_check_valid_seat_trigger = '''
+DROP TRIGGER IF EXISTS check_valid_seat_trigger on "Booking";
+CREATE TRIGGER check_valid_seat_trigger
+BEFORE INSERT ON "Booking"
+FOR EACH ROW EXECUTE FUNCTION check_valid_seat_function();
+'''
+
+sql_drop_check_valid_seat_function = 'DROP FUNCTION check_valid_seat_function();'
+
+sql_drop_check_valid_seat_trigger = 'DROP TRIGGER check_valid_seat_trigger on "Booking";'
+
 sql_insert_customer = "insert into Customer(Customer_username, Customer_password, Customer_name, Customer_contact) values(%s, %s, %s, %s);"
 
 sql_insert_operator = "insert into Operator(Operator_username, Operator_password, Operator_name, Operator_contact, Operator_address) values(%s, %s, %s, %s, %s);"

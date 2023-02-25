@@ -3,21 +3,21 @@
 <form id='stopForm' action="{{ url_for('addSchedule') }}" method="POST">
 
     <label for="cid1">From City:</label>
-    <input id="cid1" type="text" name="schedule-from-city-id" list="cityList1" />
-    <datalist id="cityList1">
+    <select id="cid1" name="schedule-from-city-id">
         {% for city in response_data['data']['city'] %}
             <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
         {% endfor %}
-    </datalist>
+    </select>
+
     <br><br>
     
     <label for="cid2">To City:</label>
-    <input id="cid2" type="text" name="schedule-to-city-id" list="cityList2" />
-    <datalist id="cityList2">
+    <select id="cid2" name="schedule-to-city-id">
         {% for city in response_data['data']['city'] %}
             <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
         {% endfor %}
-    </datalist>
+    </select>
+
     <br><br>
 
     <label for="fromdate">From Date:</label>

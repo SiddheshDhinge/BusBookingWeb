@@ -110,8 +110,8 @@ class ComplexOperation:
 
         queryResult = queryResult.all()
 
-        self.response_data.clear()
-        self.response_data[label.data] = [
+        # self.response_data.clear()
+        self.response_data[label.data][Schedule.objName] = [
             {
                 Schedule.objName : scheduleObj.serialize(),
                 Bus.objName : busObj.serialize(),
@@ -158,6 +158,7 @@ class ComplexOperation:
         queryResult = DB_session.query(Stop)\
             .join(At, At.stopId == Stop.stopId)\
             .filter(At.scheduleId == search_scheduleId)\
+            .order_by(At.sequence)\
             .all()
 
         stopObjList = [stopObj.serialize() for stopObj in queryResult]
@@ -174,3 +175,15 @@ class ComplexOperation:
     def getCustomerBooking(self, customerUsername):
         queryResult = DB_session.query(Booking, Passenger, Customer).join(Booking, Passenger, Customer).filter(Customer.username == customerUsername).all()
         return queryResult
+    
+    def getAllStopsByCity(self):
+        allCityObj = self.getAllCity(None)[label.data][City.objName]
+        self.response_data[label.data] = {}
+        for cityObj in allCityObj:
+            queryResult = DB_session.query(Stop).filter(Stop.cityId == cityObj[label.city_id]).all()
+            self.response_data[label.data][cityObj[label.city_name]] = {
+                label.city_id : cityObj[label.city_id],
+                Stop.objName : [stopObj.serialize() for stopObj in queryResult]
+            }
+            
+        return self.response_data

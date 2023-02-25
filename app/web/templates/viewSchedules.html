@@ -54,20 +54,18 @@ timeBlockNight = 'time-night' #}
             <form action="{{url_for('viewSchedules')}}" method="POST">
                 
                 <label for="fromcity">From City:</label>
-                <input id="fromcity" type="text" name="filter-from-city" list="fromcityList" />
-                <datalist id="fromcityList">
+                <select id="fromcity" name="filter-from-city">
                     {% for city in response_data['data']['city'] %}
                         <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
                     {% endfor %}
-                </datalist>
+                </select>
 
                 <label for="tocity">To City:</label>
-                <input id="tocity" type="text" name="filter-to-city" list="tocityList" />
-                <datalist id="tocityList">
+                <select id="tocity" name="filter-to-city">
                     {% for city in response_data['data']['city'] %}
                         <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
                     {% endfor %}
-                </datalist>
+                </select>
 
                 <label for="agency">Owner:</label>
                 <input id="agency" type="text" name="owner-username" list="ownerList" />
@@ -135,7 +133,7 @@ timeBlockNight = 'time-night' #}
                 Stops
             </div>
 
-            {% for rowObj in response_data['data'] %}
+            {% for rowObj in response_data['data']['schedule'] %}
                 {% if rowObj['schedule'] %}
                     <div class="table-cell">
                         {{rowObj['schedule']['schedule-from-date']}} <br> 

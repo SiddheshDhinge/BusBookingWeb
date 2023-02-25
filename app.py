@@ -4,16 +4,6 @@ print("\n\n\nSTARTED\n\n\n")
 # Configure Database Connection
 from app.model.database import connectDB, createAllTables
 connectDB()
-createAllTables()
-
-
-# Import Dependencies
-from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
-import os
-from dotenv import load_dotenv
-from datetime import timedelta
-load_dotenv()
-
 
 # Import App Modules
 from app import label, label_reason
@@ -25,11 +15,31 @@ from app.model.model_operator import Operator
 from app.model.model_customer import Customer
 from app.model.complex_operations import ComplexOperation
 from app.model.session_manager import getSessionStatus
+from app.model.model_bus import Bus
+from app.model.model_passenger import Passenger
+from app.model.model_schedule import Schedule
+from app.model.model_city import City
+from app.model.model_stop import Stop
+from app.model.model_booking import Booking
+from app.model.model_at import At
+
+#Create All Database Tables
+createAllTables()
+
+
+# Import Dependencies
+from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
+import os
+from dotenv import load_dotenv
+from datetime import timedelta
+load_dotenv()
+
 
 # Create App and Set Secret Key, session_lifetime
 app = Flask(__name__, static_url_path="", static_folder="app/web/static", template_folder="app/web/templates")
 app.secret_key = os.environ['app_secret']
 app.permanent_session_lifetime = timedelta(minutes= 15)
+ip_address = os.environ['ip_address']
 
 
 # Start Routes
@@ -280,11 +290,6 @@ def addStop():
 @app.route('/viewschedules', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewSchedules():
-    response_data = ComplexOperation().getAllCity(search= None)
-    response_data[label.options] = {
-        label.nav_btn : label.btn_logout
-    }
-    
     if(request.method == 'POST'):
         # create filters
         fromCity = request.form.get(label.filterFromCity, None)
@@ -318,6 +323,7 @@ def viewSchedules():
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
+        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objName]
         response_data[label.options] = {
             label.nav_btn : label.btn_logout
         }        
@@ -332,6 +338,10 @@ def viewSchedules():
 
     else:
         # return form for filling filters of schedules
+        response_data = ComplexOperation().getAllCity(search= None)
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
         return render_template('viewSchedules.html', response_data= response_data)
 
 
@@ -426,12 +436,31 @@ def updateCustomerProfile():
 
 # CUSTOMER END
 
+# API BEGIN
+
+# API For getting all stops in cities
+@app.route('/getstopsbycity')
+@Owner.requireLogin
+def getStopsByCity():
+    response_data = ComplexOperation().getAllStopsByCity()
+    return jsonify(response_data)
+
+# API END
+
+
 # used for testing
-# @app.route('/viewSchedulesD')
-# def viewSchedulesD():
-#     controllerObj = ControllerOperator()
-#     controllerObj.handleViewSchedule()
-#     return render_template('table.html', response_data= controllerObj.response_data)
+@app.route('/updatestops', methods=['GET', 'POST'])
+def updateStops():
+    if(request.method == "POST"):
+        pass
+    else:
+        response_data = ComplexOperation().getAllStopsByCity()
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout,
+            label.ip : ip_address
+        }
+        # return jsonify(response_data)
+        return render_template('updateStops.html', response_data= response_data)
 
 # @app.route('/debug')
 # def debug():
