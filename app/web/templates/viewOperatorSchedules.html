@@ -72,7 +72,7 @@
                     </div>
                     <div class="table-cell stops">
                         {% for stop in rowObj['stop'] %}
-                            {{stop['stop-name']}} => {{stop['stop-address']}} <br> 
+                            {{stop['stop']['stop-name']}} => {{stop['stop']['stop-address']}} <br> 
                         {% endfor %}
                     </div>
                 {% endif %}

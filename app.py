@@ -363,10 +363,35 @@ def addSchedule():
         return render_template('addSchedule.html', response_data= response_data)
 
 
+# View a Schedule in detail
 @app.route('/viewscheduledetails', methods=['GET', 'POST'])
 @Owner.requireLogin
 def viewScheduleDetails():
     return ControllerOwner().handleViewScheduleDetails()
+
+
+# Update a Schedules Stops
+@app.route('/updatestops', methods=['POST'])
+@Owner.requireLogin
+def updateStops():
+    sequence = request.form.get(label.stop_sequence, None)
+    # Validating Schedule
+
+    scheduleId = request.form.get(label.schedule_id, None)
+    if not scheduleId:
+        flash(label_reason.invalidScheduleIdError)
+        return redirect(url_for("viewSchedules"))
+    
+    username = session[label.username]
+    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, owner_username= username)
+    if not result:
+        flash(label_reason.invalidScheduleIdError)
+        return redirect(url_for("viewSchedules"))
+
+    # Set return point        
+    session[label.schedule_id] = request.form.get(label.schedule_id)
+
+    return ControllerOwner().handleScheduleStopUpdation(sequence= sequence)
 
 
 # OWNER END
@@ -457,40 +482,6 @@ def getStopsByCity():
 
 
 # used for testing
-@app.route('/updatestops', methods=['GET', 'POST'])
-def updateStops():
-    if(request.method == "POST"):
-        sequence = request.form.get(label.stop_sequence, None)
-        if not sequence:
-            flash(label_reason.invalidStopSequenceError)
-            return redirect(url_for("updateStops"))
-        
-        stop_sequence = []
-        invalidFlag = False
-        sequence = sequence[:-1].split(',')
-        for tmpStop in sequence:
-            try:
-                tmpStopInt = int(tmpStop)
-                if tmpStopInt < 0:
-                    invalidFlag = True
-                else:
-                    stop_sequence.append(tmpStopInt)
-            except Exception:
-                invalidFlag = True
-
-        if invalidFlag:
-            flash(label_reason.invalidStopSequenceError)
-            return redirect(url_for("updateStops"))
-        
-        return stop_sequence
-    else:
-        response_data = ComplexOperation().getAllStopsByCity()
-        response_data[label.options] = {
-            label.nav_btn : label.btn_logout,
-            label.ip : ip_address
-        }
-        # return jsonify(response_data)
-        return render_template('updateStops.html', response_data= response_data)
 
 # @app.route('/debug')
 # def debug():

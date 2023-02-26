@@ -181,13 +181,21 @@ class ComplexOperation:
 
 
     def getSchedulesStop(self, search_scheduleId):
-        queryResult = DB_session.query(Stop)\
+        queryResult = DB_session.query(Stop, City)\
             .join(At, At.stopId == Stop.stopId)\
+            .join(City, City.cityId == Stop.cityId)\
             .filter(At.scheduleId == search_scheduleId)\
             .order_by(At.sequence)\
             .all()
 
-        stopObjList = [stopObj.serialize() for stopObj in queryResult]
+        stopObjList = [
+            {
+                Stop.objName : stopObj.serialize(),
+                City.objName : cityObj.serialize()
+            }
+            for stopObj, cityObj in queryResult
+        ]
+
         return stopObjList
 
     def getAllOperators(self):
@@ -213,3 +221,23 @@ class ComplexOperation:
             }
             
         return self.response_data
+    
+    def isScheduleOfOwner(self, scheduleId, owner_username):
+        result = DB_session.query(
+            DB_session.query(Schedule, Bus)\
+                .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+                .filter(Bus.username == owner_username)\
+                .filter(Schedule.scheduleId == scheduleId).exists()
+        ).scalar()
+        return result
+    
+    def updateScheduleStop(self, scheduleId, stop_sequence):
+        DB_session.query(At).filter(At.scheduleId == scheduleId).delete()
+
+        for sequenceId, stopId in enumerate(stop_sequence):
+            result = At(scheduleId= scheduleId, stopId= stopId, sequence= sequenceId).createObject()
+            if not result:
+                return False
+            
+        DB_session.commit()
+        return True

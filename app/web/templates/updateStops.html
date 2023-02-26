@@ -25,19 +25,16 @@
         <!--
         <div class="single-stop">
             <div class="city-selector">
-                <select>
-                    <option>Mumbai1</option>
-                    <option>Mumbai2</option>
-                    <option>Mumbai3</option>
-                    <option>Mumbai4</option>
-                    <option>Mumbai6</option>
+                <select onchange="citySelectionChanged()">
+                    <option value="-1">--SELECT CITY--</option>
                 </select>
             </div>
             <div class="stop-selector">
-                <select>
+                <select onchange="updateStops()">
+                    <option value="-1">--SELECT STOP--</option>
                 </select>
             </div>
-            <button onclick="removeSingleStop(this)" type="button">REMOVE</button>
+            <button onclick="removeSingleStop(this)">Remove</button>
         </div> 
         -->
     </div>
@@ -83,9 +80,13 @@
         // Add dummy selected option
         const cityOption = document.createElement("option");
         cityOption.value = -1;
-        cityOption.innerText = "--SELECT--";
+        cityOption.innerText = "--SELECT CITY--";
         citySelectorSelect.appendChild(cityOption);
-        stopSelectorSelect.appendChild(cityOption.cloneNode(deep=true));
+
+        const stopOption = document.createElement("option");
+        stopOption.value = -1;
+        stopOption.innerText = "--SELECT STOP--";
+        stopSelectorSelect.appendChild(stopOption);
 
         // create Remove Button element
         const removeButton = document.createElement("button");
@@ -117,7 +118,7 @@
         // Add dummy selected option
         const stopOption = document.createElement("option");
         stopOption.value = -1;
-        stopOption.innerText = "--SELECT--";
+        stopOption.innerText = "--SELECT STOP--";
         stopSelectorSelect.appendChild(stopOption);
 
         // Add other options

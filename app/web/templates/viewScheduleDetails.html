@@ -22,6 +22,29 @@
     .table-cell-header {
         background-color: burlywood;
     }
+
+    {# Stop Container Styles #}
+    .stop-container-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .stop-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .single-stop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .invisible-form{
+        display: inline;
+    }
+    .stop-editor-btn{
+        padding: 5px;
+        border: 1px solid grey;
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -98,22 +121,213 @@
             
             <div class="table-cell table-cell-header">
                 Stops
+                <button class="stop-editor-btn" onclick="editStops(this)">Edit</button>
             </div>
             <div class="table-cell">
-                <div class="main-table-grid">
+                <!-- Edit Stops -->
+                
+                <div id="stop-editor-container" class="stop-container-wrapper">
+                    <div id="stop-container" class="stop-container">
+                        <!-- Stops here -->
+                        <!--
+                        <div class="single-stop">
+                            <div class="city-selector">
+                                <select onchange="citySelectionChanged()">
+                                    <option value="-1">--SELECT CITY--</option>
+                                </select>
+                            </div>
+                            <div class="stop-selector">
+                                <select onchange="updateStops()">
+                                    <option value="-1">--SELECT STOP--</option>
+                                </select>
+                            </div>
+                            <button onclick="removeSingleStop(this)">Remove</button>
+                        </div>
+                        --> 
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="stop-editor-btn" id="addBtn" type="button">Add Stop</button>
+                        <form class="invisible-form" action="{{url_for('updateStops')}}" method="POST">
+                            <input id="stop-sequence" name="stop-sequence" type="hidden" />
+                            <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
+                            <button class="stop-editor-btn">Save Sequence</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Display Stops -->
+                <div id="stop-display-container" class="main-table-grid">
                     {% for stopObj in response_data['data']['schedule']['stop'] %}
                         {% if stopObj %}
                         <div class="table-cell table-cell-header">
                             {{loop.index}}.
                         </div>
-                        <div class="table-cell">
-                            {{stopObj['stop-name']}} <br>
-                            {{stopObj['stop-address']}}
+                        <div class="table-cell stop-table-cell">
+                            <input type="hidden" value="{{stopObj['city']['city-id']}}"/>
+                            <input type="hidden" value="{{stopObj['stop']['stop-id']}}"/>
+                            {{stopObj['stop']['stop-name']}} <br>
+                            {{stopObj['stop']['stop-address']}}
                         </div>
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
+        <script>
+            stop_editor_container = null;
+            stop_display_container = null;
+
+            window.onload = function()
+            {
+                stop_editor_container = document.querySelector("#stop-editor-container");
+                stop_editor_container.style.display = "none";
+                stop_display_container = document.querySelector("#stop-display-container");
+            }
+            function editStops(element)
+            {
+                element.style.display = "none";
+                stop_editor_container.style.display = "block";
+                stop_display_container.style.display = "none";
+            }
+        </script>
+
+        <script>
+            let response_data = null
+            let stopIdArray = []
+            const data_url = "{{response_data['options']['ip']}}/getstopsbycity";
+            fetch(data_url)
+            .then((response) => response.json())
+            .then((json) => {
+                response_data = json;
+                loadStops();
+                updateStops();
+            });
+            
+            const stopContainer = document.getElementById('stop-container');
+            document.getElementById('addBtn').addEventListener('click', addSingleStop);
+
+
+            function addSingleStop(){
+                // Create single stop element 
+                const singleStopDiv = document.createElement("div");
+                singleStopDiv.classList.add("single-stop");
+                stopContainer.appendChild(singleStopDiv);
+
+                // create City selector element
+                const citySelectorDiv = document.createElement("div");
+                citySelectorDiv.classList.add("city-selector");
+                stopContainer.appendChild(citySelectorDiv);
+                const citySelectorSelect = document.createElement("select");
+                citySelectorSelect.addEventListener("change", citySelectionChanged);
+                citySelectorDiv.appendChild(citySelectorSelect);
+                singleStopDiv.appendChild(citySelectorDiv);
+
+                // create Stop selector element
+                const stopSelectorDiv = document.createElement("div");
+                stopSelectorDiv.classList.add("stop-selector");
+                const stopSelectorSelect = document.createElement("select");
+                stopSelectorSelect.addEventListener("change", updateStops);
+                stopSelectorDiv.appendChild(stopSelectorSelect);
+                singleStopDiv.appendChild(stopSelectorDiv);
+
+                // Add dummy selected option
+                const cityOption = document.createElement("option");
+                cityOption.value = -1;
+                cityOption.innerText = "--SELECT CITY--";
+                citySelectorSelect.appendChild(cityOption);
+
+                const stopOption = document.createElement("option");
+                stopOption.value = -1;
+                stopOption.innerText = "--SELECT STOP--";
+                stopSelectorSelect.appendChild(stopOption);
+
+                // create Remove Button element
+                const removeButton = document.createElement("button");
+                removeButton.setAttribute('onclick','removeSingleStop(this)');
+                removeButton.innerHTML = "Remove";
+                singleStopDiv.appendChild(removeButton);
+
+                // add city options inside citySelector
+                Object.keys(response_data['data']).forEach(key => {
+                    const cityOption = document.createElement("option");
+                    cityOption.value = response_data['data'][key]['city-id']
+                    cityOption.innerText = key;
+                    citySelectorSelect.appendChild(cityOption);
+                });
+            }
+
+            function removeSingleStop(object)
+            {
+                stopContainer.removeChild(object.parentElement);
+                updateStops();
+            }
+
+            function citySelectionChanged(e)
+            {
+                citySelectionChangedHandler(e.target);
+            }
+            function citySelectionChangedHandler(element)
+            {
+                cityId = element.value;
+                cityName = element.options[element.selectedIndex].text;
+                stopSelectorSelect = element.parentElement.nextElementSibling.firstElementChild;
+                stopSelectorSelect.innerHTML = "";
+
+                // Add dummy selected option
+                const stopOption = document.createElement("option");
+                stopOption.value = -1;
+                stopOption.innerText = "--SELECT STOP--";
+                stopSelectorSelect.appendChild(stopOption);
+
+                // Add other options
+                response_data['data'][cityName]['stop'].forEach(stopObj => {
+                    const stopOption = document.createElement("option");
+                    stopOption.value = stopObj['stop-id'];
+                    stopOption.innerText = stopObj['stop-name'];
+                    stopSelectorSelect.appendChild(stopOption);
+                });
+            }
+
+            function updateStops()
+            {
+                stopIdArray = []
+                document.querySelectorAll(".stop-selector").forEach(element =>
+                {
+                    stopIdArray.push(element.firstElementChild.value)
+                });
+
+                const payload = document.getElementById("stop-sequence")
+                payload.value = "";
+                stopIdArray.forEach(element => {
+                    payload.value += element + ",";
+                });
+
+                console.log(stopIdArray);
+            }
+
+            function loadStops()
+            {
+                stopsArray = []
+                document.querySelectorAll(".stop-table-cell").forEach(element =>
+                {
+                    const cityIdInput = element.firstElementChild;
+                    const stopIdInput = cityIdInput.nextElementSibling;
+
+                    stopsArray.push({0 : cityIdInput.value, 1 : stopIdInput.value});
+                });
+
+                for(let i=0; i< stopsArray.length; i++)
+                {
+                    addSingleStop();
+                    const addedSingleStop = document.getElementById("stop-container").lastElementChild;
+                    const citySelectorSelect = addedSingleStop.querySelector(".city-selector > select");
+                    const stopSelectorSelect = addedSingleStop.querySelector(".stop-selector > select");
+
+                    citySelectorSelect.value = stopsArray[i][0];
+                    citySelectionChangedHandler(citySelectorSelect);
+                    stopSelectorSelect.value = stopsArray[i][1];
+                }
+            }
+        </script>
     </div>
 {% endblock %}

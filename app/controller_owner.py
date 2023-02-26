@@ -198,7 +198,12 @@ class ControllerOwner:
 
     def handleViewScheduleDetails(self):
         try:
-            scheduleId = int(request.form.get('schedule-id'))
+            scheduleId = request.form.get(label.schedule_id, None)
+            #Load from session
+            if not scheduleId:
+                scheduleId = session[label.schedule_id]
+                session.pop(label.schedule_id, None)
+            scheduleId = int(scheduleId)
         except:
             flash(label_reason.invalidScheduleIdError)
             return redirect(url_for('viewSchedules'))
@@ -216,3 +221,40 @@ class ControllerOwner:
         
         # return jsonify(response_data)
         return render_template('viewScheduleDetails.html', response_data= response_data)
+
+    def handleScheduleStopUpdation(self, sequence):
+        # Validating Stops
+        if not sequence:
+            # Empty Field Submitted
+            flash(label_reason.invalidStopSequenceError)
+            return redirect(url_for("viewScheduleDetails"))
+        
+        stop_sequence = []
+        invalidFlag = False
+        sequence = sequence[:-1].split(',')
+        for tmpStop in sequence:
+            try:
+                tmpStopInt = int(tmpStop)
+                if tmpStopInt < 0:
+                    invalidFlag = True
+                else:
+                    stop_sequence.append(tmpStopInt)
+            except Exception:
+                invalidFlag = True
+
+        if invalidFlag:
+            # Field either not selected or tampered
+            flash(label_reason.invalidStopSequenceError)
+            return redirect(url_for("viewScheduleDetails"))
+        
+        scheduleId = request.form.get(label.schedule_id, None)
+        result = ComplexOperation().updateScheduleStop(scheduleId=scheduleId, stop_sequence= stop_sequence)
+
+        if result:
+            # Successfully updated
+            flash(label_reason.scheduleStopUpdationSuccess)
+        else:
+            # Invalid Stop Id entered
+            flash(label_reason.scheduleStopUpdationFailed)
+        
+        return redirect(url_for("viewScheduleDetails"))
