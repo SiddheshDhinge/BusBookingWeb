@@ -258,3 +258,14 @@ class ControllerOwner:
             flash(label_reason.scheduleStopUpdationFailed)
         
         return redirect(url_for("viewScheduleDetails"))
+    
+    def handleTripStatusUpdation(self):
+        tripStatus = request.form.get(label.schedule_isComplete, None)
+        if not tripStatus or tripStatus != "complete":
+            flash(label_reason.invalidTripStatusError)
+            return redirect(url_for("viewScheduleDetails"))
+
+        scheduleId = request.form.get(label.schedule_id)
+        ComplexOperation().updateTripStatus(scheduleId= scheduleId)
+        flash(label_reason.tripUpdationSuccess)
+        return redirect(url_for("viewScheduleDetails"))

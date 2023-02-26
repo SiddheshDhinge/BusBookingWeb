@@ -100,6 +100,7 @@ filterToCity = 'filter-to-city'
 filterTimeBlock = 'filter-time-block'
 filterBusType = 'filter-bus-type'
 filterDate = 'filter-date'
+filterTripStatus = 'filter-trip-status'
 
 timeBlockMorning = 'time-morning'
 timeBlockNoon = 'time-noon'

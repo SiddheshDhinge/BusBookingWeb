@@ -310,7 +310,11 @@ def viewSchedules():
         busType = request.form.get(label.filterBusType, 'all')
         ownerUsername = request.form.get(label.owner_username, 'all')
         sortPrice = request.form.get(label.filterSortPrice, 'no')
-        
+        tripStatus = request.form.get(label.filterTripStatus, 'incomplete')
+        if(tripStatus == 'incomplete'):
+            tripStatus = False
+        else:
+            tripStatus = True
         # Build filters object
         filters = {
             label.filterDate : fromDate,
@@ -319,7 +323,8 @@ def viewSchedules():
             label.filterTimeBlock : timeBlock,
             label.filterBusType : busType,
             label.owner_username : ownerUsername,
-            label.filterSortPrice : sortPrice
+            label.filterSortPrice : sortPrice,
+            label.filterTripStatus : tripStatus
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
@@ -328,7 +333,7 @@ def viewSchedules():
             label.nav_btn : label.btn_logout,
             label.owner_username : session[label.username]
         }        
-        if(len(response_data[label.data]) == 0):
+        if(len(response_data[label.data][Schedule.objName]) == 0):
             # No results
             flash(label_reason.filterNoMatch)
         else:
@@ -393,6 +398,26 @@ def updateStops():
 
     return ControllerOwner().handleScheduleStopUpdation(sequence= sequence)
 
+
+@app.route('/updatetripstatus', methods=['POST'])
+@Owner.requireLogin
+def updateTripStatus():
+    # Validating Schedule
+    scheduleId = request.form.get(label.schedule_id, None)
+    if not scheduleId:
+        flash(label_reason.invalidScheduleIdError)
+        return redirect(url_for("viewSchedules"))
+    
+    username = session[label.username]
+    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, owner_username= username)
+    if not result:
+        flash(label_reason.invalidScheduleIdError)
+        return redirect(url_for("viewSchedules"))
+
+    # Set return point        
+    session[label.schedule_id] = request.form.get(label.schedule_id)
+
+    return ControllerOwner().handleTripStatusUpdation()
 
 # OWNER END
 

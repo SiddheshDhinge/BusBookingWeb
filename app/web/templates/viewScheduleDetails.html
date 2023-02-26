@@ -41,9 +41,16 @@
     .invisible-form{
         display: inline;
     }
-    .stop-editor-btn{
+    .editor-btn{
         padding: 5px;
         border: 1px solid grey;
+    }
+    fieldset{
+        border:0 none;
+        display: inline;
+    }
+    #trip-status-warning{
+        display: none;
     }
 </style>
 {% endblock %}
@@ -120,8 +127,35 @@
             </div>
             
             <div class="table-cell table-cell-header">
-                Stops
-                <button class="stop-editor-btn" onclick="editStops(this)">Edit</button>
+                Schedule Trip Status <br>
+                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
+                    <button class="editor-btn" onclick="editTripStatus()">Edit</button>
+                {% endif %}
+            </div>
+            <div class="table-cell">
+                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == true %}
+                    Completed
+                {% else %}
+                    <form class="invisible-form" action="{{url_for('updateTripStatus')}}" method="POST">
+                        <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
+                        <fieldset id="trip-status">
+                            <label for="trip-complete">complete</label>
+                            <input onclick="tripComplete()" id="trip-complete" type="radio" value="complete" name="schedule-is-complete" disabled="true">
+                            <label for="trip-incomplete">incomplete</label>
+                            <input onclick="tripIncomplete()" id="trip-incomplete" type="radio" value="incomplete" name="schedule-is-complete" checked>
+                        </fieldset>
+                        <button id="save-trip-status" disabled="true">Save</button>
+                        <br>
+                        <p id="trip-status-warning">Warning: Once changed To Complete, trip Status can't be changed.</p>
+                    </form>
+                {% endif %}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Stops <br>
+                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
+                    <button class="editor-btn" onclick="editStops(this)">Edit</button>
+                {% endif %}
             </div>
             <div class="table-cell">
                 <!-- Edit Stops -->
@@ -146,11 +180,11 @@
                         --> 
                     </div>
                     <div class="btn-wrapper">
-                        <button class="stop-editor-btn" id="addBtn" type="button">Add Stop</button>
+                        <button class="editor-btn" id="addBtn" type="button">Add Stop</button>
                         <form class="invisible-form" action="{{url_for('updateStops')}}" method="POST">
                             <input id="stop-sequence" name="stop-sequence" type="hidden" />
                             <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
-                            <button class="stop-editor-btn">Save Sequence</button>
+                            <button class="editor-btn">Save Sequence</button>
                         </form>
                     </div>
                 </div>
@@ -185,9 +219,42 @@
             }
             function editStops(element)
             {
-                element.style.display = "none";
-                stop_editor_container.style.display = "block";
-                stop_display_container.style.display = "none";
+                if(stop_editor_container.style.display === "block")
+                {
+                    stop_editor_container.style.display = "none";
+                    stop_display_container.style.display = "grid";
+                }
+                else
+                {
+                    stop_editor_container.style.display = "block";
+                    stop_display_container.style.display = "none";
+                }
+            }
+
+            function editTripStatus()
+            {
+                if(document.getElementById("trip-status-warning").style.display === "none")
+                {
+                    document.getElementById("trip-status-warning").style.display = "block";
+                    document.getElementById("trip-complete").disabled = false;
+                }
+                else
+                {
+                    document.getElementById("trip-status-warning").style.display = "none";
+                    document.getElementById("trip-complete").disabled = true;
+                    document.getElementById("trip-incomplete").checked = true;
+                    document.getElementById("save-trip-status").disabled = true;
+                }
+            }
+
+            function tripComplete()
+            {
+                document.getElementById("save-trip-status").disabled = false;
+            }
+
+            function tripIncomplete()
+            {
+                document.getElementById("save-trip-status").disabled = true;
             }
         </script>
 

@@ -90,6 +90,7 @@ class ComplexOperation:
             filters[busType] = sleep / seat / all
             filters[owner] = ownerUsername / all
             filters[sortPrice] = asc / desc / none
+            filters[tripStatus] = complete / incomplete
         '''
 
         #Join required tables
@@ -104,6 +105,9 @@ class ComplexOperation:
         if(filters[label.filterDate]):
             queryResult = queryResult.filter(Schedule.fromDate == filters[label.filterDate])
         
+        # Trip Status based filtering
+        queryResult = queryResult.filter(Schedule.isComplete == filters[label.filterTripStatus])
+
         #city based filtering
         if(filters[label.filterFromCity] != 'all'):
             queryResult = queryResult.filter(Schedule.fromCity == filters[label.filterFromCity], Schedule.toCity == filters[label.filterToCity])
@@ -241,3 +245,10 @@ class ComplexOperation:
             
         DB_session.commit()
         return True
+    
+    def updateTripStatus(self, scheduleId):
+        DB_session.query(Schedule)\
+            .filter(Schedule.scheduleId == scheduleId)\
+            .update({Schedule.isComplete : True})
+        
+        DB_session.commit()
