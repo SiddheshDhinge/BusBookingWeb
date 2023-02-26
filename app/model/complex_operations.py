@@ -55,6 +55,32 @@ class ComplexOperation:
         return self.response_data
 
 
+    def getSchedule(self, scheduleId: int, owner_username: str):
+        City1 = aliased(City)
+        City2 = aliased(City)
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+            .join(City1, City1.cityId == Schedule.fromCity)\
+            .join(City2, City2.cityId == Schedule.toCity)\
+            .join(Bus, Owner)\
+            .filter(Schedule.scheduleId == scheduleId)\
+            .filter(Owner.username == owner_username).first()
+        
+        if queryResult:
+            (scheduleObj, busObj, ownerObj, cityObj1, cityObj2) = queryResult
+            self.response_data[label.data][Schedule.objName] = {
+                    Schedule.objName : scheduleObj.serialize(),
+                    Bus.objName : busObj.serialize(),
+                    Owner.objName : ownerObj.serialize(),
+                    f'from_{City.objName}' : cityObj1.serialize(),
+                    f'to_{City.objName}' : cityObj2.serialize(),
+                    Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId)
+                }
+            self.response_data[label.success] = True
+        else:
+            self.response_data[label.success] = False
+            
+        return self.response_data
+
     def getAllSchedules(self, filters, useDate=True, useCity=True):
         '''
             filters[fromCity] = cityName    (req)

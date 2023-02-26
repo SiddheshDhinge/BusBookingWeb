@@ -62,6 +62,7 @@ city_name = 'city-name'
 stop_id = 'stop-id'
 stop_name = 'stop-name'
 stop_address = 'stop-address'
+stop_sequence = 'stop-sequence'
 
 schedule_id = 'schedule-id'
 schedule_fromDate = 'schedule-from-date'

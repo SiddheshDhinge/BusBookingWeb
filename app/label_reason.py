@@ -27,6 +27,8 @@ passengerCreationSuccess = 'Successfully added Passenger!'
 passengerCreationFailed = 'Passenger addition Failed!'
 bookingCreationSuccess = 'Successfully completed Booking!'
 bookingCreationFailed = 'Booking Failed!'
+invalidStopSequenceError = 'Please Select Valid Stops'
+invalidScheduleIdError = 'Please Select Valid Schedule'
 
 #filters
 enterFilter = 'Please enter required filters.'

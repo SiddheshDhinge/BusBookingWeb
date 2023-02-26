@@ -325,7 +325,8 @@ def viewSchedules():
         response_data = ComplexOperation().getAllSchedules(filters= filters)
         response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objName]
         response_data[label.options] = {
-            label.nav_btn : label.btn_logout
+            label.nav_btn : label.btn_logout,
+            label.owner_username : session[label.username]
         }        
         if(len(response_data[label.data]) == 0):
             # No results
@@ -360,6 +361,13 @@ def addSchedule():
             label.nav_btn : label.btn_logout
         }
         return render_template('addSchedule.html', response_data= response_data)
+
+
+@app.route('/viewscheduledetails', methods=['GET', 'POST'])
+@Owner.requireLogin
+def viewScheduleDetails():
+    return ControllerOwner().handleViewScheduleDetails()
+
 
 # OWNER END
 
@@ -452,7 +460,29 @@ def getStopsByCity():
 @app.route('/updatestops', methods=['GET', 'POST'])
 def updateStops():
     if(request.method == "POST"):
-        pass
+        sequence = request.form.get(label.stop_sequence, None)
+        if not sequence:
+            flash(label_reason.invalidStopSequenceError)
+            return redirect(url_for("updateStops"))
+        
+        stop_sequence = []
+        invalidFlag = False
+        sequence = sequence[:-1].split(',')
+        for tmpStop in sequence:
+            try:
+                tmpStopInt = int(tmpStop)
+                if tmpStopInt < 0:
+                    invalidFlag = True
+                else:
+                    stop_sequence.append(tmpStopInt)
+            except Exception:
+                invalidFlag = True
+
+        if invalidFlag:
+            flash(label_reason.invalidStopSequenceError)
+            return redirect(url_for("updateStops"))
+        
+        return stop_sequence
     else:
         response_data = ComplexOperation().getAllStopsByCity()
         response_data[label.options] = {

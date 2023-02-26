@@ -194,3 +194,25 @@ class ControllerOwner:
         else:
             flash(label_reason.scheduleCreationFailed)
         return redirect(url_for('landingOwner'))
+    
+
+    def handleViewScheduleDetails(self):
+        try:
+            scheduleId = int(request.form.get('schedule-id'))
+        except:
+            flash(label_reason.invalidScheduleIdError)
+            return redirect(url_for('viewSchedules'))
+        
+        username = session[label.username]
+        response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= username)
+
+        if not response_data[label.success]:
+            flash(label_reason.invalidScheduleIdError)
+            return redirect(url_for('viewSchedules'))
+        
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+        
+        # return jsonify(response_data)
+        return render_template('viewScheduleDetails.html', response_data= response_data)
