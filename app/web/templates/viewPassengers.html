@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .component-main {
+        font-size: larger;
+        text-align: center;
+    }
+
+    .main-table-grid {
+        background-color: black;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 1px;
+    }
+
+    .table-cell {
+        background-color: lightgreen;
+        padding: 2vh;
+        border: 1px solid black;
+    }
+
+    .table-cell-header {
+        background-color: burlywood;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            My Passengers
+        </div>
+        <div class="main-table-grid">
+            <div class="table-cell-header table-cell">
+                Passenger Name
+            </div>
+            <div class="table-cell-header table-cell">
+                Passenger Age
+            </div>
+            <div class="table-cell-header table-cell">
+                Passenger Gender
+            </div>
+            <div class="table-cell-header table-cell">
+                Passenger Contact
+            </div>
+
+            {% for rowObj in response_data['data']['list-passenger'] %}
+            {% if rowObj %}
+                <div class="table-cell">
+                    {{rowObj['passenger-name']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['passenger-age']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['passenger-gender']}}
+                </div>
+                <div class="table-cell">
+                    {{rowObj['passenger-contact']}}
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

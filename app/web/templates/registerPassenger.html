@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block css %}
+    <style>
+        fieldset{
+            border:0 none;
+            display: inline;
+        }
+    </style>
+{% endblock  %}
+{% block content %}
+<form id='stopForm' action="{{ url_for('registerPassenger') }}" method="POST">
+    <label for="name">Passenger Name:</label>
+    <input type="text" id="name" name="passenger-name"><br><br>
+
+    <label for="age">Passenger Age:</label>
+    <input type="number" id="age" name="passenger-age"><br><br>
+
+    <label for="gender">Passenger Gender:</label>
+    <fieldset id="gender">
+        <label for="gender-male">Male</label>
+        <input id="gender-male" type="radio" value="M" name="passenger-gender">
+        <label for="gender-female">Female</label>
+        <input id="gender-female" type="radio" value="F" name="passenger-gender">
+    </fieldset>
+    <br><br>
+
+    <label for="contact">Passenger Contact:</label>
+    <input type="tel" id="contact" name="passenger-contact"><br><br>
+
+    <input type="submit">
+
+</form>
+{% endblock %}

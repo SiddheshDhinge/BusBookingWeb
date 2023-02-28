@@ -9,6 +9,7 @@ class Owner(Base):
     __tablename__ = 'Owner'
     accessType = 'owner'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     __table_args__ = (
         UniqueConstraint('contact'), 

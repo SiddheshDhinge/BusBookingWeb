@@ -9,6 +9,7 @@ class Operator(Base):
     __tablename__ = 'Operator'
     accessType = 'operator'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     __table_args__ = (
         UniqueConstraint('contact'), 

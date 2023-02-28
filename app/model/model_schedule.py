@@ -8,6 +8,7 @@ from .. import label
 class Schedule(Base, Common):
     __tablename__ = 'Schedule'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     __table_args__ = (
         CheckConstraint('("fromDate" < "toDate") OR (("fromDate" = "toDate") AND "departureTime" < "dropTime")'),

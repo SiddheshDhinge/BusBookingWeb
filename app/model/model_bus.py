@@ -8,6 +8,7 @@ from .. import label
 class Bus(Base, Common):
     __tablename__ = 'Bus'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     numberPlate = Column('numberPlate', String(16), primary_key=True)
     totalSeats = Column('totalSeats', Integer, nullable=False)

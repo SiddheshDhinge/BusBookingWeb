@@ -8,6 +8,7 @@ from .. import label
 class Passenger(Base, Common):
     __tablename__ = 'Passenger'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     __table_args__ = (
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),

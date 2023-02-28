@@ -123,11 +123,7 @@ class ControllerCustomer:
         return redirect(url_for('landingCustomer'))
 
 
-    def handleAddPassenger(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
+    def handleRegisterPassenger(self):    
         name = request.form.get(label.passenger_name)
         contact = request.form.get(label.passenger_contact)
         gender = request.form.get(label.passenger_gender)
@@ -136,19 +132,24 @@ class ControllerCustomer:
         result = Passenger(name= name, gender= gender, age= age, contact=contact, username= username).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            self.response_data[label.details] = label_reason.passengerCreationSuccess
+            flash(label_reason.passengerCreationSuccess)
         else:
-            self.response_data[label.details] = label_reason.passengerCreationFailed
+            flash(label_reason.passengerCreationFailed)
+        return redirect(url_for('landingCustomer'))
 
 
-    def handleViewPassenger(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
+    def handleViewPassengers(self):
         username = session[label.username]
         queryResult = ComplexOperation().getCustomerPassengers(customerUsername= username)
-        self.response_data = [passengerObj.serialize() for passengerObj in queryResult]
+        self.response_data = {
+            label.data : {
+                Passenger.objListName : [passengerObj.serialize() for passengerObj in queryResult]
+            },
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
+        }
+        return render_template('viewPassengers.html', response_data= self.response_data)
 
 
     def handleAddBooking(self):

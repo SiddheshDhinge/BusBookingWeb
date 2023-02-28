@@ -492,6 +492,25 @@ def updateCustomerProfile():
             }
         })
 
+
+@app.route('/registerPassenger', methods=['GET', 'POST'])
+@Customer.requireLogin
+def registerPassenger():
+    if(request.method == 'POST'):
+        return ControllerCustomer().handleRegisterPassenger()
+    else:
+        return render_template('registerPassenger.html', response_data={
+            label.options : {
+                label.nav_btn : label.btn_logout
+            }
+        })
+
+
+@app.route('/viewPassengers', methods=['GET'])
+@Customer.requireLogin
+def viewPassengers():
+    return ControllerCustomer().handleViewPassengers()
+
 # CUSTOMER END
 
 # API BEGIN

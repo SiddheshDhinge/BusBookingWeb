@@ -9,6 +9,7 @@ class Customer(Base):
     __tablename__ = 'Customer'
     accessType = 'customer'
     objName = __tablename__.lower()
+    objListName = f'list-{__tablename__.lower()}'
 
     __table_args__ = (
         UniqueConstraint('contact'), 
