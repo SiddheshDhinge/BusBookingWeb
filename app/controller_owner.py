@@ -191,9 +191,11 @@ class ControllerOwner:
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.scheduleCreationSuccess)
+            session[label.schedule_id] = scheduleObj.scheduleId
+            return redirect(url_for('viewScheduleDetails'))
         else:
             flash(label_reason.scheduleCreationFailed)
-        return redirect(url_for('landingOwner'))
+            return redirect(url_for('landingOwner'))
     
 
     def handleViewScheduleDetails(self):
