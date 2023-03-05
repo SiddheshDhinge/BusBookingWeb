@@ -526,6 +526,13 @@ def getStopsByCity():
 
 
 # used for testing
+@app.route('/busseats')
+def busSeats():
+    return render_template('registerBusForm.html', response_data= {
+        label.options : {
+            label.nav_btn : label.btn_login_signup
+        }
+    })
 
 # @app.route('/debug')
 # def debug():
