@@ -9,7 +9,7 @@
     .main-table-grid {
         background-color: black;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         row-gap: 1px;
     }
 
@@ -34,10 +34,19 @@
                 Number Plate
             </div>
             <div class="table-cell-header table-cell">
-                Total Capacity
+                Bus Type
             </div>
             <div class="table-cell-header table-cell">
-                Bus Type
+                Total Floors
+            </div>
+            <div class="table-cell-header table-cell">
+                Floor Columns
+            </div>
+            <div class="table-cell-header table-cell">
+                Floor Rows
+            </div>
+            <div class="table-cell-header table-cell">
+                Walking Gap Row
             </div>
 
             {% for rowObj in response_data['data']['bus'] %}
@@ -45,10 +54,19 @@
                 {{rowObj['bus-number-plate']}}
             </div>
             <div class="table-cell">
-                {{rowObj['bus-total-seats']}}
+                {{rowObj['bus-bus-type']}}
             </div>
             <div class="table-cell">
-                {{rowObj['bus-type']}}
+                {{rowObj['bus-total-floors']}}
+            </div>
+            <div class="table-cell">
+                {{rowObj['bus-floor-rows']}}
+            </div>
+            <div class="table-cell">
+                {{rowObj['bus-floor-columns']}}
+            </div>
+            <div class="table-cell">
+                {{rowObj['bus-walking-gap-row']}}
             </div>
             {% endfor %}
         </div>

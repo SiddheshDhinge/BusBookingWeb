@@ -76,7 +76,7 @@
         isEnabled
      -->
 
-    <form action="{{ url_for('registerBus') }}" method="post" onsubmit="submitForm(event)">
+    <form action="{{ url_for('addBus') }}" method="post" onsubmit="submitForm(event)">
     
         <label for="plate">Number Plate:</label>
         <input type="text" id="plate" name="bus-number-plate" required><br><br>
@@ -131,7 +131,7 @@
         </div>
         <br><br>
 
-        <input id="seats-status" type="hidden" name="seat" />
+        <input id="seats-status" type="hidden" name="list-seat" />
         <input type="submit" />
     </form>
         

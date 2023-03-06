@@ -193,9 +193,9 @@ def landingOwner():
 
 
 # Bus Registration
-@app.route('/registerbus', methods=['GET', 'POST'])
+@app.route('/addbus', methods=['GET', 'POST'])
 @Owner.requireLogin
-def registerBus():
+def addBus():
     if(request.method == 'POST'):
         if(request.form[label.bus_busType] not in ('SEAT', 'SLEEP')):
             #invalid bus type
@@ -205,7 +205,7 @@ def registerBus():
             #create bus
             return ControllerOwner().handleBusRegistration()
     else:
-        return render_template('registerBusForm.html', response_data= {
+        return render_template('addBus.html', response_data= {
             label.options : {
                 label.nav_btn : label.btn_logout
             }

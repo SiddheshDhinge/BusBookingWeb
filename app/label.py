@@ -51,7 +51,7 @@ customer_all_label = {
 
 
 bus_numberPlate = 'bus-number-plate'
-bus_busType = 'bus-type'
+bus_busType = 'bus-bus-type'
 bus_totalFloors = 'bus-total-floors'
 bus_floorRows = 'bus-floor-rows'
 bus_floorColumns = 'bus-floor-columns'

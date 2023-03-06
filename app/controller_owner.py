@@ -125,11 +125,13 @@ class ControllerOwner:
 
     def handleBusRegistration(self):
         numberPlate = request.form.get(label.bus_numberPlate)
-        totalSeats = request.form.get(label.bus_totalSeats)
         busType = request.form.get(label.bus_busType)
+        totalFloors = request.form.get(label.bus_totalFloors)
+        floorRows = request.form.get(label.bus_floorRows)
+        floorColumns = request.form.get(label.bus_floorColumns)
+        walkingGapRow = request.form.get(label.bus_walkingGapRow)
         username = session[label.username]
-        busObj = Bus(numberPlate=numberPlate, totalSeats=totalSeats, bustype=busType, username=username)
-        result = busObj.createObject()
+        result = Bus(numberPlate=numberPlate, bustype=busType, totalFloors=totalFloors, floorRows=floorRows, floorColumns=floorColumns, walkingGapRow=walkingGapRow, username=username).createObject()
         self.response_data[label.success] = result
 
         if(result == True):
