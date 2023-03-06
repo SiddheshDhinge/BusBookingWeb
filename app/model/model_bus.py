@@ -11,23 +11,32 @@ class Bus(Base, Common):
     objListName = f'list-{__tablename__.lower()}'
 
     numberPlate = Column('numberPlate', String(16), primary_key=True)
-    totalSeats = Column('totalSeats', Integer, nullable=False)
-    busType = Column('busType', String(16), nullable=False)
+    busType = Column('busType', String(6), nullable=False)
+    totalFloors = Column('totalFloors', Integer, nullable=False)
+    floorRows = Column('floorRows', Integer, nullable=False)
+    floorColumns = Column('floorColumns', Integer, nullable=False)
+    walkingGapRow = Column('walkingGapRow', Integer, nullable=False)
     username = Column('username', String(16), ForeignKey('Owner.username'), nullable=False)
 
-    def __init__(self, numberPlate: str, totalSeats: int, bustype: str, username: str):
+    def __init__(self, numberPlate: str, bustype: str, totalFloors: int, floorRows: int, floorColumns: int, walkingGapRow: int, username: str):
         self.numberPlate = numberPlate
-        self.totalSeats = totalSeats
         self.busType = bustype
+        self.totalFloors = totalFloors
+        self.floorRows = floorRows
+        self.floorColumns = floorColumns
+        self.walkingGapRow = walkingGapRow
         self.username = username
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.numberPlate}) : {self.totalSeats}, {self.busType}, {self.username}"
+        return f"{self.__tablename__} => ({self.numberPlate}) : {self.busType}, {self.totalFloors}, {self.floorRows}, {self.floorColumns}, {self.walkingGapRow}, {self.username}"
 
     def serialize(self):
         return {
             label.bus_numberPlate : self.numberPlate,
-            label.bus_totalSeats : self.totalSeats,
             label.bus_busType : self.busType,
+            label.bus_totalFloors : self.totalFloors,
+            label.bus_floorRows : self.floorRows,
+            label.bus_floorColumns : self.floorColumns,
+            label.bus_walkingGapRow : self.walkingGapRow,
             label.username : self.username
         }

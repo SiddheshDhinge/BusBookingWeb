@@ -6,7 +6,9 @@ class Common:
         try:
             DB_session.add(self)
             DB_session.commit()
-        except(exc.IntegrityError):
+        except exc.IntegrityError as e:
+            print(e)
+            print(f'{self}')
             DB_session.rollback()
             return False
         except Exception as e:

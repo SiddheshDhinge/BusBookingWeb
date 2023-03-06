@@ -51,10 +51,16 @@ customer_all_label = {
 
 
 bus_numberPlate = 'bus-number-plate'
-bus_totalSeats = 'bus-total-seats'
 bus_busType = 'bus-type'
+bus_totalFloors = 'bus-total-floors'
+bus_floorRows = 'bus-floor-rows'
+bus_floorColumns = 'bus-floor-columns'
+bus_walkingGapRow = 'bus-walking-gap-row'
 bus_typeSleep = 'SLEEP'
 bus_typeSeat = 'SEAT'
+
+seat_seatNo = 'seat-seat-number'
+seat_is_enabled = 'seat-is-enabled'
 
 city_id = 'city-id'
 city_name = 'city-name'

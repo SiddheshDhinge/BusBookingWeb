@@ -3,8 +3,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
-from .queries import sql_create_check_valid_seat_function, sql_create_check_valid_seat_trigger
-from .queries import sql_drop_check_valid_seat_function, sql_drop_check_valid_seat_trigger
 
 load_dotenv()
 db_name = os.getenv('db_name')
@@ -28,11 +26,6 @@ def createAllTables():
     Base.metadata.create_all(bind=DB_engine)
     DB_session.commit()
     print("\n\nCREATED ALL TABLES\n\n")
-    DB_session.execute(text(sql_create_check_valid_seat_function))
-    print("\n\nCREATED FUNCTION\n\n")
-    DB_session.execute(text(sql_create_check_valid_seat_trigger))
-    print("\n\nCREATED TRIGGER\n\n")
-    DB_session.commit()
 
 
 def dropAllTables():

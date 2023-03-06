@@ -2,8 +2,10 @@ import random
 
 own = ['Chintan', 'Siddhesh', 'Manas', 'Sahil', 'Shubham', 'jack123', 'emmam', 'brianb', 'katherineg', 'chrisd', 'samuelm', 'laurar', 'davids', 'jennifert', 'michaelw', 'susanb', 'jamesm', 'lisaq', 'matthewr', 'nicolej']
 oper = ['Manish', 'Guarav', 'Ketan', 'Akshay', 'Lokesh', 'timothyb', 'rachelc', 'michaelg', 'jenniferl', 'davidm', 'sarahp', 'matthewr', 'lisaq', 'katherinet', 'johnd']
-number = ['MH 12 AB 1234', 'MH 13 AB 1235', 'MH 14 AB 1236', 'MH 15 AB 1237', 'MH 18 AB 1238', 'MH 20 AB 1239', 'MH 16 AB 1240', 'MH 17 AB 1241', 'MH 10 AB 1242', 'MH 12 AB 1243', 'MH 19 AB 5211', 'MH 11 AB 6292', 'MH 17 AB 5074', 'MH 15 AB 5005', 'MH 12 AB 6645', 'MH 7 AB 7697', 'MH 6 AB 7826', 'MH 7 AB 5772', 'MH 11 AB 5572', 'MH 5 AB 5165', 'MH 18 AB 8838', 'MH 20 AB 8011', 'MH 5 AB 6923', 'MH 20 AB 8273', 'MH 9 AB 9063', 'MH 7 AB 7471', 'MH 14 AB 9620', 'MH 6 AB 6360', 'MH 7 AB 7453', 'MH 7 AB 6836', 'MH 20 AB 6562', 'MH 6 AB 6058', 'MH 14 AB 8810', 'MH 7 AB 8906', 'MH 16 AB 9804', 'MH 16 AB 9511', 'MH 11 AB 9845', 'MH 20 AB 7639', 'MH 20 AB 5514', 'MH 11 AB 7412']
+number = ['MH 8 AB 8272', 'MH 12 AB 9096', 'MH 9 AB 8797', 'MH 11 AB 9332', 'MH 14 AB 6870', 'MH 5 AB 6693', 'MH 11 AB 5703', 'MH 11 AB 7989', 'MH 5 AB 7650', 'MH 19 AB 9404', 'MH 19 AB 5367', 'MH 11 AB 8643', 'MH 12 AB 5440', 'MH 17 AB 8217', 'MH 6 AB 5509', 'MH 19 AB 8932', 'MH 12 AB 8578', 'MH 17 AB 5987', 'MH 13 AB 5137', 'MH 12 AB 7062', 'MH 17 AB 5692', 'MH 18 AB 7004', 'MH 14 AB 9684', 'MH 14 AB 6518', 'MH 13 AB 9993', 'MH 8 AB 6980', 'MH 10 AB 9617', 'MH 17 AB 9316', 'MH 19 AB 8198', 'MH 11 AB 7659', 'MH 9 AB 8308', 'MH 20 AB 8094', 'MH 16 AB 7222', 'MH 16 AB 7740', 'MH 14 AB 5997', 'MH 15 AB 9478', 'MH 7 AB 6536', 'MH 8 AB 5155', 'MH 10 AB 5575', 'MH 11 AB 7889']
 typ = ['SLEEP', 'SEAT']
+seatNos = ['1L', '2L', '3L', '4U', '5U', '6U', '7L', '8L', '9L', '10U', '11U', '12U', '13L', '14L', '15L', '16U', '17U', '18U', '19L', '20L', '21L', '22U', '23U', '24U', '25L', '26L', '27L', '28U', '29U', '30U']
+scheduleBuses = ['MH 9 AB 8797', 'MH 8 AB 6980', 'MH 19 AB 8198', 'MH 19 AB 8198', 'MH 10 AB 5575', 'MH 16 AB 7222', 'MH 17 AB 9316', 'MH 11 AB 9332', 'MH 18 AB 7004', 'MH 14 AB 6518', 'MH 11 AB 9332', 'MH 12 AB 8578', 'MH 11 AB 8643', 'MH 10 AB 9617', 'MH 15 AB 9478', 'MH 18 AB 7004', 'MH 13 AB 9993', 'MH 15 AB 9478', 'MH 11 AB 7659', 'MH 11 AB 7889', 'MH 13 AB 9993', 'MH 14 AB 5997', 'MH 14 AB 9684', 'MH 17 AB 9316', 'MH 17 AB 9316', 'MH 11 AB 8643', 'MH 5 AB 7650', 'MH 12 AB 9096', 'MH 11 AB 7989', 'MH 11 AB 8643', 'MH 12 AB 9096', 'MH 8 AB 6980', 'MH 15 AB 9478', 'MH 15 AB 9478', 'MH 7 AB 6536', 'MH 11 AB 7659', 'MH 9 AB 8797', 'MH 16 AB 7740', 'MH 20 AB 8094', 'MH 18 AB 7004', 'MH 19 AB 8198', 'MH 16 AB 7740', 'MH 17 AB 9316', 'MH 11 AB 9332', 'MH 18 AB 7004', 'MH 8 AB 5155', 'MH 10 AB 5575', 'MH 5 AB 6693', 'MH 17 AB 9316', 'MH 16 AB 7740', 'MH 19 AB 8932', 'MH 9 AB 8308', 'MH 9 AB 8308', 'MH 6 AB 5509', 'MH 11 AB 5703', 'MH 19 AB 5367', 'MH 13 AB 9993', 'MH 17 AB 5987', 'MH 16 AB 7222', 'MH 11 AB 7989', 'MH 16 AB 7740', 'MH 19 AB 8932', 'MH 17 AB 8217', 'MH 5 AB 6693', 'MH 6 AB 5509', 'MH 19 AB 8198', 'MH 8 AB 8272', 'MH 10 AB 5575', 'MH 8 AB 5155', 'MH 6 AB 5509', 'MH 16 AB 7222', 'MH 12 AB 9096', 'MH 19 AB 5367', 'MH 8 AB 6980', 'MH 17 AB 9316', 'MH 10 AB 9617', 'MH 12 AB 8578', 'MH 5 AB 7650', 'MH 19 AB 8198', 'MH 11 AB 9332', 'MH 17 AB 5987', 'MH 14 AB 5997', 'MH 12 AB 9096', 'MH 9 AB 8797', 'MH 12 AB 8578', 'MH 14 AB 6870', 'MH 14 AB 6518', 'MH 14 AB 6870', 'MH 14 AB 9684', 'MH 12 AB 5440', 'MH 5 AB 6693', 'MH 18 AB 7004', 'MH 12 AB 8578', 'MH 10 AB 5575', 'MH 6 AB 5509', 'MH 12 AB 7062', 'MH 8 AB 8272', 'MH 18 AB 7004', 'MH 11 AB 7989', 'MH 14 AB 5997', 'MH 13 AB 9993', 'MH 8 AB 6980', 'MH 10 AB 5575', 'MH 5 AB 6693', 'MH 12 AB 5440', 'MH 17 AB 9316', 'MH 9 AB 8308', 'MH 16 AB 7740', 'MH 12 AB 7062', 'MH 12 AB 7062', 'MH 20 AB 8094', 'MH 14 AB 9684', 'MH 11 AB 9332', 'MH 11 AB 9332', 'MH 14 AB 9684', 'MH 10 AB 9617', 'MH 8 AB 6980', 'MH 13 AB 5137', 'MH 9 AB 8308', 'MH 19 AB 8198', 'MH 8 AB 8272', 'MH 12 AB 7062', 'MH 19 AB 8932', 'MH 9 AB 8308', 'MH 17 AB 8217', 'MH 8 AB 8272', 'MH 11 AB 9332', 'MH 19 AB 9404', 'MH 10 AB 5575', 'MH 12 AB 5440', 'MH 11 AB 9332', 'MH 11 AB 5703', 'MH 9 AB 8308', 'MH 17 AB 9316', 'MH 17 AB 9316', 'MH 17 AB 8217', 'MH 17 AB 5692', 'MH 19 AB 9404', 'MH 11 AB 7989', 'MH 9 AB 8797', 'MH 16 AB 7740', 'MH 19 AB 5367', 'MH 10 AB 5575', 'MH 11 AB 7889', 'MH 17 AB 5692', 'MH 13 AB 5137', 'MH 11 AB 7989', 'MH 11 AB 7889', 'MH 8 AB 8272', 'MH 16 AB 7740']
 
 def pad(num):
     if(num < 10):
@@ -13,37 +15,68 @@ def pad(num):
 def randomPad(a, b):
     return pad(random.randint(a, b))
 
-for _ in range(101, 151):
-    # Bus
-    # data = (f'MH {random.randint(5, 20)} AB {random.randint(5000, 9999)}' , random.randint(30, 50), pos[random.randint(0, 1)], own[random.randint(0, len(own) -1)])
+# for _ in range(40):
+#     # Bus
+#     numberPlate = number[_] # f'MH {random.randint(5, 20)} AB {random.randint(5000, 9999)}'
+#     busType = typ[random.randint(0, 1)]
+#     totalFloors = 2
+#     floorRows = 3
+#     floorColumns = 5
+#     walkingGapRow = random.randint(1, 2)
+#     ownerUsername = own[random.randint(0, len(own) -1)]
+#     data = (numberPlate, busType, totalFloors, floorRows, floorColumns, walkingGapRow, ownerUsername )
 
-    # Schedule
-    # frmM = 12 #random.randint(1, 11)
-    # frmD = random.randint(20, 30)
-    # toD = frmD+ 1
-    # data = (
-    #     f'2022-{pad(frmM)}-{pad(frmD)}',
-    #     f'2022-{pad(frmM)}-{pad(toD)}',
-    #     f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
-    #     f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}', 
-    #     random.randint(1000, 10000), 
-    #     random.randint(1, 3),
-    #     random.randint(1, 3),
-    #     f'{number[random.randint(0, len(number) -1)]}',
-    #     oper[random.randint(0, len(oper) -1)]
-    # )
+#     print(data)
 
-    # At
-    seq = 1
-    for __ in random.sample(range(1, 30), random.randint(5, 10)):
-        print(f'{_}, {__}, {seq}')
-        seq += 1
 
+# for numberPlate in number:
+#     # Seat
+#     for _ in range(30):
+#         # Seat
+#         seatNo = seatNos[_] # str(_) + ('L', 'U')[random.randint(0, 1)]
+#         isEnabled = (False, True)[random.randint(0, 1)]
+#         data = (numberPlate, seatNo, isEnabled)
+
+#         print(data)
+
+
+for scheduleId, numberPlate in enumerate(scheduleBuses):
     # Booking
-    # for seat in range(1, random.randint(1, 30)):
-    #     data = (seat, _, random.randint(1, 35))
+    totalBookings = random.randint(10, 20)
+    tmpSeatNos = random.sample(seatNos, totalBookings)
+    for _ in range(0, totalBookings):
+        seatNo = tmpSeatNos[_]
+        passengerId = random.randint(1, 40)
+        data = (numberPlate, seatNo, scheduleId +1, passengerId)
 
-    # print(data)
+        print(data)
+
+
+# for _ in range(1, 151):
+#     # Schedule
+#     frmM = 12 #random.randint(1, 11)
+#     frmD = random.randint(20, 30)
+#     toD = frmD +1
+#     fromDate = f'2022-{pad(frmM)}-{pad(frmD)}'
+#     toDate = f'2022-{pad(frmM)}-{pad(toD)}'
+#     departureTime = f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}'
+#     dropTime = f'{randomPad(0, 23)}:{randomPad(0, 59)}:{randomPad(0, 59)}'
+#     fairFees = random.randint(1000, 10000)
+#     fromCity = random.randint(1, 5)
+#     toCity = random.randint(1, 5)
+#     numberPlate = number[random.randint(0, len(number) -1)]
+#     operatorUsername = oper[random.randint(0, len(oper) -1)]
+
+#     data = (fromDate, toDate, departureTime, dropTime, fairFees, fromCity, toCity, numberPlate, operatorUsername)
+
+#     print(data)
+    
+    # # At
+    # seq = 1
+    # for __ in random.sample(range(1, 30), random.randint(5, 10)):
+    #     print(f'{_}, {__}, {seq}')
+    #     seq += 1
+
 
 
 
