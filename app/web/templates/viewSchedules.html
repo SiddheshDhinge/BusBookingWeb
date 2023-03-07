@@ -109,13 +109,16 @@ timeBlockNight = 'time-night' #}
                     <input id="nosort" type="radio" value="no" name="filter-sort-price" checked>
                 </fieldset>
                 
-                <label for="trip-status">Trip Status:</label>
-                <fieldset id="trip-status">
-                    <label for="trip-complete">Completed</label>
-                    <input id="trip-complete" type="radio" value="complete" name="filter-trip-status">
-                    <label for="trip-incomplete">Incomplete</label>
-                    <input id="trip-incomplete" type="radio" value="incomplete" name="filter-trip-status" checked>
-                </fieldset>
+                {% if response_data['options']['access-type'] == 'owner' %}
+                    
+                    <label for="trip-status">Trip Status:</label>
+                    <fieldset id="trip-status">
+                        <label for="trip-complete">Completed</label>
+                        <input id="trip-complete" type="radio" value="complete" name="filter-trip-status">
+                        <label for="trip-incomplete">Incomplete</label>
+                        <input id="trip-incomplete" type="radio" value="incomplete" name="filter-trip-status" checked>
+                    </fieldset>
+                {% endif %}
 
                 <input type="submit">
             </form>
@@ -173,10 +176,16 @@ timeBlockNight = 'time-night' #}
                     </div>
 
                     <div class="table-cell">
-                        {% if rowObj['owner']['user-username'] == response_data['options']['owner-username'] %}
+                        {% if (rowObj['owner']['user-username'] == response_data['options']['owner-username']) and response_data['options']['access-type'] == 'owner' %}
                             <form action="{{url_for('viewScheduleDetails')}}" method="POST">
                                 <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
                                 <button type="submit">View More</button>
+                            </form>
+                        {% endif %}
+                        {% if response_data['options']['access-type'] == 'customer' %}
+                            <form action="{{url_for('bookSchedule')}}" method="POST">
+                                <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
+                                <button type="submit">Book Schedule</button>
                             </form>
                         {% endif %}
                     </div>

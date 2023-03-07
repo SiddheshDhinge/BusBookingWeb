@@ -140,16 +140,26 @@ class ControllerCustomer:
 
     def handleViewPassengers(self):
         username = session[label.username]
-        queryResult = ComplexOperation().getCustomerPassengers(customerUsername= username)
-        self.response_data = {
-            label.data : {
-                Passenger.objListName : [passengerObj.serialize() for passengerObj in queryResult]
-            },
-            label.options : {
-                label.nav_btn : label.btn_logout
-            }
+        self.response_data = ComplexOperation().getCustomerPassengers(customerUsername= username)
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout
         }
         return render_template('viewPassengers.html', response_data= self.response_data)
+
+
+    def handleBookSchedule(self):
+        scheduleId = request.form.get(label.schedule_id)
+        username = session[label.username]
+
+        self.response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= None, useOwnerUsername= False)
+        self.response_data[label.data][Passenger.objListName] = ComplexOperation().getCustomerPassengers(customerUsername= username)[label.data][Passenger.objListName]
+        self.response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+
+        # return jsonify(self.response_data)
+        return render_template('bookSchedule.html', response_data= self.response_data)
 
 
     def handleAddBooking(self):
@@ -176,13 +186,7 @@ class ControllerCustomer:
         
         username = session[label.username]
         queryResult = ComplexOperation().getCustomerBooking(customerUsername= username)
-        self.response_data = [
-            {
-                Booking.__tablename__ : bookingObj.serialize(),
-                Passenger.__tablename__ : passengerObj.serialize(),
-                Customer.__tablename__ : customerObj.serialize()
-            } for (bookingObj, passengerObj, customerObj) in queryResult
-        ]
+
 
 
     def handleViewAllSchedule(self):

@@ -172,14 +172,6 @@ class ControllerOwner:
         return render_template('viewBusDetails.html', response_data= self.response_data)
         
 
-    def handleGetBusDetails(self):
-        numberPlate = request.form.get(label.bus_numberPlate)
-        username = session[label.username]
-
-        self.response_data = ComplexOperation().getBusDetails(numberPlate= numberPlate, ownerUsername= username)
-        return jsonify(self.response_data)
-        
-
     def handleCityCreation(self):
         city_name = request.form.get(label.city_name)
         result = City(name= city_name).createObject()

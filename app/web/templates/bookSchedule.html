@@ -1,0 +1,301 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .component-main {
+        font-size: larger;
+        text-align: center;
+    }
+
+    .main-table-grid {
+        background-color: black;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        row-gap: 1px;
+    }
+
+    .table-cell {
+        background-color: lightgreen;
+        padding: 2vh;
+        border: 1px solid black;
+    }
+
+    .table-cell-header {
+        background-color: burlywood;
+    }
+
+    {# Stop Container Styles #}
+    .stop-container-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .stop-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .single-stop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .invisible-form{
+        display: inline;
+    }
+    .editor-btn{
+        padding: 5px;
+        border: 1px solid grey;
+    }
+    fieldset{
+        border:0 none;
+        display: inline;
+    }
+    #trip-status-warning{
+        display: none;
+    }
+</style>
+<link rel="stylesheet" href="/css/busSeatEditor.css">
+{% endblock %}
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            View Schedule Details
+        </div>
+        
+        <div class="main-table-grid">
+            <div class="table-cell table-cell-header">
+                From City
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['from_city']['city-name']}}
+            </div>
+
+            <div class="table-cell table-cell-header">
+                To City
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['to_city']['city-name']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                From Date/Time
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
+                {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                To Date/Time
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
+                {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Number Plate
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['bus']['bus-number-plate']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Type
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['bus']['bus-bus-type']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Schedule Fair Fees
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Select Seat
+            </div>
+            <div class="table-cell">
+                <div>
+                    <div class="bus">
+                        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                        <div id="bus-floor-1" class="bus-floor">
+
+                        </div>
+                    </div>
+                    <br><br>
+                    
+                    <div class="bus">
+                        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                        <div id="bus-floor-2" class="bus-floor">
+                    
+                        </div>
+                    </div>
+                    <br><br>
+        
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Select Passenger
+            </div>
+            <div class="table-cell">
+                <select id="passenger-selector" name="passenger-id">
+                {% for passengerObj in response_data['data']['list-passenger'] %}
+                    <option value="{{passengerObj['passenger-id']}}"> {{passengerObj['passenger-name']}} </option>
+                {% endfor %}
+                </select>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Select Boarding Stop
+            </div>
+            <div class="table-cell">
+                <select id="stop-selector" name="stop-id">
+                {% for stopCityObj in response_data['data']['schedule']['stop'] %}
+                    <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        
+        <script>
+            let response_data = null
+            const formData = new FormData();
+            formData.append("bus-number-plate", "{{response_data['data']['schedule']['bus']['bus-number-plate']}}")
+            const data_url = "{{ url_for('getBusDetails') }}";
+            fetch(data_url, {
+                body : formData,
+                method : "POST"
+            })
+            .then((response) => response.json())
+            .then((json) => {
+                response_data = json;
+                jsonLoaded();
+            });
+
+            let busType = null;
+            let totalFloors = null;
+            let floorRows = null;
+            let floorColumns = null;
+            let walkingGapRow = null;
+            
+            const floor1 = document.getElementById("bus-floor-1");
+            const floor2 = document.getElementById("bus-floor-2");
+            
+            function jsonLoaded()
+            {
+                busType = response_data['data']['bus']['bus-bus-type'];
+                totalFloors = response_data['data']['bus']['bus-total-floors'];
+                floorRows = response_data['data']['bus']['bus-floor-rows'];
+                floorColumns = response_data['data']['bus']['bus-floor-columns'];
+                walkingGapRow = response_data['data']['bus']['bus-walking-gap-row'];
+
+                changeTotalFloors();
+                setSeats(floor1);
+                nameSeats(floor1, 1);
+
+                if(totalFloors == 2)
+                {
+                    setSeats(floor2);
+                    nameSeats(floor2, floorRows +1);
+                }
+            }
+
+
+            function setSeats(floorElement)
+            {
+                const totalSeats = floorRows * floorColumns;
+                floorElement.innerHTML = "";
+                let tmpGridTemplateRows = "";
+                for(let i = 0; i < floorRows; i++)
+                {
+                    tmpGridTemplateRows += "1fr ";
+                    if(i !== floorRows - 1)
+                    {
+                        tmpGridTemplateRows += "0.3fr ";
+                    }
+                }
+                floorElement.style.gridTemplateRows = tmpGridTemplateRows;
+                floorElement.style.gridTemplateColumns = "repeat(" + floorColumns +  ", 1fr)";
+
+                let currentWalkingGapRowNumber = 1;
+                for(let i=1; i<=totalSeats; i++)
+                {
+                    const seat = document.createElement("div");
+                    floorElement.appendChild(seat);
+                    seat.innerText = i;
+                    seat.classList.add("bus-cell");
+                    if(busType == "SEAT")
+                    {
+                        seat.classList.add("bus-cell-seat");
+                    }
+                    else if(busType == "SLEEP")
+                    {
+                        seat.classList.add("bus-cell-sleep");
+                    }
+                    seat.classList.add("bus-cell-enable");
+
+                    if(i < floorRows)
+                    {
+                        const walkingGap = document.createElement("span");
+                        floorElement.appendChild(walkingGap);
+                        walkingGap.classList.add("bus-waliking-gap");
+                        walkingGap.style.gridColumnStart = "span " + floorColumns;
+                        if(currentWalkingGapRowNumber === walkingGapRow)
+                        {
+                            walkingGap.style.height = "50px";
+                        }
+                        currentWalkingGapRowNumber++;
+                    }
+                }
+            }
+
+            function nameSeats(floorElement, startSeatNumber)
+            {
+                let floorTag = "L";
+                if(floorElement.id === "bus-floor-2")
+                {
+                    floorTag = "U";
+                }
+                const seats = floorElement.getElementsByTagName("div");
+                let seatNumber = startSeatNumber;
+                for(let i=0; i<seats.length; i++)
+                {
+                    if(i % floorRows === 0 && i !== 0 && (totalFloors == 2))
+                    {
+                        seatNumber = seatNumber + floorRows;
+                    }
+                    seats[i].innerText = seatNumber + floorTag;
+                    seats[i].dataset.seatNumber = seatNumber + floorTag;
+                    const isEnabled = response_data['data']['list-seat'][seats[i].dataset.seatNumber]['seat-is-enabled'];
+                    seats[i].dataset.isEnabled = isEnabled;
+                    
+                    if(isEnabled == false)
+                    {
+                        seats[i].classList.add('bus-cell-disable');
+                    }
+                    seatNumber++;
+                }
+
+            }
+
+            function changeTotalFloors()
+            {
+                if(totalFloors === 1)
+                {
+                    document.getElementById("bus-floor-2").style.display = "none";
+                    document.getElementById("bus-floor-2").parentElement.style.display = "none";
+                }
+                else if(totalFloors === 2)
+                {
+                    document.getElementById("bus-floor-2").style.display = "grid";
+                    document.getElementById("bus-floor-2").parentElement.style.display = "inline-flex";
+                }
+            }
+
+        </script>
+
+    </div>
+{% endblock %}

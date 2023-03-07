@@ -226,13 +226,6 @@ def viewBusDetails():
     return ControllerOwner().handleViewBusDetails()
 
 
-# View Specific Bus Details API
-@app.route('/getbusdetails', methods=['POST'])
-@Owner.requireLogin
-def getBusDetails():
-    return ControllerOwner().handleGetBusDetails()
-
-
 # Update Owners profile
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin
@@ -298,72 +291,7 @@ def addStop():
             label.nav_btn : label.btn_logout
         }
         return render_template('addStop.html', response_data= response_data)
-
-
-# View All Schedules (works with filters => (see ComplexOperation))
-@app.route('/viewschedules', methods=['GET', 'POST'])
-@Owner.requireLogin
-def viewSchedules():
-    if(request.method == 'POST'):
-        # create filters
-        fromCity = request.form.get(label.filterFromCity, None)
-        toCity = request.form.get(label.filterToCity, None)
-        fromDate = request.form.get(label.filterDate, None)
     
-        #cant accept empty from and to city
-        if not(fromCity and toCity):
-            flash(label_reason.sourceDestinatioFailed)
-            return redirect(url_for('viewSchedules'))
-
-        #cant accept empty schedule date
-        if not fromDate:
-            flash(label_reason.scheduleDateFailed)
-            return redirect(url_for('viewSchedules'))
-
-        timeBlock = request.form.get(label.filterTimeBlock, 'all')
-        busType = request.form.get(label.filterBusType, 'all')
-        ownerUsername = request.form.get(label.owner_username, 'all')
-        sortPrice = request.form.get(label.filterSortPrice, 'no')
-        tripStatus = request.form.get(label.filterTripStatus, 'incomplete')
-        if(tripStatus == 'incomplete'):
-            tripStatus = False
-        else:
-            tripStatus = True
-        # Build filters object
-        filters = {
-            label.filterDate : fromDate,
-            label.filterFromCity : fromCity,
-            label.filterToCity : toCity,
-            label.filterTimeBlock : timeBlock,
-            label.filterBusType : busType,
-            label.owner_username : ownerUsername,
-            label.filterSortPrice : sortPrice,
-            label.filterTripStatus : tripStatus
-        }
-
-        response_data = ComplexOperation().getAllSchedules(filters= filters)
-        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objName]
-        response_data[label.options] = {
-            label.nav_btn : label.btn_logout,
-            label.owner_username : session[label.username]
-        }        
-        if(len(response_data[label.data][Schedule.objName]) == 0):
-            # No results
-            flash(label_reason.filterNoMatch)
-        else:
-            # Results found
-            flash(label_reason.filterMatch)
-        # return jsonify(response_data)
-        return render_template('viewSchedules.html', response_data= response_data)
-
-    else:
-        # return form for filling filters of schedules
-        response_data = ComplexOperation().getAllCity(search= None)
-        response_data[label.options] = {
-            label.nav_btn : label.btn_logout
-        }
-        return render_template('viewSchedules.html', response_data= response_data)
-
 
 # Add A new schedule
 @app.route('/addschedule', methods=['GET', 'POST'])
@@ -507,7 +435,7 @@ def updateCustomerProfile():
         })
 
 
-@app.route('/registerPassenger', methods=['GET', 'POST'])
+@app.route('/registerpassenger', methods=['GET', 'POST'])
 @Customer.requireLogin
 def registerPassenger():
     if(request.method == 'POST'):
@@ -520,12 +448,100 @@ def registerPassenger():
         })
 
 
-@app.route('/viewPassengers', methods=['GET'])
+@app.route('/viewpassengers', methods=['GET'])
 @Customer.requireLogin
 def viewPassengers():
     return ControllerCustomer().handleViewPassengers()
 
+
+@app.route('/bookschedule', methods=['POST'])
+@Customer.requireLogin
+def bookSchedule():
+    return ControllerCustomer().handleBookSchedule()
+
+        
+
+# @app.route('/viewSchedules', methods=['GET'])
+# @Customer.requireLogin
+# def 
+
+
 # CUSTOMER END
+
+# COMMON BEGIN
+
+
+# View All Schedules (works with filters => (see ComplexOperation))
+@app.route('/viewschedules', methods=['GET', 'POST'])
+def viewSchedules():
+    if((Owner.isLoggedOn() or Customer.isLoggedOn()) == False):
+        flash(label_reason.loginInRequired)
+        return redirect(url_for('chooseLogin'))
+    
+    if(request.method == 'POST'):
+        # create filters
+        fromCity = request.form.get(label.filterFromCity, None)
+        toCity = request.form.get(label.filterToCity, None)
+        fromDate = request.form.get(label.filterDate, None)
+    
+        #cant accept empty from and to city
+        if not(fromCity and toCity):
+            flash(label_reason.sourceDestinatioFailed)
+            return redirect(url_for('viewSchedules'))
+
+        #cant accept empty schedule date
+        if not fromDate:
+            flash(label_reason.scheduleDateFailed)
+            return redirect(url_for('viewSchedules'))
+
+        timeBlock = request.form.get(label.filterTimeBlock, 'all')
+        busType = request.form.get(label.filterBusType, 'all')
+        ownerUsername = request.form.get(label.owner_username, 'all')
+        sortPrice = request.form.get(label.filterSortPrice, 'no')
+        tripStatus = request.form.get(label.filterTripStatus, 'incomplete')
+        if(tripStatus == 'incomplete' or Customer.isLoggedOn()):
+            tripStatus = False
+        else:
+            tripStatus = True
+        # Build filters object
+        filters = {
+            label.filterDate : fromDate,
+            label.filterFromCity : fromCity,
+            label.filterToCity : toCity,
+            label.filterTimeBlock : timeBlock,
+            label.filterBusType : busType,
+            label.owner_username : ownerUsername,
+            label.filterSortPrice : sortPrice,
+            label.filterTripStatus : tripStatus
+        }
+
+        response_data = ComplexOperation().getAllSchedules(filters= filters)
+        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objName]
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout,
+            label.owner_username : session[label.username],
+            label.accessType : session[label.accessType]
+        }        
+        if(len(response_data[label.data][Schedule.objName]) == 0):
+            # No results
+            flash(label_reason.filterNoMatch)
+        else:
+            # Results found
+            flash(label_reason.filterMatch)
+        # return jsonify(response_data)
+        return render_template('viewSchedules.html', response_data= response_data)
+
+    else:
+        # return form for filling filters of schedules
+        response_data = ComplexOperation().getAllCity(search= None)
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+        return render_template('viewSchedules.html', response_data= response_data)
+
+
+# COMMON END
+
 
 # API BEGIN
 
@@ -535,6 +551,20 @@ def viewPassengers():
 def getStopsByCity():
     response_data = ComplexOperation().getAllStopsByCity()
     return jsonify(response_data)
+
+
+# View Specific Bus Details API
+@app.route('/getbusdetails', methods=['POST'])
+def getBusDetails():
+    if((Owner.isLoggedOn() or Customer.isLoggedOn()) == False):
+        flash(label_reason.loginInRequired)
+        return redirect(url_for('chooseLogin'))
+    
+    numberPlate = request.form.get(label.bus_numberPlate)
+    response_data = ComplexOperation().getBusDetails(numberPlate= numberPlate, ownerUsername= None, useOwnerUsername= False)
+    return jsonify(response_data)
+        
+
 
 # API END
 

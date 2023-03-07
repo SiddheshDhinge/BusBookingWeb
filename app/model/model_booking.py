@@ -3,6 +3,7 @@ from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
 from .common import Common
+from .. import label
 
 class Booking(Base, Common):
     __tablename__ = 'Booking'
@@ -27,3 +28,11 @@ class Booking(Base, Common):
 
     def __repr__(self):
         return f"{self.__tablename__} => ({self.numberPlate}, {self.seatNo}) : {self.scheduleId} {self.passengerId}"
+    
+    def serialize(self):
+        return {
+            label.bus_numberPlate : self.numberPlate,
+            label.seat_seatNo : self.seatNo,
+            label.schedule_id : self.scheduleId,
+            label.passenger_id : self.passengerId
+        }

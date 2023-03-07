@@ -56,15 +56,19 @@ class ComplexOperation:
         return self.response_data
 
 
-    def getSchedule(self, scheduleId: int, owner_username: str):
+    def getSchedule(self, scheduleId: int, owner_username: str, useOwnerUsername= True):
         City1 = aliased(City)
         City2 = aliased(City)
         queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
             .join(Bus, Owner)\
-            .filter(Schedule.scheduleId == scheduleId)\
-            .filter(Owner.username == owner_username).first()
+            .filter(Schedule.scheduleId == scheduleId)
+        
+        if(useOwnerUsername == True):
+            queryResult = queryResult.filter(Owner.username == owner_username)
+
+        queryResult = queryResult.first()
         
         if queryResult:
             (scheduleObj, busObj, ownerObj, cityObj1, cityObj2) = queryResult
@@ -209,11 +213,23 @@ class ComplexOperation:
 
     def getCustomerPassengers(self, customerUsername):
         queryResult = DB_session.query(Passenger).filter(Passenger.username == customerUsername).all()
-        return queryResult
+        self.response_data[label.data][Passenger.objListName] = [
+            passengerObj.serialize() for passengerObj in queryResult
+        ]
+        return self.response_data
 
     def getCustomerBooking(self, customerUsername):
-        queryResult = DB_session.query(Booking, Passenger, Customer).join(Booking, Passenger, Customer).filter(Customer.username == customerUsername).all()
-        return queryResult
+        queryResult = DB_session.query(Booking, Passenger, Customer)\
+            .join(Booking, Passenger, Customer)\
+            .filter(Customer.username == customerUsername).all()
+        
+        self.response_data[label.data] = [
+            {
+                Booking.__tablename__ : bookingObj.serialize(),
+                Passenger.__tablename__ : passengerObj.serialize(),
+                Customer.__tablename__ : customerObj.serialize()
+            } for (bookingObj, passengerObj, customerObj) in queryResult
+        ]
     
     def getAllStopsByCity(self):
         allCityObj = self.getAllCity(None)[label.data][City.objName]
@@ -254,10 +270,13 @@ class ComplexOperation:
         
         DB_session.commit()
 
-    def getBusDetails(self, numberPlate, ownerUsername):
+    def getBusDetails(self, numberPlate, ownerUsername, useOwnerUsername= True):
         queryResult = DB_session.query(Bus)\
-            .filter(Bus.numberPlate == numberPlate)\
-            .filter(Bus.username == ownerUsername).first()
+            .filter(Bus.numberPlate == numberPlate)
+        
+        if(useOwnerUsername == True):
+            queryResult = queryResult.filter(Bus.username == ownerUsername)
+        queryResult = queryResult.first()
         
         if queryResult:
             self.response_data[label.data] = {
@@ -280,3 +299,18 @@ class ComplexOperation:
             data[seatNo] = seatObj.serialize()
 
         return data
+    
+
+    def getBookedPassengers(self, scheduleId: int):
+        queryResult = DB_session.query(Booking, Passenger)\
+            .join(Passenger, Booking.passengerId == Passenger.passengerId)\
+            .filter(Booking.scheduleId == scheduleId).all()
+        
+        self.response_data[label.data][Booking.objListName] = [
+            {
+                Booking.objName : bookingObj.serialize(),
+                Passenger.objName : passengerObj.serialize()
+            } for bookingObj, passengerObj in queryResult
+        ]
+
+        return self.response_data
