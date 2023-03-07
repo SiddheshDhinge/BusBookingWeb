@@ -1,0 +1,204 @@
+{% macro busSeatEditor(response_data, load= False) -%}
+    <button onclick="allowSeatSelection(event)">Select Seats</button>
+    <button onclick="disableSeats(event)">Enable / Disable Seats</button>
+    <br><br>
+    
+    <div class="bus">
+        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+        <div id="bus-floor-1" class="bus-floor">
+
+        </div>
+    </div>
+    <br><br>
+    
+    <div class="bus">
+        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+        <div id="bus-floor-2" class="bus-floor">
+    
+        </div>
+    </div>
+    <br><br>
+    
+    <input id="seats-status" type="hidden" name="list-seat" />
+
+    <script>
+        let totalRows = 3, totalColumns = 5;
+        
+        let secondFloorExists = true;
+        let selection = false;
+        let walkingGapRowNumber = null;
+        let seatType = "SLEEP";
+        
+        {% if load == True %}
+            totalRows = {{response_data['data']['bus']['bus-floor-rows']}};
+            totalColumns = {{response_data['data']['bus']['bus-floor-columns']}};
+            {% if (response_data['data']['bus']['bus-total-floors']) == True %}
+                secondFloorExists = false;
+            {% endif %}
+            walkingGapRowNumber = {{response_data['data']['bus']['bus-walking-gap-row']}};
+            {% if (response_data['data']['bus']['bus-bus-type']) == 'SEAT' %}
+                seatType = "SEAT";
+            {% endif %}
+        {% endif %}
+
+        const floor1 = document.getElementById("bus-floor-1");
+        const floor2 = document.getElementById("bus-floor-2");
+
+        setSeats(floor1);
+        setSeats(floor2);
+        nameSeats(floor1, 1);
+        nameSeats(floor2, totalRows +1);
+
+        function setSeats(floorElement)
+        {
+            const totalSeats = totalRows * totalColumns;
+            floorElement.innerHTML = "";
+            let tmpGridTemplateRows = "";
+            for(let i = 0; i < totalRows; i++)
+            {
+                tmpGridTemplateRows += "1fr ";
+                if(i !== totalRows - 1)
+                {
+                    tmpGridTemplateRows += "0.3fr ";
+                }
+            }
+            floorElement.style.gridTemplateRows = tmpGridTemplateRows;
+            floorElement.style.gridTemplateColumns = "repeat(" + totalColumns +  ", 1fr)";
+
+            for(let i=1; i<=totalSeats; i++)
+            {
+                const seat = document.createElement("div");
+                floorElement.appendChild(seat);
+                seat.innerText = i;
+                seat.classList.add("bus-cell");
+                if(seatType == "SEAT")
+                {
+                    seat.classList.add("bus-cell-seat");
+                }
+                else if(seatType == "SLEEP")
+                {
+                    seat.classList.add("bus-cell-sleep");
+                }
+                seat.classList.add("bus-cell-enable");
+                seat.addEventListener("click", selectSeat);
+
+                if(i < totalRows)
+                {
+                    const walkingGap = document.createElement("span");
+                    floorElement.appendChild(walkingGap);
+                    walkingGap.classList.add("bus-waliking-gap");
+                    walkingGap.style.gridColumnStart = "span " + totalColumns;
+                }
+            }
+        }
+        function nameSeats(floorElement, startSeatNumber)
+        {
+            let floorTag = "L";
+            if(floorElement.id === "bus-floor-2")
+            {
+                floorTag = "U";
+            }
+            const seats = floorElement.getElementsByTagName("div");
+            let seatNumber = startSeatNumber;
+            for(let i=0; i<seats.length; i++)
+            {
+                if(i % totalRows === 0 && i !== 0 && secondFloorExists)
+                {
+                    seatNumber = seatNumber + totalRows;
+                }
+                if(!(seats[i].hasAttribute("data-seat-enabled")))
+                {
+                    seats[i].dataset.seatEnabled = true;
+                }
+                seats[i].dataset.seatNumber = seatNumber + floorTag;
+                seats[i].innerText = seatNumber + floorTag;
+                seatNumber++;
+            }
+        }
+
+        function allowSeatSelection(e)
+        {
+            e.preventDefault();
+            selection = !selection;
+        }
+
+        function selectSeat(e)
+        {
+            if(selection === false)
+            {
+                return;
+            }
+
+            const element = e.target;
+            element.classList.toggle("bus-cell-selected");
+        }
+
+        function disableSeats(e)
+        {
+            e.preventDefault();
+            const floor1Selected = floor1.querySelectorAll(".bus-cell-selected");
+            const floor2Selected = floor2.querySelectorAll(".bus-cell-selected");
+
+            for(let i=0; i<floor1Selected.length; i++)
+            {
+                floor1Selected[i].dataset.seatEnabled = (floor1Selected[i].dataset.seatEnabled === "true") ? "false" : "true";
+                floor1Selected[i].classList.toggle("bus-cell-disable");
+                floor1Selected[i].classList.remove("bus-cell-selected");
+            }
+            for(let i=0; i<floor2Selected.length; i++)
+            {
+                floor2Selected[i].dataset.seatEnabled = (floor2Selected[i].dataset.seatEnabled === "true") ? "false" : "true";
+                floor2Selected[i].classList.toggle("bus-cell-disable");
+                floor2Selected[i].classList.remove("bus-cell-selected");
+            }
+            selection = false;
+        }
+
+        function changeSeatType(e)
+        {
+            const seats = document.querySelectorAll(".bus-cell");
+            seatType = e.target.value;
+            if(e.target.value === "SEAT")
+            {
+                seats.forEach((seat) => {
+                    seat.classList.remove("bus-cell-sleep");
+                    seat.classList.add("bus-cell-seat");
+                });
+            }
+            else if(e.target.value === "SLEEP")
+            {
+                seats.forEach((seat) => {
+                    seat.classList.remove("bus-cell-seat");
+                    seat.classList.add("bus-cell-sleep");
+                });
+            }
+        }
+
+        function saveDataToJson()
+        {
+            const seatStatus = [];
+            
+            floor1.querySelectorAll(".bus-cell").forEach((seat) => {
+                const tmpObj = {
+                    'seat-seat-no' : seat.dataset.seatNumber,
+                    'seat-is-enabled' : seat.dataset.seatEnabled
+                };
+                seatStatus.push(tmpObj);
+            });
+
+            if(secondFloorExists === true)
+            {
+                floor2.querySelectorAll(".bus-cell").forEach((seat) => {
+                    const tmpObj = {
+                        'seat-seat-no' : seat.dataset.seatNumber,
+                        'seat-is-enabled' : seat.dataset.seatEnabled
+                    };
+                    seatStatus.push(tmpObj);
+                });
+            }
+            
+            document.getElementById("seats-status").value = JSON.stringify(seatStatus);
+            // console.log(seatStatus);
+        }
+    </script>
+{%- endmacro %}

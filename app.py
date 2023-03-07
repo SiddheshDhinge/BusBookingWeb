@@ -219,6 +219,20 @@ def viewBus():
     return ControllerOwner().handleViewBus()
 
 
+# View Specific Bus Details
+@app.route('/viewbusdetails', methods=['POST'])
+@Owner.requireLogin
+def viewBusDetails():
+    return ControllerOwner().handleViewBusDetails()
+
+
+# View Specific Bus Details API
+@app.route('/getbusdetails', methods=['POST'])
+@Owner.requireLogin
+def getBusDetails():
+    return ControllerOwner().handleGetBusDetails()
+
+
 # Update Owners profile
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin

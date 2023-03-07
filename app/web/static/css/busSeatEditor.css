@@ -1,0 +1,51 @@
+.bus{
+    border: 1px solid grey;
+    border-radius: 5%;
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+.bus-steering-wheel{
+    width: 50px;
+    margin-right: 10px;
+}
+.bus-floor{
+    display: grid;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 2%;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: column;
+    column-gap: 10px;
+    width: fit-content;
+}
+.bus-cell{
+    height: 50px;
+    transition: width 1s;
+}
+.bus-cell-seat{
+    width: 50px;
+}
+.bus-cell-sleep{
+    width: 80px;
+}
+.bus-cell-enable{
+    background-color: lightblue;
+    border: 1px solid grey;
+    border-radius: 5%;
+}
+.bus-cell-disable{
+    background-color: rgb(177, 177, 177);
+    border: 1px solid grey;
+    border-radius: 5%;
+}
+.bus-waliking-gap{
+    grid-column-start: span 5;
+    height: 15px;
+    transition: height 1s;
+}
+.bus-cell-selected{
+    border: 1px solid red;
+    border-radius: 5%;
+}

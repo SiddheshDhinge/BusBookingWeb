@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/css/busSeatEditor.css">
+    <style>
+        fieldset{
+            border: 0 none;
+            display: inline;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="component-main">
+
+    <!-- 
+        Bus : 
+        numberPlate
+        busType
+        totalFloors
+        floorRows
+        floorColumns
+        walkingGapRow
+
+        Seat :
+        seatNo
+        isEnabled
+     -->
+
+    <form action="{{ url_for('addBus') }}" method="post" onsubmit="submitForm(event)">
+    
+        <label for="plate">Number Plate:</label>
+        <input type="text" id="plate" name="bus-number-plate" required><br><br>
+    
+        <label for="seat-type-selector">Seat Type:</label>
+        <fieldset id="seat-type-selector">
+            <label for="bus-seat-type-seat">SEAT:</label>
+            <input id="bus-seat-type-seat" onclick="changeSeatType(event)" type="radio" name="bus-bus-type" value="SEAT" required>
+            <label for="bus-seat-type-sleep">SLEEP:</label>
+            <input id="bus-seat-type-sleep" onclick="changeSeatType(event)" type="radio" name="bus-bus-type" value="SLEEP">
+        </fieldset>
+        <br><br>
+
+        <label for="total-floors-selector">Number of Floors:</label>
+        <fieldset id="total-floors-selector">
+            <label for="single-floor">Single Floor</label>
+            <input id="single-floor" onclick="changeTotalFloors(event)" type="radio" value="1" name="bus-total-floors" required/>
+            <label for="double-floor">Double Floor</label>
+            <input id="double-floor" onclick="changeTotalFloors(event)" type="radio" value="2" name="bus-total-floors" />
+        </fieldset>
+        <br><br>
+
+        <label>Edit Floor Layout:</label><br>
+        <label for="bus-floor-rows">Rows</label>
+        <input onchange="changeSeats(event)" id="bus-floor-rows" type="number" name="bus-floor-rows" required />
+        <label for="bus-floor-columns">Columns</label>
+        <input onchange="changeSeats(event)" id="bus-floor-columns" type ="number" name="bus-floor-columns" required />
+        <br><br>
+        
+        <label>Walking Gap Row:</label><br>
+        <label for="bus-walking-gap-row">Row Number:</label>
+        <input id="bus-walking-gap-row" type="number" onchange="handleWalkingGap(event)" name="bus-walking-gap-row" required />
+        <br><br>
+
+        {% from 'busSeatEditor.html' import busSeatEditor %}
+        {{ busSeatEditor(response_data) }}
+
+        <input type="submit" />
+    </form>
+        
+    <script>
+        function changeSeats(e)
+        {
+            e.preventDefault();
+            const tmpRows = document.getElementById("bus-floor-rows").value;
+            const tmpColumns = document.getElementById("bus-floor-columns").value;
+
+            if(tmpRows === "" || tmpColumns === "")
+                return ;
+            
+            totalRows = parseInt(tmpRows);
+            totalColumns = parseInt(tmpColumns);
+
+            setSeats(floor1);
+            setSeats(floor2);
+            nameSeats(floor1, 1);
+            nameSeats(floor2, totalRows +1);
+        }
+        function changeTotalFloors(e)
+        {
+            const element = e.target;
+            if(element.value === "1")
+            {
+                document.getElementById("bus-floor-2").style.display = "none";
+                document.getElementById("bus-floor-2").parentElement.style.display = "none";
+                secondFloorExists = false;
+                nameSeats(floor1, 1);
+            }
+            else if(element.value === "2")
+            {
+                document.getElementById("bus-floor-2").style.display = "grid";
+                document.getElementById("bus-floor-2").parentElement.style.display = "inline-flex";
+                secondFloorExists = true;
+                nameSeats(floor1, 1);
+                nameSeats(floor2, totalRows +1);
+            }
+        }
+
+        function handleWalkingGap(e)
+        {
+            e.preventDefault();
+            
+            const rowNumber = parseInt(e.target.value);
+            if(rowNumber >= totalRows || rowNumber <= 0)
+            {
+                e.target.value = walkingGapRowNumber;
+                return;
+            }
+            
+            if(walkingGapRowNumber !== null)
+            {
+                floor1.getElementsByTagName("span")[walkingGapRowNumber -1].style.height = "15px";
+                floor2.getElementsByTagName("span")[walkingGapRowNumber -1].style.height = "15px";
+            }
+
+            floor1.getElementsByTagName("span")[rowNumber -1].style.height = "50px";
+            floor2.getElementsByTagName("span")[rowNumber -1].style.height = "50px";
+            walkingGapRowNumber = rowNumber;
+        }
+
+        function submitForm(e)
+        {
+            saveDataToJson();
+            // e.preventDefault();
+            // return false;
+            return true;
+        }
+    </script>
+</div>
+{% endblock %}

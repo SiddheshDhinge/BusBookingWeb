@@ -33,6 +33,7 @@ invalidStopSequenceError = 'Please Select Valid Stops'
 invalidScheduleIdError = 'Please Select Valid Schedule'
 tripUpdationSuccess = 'Successfully Updated Trip Status'
 invalidTripStatusError = 'Updatation of Trip Status Failed!'
+invalidBusError = 'Please Select Valid Bus'
 
 #filters
 enterFilter = 'Please enter required filters.'

@@ -59,7 +59,7 @@ bus_walkingGapRow = 'bus-walking-gap-row'
 bus_typeSleep = 'SLEEP'
 bus_typeSeat = 'SEAT'
 
-seat_seatNo = 'seat-seat-number'
+seat_seatNo = 'seat-seat-no'
 seat_is_enabled = 'seat-is-enabled'
 
 city_id = 'city-id'

@@ -9,7 +9,7 @@
     .main-table-grid {
         background-color: black;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         row-gap: 1px;
     }
 
@@ -37,16 +37,7 @@
                 Bus Type
             </div>
             <div class="table-cell-header table-cell">
-                Total Floors
-            </div>
-            <div class="table-cell-header table-cell">
-                Floor Columns
-            </div>
-            <div class="table-cell-header table-cell">
-                Floor Rows
-            </div>
-            <div class="table-cell-header table-cell">
-                Walking Gap Row
+                Details
             </div>
 
             {% for rowObj in response_data['data']['bus'] %}
@@ -57,16 +48,10 @@
                 {{rowObj['bus-bus-type']}}
             </div>
             <div class="table-cell">
-                {{rowObj['bus-total-floors']}}
-            </div>
-            <div class="table-cell">
-                {{rowObj['bus-floor-rows']}}
-            </div>
-            <div class="table-cell">
-                {{rowObj['bus-floor-columns']}}
-            </div>
-            <div class="table-cell">
-                {{rowObj['bus-walking-gap-row']}}
+                <form action="{{url_for('viewBusDetails')}}" method="POST">
+                    <input type="hidden" name="bus-number-plate" value="{{rowObj['bus-number-plate']}}" />
+                    <button type="submit">View More</button>
+                </form>
             </div>
             {% endfor %}
         </div>

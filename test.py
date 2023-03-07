@@ -4984,6 +4984,7 @@ if __name__ == "__main__":
     if(len(sys.argv) <= 1):
         print(colored('Script needs Args :-', 'red'))
         print(colored('runtest', 'yellow'))
+        print(colored('createall', 'yellow'))
         print(colored('dropall', 'yellow'))
         exit()
     if(sys.argv[1] == 'runtest'):
@@ -4999,5 +5000,6 @@ if __name__ == "__main__":
         print(colored('INVALID ARGS', 'red'))
         print(colored('Script needs Args :-', 'red'))
         print(colored('runtest', 'yellow'))
+        print(colored('createall', 'yellow'))
         print(colored('dropall', 'yellow'))
         exit()

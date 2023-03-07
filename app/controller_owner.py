@@ -3,6 +3,7 @@ from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
 from .model.model_bus import Bus
+from .model.model_seat import Seat
 from .model.model_passenger import Passenger
 from .model.model_schedule import Schedule
 from .model.model_city import City
@@ -13,6 +14,7 @@ from .model.session_manager import getSessionStatus
 from .model.complex_operations import ComplexOperation
 
 from . import label, label_reason
+import json
 
 class ControllerOwner:
 
@@ -136,9 +138,19 @@ class ControllerOwner:
 
         if(result == True):
             flash(label_reason.busRegistrationSuccess)
+            self.handleSeatCreation(numberPlate= numberPlate)
         else:
             flash(label_reason.busRegistrationFailed)
         return redirect(url_for('landingOwner'))
+
+
+    def handleSeatCreation(self, numberPlate):
+        busSeatList = json.loads(request.form.get(Seat.objListName))
+        print(busSeatList)
+        for seatObj in busSeatList:
+            seatNo = seatObj[label.seat_seatNo]
+            isEnabled = True if (seatObj[label.seat_is_enabled] == 'true') else False
+            Seat(numberPlate= numberPlate, seatNo= seatNo, isEnabled= isEnabled).createObject()
 
 
     def handleViewBus(self):
@@ -150,6 +162,23 @@ class ControllerOwner:
         }
         return render_template('viewBus.html', response_data= self.response_data)
 
+
+    def handleViewBusDetails(self):
+        numberPlate = request.form.get(label.bus_numberPlate)
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout,
+            label.bus_numberPlate : numberPlate
+        }
+        return render_template('viewBusDetails.html', response_data= self.response_data)
+        
+
+    def handleGetBusDetails(self):
+        numberPlate = request.form.get(label.bus_numberPlate)
+        username = session[label.username]
+
+        self.response_data = ComplexOperation().getBusDetails(numberPlate= numberPlate, ownerUsername= username)
+        return jsonify(self.response_data)
+        
 
     def handleCityCreation(self):
         city_name = request.form.get(label.city_name)

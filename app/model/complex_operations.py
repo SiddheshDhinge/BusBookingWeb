@@ -2,6 +2,7 @@ from .model_owner import Owner
 from .model_customer import Customer
 from .model_operator import Operator
 from .model_bus import Bus
+from .model_seat import Seat
 from .model_passenger import Passenger
 from .model_schedule import Schedule
 from .model_city import City
@@ -252,3 +253,30 @@ class ComplexOperation:
             .update({Schedule.isComplete : True})
         
         DB_session.commit()
+
+    def getBusDetails(self, numberPlate, ownerUsername):
+        queryResult = DB_session.query(Bus)\
+            .filter(Bus.numberPlate == numberPlate)\
+            .filter(Bus.username == ownerUsername).first()
+        
+        if queryResult:
+            self.response_data[label.data] = {
+                Bus.objName : queryResult.serialize(),
+                Seat.objListName : self.getBusSeats(numberPlate= numberPlate)
+            }
+            self.response_data[label.success] = True
+        else:
+            self.response_data[label.success] = False
+
+        return self.response_data
+    
+    def getBusSeats(self, numberPlate):
+        queryResult = DB_session.query(Seat)\
+            .filter(Seat.numberPlate == numberPlate).all()
+        
+        data = {}
+        for seatObj in queryResult:
+            seatNo = seatObj.serialize()[label.seat_seatNo]
+            data[seatNo] = seatObj.serialize()
+
+        return data
