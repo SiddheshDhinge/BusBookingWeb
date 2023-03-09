@@ -84,9 +84,9 @@
         <label for="seat-type-selector">Seat Type:</label>
         <fieldset id="seat-type-selector">
             <label for="bus-seat-type-seat">SEAT:</label>
-            <input id="bus-seat-type-seat" onclick="changeSeatType(event)" type="radio" name="bus-bus-type" value="SEAT" required>
+            <input id="bus-seat-type-seat" onclick="changeSeatType(event)" type="radio" name="bus-type" value="SEAT" required>
             <label for="bus-seat-type-sleep">SLEEP:</label>
-            <input id="bus-seat-type-sleep" onclick="changeSeatType(event)" type="radio" name="bus-bus-type" value="SLEEP">
+            <input id="bus-seat-type-sleep" onclick="changeSeatType(event)" type="radio" name="bus-type" value="SLEEP">
         </fieldset>
         <br><br>
 
@@ -339,7 +339,7 @@
             
             floor1.querySelectorAll(".bus-cell").forEach((seat) => {
                 const tmpObj = {
-                    'seat-seat-no' : seat.dataset.seatNumber,
+                    'seat-no' : seat.dataset.seatNumber,
                     'seat-is-enabled' : seat.dataset.seatEnabled
                 };
                 seatStatus.push(tmpObj);
@@ -349,7 +349,7 @@
             {
                 floor2.querySelectorAll(".bus-cell").forEach((seat) => {
                     const tmpObj = {
-                        'seat-seat-no' : seat.dataset.seatNumber,
+                        'seat-no' : seat.dataset.seatNumber,
                         'seat-is-enabled' : seat.dataset.seatEnabled
                     };
                     seatStatus.push(tmpObj);

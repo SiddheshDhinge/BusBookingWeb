@@ -25,7 +25,9 @@ class ComplexOperation:
             queryResult = DB_session.query(City).filter(City.name.ilike(search)).all()
         else:
             queryResult = DB_session.query(City).all()
-        self.response_data[label.data][City.objName] = [cityObj.serialize() for cityObj in queryResult]
+        self.response_data[label.data][City.objListName] = [
+            cityObj.serialize() for cityObj in queryResult
+        ]
         return self.response_data
 
 
@@ -35,7 +37,9 @@ class ComplexOperation:
             queryResult = DB_session.query(Owner).filter(Owner.username.ilike(search)).all()
         else:
             queryResult = DB_session.query(Owner).all()
-        self.response_data[label.data][Owner.objName] = [ownerObj.serialize() for ownerObj in queryResult]
+        self.response_data[label.data][Owner.objListName] = [
+            ownerObj.serialize() for ownerObj in queryResult
+        ]
         return self.response_data
 
 
@@ -48,26 +52,27 @@ class ComplexOperation:
         
         self.response_data.clear()
         self.response_data[label.data] = [
-        {
-            Stop.objName : stopObj.serialize(),
-            City.objName : cityObj.serialize(),
-        } for stopObj, cityObj in queryResult]
+            {
+                Stop.objName : stopObj.serialize(),
+                City.objName : cityObj.serialize(),
+            } for stopObj, cityObj in queryResult
+        ]
         
         return self.response_data
 
 
-    def getSchedule(self, scheduleId: int, owner_username: str, useOwnerUsername= True):
+    def getSchedule(self, scheduleId: int, ownerUsername: str, useOwnerUsername= True):
         City1 = aliased(City)
         City2 = aliased(City)
-        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2)\
+            .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
             .join(Bus, Owner)\
             .filter(Schedule.scheduleId == scheduleId)
         
         if(useOwnerUsername == True):
-            queryResult = queryResult.filter(Owner.username == owner_username)
-
+            queryResult = queryResult.filter(Owner.username == ownerUsername)
         queryResult = queryResult.first()
         
         if queryResult:
@@ -78,13 +83,14 @@ class ComplexOperation:
                     Owner.objName : ownerObj.serialize(),
                     f'from_{City.objName}' : cityObj1.serialize(),
                     f'to_{City.objName}' : cityObj2.serialize(),
-                    Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId)
+                    Stop.objListName : self.getSchedulesStop(scheduleObj.scheduleId)
                 }
             self.response_data[label.success] = True
         else:
             self.response_data[label.success] = False
             
         return self.response_data
+
 
     def getAllSchedules(self, filters, useDate=True, useCity=True):
         '''
@@ -101,7 +107,8 @@ class ComplexOperation:
         #Join required tables
         City1 = aliased(City)
         City2 = aliased(City)
-        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2)\
+            .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
             .join(Bus, Owner)\
@@ -132,10 +139,10 @@ class ComplexOperation:
             queryResult = queryResult.filter(Bus.busType == filters[label.filterBusType])
 
         #travel agency based filtering
-        if(filters[label.owner_username]):
-            if(filters[label.owner_username] != 'all'):
-                username = f'%{filters[label.owner_username]}%'
-                queryResult = queryResult.filter(Owner.username.ilike(username))
+        if(filters[label.owner_agencyName]):
+            if(filters[label.owner_agencyName] != 'all'):
+                agencyName = f'%{filters[label.owner_agencyName]}%'
+                queryResult = queryResult.filter(Owner.agencyName.ilike(agencyName))
         
         #sort according prices
         if(filters[label.filterSortPrice] == 'asc'):
@@ -153,23 +160,26 @@ class ComplexOperation:
                 Owner.objName : ownerObj.serialize(),
                 f'from_{City.objName}' : cityObj1.serialize(),
                 f'to_{City.objName}' : cityObj2.serialize(),
-                Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId)
+                Stop.objListName : self.getSchedulesStop(scheduleObj.scheduleId)
             } for scheduleObj, busObj, ownerObj, cityObj1, cityObj2 in queryResult
         ]
-        
         return self.response_data
 
 
     def getOwnerBuses(self, ownerUsername):
         queryResult = DB_session.query(Bus).filter(Bus.username == ownerUsername).all()
-        self.response_data[label.data][Bus.objName] = [busObj.serialize() for busObj in queryResult] 
+        self.response_data[label.data][Bus.objListName] = [
+            busObj.serialize() for busObj in queryResult
+        ] 
         return self.response_data
 
 
+    # rework needed
     def getOperatorSchedules(self, operatorUsername):
         City1 = aliased(City)
         City2 = aliased(City)
-        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2).select_from(Schedule)\
+        queryResult = DB_session.query(Schedule, Bus, Owner, City1, City2)\
+            .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
             .join(Bus, Owner)\
@@ -181,7 +191,7 @@ class ComplexOperation:
                 Schedule.objName : scheduleObj.serialize(),
                 Bus.objName : busObj.serialize(),
                 Owner.objName : ownerObj.serialize(),
-                Stop.objName : self.getSchedulesStop(scheduleObj.scheduleId),
+                Stop.objListName : self.getSchedulesStop(scheduleObj.scheduleId),
                 f'from_{City.objName}' : cityObj1.serialize(),
                 f'to_{City.objName}' : cityObj2.serialize()
             } for (scheduleObj, busObj, ownerObj, cityObj1, cityObj2) in queryResult
@@ -189,11 +199,11 @@ class ComplexOperation:
         return self.response_data
 
 
-    def getSchedulesStop(self, search_scheduleId):
+    def getSchedulesStop(self, scheduleId):
         queryResult = DB_session.query(Stop, City)\
             .join(At, At.stopId == Stop.stopId)\
             .join(City, City.cityId == Stop.cityId)\
-            .filter(At.scheduleId == search_scheduleId)\
+            .filter(At.scheduleId == scheduleId)\
             .order_by(At.sequence)\
             .all()
 
@@ -204,19 +214,23 @@ class ComplexOperation:
             }
             for stopObj, cityObj in queryResult
         ]
-
         return stopObjList
+
 
     def getAllOperators(self):
         queryResult = DB_session.query(Operator).all()
         return queryResult
+    
 
     def getCustomerPassengers(self, customerUsername):
-        queryResult = DB_session.query(Passenger).filter(Passenger.username == customerUsername).all()
+        queryResult = DB_session.query(Passenger)\
+            .filter(Passenger.username == customerUsername).all()
+        
         self.response_data[label.data][Passenger.objListName] = [
             passengerObj.serialize() for passengerObj in queryResult
         ]
         return self.response_data
+    
 
     def getCustomerBookings(self, customerUsername):    
         queryResult = DB_session.query(Schedule, Owner, City, Passenger, Booking)\
@@ -238,31 +252,38 @@ class ComplexOperation:
         ]
         return self.response_data
     
+    
     def getAllStopsByCity(self):
-        allCityObj = self.getAllCity(None)[label.data][City.objName]
+        allCityObj = self.getAllCity(search= None)[label.data][City.objListName]
         self.response_data[label.data] = {}
         for cityObj in allCityObj:
-            queryResult = DB_session.query(Stop).filter(Stop.cityId == cityObj[label.city_id]).all()
+            queryResult = DB_session.query(Stop)\
+                .filter(Stop.cityId == cityObj[label.city_id]).all()
+            
             self.response_data[label.data][cityObj[label.city_name]] = {
                 label.city_id : cityObj[label.city_id],
-                Stop.objName : [stopObj.serialize() for stopObj in queryResult]
+                Stop.objListName : [
+                    stopObj.serialize() for stopObj in queryResult
+                ]
             }
-            
         return self.response_data
     
-    def isScheduleOfOwner(self, scheduleId, owner_username):
+
+    def isScheduleOfOwner(self, scheduleId, ownerUsername):
         result = DB_session.query(
             DB_session.query(Schedule, Bus)\
                 .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
-                .filter(Bus.username == owner_username)\
+                .filter(Bus.username == ownerUsername)\
                 .filter(Schedule.scheduleId == scheduleId).exists()
         ).scalar()
         return result
     
-    def updateScheduleStop(self, scheduleId, stop_sequence):
-        DB_session.query(At).filter(At.scheduleId == scheduleId).delete()
 
-        for sequenceId, stopId in enumerate(stop_sequence):
+    def updateScheduleStop(self, scheduleId, stopSequence):
+        DB_session.query(At)\
+            .filter(At.scheduleId == scheduleId).delete()
+
+        for sequenceId, stopId in enumerate(stopSequence):
             result = At(scheduleId= scheduleId, stopId= stopId, sequence= sequenceId).createObject()
             if not result:
                 return False
@@ -270,6 +291,7 @@ class ComplexOperation:
         DB_session.commit()
         return True
     
+
     def updateTripStatus(self, scheduleId):
         DB_session.query(Schedule)\
             .filter(Schedule.scheduleId == scheduleId)\
@@ -277,17 +299,18 @@ class ComplexOperation:
         
         DB_session.commit()
 
+
     def getBusDetails(self, numberPlate, ownerUsername, useOwnerUsername= True):
         queryResult = DB_session.query(Bus)\
             .filter(Bus.numberPlate == numberPlate)
         
         if(useOwnerUsername == True):
             queryResult = queryResult.filter(Bus.username == ownerUsername)
-        queryResult = queryResult.first()
+        busObj = queryResult.first()
         
         if queryResult:
             self.response_data[label.data] = {
-                Bus.objName : queryResult.serialize(),
+                Bus.objName : busObj.serialize(),
                 Seat.objListName : self.getBusSeats(numberPlate= numberPlate)
             }
             self.response_data[label.success] = True
@@ -296,6 +319,7 @@ class ComplexOperation:
 
         return self.response_data
     
+
     def getBusSeats(self, numberPlate):
         queryResult = DB_session.query(Seat)\
             .filter(Seat.numberPlate == numberPlate).all()
@@ -319,7 +343,6 @@ class ComplexOperation:
                 Passenger.objName : passengerObj.serialize()
             } for bookingObj, passengerObj in queryResult
         ]
-
         return self.response_data
     
     
@@ -328,11 +351,13 @@ class ComplexOperation:
             .join(Booking, Passenger.passengerId == Booking.bookingId)\
             .where(Booking.bookingId == bookingId).first()
         
+        passengerObj = queryResult
         self.response_data[label.data] = {
-            Passenger.objName : queryResult.serialize()
+            Passenger.objName : passengerObj.serialize()
         }
         return self.response_data
     
+
     def getBookingDetails(self, bookingId):
         FromCity = aliased(City)
         ToCity = aliased(City)
@@ -364,5 +389,4 @@ class ComplexOperation:
             f'from-{Stop.objName}' : fromStopObj.serialize(),
             f'to-{Stop.objName}' : toStopObj.serialize()
         }
-
         return self.response_data

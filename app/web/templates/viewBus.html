@@ -40,12 +40,12 @@
                 Details
             </div>
 
-            {% for rowObj in response_data['data']['bus'] %}
+            {% for rowObj in response_data['data']['list-bus'] %}
             <div class="table-cell">
                 {{rowObj['bus-number-plate']}}
             </div>
             <div class="table-cell">
-                {{rowObj['bus-bus-type']}}
+                {{rowObj['bus-type']}}
             </div>
             <div class="table-cell">
                 <form action="{{url_for('viewBusDetails')}}" method="POST">

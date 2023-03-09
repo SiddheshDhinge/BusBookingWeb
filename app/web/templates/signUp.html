@@ -40,10 +40,17 @@
                 <input required type="password" name="{{response_data['label']['password']}}" id="password" class="form-control"
                     placeholder="password">
             </div>
-            <div class="mb-2">
-                <label for="name" class="form-label">Name</label>
-                <input required type="text" name="{{response_data['label']['name']}}" id="name" class="form-control" placeholder="John Doe">
-            </div>
+            {% if response_data['role'] == 'owner' %}
+                <div class="mb-2">
+                    <label for="name" class="form-label">Agency Name</label>
+                    <input required type="text" name="{{response_data['label']['name']}}" id="name" class="form-control" placeholder="john Doe Travels Agency">
+                </div>
+            {% else %}
+                <div class="mb-2">
+                    <label for="name" class="form-label">Name</label>
+                    <input required type="text" name="{{response_data['label']['name']}}" id="name" class="form-control" placeholder="John Doe">
+                </div>
+            {% endif %}
             <div class="mb-2">
                 <label for="contact" class="form-label">Contact</label>
                 <input required type="text" name="{{response_data['label']['contact']}}" id="contact" class="form-control" placeholder="1234567890">

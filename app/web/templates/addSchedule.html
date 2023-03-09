@@ -4,8 +4,8 @@
 
     <label for="cid1">From City:</label>
     <select id="cid1" name="schedule-from-city-id">
-        {% for city in response_data['data']['city'] %}
-            <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
+        {% for cityObjList in response_data['data']['list-city'] %}
+            <option value="{{cityObjList['city-id']}}"> {{cityObjList['city-name']}} </option>
         {% endfor %}
     </select>
 
@@ -13,8 +13,8 @@
     
     <label for="cid2">To City:</label>
     <select id="cid2" name="schedule-to-city-id">
-        {% for city in response_data['data']['city'] %}
-            <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
+        {% for cityObjList in response_data['data']['list-city'] %}
+            <option value="{{cityObjList['city-id']}}"> {{cityObjList['city-name']}} </option>
         {% endfor %}
     </select>
 
@@ -45,9 +45,9 @@
     <br><br>
     
     <label for="bid">Assign bus:</label>
-    <select id="bid" name="schedule-number-plate">
-        {% for bus in response_data['data']['bus'] %}
-            <option value="{{bus['bus-number-plate']}}"> {{bus['bus-number-plate']}} </option>
+    <select id="bid" name="bus-number-plate">
+        {% for busObj in response_data['data']['list-bus'] %}
+            <option value="{{busObj['bus-number-plate']}}"> {{busObj['bus-number-plate']}} </option>
         {% endfor %}
     </select>
     <br><br>

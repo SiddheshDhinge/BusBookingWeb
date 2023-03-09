@@ -42,12 +42,12 @@
                 City Name
             </div>
 
-            {% for rowObj in response_data['data']['city'] %}
+            {% for cityObj in response_data['data']['list-city'] %}
             <div class="table-cell">
-                {{rowObj['city-id']}}
+                {{cityObj['city-id']}}
             </div>
             <div class="table-cell">
-                {{rowObj['city-name']}}
+                {{cityObj['city-name']}}
             </div>
             {% endfor %}
         </div>

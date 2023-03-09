@@ -8,7 +8,7 @@
         .main-table-grid {
             background-color: black;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             row-gap: 1px;
         }
 
@@ -35,45 +35,44 @@
         </div>
         <div class="main-table-grid">
             <div class="table-cell-header table-cell">
-                Date / Time
+                Trip
             </div>
             <div class="table-cell-header table-cell">
-                City
+                Departure Date / Time
             </div>
             <div class="table-cell-header table-cell">
-                Bus / Operator
+                Dropping Date / Time
             </div>
             <div class="table-cell-header table-cell">
-                Fair Fees
+                Bus
             </div>
             <div class="table-cell-header table-cell">
-                Stops
+                Details
             </div>
 
             {% for rowObj in response_data['data'] %}
                 {% if rowObj['schedule'] %}
                     <div class="table-cell">
+                        {{rowObj['from_city']['city-name']}} <br>
+                        -To- <br>
+                        {{rowObj['to_city']['city-name']}}
+                    </div>
+                    <div class="table-cell">
                         {{rowObj['schedule']['schedule-from-date']}} <br> 
                         {{rowObj['schedule']['schedule-departure-time']}} <br>
-                         -To- <br> 
+                    </div>
+                    <div class="table-cell">
                         {{rowObj['schedule']['schedule-to-date']}} <br> 
                         {{rowObj['schedule']['schedule-drop-time']}}
                     </div>
                     <div class="table-cell">
-                        {{rowObj['from_city']['city-name']}} <br>
-                         -To- <br>
-                        {{rowObj['to_city']['city-name']}}
-                    </div>
-                    <div class="table-cell">
-                        {{rowObj['schedule']['operator-username']}} <br> -Driving- <br> {{rowObj['bus']['bus-number-plate']}}
-                    </div>
-                    <div class="table-cell">
-                        {{rowObj['schedule']['schedule-fair-fees']}}
+                        {{rowObj['bus']['bus-number-plate']}}
                     </div>
                     <div class="table-cell stops">
-                        {% for stop in rowObj['stop'] %}
-                            {{stop['stop']['stop-name']}} => {{stop['stop']['stop-address']}} <br> 
-                        {% endfor %}
+                        <form action="{{url_for('view')}}">
+                            
+                            <button type="submit">View More</button>
+                        </form>
                     </div>
                 {% endif %}
             {% endfor %}

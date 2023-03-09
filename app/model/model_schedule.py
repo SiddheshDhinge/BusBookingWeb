@@ -51,6 +51,6 @@ class Schedule(Base, Common):
             label.schedule_isComplete : self.isComplete,
             label.schedule_fromCity : self.fromCity,
             label.schedule_toCity : self.toCity,
-            label.schedule_numberPlate : self.numberPlate,
+            label.bus_numberPlate : self.numberPlate,
             label.operator_username : self.username
         }

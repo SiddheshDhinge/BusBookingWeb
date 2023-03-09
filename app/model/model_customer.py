@@ -91,9 +91,9 @@ class Customer(Base):
 
     def serialize(self):
         return {
-            label.username: self.username,
-            label.name: self.name,
-            label.contact: self.contact
+            label.customer_username : self.username,
+            label.customer_name : self.name,
+            label.customer_contact : self.contact
         }
 
 

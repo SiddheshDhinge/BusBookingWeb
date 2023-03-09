@@ -20,34 +20,6 @@ class ControllerOperator:
     def __init__(self):
         self.response_data = {}
 
-    def handleRequest(self):
-        service_id = int(request.form.get(label.service))
-
-        if(service_id == 1):
-            # create Operator
-            self.handleAccountCreation()
-
-        elif(service_id == 2):
-            #login Operator
-            self.handleLogin()
-
-        elif(service_id == 3):
-            #logout Operator
-            self.handleLogout()
-
-        elif(service_id == 4):
-            #view schedules
-            self.handleViewSchedule()
-
-        elif(service_id == 5):
-            #update profile
-            self.handleUpdateAccountProfile()
-
-        else:
-            self.response_data[label.success] = False
-
-        return jsonify(self.response_data)
-        
 
     def handleAccountCreation(self):
         username = request.form.get(label.operator_username)

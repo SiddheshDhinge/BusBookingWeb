@@ -38,5 +38,5 @@ class Bus(Base, Common):
             label.bus_floorRows : self.floorRows,
             label.bus_floorColumns : self.floorColumns,
             label.bus_walkingGapRow : self.walkingGapRow,
-            label.username : self.username
+            label.owner_username : self.username
         }

@@ -21,57 +21,13 @@ class ControllerOwner:
     def __init__(self):
         self.response_data = {}
 
-    def handleRequest(self):
-        service_id = int(request.form.get(label.service))
-
-        if(service_id == 1):
-            # create Owner
-            self.handleAccountCreation()
-
-        elif(service_id == 2):
-            #login
-            self.handleLogin()
-
-        elif(service_id == 3):
-            #logout
-            self.handleLogout()
-
-        elif(service_id == 4):
-            #register bus
-            self.handleBusRegistration()
-
-        elif(service_id == 5):
-            #View All Registered Bus
-            self.handleViewBus()
-
-        elif(service_id == 6):
-            #add a City
-            self.handleCityCreation()
-        
-        elif(service_id == 7):
-            #add a Stop
-            self.handleStopCreation()
-
-        elif(service_id == 8):
-            #add a schedule
-            self.handleScheduleCreation()
-
-        elif(service_id == 9):
-            #update profile
-            self.handleUpdateAccountProfile()
-
-        else:
-            self.response_data[label.success] = False
-
-        return jsonify(self.response_data)
-        
 
     def handleAccountCreation(self):
         username = request.form.get(label.owner_username)
         password = request.form.get(label.owner_password)
-        name = request.form.get(label.owner_name)
+        name = request.form.get(label.owner_agencyName)
         contact = request.form.get(label.owner_contact)
-        result = Owner(username=username, password=password, name=name, contact=contact).createOwner()
+        result = Owner(username=username, password=password, agencyName=name, contact=contact).createOwner()
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.userCreationSuccess)
@@ -84,7 +40,7 @@ class ControllerOwner:
     def handleLogin(self):
         username = request.form.get(label.owner_username)
         password = request.form.get(label.owner_password)
-        result = Owner(username=username, password=password, name=None, contact=None, currentSesssion=None).loginOwner()
+        result = Owner(username=username, password=password, agencyName=None, contact=None, currentSesssion=None).loginOwner()
         self.response_data[label.success] = result
         
         if(result == True):
@@ -110,8 +66,8 @@ class ControllerOwner:
 
 
     def handleUpdateAccountProfile(self):
-        name = request.form.get(label.owner_name, default=None)
-        contact = request.form.get(label.owner_contact, default=None)
+        name = request.form.get(label.owner_agencyName)
+        contact = request.form.get(label.owner_contact)
         username = session[label.username]
 
         ownerObj = Owner(username=username, password=None, name=name, contact=contact)
@@ -154,7 +110,7 @@ class ControllerOwner:
 
 
     def handleViewBus(self):
-        # get all owners registered bus
+        # get owners all registered bus
         username = session[label.username]
         self.response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
         self.response_data[label.options] = {
@@ -173,8 +129,8 @@ class ControllerOwner:
         
 
     def handleCityCreation(self):
-        city_name = request.form.get(label.city_name)
-        result = City(name= city_name).createObject()
+        cityName = request.form.get(label.city_name)
+        result = City(name= cityName).createObject()
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.cityCreationSuccess)
@@ -184,10 +140,10 @@ class ControllerOwner:
 
 
     def handleStopCreation(self):
-        stop_name = request.form.get(label.stop_name)
-        stop_address = request.form.get(label.stop_address)
-        city_id = request.form.get(label.city_id)
-        result = Stop(name= stop_name, address= stop_address, cityId= city_id).createObject()
+        stopName = request.form.get(label.stop_name)
+        stopAddress = request.form.get(label.stop_address)
+        cityId = request.form.get(label.city_id)
+        result = Stop(name= stopName, address= stopAddress, cityId= cityId).createObject()
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.stopCreationSuccess)
@@ -197,7 +153,6 @@ class ControllerOwner:
 
 
     def handleScheduleCreation(self):
-        operator_username = request.form.get(label.operator_username)
         fromDate = request.form.get(label.schedule_fromDate)
         toDate = request.form.get(label.schedule_toDate)
         departureTime = request.form.get(label.schedule_departureTime)
@@ -205,12 +160,15 @@ class ControllerOwner:
         fairFees = request.form.get(label.schedule_fairFees)
         fromCity = request.form.get(label.schedule_fromCity)
         toCity = request.form.get(label.schedule_toCity)
-        numberPlate = request.form.get(label.schedule_numberPlate)
+        numberPlate = request.form.get(label.bus_numberPlate)
+        operator_username = request.form.get(label.operator_username)
+
         scheduleObj = Schedule(
             fromDate=fromDate, toDate=toDate, departureTime=departureTime, dropTime=dropTime, 
             fairFees=fairFees, fromCity=fromCity, toCity=toCity, numberPlate=numberPlate, username=operator_username
         )
         result = scheduleObj.createObject()
+
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.scheduleCreationSuccess)
@@ -234,7 +192,7 @@ class ControllerOwner:
             return redirect(url_for('viewSchedules'))
         
         username = session[label.username]
-        response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= username)
+        response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= username)
 
         if not response_data[label.success]:
             flash(label_reason.invalidScheduleIdError)
@@ -254,7 +212,7 @@ class ControllerOwner:
             flash(label_reason.invalidStopSequenceError)
             return redirect(url_for("viewScheduleDetails"))
         
-        stop_sequence = []
+        stopSequence = []
         invalidFlag = False
         sequence = sequence[:-1].split(',')
         for tmpStop in sequence:
@@ -263,7 +221,7 @@ class ControllerOwner:
                 if tmpStopInt < 0:
                     invalidFlag = True
                 else:
-                    stop_sequence.append(tmpStopInt)
+                    stopSequence.append(tmpStopInt)
             except Exception:
                 invalidFlag = True
 
@@ -273,7 +231,7 @@ class ControllerOwner:
             return redirect(url_for("viewScheduleDetails"))
         
         scheduleId = request.form.get(label.schedule_id, None)
-        result = ComplexOperation().updateScheduleStop(scheduleId=scheduleId, stop_sequence= stop_sequence)
+        result = ComplexOperation().updateScheduleStop(scheduleId=scheduleId, stopSequence= stopSequence)
 
         if result:
             # Successfully updated
@@ -283,6 +241,7 @@ class ControllerOwner:
             flash(label_reason.scheduleStopUpdationFailed)
         
         return redirect(url_for("viewScheduleDetails"))
+    
     
     def handleTripStatusUpdation(self):
         tripStatus = request.form.get(label.schedule_isComplete, None)

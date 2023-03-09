@@ -19,18 +19,18 @@ class Owner(Base):
     currentSession = None
     username = Column('username', String(16), primary_key=True)
     password = Column('password', String(32), nullable=False)
-    name = Column('name', String(64), nullable=False)
+    agencyName = Column('agencyName', String(64), nullable=False)
     contact = Column('contact', String(10), nullable=False)
 
-    def __init__(self, username: str, password: str, name: str, contact: str, currentSesssion: str = None):
-        self.owner = username
+    def __init__(self, username: str, password: str, agencyName: str, contact: str, currentSesssion: str = None):
+        self.username = username
         self.password = password
-        self.name = name
+        self.agencyName = agencyName
         self.contact = contact
         self.currentSession = currentSesssion
 
     def __repr__(self):
-        return f"{self.__tablename__} => {self.password}, {self.name}, {self.contact}"
+        return f"{self.__tablename__} => {self.password}, {self.agencyName}, {self.contact}"
 
     def createOwner(self):
         try:
@@ -72,10 +72,10 @@ class Owner(Base):
 
     def updateInformation(self):
         try:
-            if(self.name):
+            if(self.agencyName):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
                 {
-                    Owner.name : self.name
+                    Owner.agencyName : self.agencyName
                 })
             if(self.contact):
                 DB_session.query(Owner).filter(Owner.username == self.username).update(
@@ -93,7 +93,7 @@ class Owner(Base):
     def serialize(self):
         return {
             label.owner_username: self.username,
-            label.owner_name: self.name,
+            label.owner_agencyName: self.agencyName,
             label.owner_contact: self.contact
         }
 

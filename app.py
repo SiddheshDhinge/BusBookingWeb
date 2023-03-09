@@ -515,7 +515,7 @@ def viewSchedules():
 
         timeBlock = request.form.get(label.filterTimeBlock, 'all')
         busType = request.form.get(label.filterBusType, 'all')
-        ownerUsername = request.form.get(label.owner_username, 'all')
+        ownerAgencyName = request.form.get(label.owner_agencyName, 'all')
         sortPrice = request.form.get(label.filterSortPrice, 'no')
         tripStatus = request.form.get(label.filterTripStatus, 'incomplete')
         if(tripStatus == 'incomplete' or Customer.isLoggedOn()):
@@ -529,13 +529,13 @@ def viewSchedules():
             label.filterToCity : toCity,
             label.filterTimeBlock : timeBlock,
             label.filterBusType : busType,
-            label.owner_username : ownerUsername,
+            label.owner_agencyName : ownerAgencyName,
             label.filterSortPrice : sortPrice,
             label.filterTripStatus : tripStatus
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
-        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objName]
+        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objListName]
         response_data[label.options] = {
             label.nav_btn : label.btn_logout,
             label.owner_username : session[label.username],

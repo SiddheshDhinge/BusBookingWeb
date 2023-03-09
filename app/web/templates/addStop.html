@@ -8,13 +8,12 @@
     <input type="text" id="address" name="stop-address"><br><br>
 
     <label for="cid">Stop In City:</label>
-    <input id="cid" type="text" name="city-id" list="cityList" />
-    <datalist id="cityList">
-        {% for city in response_data['data']['city'] %}
-            <option value="{{city['city-id']}}"> {{city['city-name']}} </option>
+    <select id="cid" name="city-id">
+        {% for cityObj in response_data['data']['list-city'] %}
+            <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
         {% endfor %}
-    </datalist>
-    <input type="submit">
+    </select>
 
+    <input type="submit">
 </form>
 {% endblock %}

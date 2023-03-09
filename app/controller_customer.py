@@ -19,50 +19,6 @@ class ControllerCustomer:
     def __init__(self):
         self.response_data = {}
 
-    def handleRequest(self):
-        service_id = int(request.form.get(label.service))
-
-        if(service_id == 1):
-            # create Customer
-            self.handleAccountCreation()
-
-        elif(service_id == 2):
-            #login Customer
-            self.handleLogin()
-
-        elif(service_id == 3):
-            #logout Customer
-            self.handleLogout()
-
-        elif(service_id == 4):
-            #view All schedules
-            self.handleViewAllSchedule()
-
-        elif(service_id == 5):
-            #update profile
-            self.handleUpdateAccountProfile()
-
-        elif(service_id == 6):
-            #Add a passenger
-            self.handleAddPassenger()
-
-        elif(service_id == 7):
-            #View all passenger
-            self.handleViewPassenger()
-            
-        elif(service_id == 8):
-            #Add a booking
-            self.handleAddBooking()
-
-        elif(service_id == 9):
-            #View My All booking
-            self.handleViewBooking()
-
-        else:
-            self.response_data[label.success] = False
-
-        return jsonify(self.response_data)
-        
 
     def handleAccountCreation(self):
         username = request.form.get(label.customer_username)
@@ -196,27 +152,8 @@ class ControllerCustomer:
         return render_template('viewBooking.html', response_data= self.response_data)
 
 
-
     def handleViewBookingDetails(self, bookingId):
         self.response_data = ComplexOperation().getBookingDetails(bookingId= bookingId)
 
-
         # return jsonify(self.response_data)
         return render_template('viewBookingDetails.html', response_data= self.response_data)
-    
-
-    def handleViewAllSchedule(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
-        qryResult = ComplexOperation().getAllSchedules()
-        self.response_data = [
-            {
-                Schedule.__tablename__ : scheduleObj.serialize(),
-                Bus.__tablename__ : busObj.serialize(),
-                Owner.__tablename__ : ownerObj.serialize(),
-                Stop.__tablename__ : stopObj.serialize(),
-                City.__tablename__ : cityObj.serialize()
-            } for (scheduleObj, busObj, ownerObj, stopObj, cityObj) in qryResult
-        ]

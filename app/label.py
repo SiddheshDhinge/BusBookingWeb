@@ -9,19 +9,19 @@ name_labels = 'label'
 role = 'role'
 
 # begin deprecated
-password = 'user-password'
-name = 'user-person-name'
-contact = 'user-contact-no'
+# password = 'user-password'
+# name = 'user-person-name'
+# contact = 'user-contact-no'
 # end
 
 owner_username = 'owner-username'
 owner_password = 'owner-password'
-owner_name = 'owner-agency-name'
+owner_agencyName = 'owner-agency-name'
 owner_contact = 'owner-contact'
 owner_all_label = {
     'username' : owner_username,
     'password' : owner_password,
-    'name' : owner_name,
+    'name' : owner_agencyName,
     'contact' : owner_contact,
 }
 
@@ -51,7 +51,7 @@ customer_all_label = {
 
 
 bus_numberPlate = 'bus-number-plate'
-bus_busType = 'bus-bus-type'
+bus_busType = 'bus-type'
 bus_totalFloors = 'bus-total-floors'
 bus_floorRows = 'bus-floor-rows'
 bus_floorColumns = 'bus-floor-columns'
@@ -59,7 +59,7 @@ bus_walkingGapRow = 'bus-walking-gap-row'
 bus_typeSleep = 'SLEEP'
 bus_typeSeat = 'SEAT'
 
-seat_seatNo = 'seat-seat-no'
+seat_seatNo = 'seat-no'
 seat_is_enabled = 'seat-is-enabled'
 
 city_id = 'city-id'
@@ -68,7 +68,8 @@ city_name = 'city-name'
 stop_id = 'stop-id'
 stop_name = 'stop-name'
 stop_address = 'stop-address'
-stop_sequence = 'stop-sequence'
+
+At_sequence = 'at-sequence'
 
 schedule_id = 'schedule-id'
 schedule_fromDate = 'schedule-from-date'
@@ -79,7 +80,6 @@ schedule_fromCity = 'schedule-from-city-id'
 schedule_toCity = 'schedule-to-city-id'
 schedule_fairFees = 'schedule-fair-fees'
 schedule_isComplete = 'schedule-is-complete'
-schedule_numberPlate = 'schedule-number-plate'
 
 booking_id = 'booking-id'
 booking_fromStopId = 'booking-from-stop-id'
