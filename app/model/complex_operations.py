@@ -218,18 +218,25 @@ class ComplexOperation:
         ]
         return self.response_data
 
-    def getCustomerBooking(self, customerUsername):
-        queryResult = DB_session.query(Booking, Passenger, Customer)\
-            .join(Booking, Passenger, Customer)\
-            .filter(Customer.username == customerUsername).all()
-        
+    def getCustomerBookings(self, customerUsername):    
+        queryResult = DB_session.query(Schedule, Owner, City, Passenger, Booking)\
+            .join(Booking, Booking.scheduleId == Schedule.scheduleId)\
+            .join(City, City.cityId == Schedule.toCity)\
+            .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+            .join(Owner, Owner.username == Bus.username)\
+            .join(Passenger, Passenger.passengerId == Booking.passengerId)\
+            .filter(Passenger.username == customerUsername).all()
+
         self.response_data[label.data] = [
             {
-                Booking.__tablename__ : bookingObj.serialize(),
-                Passenger.__tablename__ : passengerObj.serialize(),
-                Customer.__tablename__ : customerObj.serialize()
-            } for (bookingObj, passengerObj, customerObj) in queryResult
+                Schedule.objName : scheduleObj.serialize(),
+                Owner.objName : ownerObj.serialize(),
+                City.objName : cityObj.serialize(),
+                Passenger.objName : passengerObj.serialize(),
+                Booking.objName : bookingObj.serialize()
+            } for (scheduleObj, ownerObj, cityObj, passengerObj, bookingObj) in queryResult
         ]
+        return self.response_data
     
     def getAllStopsByCity(self):
         allCityObj = self.getAllCity(None)[label.data][City.objName]
@@ -312,5 +319,50 @@ class ComplexOperation:
                 Passenger.objName : passengerObj.serialize()
             } for bookingObj, passengerObj in queryResult
         ]
+
+        return self.response_data
+    
+    
+    def getBookedPassengerDetails(self, bookingId):
+        queryResult = DB_session.query(Passenger)\
+            .join(Booking, Passenger.passengerId == Booking.bookingId)\
+            .where(Booking.bookingId == bookingId).first()
+        
+        self.response_data[label.data] = {
+            Passenger.objName : queryResult.serialize()
+        }
+        return self.response_data
+    
+    def getBookingDetails(self, bookingId):
+        FromCity = aliased(City)
+        ToCity = aliased(City)
+        FromStop = aliased(Stop)
+        ToStop = aliased(Stop)
+
+        queryResult = DB_session.query(Booking, Schedule, Passenger, Bus, Owner, Operator, FromCity, ToCity, FromStop, ToStop)\
+            .join(Schedule, Schedule.scheduleId == Booking.scheduleId)\
+            .join(Passenger, Passenger.passengerId == Booking.passengerId)\
+            .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+            .join(Owner, Owner.username == Bus.username)\
+            .join(Operator, Operator.username == Schedule.username)\
+            .join(FromCity, FromCity.cityId == Schedule.fromCity)\
+            .join(ToCity, ToCity.cityId == Schedule.toCity)\
+            .join(FromStop, FromStop.stopId == Booking.fromStopId)\
+            .join(ToStop, ToStop.stopId == Booking.toStopId)\
+            .filter(Booking.bookingId == bookingId).first()
+        
+        (bookingObj, scheduleObj, passengerObj, busObj, ownerObj, operatorObj, fromCityObj, toCityObj, fromStopObj, toStopObj) = queryResult
+        self.response_data[label.data] = {
+            Booking.objName : bookingObj.serialize(),
+            Schedule.objName : scheduleObj.serialize(),
+            Passenger.objName : passengerObj.serialize(),
+            Bus.objName : busObj.serialize(),
+            Owner.objName : ownerObj.serialize(),
+            Operator.objName : operatorObj.serialize(),
+            f'from-{City.objName}' : fromCityObj.serialize(),
+            f'to-{City.objName}' : toCityObj.serialize(),
+            f'from-{Stop.objName}' : fromStopObj.serialize(),
+            f'to-{Stop.objName}' : toStopObj.serialize()
+        }
 
         return self.response_data

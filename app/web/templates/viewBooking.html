@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .component-main {
+        font-size: larger;
+        text-align: center;
+    }
+
+    .main-table-grid {
+        background-color: black;
+        display: grid;
+        grid-template-columns: .2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 1px;
+    }
+
+    .table-cell {
+        background-color: lightgreen;
+        padding: 2vh;
+        border: 1px solid black;
+    }
+
+    .table-cell-header {
+        background-color: burlywood;
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            View Schedule Details
+        </div>
+        
+        <div class="main-table-grid">
+            <div class="table-cell table-cell-header">
+                #
+            </div>
+            <div class="table-cell table-cell-header">
+                To City
+            </div>
+            <div class="table-cell table-cell-header">
+                Departure Date/Time
+            </div>
+            <div class="table-cell table-cell-header">
+                Passengers Name
+            </div>
+            <div class="table-cell table-cell-header">
+                Agency Name
+            </div>
+            <div class="table-cell table-cell-header">
+                Bus Number Plate
+            </div>
+            <div class="table-cell table-cell-header">
+                View Details
+            </div>
+            
+            {% for bookingObj in response_data['data'] %}
+                <div class="table-cell">
+                    {{loop.index}}
+                </div>
+                <div class="table-cell">
+                    {{bookingObj['city']['city-name']}}
+                </div>
+                <div class="table-cell">
+                    {{bookingObj['schedule']['schedule-from-date']}} <br>
+                    {{bookingObj['schedule']['schedule-departure-time']}}
+                </div>
+                <div class="table-cell">
+                    {{bookingObj['passenger']['passenger-name']}}
+                </div>
+                <div class="table-cell">
+                    {{bookingObj['owner']['owner-agency-name']}}
+                </div>
+                <div class="table-cell">
+                    {{bookingObj['schedule']['schedule-number-plate']}}
+                </div>
+                <div class="table-cell">
+                    <form action="{{url_for('viewBookingDetails', bookingId= bookingObj['booking']['booking-id'])}}" method="GET">
+                        <button type="submit">View Ticket</button>
+                    </form>
+                </div>
+            {% endfor %}
+
+         </div>
+         <script>
+         </script>
+    </div>
+{% endblock %}

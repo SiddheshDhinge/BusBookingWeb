@@ -23,7 +23,7 @@ class Owner(Base):
     contact = Column('contact', String(10), nullable=False)
 
     def __init__(self, username: str, password: str, name: str, contact: str, currentSesssion: str = None):
-        self.username = username
+        self.owner = username
         self.password = password
         self.name = name
         self.contact = contact
@@ -92,9 +92,9 @@ class Owner(Base):
 
     def serialize(self):
         return {
-            label.username: self.username,
-            label.name: self.name,
-            label.contact: self.contact
+            label.owner_username: self.username,
+            label.owner_name: self.name,
+            label.owner_contact: self.contact
         }
 
     @staticmethod

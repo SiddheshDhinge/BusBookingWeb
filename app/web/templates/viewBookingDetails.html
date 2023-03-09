@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .component-main {
+        font-size: larger;
+        text-align: center;
+    }
+
+    .main-table-grid {
+        background-color: black;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        row-gap: 1px;
+    }
+
+    .table-cell {
+        background-color: lightgreen;
+        padding: 2vh;
+        border: 1px solid black;
+    }
+
+    .table-cell-header {
+        background-color: burlywood;
+    }
+
+    {# Stop Container Styles #}
+    .stop-container-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .stop-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .single-stop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .invisible-form{
+        display: inline;
+    }
+    .editor-btn{
+        padding: 5px;
+        border: 1px solid grey;
+    }
+    fieldset{
+        border:0 none;
+        display: inline;
+    }
+    #trip-status-warning{
+        display: none;
+    }
+
+    #msg-box{
+        position: fixed;
+        top: 20%;
+        left: 40%;
+        right: 40%;
+        width: 20%;
+        height: 10%;
+        background-color: lightblue;
+        border: 2px solid rgb(48, 48, 48);
+        border-radius: 5%;
+        box-shadow: 0 0 20px grey;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    @media print
+    {
+        nav{
+            display: none !important;
+        }
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            View Ticket
+        </div>
+        
+        <div class="main-table-grid">
+            <div class="table-cell table-cell-header">
+                Ticket Number
+            </div>
+            <div class="table-cell">
+                {{ response_data['data']['booking']['booking-id'] }}
+            </div>
+
+            <div class="table-cell table-cell-header">
+                Seat Number
+            </div>
+            <div class="table-cell">
+                {{ response_data['data']['booking']['seat-seat-no'] }}
+            </div>
+
+            <div class="table-cell table-cell-header">
+                Trip Details
+            </div>
+            <div class="table-cell">
+                {{ response_data['data']['from-city']['city-name'] }} - To -
+                {{ response_data['data']['to-city']['city-name'] }}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Departure Date/Time
+            </div>
+            <div class="table-cell">
+                {{ response_data['data']['schedule']['schedule-from-date'] }} <br>
+                {{ response_data['data']['schedule']['schedule-departure-time'] }}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Dropping Date/Time
+            </div>
+            <div class="table-cell">
+                {{ response_data['data']['schedule']['schedule-to-date'] }} <br>
+                {{ response_data['data']['schedule']['schedule-drop-time'] }}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Passenger Details
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
+                    <div class="table-cell table-cell-header">
+                        Passenger Name
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['passenger']['passenger-name'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Passenger Contact
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['passenger']['passenger-contact'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Passenger Gender
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['passenger']['passenger-gender'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Passenger Age
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['passenger']['passenger-age'] }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Details
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
+                    <div class="table-cell table-cell-header">
+                        Agency Name
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['owner']['owner-agency-name'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Bus Number
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['bus']['bus-number-plate'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Bus Type
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['bus']['bus-bus-type'] }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Operator Details
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
+                    <div class="table-cell table-cell-header">
+                        Operator Name
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['operator']['operator-name'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Operator Contact
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['operator']['operator-contact'] }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Fair Fees Paid
+            </div>
+            <div class="table-cell">
+                &#8377; {{ response_data['data']['schedule']['schedule-fair-fees'] }}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Boarding Stop
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
+                    <div class="table-cell table-cell-header">
+                        Stop Name
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['from-stop']['stop-name'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Stop Address
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['from-stop']['stop-address'] }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Dropping Stop
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
+                    <div class="table-cell table-cell-header">
+                        Stop Name
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['to-stop']['stop-name'] }}
+                    </div>
+
+                    <div class="table-cell table-cell-header">
+                        Stop Address
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['to-stop']['stop-address'] }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Options
+            </div>
+            <div class="table-cell">
+                <button onclick="print()">Print</button>
+                <button onclick="copyLink()">Share</button>
+            </div>
+        </div>
+        <div id="msg-box">
+            Copied!
+        </div>
+        <script>
+            function copyLink()
+            {
+                const dummy = document.createElement('input'),
+                text = window.location.href;
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                document.getElementById("msg-box").style.display = "flex";
+                setTimeout(function(){
+                    document.getElementById("msg-box").style.display = "none";
+                }, 1500);
+            }
+        </script>
+    </div>
+{% endblock %}

@@ -101,8 +101,8 @@ class Operator(Base):
     def serialize(self):
         return {
             label.operator_username: self.username,
-            label.name: self.name,
-            label.contact: self.contact,
+            label.operator_name: self.name,
+            label.operator_contact: self.contact,
             label.operator_address: self.address
         }
 

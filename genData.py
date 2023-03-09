@@ -1,4 +1,6 @@
 import random
+import test
+from app.model.complex_operations import ComplexOperation
 
 own = ['Chintan', 'Siddhesh', 'Manas', 'Sahil', 'Shubham', 'jack123', 'emmam', 'brianb', 'katherineg', 'chrisd', 'samuelm', 'laurar', 'davids', 'jennifert', 'michaelw', 'susanb', 'jamesm', 'lisaq', 'matthewr', 'nicolej']
 oper = ['Manish', 'Guarav', 'Ketan', 'Akshay', 'Lokesh', 'timothyb', 'rachelc', 'michaelg', 'jenniferl', 'davidm', 'sarahp', 'matthewr', 'lisaq', 'katherinet', 'johnd']
@@ -44,10 +46,13 @@ for scheduleId, numberPlate in enumerate(scheduleBuses):
     # Booking
     totalBookings = random.randint(10, 20)
     tmpSeatNos = random.sample(seatNos, totalBookings)
+    availableStops = ComplexOperation().getSchedulesStop(search_scheduleId= int(scheduleId))
     for _ in range(0, totalBookings):
         seatNo = tmpSeatNos[_]
         passengerId = random.randint(1, 40)
-        data = (numberPlate, seatNo, scheduleId +1, passengerId)
+        fromStopId = 1 if (len(availableStops) == 0) else availableStops[0]['stop']['stop-id']
+        toStopId = 1 if (len(availableStops) == 0) else availableStops[-1]['stop']['stop-id']
+        data = (numberPlate, seatNo, scheduleId +1, passengerId, fromStopId, toStopId)
 
         print(data)
 

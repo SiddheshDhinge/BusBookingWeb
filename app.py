@@ -29,6 +29,7 @@ createAllTables()
 
 # Import Dependencies
 from flask import Flask, render_template, session, flash, request, jsonify, redirect, url_for
+from flask_uuid import FlaskUUID
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
@@ -37,6 +38,7 @@ load_dotenv()
 
 # Create App and Set Secret Key, session_lifetime
 app = Flask(__name__, static_url_path="", static_folder="app/web/static", template_folder="app/web/templates")
+FlaskUUID(app)
 app.secret_key = os.environ['app_secret']
 app.permanent_session_lifetime = timedelta(minutes= 15)
 ip_address = os.environ['ip_address']
@@ -459,7 +461,24 @@ def viewPassengers():
 def bookSchedule():
     return ControllerCustomer().handleBookSchedule()
 
-        
+
+@app.route('/confirmbookschedule', methods=['POST'])
+@Customer.requireLogin
+def confirmBookSchedule():
+    return ControllerCustomer().handleConfirmBookSchedule()
+
+
+@app.route('/viewbooking', methods=['GET'])
+@Customer.requireLogin
+def viewBookings():
+    return ControllerCustomer().handleViewBooking()
+
+
+@app.route('/viewbookingdetails/<uuid:bookingId>', methods=['GET'])
+def viewBookingDetails(bookingId):
+    return ControllerCustomer().handleViewBookingDetails(bookingId= bookingId)
+    
+
 
 # @app.route('/viewSchedules', methods=['GET'])
 # @Customer.requireLogin

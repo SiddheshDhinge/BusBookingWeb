@@ -16,7 +16,7 @@ contact = 'user-contact-no'
 
 owner_username = 'owner-username'
 owner_password = 'owner-password'
-owner_name = 'owner-name'
+owner_name = 'owner-agency-name'
 owner_contact = 'owner-contact'
 owner_all_label = {
     'username' : owner_username,
@@ -81,13 +81,15 @@ schedule_fairFees = 'schedule-fair-fees'
 schedule_isComplete = 'schedule-is-complete'
 schedule_numberPlate = 'schedule-number-plate'
 
+booking_id = 'booking-id'
+booking_fromStopId = 'booking-from-stop-id'
+booking_toStopId = 'booking-to-stop-id'
+
 passenger_id = 'passenger-id'
 passenger_name = 'passenger-name'
 passenger_gender = 'passenger-gender'
 passenger_age = 'passenger-age'
 passenger_contact = 'passenger-contact'
-
-booking_seatNo = 'booking-seat-no'
 
 options = 'options'
 nav_btn = 'nav-btn'

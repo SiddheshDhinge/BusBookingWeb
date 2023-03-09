@@ -150,7 +150,8 @@ class ControllerCustomer:
     def handleBookSchedule(self):
         scheduleId = request.form.get(label.schedule_id)
         username = session[label.username]
-
+        session[label.schedule_id] = scheduleId
+        
         self.response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= None, useOwnerUsername= False)
         self.response_data[label.data][Passenger.objListName] = ComplexOperation().getCustomerPassengers(customerUsername= username)[label.data][Passenger.objListName]
         self.response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
@@ -162,32 +163,47 @@ class ControllerCustomer:
         return render_template('bookSchedule.html', response_data= self.response_data)
 
 
-    def handleAddBooking(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-
-        seatNo = int(request.form.get(label.booking_seatNo))
+    def handleConfirmBookSchedule(self):
+        scheduleId = session[label.schedule_id]
+        session.pop(label.schedule_id)
+        scheduleObj = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= None, useOwnerUsername= False)
+        numberPlate = scheduleObj[label.data][Schedule.objName][Bus.objName][label.bus_numberPlate]
+        seatNo = request.form.get(label.seat_seatNo)
         passengerId = request.form.get(label.passenger_id)
-        scheduleId = request.form.get(label.schedule_id)
+        fromStopId = request.form.get(label.booking_fromStopId)
+        toStopId = request.form.get(label.booking_toStopId)
 
-        result = Booking(seatNo= seatNo, scheduleId= scheduleId, passengerId= passengerId).createObject()
-        self.response_data[label.success] = result
+        bookingObj = Booking(numberPlate= numberPlate, seatNo= seatNo, scheduleId= scheduleId, passengerId= passengerId, fromStopId= fromStopId, toStopId= toStopId)
+        result = bookingObj.createObject()
+
         if(result == True):
-            self.response_data[label.details] = label_reason.bookingCreationSuccess
+            flash(label_reason.bookingCreationSuccess)
+            session[label.booking_id] = bookingObj.bookingId
+            return redirect(url_for('viewBookingDetails'))
         else:
-            self.response_data[label.details] = label_reason.bookingCreationFailed
+            flash(label_reason.bookingCreationFailed)
+            return redirect(url_for('landingCustomer'))
 
 
     def handleViewBooking(self):
-        if Customer.isLoggedOn() == False:
-            self.response_data[label.success] = label_reason.loginInRequired
-            return
-        
         username = session[label.username]
-        queryResult = ComplexOperation().getCustomerBooking(customerUsername= username)
+        self.response_data = ComplexOperation().getCustomerBookings(customerUsername= username)
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+
+        # return jsonify(self.response_data)
+        return render_template('viewBooking.html', response_data= self.response_data)
 
 
+
+    def handleViewBookingDetails(self, bookingId):
+        self.response_data = ComplexOperation().getBookingDetails(bookingId= bookingId)
+
+
+        # return jsonify(self.response_data)
+        return render_template('viewBookingDetails.html', response_data= self.response_data)
+    
 
     def handleViewAllSchedule(self):
         if Customer.isLoggedOn() == False:

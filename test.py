@@ -2700,2282 +2700,2295 @@ class Tests(unittest.TestCase):
         assert At(150, 2, 8).createObject() == True
         assert At(150, 15, 9).createObject() == True
         
+        
+        assert Booking('MH 9 AB 8797', '30U', 1, 39, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '24U', 1, 40, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '1L', 1, 2, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '26L', 1, 36, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '12U', 1, 3, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '3L', 1, 17, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '8L', 1, 31, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '21L', 1, 31, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '29U', 1, 28, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '4U', 1, 9, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '17U', 1, 16, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '5U', 1, 40, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '11U', 1, 32, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '18U', 1, 11, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '13L', 1, 29, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '23U', 1, 3, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '10U', 1, 16, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '27L', 1, 18, 1, 1).createObject() == True
+        assert Booking('MH 9 AB 8797', '16U', 1, 7, 1, 1).createObject() == True
+        assert Booking('MH 8 AB 6980', '17U', 2, 5, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '8L', 2, 20, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '27L', 2, 35, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '14L', 2, 12, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '5U', 2, 1, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '4U', 2, 34, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '26L', 2, 18, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '28U', 2, 33, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '19L', 2, 17, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '9L', 2, 10, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '10U', 2, 14, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '15L', 2, 6, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '7L', 2, 35, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '30U', 2, 16, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '24U', 2, 39, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '22U', 2, 10, 18, 29).createObject() == True
+        assert Booking('MH 8 AB 6980', '16U', 2, 14, 18, 29).createObject() == True
+        assert Booking('MH 19 AB 8198', '6U', 3, 6, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '29U', 3, 15, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '4U', 3, 5, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '14L', 3, 20, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '20L', 3, 24, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '1L', 3, 12, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '25L', 3, 17, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '24U', 3, 14, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '18U', 3, 28, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '16U', 3, 26, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '19L', 3, 18, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '12U', 3, 12, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '27L', 3, 32, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '3L', 3, 5, 23, 22).createObject() == True
+        assert Booking('MH 19 AB 8198', '24U', 4, 23, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '19L', 4, 10, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '8L', 4, 25, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '2L', 4, 18, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '3L', 4, 2, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '11U', 4, 33, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '29U', 4, 29, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '14L', 4, 9, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '27L', 4, 36, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '25L', 4, 30, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '18U', 4, 11, 21, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '10U', 4, 25, 21, 16).createObject() == True
+        assert Booking('MH 10 AB 5575', '7L', 5, 7, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '18U', 5, 10, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '1L', 5, 12, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '8L', 5, 6, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '13L', 5, 28, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '9L', 5, 33, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '4U', 5, 23, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '25L', 5, 9, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '26L', 5, 2, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '6U', 5, 37, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '17U', 5, 38, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '22U', 5, 20, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '15L', 5, 9, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '23U', 5, 27, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '20L', 5, 40, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '27L', 5, 7, 17, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 5, 35, 17, 5).createObject() == True
+        assert Booking('MH 16 AB 7222', '22U', 6, 8, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '24U', 6, 13, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '13L', 6, 13, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '6U', 6, 13, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '23U', 6, 7, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '29U', 6, 31, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '4U', 6, 38, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '28U', 6, 40, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '27L', 6, 22, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '26L', 6, 29, 23, 13).createObject() == True
+        assert Booking('MH 16 AB 7222', '9L', 6, 16, 23, 13).createObject() == True
+        assert Booking('MH 17 AB 9316', '30U', 7, 17, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 7, 35, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 7, 36, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 7, 8, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '28U', 7, 19, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '4U', 7, 1, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 7, 7, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 7, 35, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 7, 21, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '22U', 7, 33, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '5U', 7, 3, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 7, 22, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '15L', 7, 31, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 7, 7, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '27L', 7, 40, 13, 11).createObject() == True
+        assert Booking('MH 17 AB 9316', '13L', 7, 37, 13, 11).createObject() == True
+        assert Booking('MH 11 AB 9332', '12U', 8, 24, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '23U', 8, 11, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '15L', 8, 34, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '6U', 8, 35, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '5U', 8, 8, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '30U', 8, 19, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 8, 2, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '8L', 8, 32, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '14L', 8, 39, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 8, 21, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '20L', 8, 24, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 8, 38, 6, 13).createObject() == True
+        assert Booking('MH 11 AB 9332', '10U', 8, 1, 6, 13).createObject() == True
+        assert Booking('MH 18 AB 7004', '26L', 9, 27, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '19L', 9, 23, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '8L', 9, 22, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '16U', 9, 5, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '4U', 9, 29, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '3L', 9, 31, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '24U', 9, 28, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '7L', 9, 2, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '1L', 9, 24, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '9L', 9, 38, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '5U', 9, 3, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 9, 40, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '17U', 9, 34, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 9, 7, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '23U', 9, 10, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '13L', 9, 9, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '25L', 9, 33, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '30U', 9, 12, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '15L', 9, 14, 1, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '14L', 9, 30, 1, 24).createObject() == True
+        assert Booking('MH 14 AB 6518', '10U', 10, 6, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '17U', 10, 34, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '6U', 10, 25, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '20L', 10, 30, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '19L', 10, 33, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '25L', 10, 36, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '1L', 10, 38, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '12U', 10, 8, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '24U', 10, 35, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '5U', 10, 11, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '29U', 10, 17, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '9L', 10, 15, 24, 28).createObject() == True
+        assert Booking('MH 14 AB 6518', '4U', 10, 33, 24, 28).createObject() == True
+        assert Booking('MH 11 AB 9332', '8L', 11, 21, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '29U', 11, 7, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '13L', 11, 33, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '15L', 11, 5, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '19L', 11, 6, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 11, 37, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '30U', 11, 22, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '14L', 11, 31, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '3L', 11, 1, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '22U', 11, 26, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 11, 21, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '28U', 11, 30, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '9L', 11, 32, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '10U', 11, 7, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '18U', 11, 32, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 11, 20, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '7L', 11, 18, 22, 26).createObject() == True
+        assert Booking('MH 11 AB 9332', '27L', 11, 35, 22, 26).createObject() == True
+        assert Booking('MH 12 AB 8578', '17U', 12, 11, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '14L', 12, 22, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '4U', 12, 7, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '5U', 12, 30, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '19L', 12, 9, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '18U', 12, 19, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '2L', 12, 39, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '1L', 12, 3, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '21L', 12, 18, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '3L', 12, 1, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '16U', 12, 5, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '23U', 12, 38, 29, 8).createObject() == True
+        assert Booking('MH 12 AB 8578', '28U', 12, 26, 29, 8).createObject() == True
+        assert Booking('MH 11 AB 8643', '18U', 13, 27, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '15L', 13, 33, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '12U', 13, 23, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '7L', 13, 12, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '24U', 13, 32, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '9L', 13, 12, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '27L', 13, 26, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '5U', 13, 39, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '23U', 13, 1, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '13L', 13, 28, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '20L', 13, 20, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '10U', 13, 18, 7, 10).createObject() == True
+        assert Booking('MH 11 AB 8643', '3L', 13, 28, 7, 10).createObject() == True
+        assert Booking('MH 10 AB 9617', '8L', 14, 22, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '16U', 14, 33, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '28U', 14, 28, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '22U', 14, 22, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '19L', 14, 23, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '15L', 14, 22, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '10U', 14, 2, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '2L', 14, 3, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '25L', 14, 36, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '26L', 14, 19, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 9617', '21L', 14, 18, 21, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '19L', 15, 18, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '30U', 15, 4, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '11U', 15, 15, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '25L', 15, 16, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '6U', 15, 7, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '28U', 15, 7, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '8L', 15, 34, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '1L', 15, 23, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '22U', 15, 32, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '12U', 15, 26, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '2L', 15, 11, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '3L', 15, 1, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '5U', 15, 8, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '4U', 15, 18, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '14L', 15, 11, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '29U', 15, 5, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '10U', 15, 3, 23, 5).createObject() == True
+        assert Booking('MH 15 AB 9478', '9L', 15, 40, 23, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '20L', 16, 9, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '26L', 16, 23, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '25L', 16, 4, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 16, 17, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '1L', 16, 36, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '28U', 16, 7, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '2L', 16, 9, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 16, 34, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '21L', 16, 30, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '16U', 16, 38, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '22U', 16, 14, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '29U', 16, 4, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '19L', 16, 22, 16, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '8L', 16, 25, 16, 5).createObject() == True
+        assert Booking('MH 13 AB 9993', '23U', 17, 40, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '30U', 17, 37, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '28U', 17, 23, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '25L', 17, 1, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '6U', 17, 11, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '20L', 17, 27, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '5U', 17, 10, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '16U', 17, 32, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '26L', 17, 26, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '8L', 17, 1, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '24U', 17, 5, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '19L', 17, 27, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '12U', 17, 27, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '4U', 17, 6, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '27L', 17, 19, 18, 28).createObject() == True
+        assert Booking('MH 13 AB 9993', '1L', 17, 38, 18, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '19L', 18, 37, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '2L', 18, 17, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '5U', 18, 40, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '18U', 18, 4, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '12U', 18, 2, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '27L', 18, 8, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '26L', 18, 23, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '4U', 18, 40, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '28U', 18, 22, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '1L', 18, 12, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '11U', 18, 12, 17, 3).createObject() == True
+        assert Booking('MH 15 AB 9478', '29U', 18, 37, 17, 3).createObject() == True
+        assert Booking('MH 11 AB 7659', '4U', 19, 6, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '30U', 19, 39, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '27L', 19, 6, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '21L', 19, 14, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '20L', 19, 6, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '12U', 19, 35, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '24U', 19, 16, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '25L', 19, 8, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '29U', 19, 16, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '22U', 19, 13, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '16U', 19, 20, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '9L', 19, 1, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7659', '7L', 19, 13, 19, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '13L', 20, 6, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '10U', 20, 28, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '29U', 20, 27, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '7L', 20, 17, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '15L', 20, 39, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '5U', 20, 38, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '1L', 20, 39, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '12U', 20, 25, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '24U', 20, 25, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '23U', 20, 2, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '3L', 20, 39, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '14L', 20, 9, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '30U', 20, 38, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '19L', 20, 16, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '28U', 20, 4, 1, 4).createObject() == True
+        assert Booking('MH 11 AB 7889', '20L', 20, 11, 1, 4).createObject() == True
+        assert Booking('MH 13 AB 9993', '22U', 21, 27, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '7L', 21, 30, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '28U', 21, 28, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '3L', 21, 5, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '17U', 21, 2, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '14L', 21, 25, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '21L', 21, 15, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '19L', 21, 21, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '1L', 21, 1, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '23U', 21, 20, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '10U', 21, 36, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '6U', 21, 32, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '16U', 21, 14, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '18U', 21, 17, 8, 12).createObject() == True
+        assert Booking('MH 13 AB 9993', '30U', 21, 13, 8, 12).createObject() == True
+        assert Booking('MH 14 AB 5997', '13L', 22, 39, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '2L', 22, 30, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '16U', 22, 6, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '3L', 22, 13, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '6U', 22, 34, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '24U', 22, 21, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '10U', 22, 40, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '19L', 22, 40, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '30U', 22, 22, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 5997', '18U', 22, 32, 22, 6).createObject() == True
+        assert Booking('MH 14 AB 9684', '11U', 23, 13, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '16U', 23, 6, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '12U', 23, 31, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '23U', 23, 26, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '6U', 23, 23, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '30U', 23, 38, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '9L', 23, 17, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '1L', 23, 27, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '28U', 23, 12, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '17U', 23, 5, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '26L', 23, 13, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '21L', 23, 19, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '5U', 23, 36, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '3L', 23, 19, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '15L', 23, 33, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '4U', 23, 34, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '2L', 23, 30, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '27L', 23, 11, 6, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '13L', 23, 8, 6, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 24, 1, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 24, 39, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 24, 2, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 24, 15, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '26L', 24, 4, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 24, 28, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '7L', 24, 5, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '3L', 24, 25, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '15L', 24, 12, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '25L', 24, 33, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 24, 5, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 24, 38, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '6U', 24, 6, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 24, 24, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 24, 10, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '28U', 24, 5, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '27L', 24, 1, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 24, 30, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 24, 24, 2, 21).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 25, 34, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '25L', 25, 20, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '26L', 25, 25, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '7L', 25, 7, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 25, 32, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 25, 18, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '3L', 25, 40, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 25, 3, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 25, 14, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 25, 10, 20, 25).createObject() == True
+        assert Booking('MH 17 AB 9316', '14L', 25, 15, 20, 25).createObject() == True
+        assert Booking('MH 11 AB 8643', '22U', 26, 33, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '6U', 26, 31, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '30U', 26, 8, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '20L', 26, 9, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '14L', 26, 4, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '11U', 26, 32, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '2L', 26, 37, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '16U', 26, 34, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '7L', 26, 12, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '28U', 26, 33, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '8L', 26, 17, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '10U', 26, 25, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '9L', 26, 34, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '27L', 26, 33, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '13L', 26, 29, 9, 16).createObject() == True
+        assert Booking('MH 11 AB 8643', '24U', 26, 34, 9, 16).createObject() == True
+        assert Booking('MH 5 AB 7650', '24U', 27, 3, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '13L', 27, 10, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '28U', 27, 6, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '9L', 27, 6, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '5U', 27, 40, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '25L', 27, 7, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '20L', 27, 9, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '8L', 27, 5, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '18U', 27, 31, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '12U', 27, 9, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '17U', 27, 8, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '29U', 27, 26, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '4U', 27, 19, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '16U', 27, 6, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '23U', 27, 14, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '19L', 27, 38, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '1L', 27, 11, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '14L', 27, 32, 1, 11).createObject() == True
+        assert Booking('MH 5 AB 7650', '27L', 27, 8, 1, 11).createObject() == True
+        assert Booking('MH 12 AB 9096', '11U', 28, 10, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '10U', 28, 7, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '21L', 28, 25, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '16U', 28, 22, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '23U', 28, 7, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '15L', 28, 26, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '9L', 28, 1, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '27L', 28, 9, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '5U', 28, 13, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '17U', 28, 36, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '12U', 28, 9, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '2L', 28, 19, 5, 8).createObject() == True
+        assert Booking('MH 12 AB 9096', '26L', 28, 18, 5, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '11U', 29, 8, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '4U', 29, 24, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '20L', 29, 17, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '16U', 29, 17, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '21L', 29, 27, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '24U', 29, 31, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '12U', 29, 16, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '2L', 29, 21, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '13L', 29, 26, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 7989', '26L', 29, 39, 23, 9).createObject() == True
+        assert Booking('MH 11 AB 8643', '16U', 30, 20, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '8L', 30, 7, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '20L', 30, 36, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '13L', 30, 23, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '15L', 30, 25, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '4U', 30, 30, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '30U', 30, 17, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '27L', 30, 24, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '25L', 30, 39, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '23U', 30, 12, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '10U', 30, 14, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '18U', 30, 13, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '2L', 30, 3, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '26L', 30, 3, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '7L', 30, 28, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '12U', 30, 27, 18, 23).createObject() == True
+        assert Booking('MH 11 AB 8643', '5U', 30, 15, 18, 23).createObject() == True
+        assert Booking('MH 12 AB 9096', '12U', 31, 3, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '30U', 31, 16, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '10U', 31, 40, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '16U', 31, 5, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '13L', 31, 9, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '22U', 31, 9, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '28U', 31, 35, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '17U', 31, 34, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '18U', 31, 27, 20, 22).createObject() == True
+        assert Booking('MH 12 AB 9096', '29U', 31, 39, 20, 22).createObject() == True
+        assert Booking('MH 8 AB 6980', '20L', 32, 25, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '21L', 32, 21, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '6U', 32, 15, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '5U', 32, 2, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '10U', 32, 1, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '9L', 32, 14, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '23U', 32, 9, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '14L', 32, 1, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '13L', 32, 17, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '8L', 32, 37, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '26L', 32, 10, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '19L', 32, 16, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '12U', 32, 37, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '25L', 32, 17, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '4U', 32, 16, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '11U', 32, 13, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '7L', 32, 28, 4, 28).createObject() == True
+        assert Booking('MH 8 AB 6980', '27L', 32, 2, 4, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '3L', 33, 14, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '21L', 33, 10, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '30U', 33, 19, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '29U', 33, 28, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '20L', 33, 28, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '7L', 33, 3, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '27L', 33, 33, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '8L', 33, 25, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '10U', 33, 29, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '17U', 33, 31, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '13L', 33, 35, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '19L', 33, 14, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '24U', 33, 30, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '25L', 33, 19, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '16U', 33, 29, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '28U', 33, 33, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '9L', 33, 36, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '15L', 33, 38, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '5U', 33, 7, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '1L', 33, 10, 15, 28).createObject() == True
+        assert Booking('MH 15 AB 9478', '4U', 34, 1, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '20L', 34, 2, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '1L', 34, 19, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '14L', 34, 16, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '27L', 34, 29, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '7L', 34, 31, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '21L', 34, 28, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '5U', 34, 8, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '18U', 34, 6, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '12U', 34, 23, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '28U', 34, 40, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '23U', 34, 36, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '9L', 34, 14, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '11U', 34, 6, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '22U', 34, 1, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '13L', 34, 10, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '6U', 34, 4, 12, 4).createObject() == True
+        assert Booking('MH 15 AB 9478', '17U', 34, 22, 12, 4).createObject() == True
+        assert Booking('MH 7 AB 6536', '26L', 35, 14, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '7L', 35, 35, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '18U', 35, 39, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '14L', 35, 17, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '6U', 35, 8, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '2L', 35, 39, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '12U', 35, 35, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '19L', 35, 37, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '22U', 35, 17, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '5U', 35, 40, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '21L', 35, 19, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '24U', 35, 32, 19, 1).createObject() == True
+        assert Booking('MH 7 AB 6536', '23U', 35, 12, 19, 1).createObject() == True
+        assert Booking('MH 11 AB 7659', '29U', 36, 25, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '1L', 36, 21, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '11U', 36, 24, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '27L', 36, 4, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '24U', 36, 28, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '21L', 36, 4, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '3L', 36, 23, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '23U', 36, 32, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '16U', 36, 32, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '22U', 36, 9, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '17U', 36, 4, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '19L', 36, 2, 28, 14).createObject() == True
+        assert Booking('MH 11 AB 7659', '4U', 36, 30, 28, 14).createObject() == True
+        assert Booking('MH 9 AB 8797', '1L', 37, 2, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '2L', 37, 29, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '28U', 37, 13, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '10U', 37, 9, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '5U', 37, 23, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '14L', 37, 19, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '20L', 37, 24, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '18U', 37, 1, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '22U', 37, 6, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '23U', 37, 33, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '17U', 37, 30, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '24U', 37, 28, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '30U', 37, 13, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '27L', 37, 15, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '13L', 37, 37, 14, 9).createObject() == True
+        assert Booking('MH 9 AB 8797', '9L', 37, 22, 14, 9).createObject() == True
+        assert Booking('MH 16 AB 7740', '10U', 38, 30, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '30U', 38, 30, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '18U', 38, 34, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '12U', 38, 12, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '16U', 38, 1, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '4U', 38, 5, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '20L', 38, 1, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '23U', 38, 3, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '1L', 38, 25, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '13L', 38, 11, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '15L', 38, 6, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '21L', 38, 6, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '5U', 38, 4, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '7L', 38, 39, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '25L', 38, 22, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '6U', 38, 36, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '26L', 38, 3, 6, 10).createObject() == True
+        assert Booking('MH 16 AB 7740', '3L', 38, 13, 6, 10).createObject() == True
+        assert Booking('MH 20 AB 8094', '21L', 39, 22, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '2L', 39, 37, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '26L', 39, 34, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '24U', 39, 22, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '22U', 39, 22, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '25L', 39, 21, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '15L', 39, 12, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '8L', 39, 40, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '28U', 39, 26, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '10U', 39, 34, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '11U', 39, 37, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '16U', 39, 29, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '12U', 39, 25, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '27L', 39, 24, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '4U', 39, 7, 10, 24).createObject() == True
+        assert Booking('MH 20 AB 8094', '30U', 39, 30, 10, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '23U', 40, 21, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '19L', 40, 17, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '5U', 40, 38, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '8L', 40, 39, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 40, 17, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '7L', 40, 32, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '13L', 40, 4, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '3L', 40, 13, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '10U', 40, 4, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '14L', 40, 36, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '27L', 40, 17, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '28U', 40, 31, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '9L', 40, 9, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 40, 5, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '25L', 40, 30, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '6U', 40, 2, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '4U', 40, 3, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '30U', 40, 27, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '16U', 40, 30, 20, 19).createObject() == True
+        assert Booking('MH 18 AB 7004', '20L', 40, 20, 20, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '21L', 41, 14, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '1L', 41, 12, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '8L', 41, 31, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '10U', 41, 26, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '27L', 41, 3, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '26L', 41, 13, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '14L', 41, 39, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '23U', 41, 27, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '19L', 41, 2, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '17U', 41, 23, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '5U', 41, 4, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '6U', 41, 31, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '28U', 41, 10, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '15L', 41, 8, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '13L', 41, 17, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '30U', 41, 29, 2, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '3L', 41, 39, 2, 19).createObject() == True
+        assert Booking('MH 16 AB 7740', '22U', 42, 32, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '16U', 42, 8, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '24U', 42, 40, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '29U', 42, 40, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '3L', 42, 25, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '26L', 42, 33, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '19L', 42, 13, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '23U', 42, 36, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '10U', 42, 22, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '15L', 42, 36, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '9L', 42, 8, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '8L', 42, 40, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '17U', 42, 21, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '1L', 42, 28, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '13L', 42, 22, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '5U', 42, 25, 8, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '21L', 42, 24, 8, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '24U', 43, 29, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '25L', 43, 33, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '4U', 43, 3, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 43, 25, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '22U', 43, 17, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '12U', 43, 28, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 43, 1, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 43, 24, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 43, 19, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 43, 2, 6, 9).createObject() == True
+        assert Booking('MH 17 AB 9316', '7L', 43, 23, 6, 9).createObject() == True
+        assert Booking('MH 11 AB 9332', '23U', 44, 27, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '15L', 44, 5, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 44, 7, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '8L', 44, 9, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '26L', 44, 31, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '27L', 44, 20, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '12U', 44, 16, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '30U', 44, 19, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '18U', 44, 40, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 44, 29, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '7L', 44, 15, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 44, 13, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '6U', 44, 7, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '20L', 44, 25, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '28U', 44, 24, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '1L', 44, 7, 9, 5).createObject() == True
+        assert Booking('MH 11 AB 9332', '29U', 44, 3, 9, 5).createObject() == True
+        assert Booking('MH 18 AB 7004', '6U', 45, 35, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '28U', 45, 5, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '26L', 45, 27, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '4U', 45, 21, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 45, 34, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '2L', 45, 20, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '1L', 45, 28, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '21L', 45, 24, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '17U', 45, 1, 13, 4).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 45, 24, 13, 4).createObject() == True
+        assert Booking('MH 8 AB 5155', '1L', 46, 16, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '16U', 46, 26, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '18U', 46, 33, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '8L', 46, 7, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '7L', 46, 33, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '19L', 46, 4, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '26L', 46, 17, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '11U', 46, 7, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '23U', 46, 2, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '4U', 46, 11, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '3L', 46, 25, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '5U', 46, 31, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '12U', 46, 16, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '2L', 46, 25, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '14L', 46, 23, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '22U', 46, 2, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '30U', 46, 8, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '20L', 46, 14, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '21L', 46, 39, 12, 24).createObject() == True
+        assert Booking('MH 8 AB 5155', '27L', 46, 20, 12, 24).createObject() == True
+        assert Booking('MH 10 AB 5575', '17U', 47, 8, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '4U', 47, 23, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '5U', 47, 14, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '9L', 47, 20, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '11U', 47, 24, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '12U', 47, 34, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 47, 4, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '10U', 47, 30, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '16U', 47, 6, 14, 3).createObject() == True
+        assert Booking('MH 10 AB 5575', '20L', 47, 39, 14, 3).createObject() == True
+        assert Booking('MH 5 AB 6693', '27L', 48, 35, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '21L', 48, 24, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '18U', 48, 19, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '8L', 48, 37, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '23U', 48, 5, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '9L', 48, 28, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '6U', 48, 39, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '12U', 48, 12, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '17U', 48, 16, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '2L', 48, 30, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '13L', 48, 17, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '25L', 48, 30, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '7L', 48, 28, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '1L', 48, 18, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '11U', 48, 25, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '15L', 48, 28, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '24U', 48, 39, 4, 5).createObject() == True
+        assert Booking('MH 5 AB 6693', '28U', 48, 7, 4, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 49, 17, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 49, 18, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '22U', 49, 8, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 49, 38, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 49, 26, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '16U', 49, 6, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '27L', 49, 21, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '21L', 49, 22, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 49, 6, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 49, 34, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '6U', 49, 38, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '13L', 49, 19, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '3L', 49, 23, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 49, 36, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '30U', 49, 23, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 49, 3, 10, 3).createObject() == True
+        assert Booking('MH 17 AB 9316', '15L', 49, 23, 10, 3).createObject() == True
+        assert Booking('MH 16 AB 7740', '27L', 50, 17, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '29U', 50, 17, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '24U', 50, 28, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '15L', 50, 5, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '13L', 50, 10, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '2L', 50, 30, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '7L', 50, 22, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '4U', 50, 40, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '8L', 50, 15, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '14L', 50, 16, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '30U', 50, 14, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '10U', 50, 35, 14, 28).createObject() == True
+        assert Booking('MH 16 AB 7740', '18U', 50, 13, 14, 28).createObject() == True
+        assert Booking('MH 19 AB 8932', '21L', 51, 39, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '12U', 51, 20, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '4U', 51, 38, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '17U', 51, 39, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '2L', 51, 18, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '10U', 51, 30, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '29U', 51, 32, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '28U', 51, 3, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '27L', 51, 40, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '6U', 51, 20, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '3L', 51, 4, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '23U', 51, 30, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '16U', 51, 13, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '22U', 51, 4, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '26L', 51, 38, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '7L', 51, 34, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '1L', 51, 32, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '5U', 51, 6, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '14L', 51, 15, 11, 13).createObject() == True
+        assert Booking('MH 9 AB 8308', '20L', 52, 35, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '9L', 52, 36, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '5U', 52, 17, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '4U', 52, 12, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '7L', 52, 1, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '30U', 52, 14, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '27L', 52, 29, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '29U', 52, 31, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '14L', 52, 1, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '16U', 52, 30, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '12U', 52, 14, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '17U', 52, 3, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '13L', 52, 33, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '26L', 52, 16, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 52, 28, 2, 19).createObject() == True
+        assert Booking('MH 9 AB 8308', '9L', 53, 35, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '2L', 53, 21, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '15L', 53, 17, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '25L', 53, 8, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 53, 34, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '10U', 53, 20, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '11U', 53, 25, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '13L', 53, 38, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '4U', 53, 15, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '18U', 53, 39, 9, 11).createObject() == True
+        assert Booking('MH 9 AB 8308', '16U', 53, 31, 9, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '24U', 54, 3, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '28U', 54, 5, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '17U', 54, 17, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '13L', 54, 9, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '7L', 54, 8, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '21L', 54, 39, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '1L', 54, 23, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '14L', 54, 39, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '20L', 54, 1, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '4U', 54, 23, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '9L', 54, 1, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '6U', 54, 11, 12, 11).createObject() == True
+        assert Booking('MH 6 AB 5509', '23U', 54, 8, 12, 11).createObject() == True
+        assert Booking('MH 11 AB 5703', '21L', 55, 35, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '14L', 55, 22, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '18U', 55, 12, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '19L', 55, 10, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '6U', 55, 5, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '22U', 55, 14, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '9L', 55, 37, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '26L', 55, 40, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '4U', 55, 31, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '25L', 55, 25, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '5U', 55, 14, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '17U', 55, 1, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '3L', 55, 25, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '15L', 55, 5, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '28U', 55, 5, 29, 21).createObject() == True
+        assert Booking('MH 11 AB 5703', '13L', 55, 13, 29, 21).createObject() == True
+        assert Booking('MH 19 AB 5367', '2L', 56, 14, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '26L', 56, 30, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '30U', 56, 29, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '11U', 56, 8, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '4U', 56, 29, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '24U', 56, 9, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '15L', 56, 14, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '18U', 56, 26, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '7L', 56, 26, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '29U', 56, 14, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '22U', 56, 15, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '3L', 56, 26, 27, 22).createObject() == True
+        assert Booking('MH 19 AB 5367', '5U', 56, 5, 27, 22).createObject() == True
+        assert Booking('MH 13 AB 9993', '7L', 57, 31, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '13L', 57, 28, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '23U', 57, 32, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '3L', 57, 4, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '4U', 57, 25, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '30U', 57, 14, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '26L', 57, 39, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '14L', 57, 16, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '15L', 57, 35, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '10U', 57, 12, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '19L', 57, 21, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '8L', 57, 1, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '2L', 57, 17, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '25L', 57, 13, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '6U', 57, 5, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '5U', 57, 33, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '1L', 57, 32, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '22U', 57, 18, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '11U', 57, 14, 24, 19).createObject() == True
+        assert Booking('MH 13 AB 9993', '20L', 57, 27, 24, 19).createObject() == True
+        assert Booking('MH 17 AB 5987', '24U', 58, 27, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '5U', 58, 20, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '15L', 58, 1, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '30U', 58, 16, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '12U', 58, 34, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '6U', 58, 9, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '7L', 58, 30, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '13L', 58, 22, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '22U', 58, 25, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '11U', 58, 8, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '10U', 58, 18, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '18U', 58, 19, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '16U', 58, 20, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '29U', 58, 6, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '2L', 58, 16, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '8L', 58, 7, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '28U', 58, 9, 16, 1).createObject() == True
+        assert Booking('MH 17 AB 5987', '4U', 58, 20, 16, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '7L', 59, 15, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '16U', 59, 4, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '8L', 59, 34, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '20L', 59, 15, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '27L', 59, 39, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '10U', 59, 11, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '19L', 59, 25, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '25L', 59, 39, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '6U', 59, 37, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '26L', 59, 29, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '5U', 59, 8, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '18U', 59, 3, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '1L', 59, 18, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '9L', 59, 7, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '3L', 59, 10, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '12U', 59, 12, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '21L', 59, 21, 22, 25).createObject() == True
+        assert Booking('MH 16 AB 7222', '28U', 59, 26, 22, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '7L', 60, 16, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '8L', 60, 40, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '22U', 60, 36, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '9L', 60, 19, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '1L', 60, 16, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '14L', 60, 37, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '23U', 60, 9, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '16U', 60, 39, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '26L', 60, 10, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '2L', 60, 25, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '17U', 60, 36, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '5U', 60, 3, 24, 25).createObject() == True
+        assert Booking('MH 11 AB 7989', '30U', 60, 18, 24, 25).createObject() == True
+        assert Booking('MH 16 AB 7740', '8L', 61, 12, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '9L', 61, 17, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '16U', 61, 3, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '17U', 61, 39, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '5U', 61, 12, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '14L', 61, 31, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '3L', 61, 12, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '12U', 61, 25, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '18U', 61, 9, 7, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '1L', 61, 7, 7, 29).createObject() == True
+        assert Booking('MH 19 AB 8932', '22U', 62, 20, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '13L', 62, 16, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '27L', 62, 8, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '14L', 62, 23, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '6U', 62, 19, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '23U', 62, 24, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '7L', 62, 23, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '1L', 62, 16, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '24U', 62, 9, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '19L', 62, 6, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '10U', 62, 15, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '12U', 62, 24, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '2L', 62, 7, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '9L', 62, 2, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '5U', 62, 6, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '26L', 62, 25, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '15L', 62, 19, 3, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '20L', 62, 14, 3, 17).createObject() == True
+        assert Booking('MH 17 AB 8217', '25L', 63, 27, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '5U', 63, 32, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '14L', 63, 13, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '20L', 63, 23, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '28U', 63, 5, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '16U', 63, 12, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '23U', 63, 25, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '17U', 63, 34, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '3L', 63, 4, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '21L', 63, 6, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '24U', 63, 6, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '7L', 63, 22, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '18U', 63, 29, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '26L', 63, 26, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '8L', 63, 11, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '1L', 63, 34, 13, 16).createObject() == True
+        assert Booking('MH 17 AB 8217', '9L', 63, 19, 13, 16).createObject() == True
+        assert Booking('MH 5 AB 6693', '17U', 64, 2, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '21L', 64, 40, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '16U', 64, 1, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '25L', 64, 2, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '28U', 64, 22, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '24U', 64, 4, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '11U', 64, 25, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '2L', 64, 1, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '7L', 64, 28, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '22U', 64, 3, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '23U', 64, 24, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '18U', 64, 20, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '13L', 64, 27, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '20L', 64, 24, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '8L', 64, 1, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '4U', 64, 6, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '19L', 64, 7, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '30U', 64, 3, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '10U', 64, 32, 28, 26).createObject() == True
+        assert Booking('MH 5 AB 6693', '29U', 64, 31, 28, 26).createObject() == True
+        assert Booking('MH 6 AB 5509', '5U', 65, 5, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '3L', 65, 4, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '18U', 65, 13, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '8L', 65, 17, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '2L', 65, 3, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '14L', 65, 35, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '23U', 65, 22, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '30U', 65, 28, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '26L', 65, 11, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '13L', 65, 35, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '17U', 65, 11, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '12U', 65, 27, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '20L', 65, 33, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '9L', 65, 28, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '21L', 65, 14, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '22U', 65, 20, 17, 19).createObject() == True
+        assert Booking('MH 6 AB 5509', '1L', 65, 35, 17, 19).createObject() == True
+        assert Booking('MH 19 AB 8198', '23U', 66, 2, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '5U', 66, 37, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '16U', 66, 27, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '18U', 66, 40, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '17U', 66, 36, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '11U', 66, 20, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '4U', 66, 24, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '6U', 66, 22, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '20L', 66, 29, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '10U', 66, 19, 9, 11).createObject() == True
+        assert Booking('MH 19 AB 8198', '29U', 66, 33, 9, 11).createObject() == True
+        assert Booking('MH 8 AB 8272', '25L', 67, 12, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '24U', 67, 27, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '6U', 67, 3, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '15L', 67, 17, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '9L', 67, 21, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '7L', 67, 10, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '20L', 67, 18, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '22U', 67, 2, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '11U', 67, 15, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '29U', 67, 32, 2, 26).createObject() == True
+        assert Booking('MH 8 AB 8272', '5U', 67, 20, 2, 26).createObject() == True
+        assert Booking('MH 10 AB 5575', '21L', 68, 8, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '29U', 68, 26, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '7L', 68, 24, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '14L', 68, 34, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '11U', 68, 10, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 68, 24, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '3L', 68, 27, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '12U', 68, 28, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '4U', 68, 32, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '2L', 68, 31, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '19L', 68, 13, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '30U', 68, 21, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '10U', 68, 4, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '18U', 68, 28, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '22U', 68, 7, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '15L', 68, 26, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '13L', 68, 39, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '17U', 68, 37, 28, 17).createObject() == True
+        assert Booking('MH 10 AB 5575', '1L', 68, 28, 28, 17).createObject() == True
+        assert Booking('MH 8 AB 5155', '22U', 69, 38, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '8L', 69, 9, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '4U', 69, 23, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '27L', 69, 2, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '24U', 69, 3, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '11U', 69, 17, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '6U', 69, 22, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '30U', 69, 38, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '5U', 69, 34, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '9L', 69, 16, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '20L', 69, 26, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '13L', 69, 27, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '14L', 69, 16, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '28U', 69, 32, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '2L', 69, 9, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '26L', 69, 13, 14, 7).createObject() == True
+        assert Booking('MH 8 AB 5155', '18U', 69, 7, 14, 7).createObject() == True
+        assert Booking('MH 6 AB 5509', '18U', 70, 32, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '11U', 70, 18, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '21L', 70, 36, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '28U', 70, 4, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '12U', 70, 10, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '26L', 70, 37, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '1L', 70, 21, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '23U', 70, 12, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '3L', 70, 16, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '20L', 70, 26, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '29U', 70, 5, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '8L', 70, 27, 22, 29).createObject() == True
+        assert Booking('MH 6 AB 5509', '7L', 70, 14, 22, 29).createObject() == True
+        assert Booking('MH 16 AB 7222', '2L', 71, 18, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '24U', 71, 23, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '20L', 71, 9, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '12U', 71, 32, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '23U', 71, 31, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '26L', 71, 22, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '21L', 71, 19, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '15L', 71, 17, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '3L', 71, 19, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '27L', 71, 36, 4, 1).createObject() == True
+        assert Booking('MH 16 AB 7222', '11U', 71, 32, 4, 1).createObject() == True
+        assert Booking('MH 12 AB 9096', '15L', 72, 19, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '27L', 72, 25, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '12U', 72, 26, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '9L', 72, 7, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '11U', 72, 40, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '8L', 72, 38, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '3L', 72, 21, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '17U', 72, 12, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '1L', 72, 8, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '7L', 72, 31, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '5U', 72, 34, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '13L', 72, 17, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '23U', 72, 29, 18, 25).createObject() == True
+        assert Booking('MH 12 AB 9096', '28U', 72, 26, 18, 25).createObject() == True
+        assert Booking('MH 19 AB 5367', '27L', 73, 29, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '3L', 73, 6, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '26L', 73, 35, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '1L', 73, 19, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '6U', 73, 1, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '29U', 73, 9, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '5U', 73, 34, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '28U', 73, 13, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '21L', 73, 21, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '2L', 73, 24, 21, 20).createObject() == True
+        assert Booking('MH 19 AB 5367', '30U', 73, 13, 21, 20).createObject() == True
+        assert Booking('MH 8 AB 6980', '26L', 74, 29, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '15L', 74, 9, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '13L', 74, 26, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '29U', 74, 13, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '11U', 74, 10, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '1L', 74, 1, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '4U', 74, 6, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '25L', 74, 40, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '20L', 74, 22, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '10U', 74, 22, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '24U', 74, 39, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '27L', 74, 9, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '9L', 74, 35, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '30U', 74, 20, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '18U', 74, 8, 16, 8).createObject() == True
+        assert Booking('MH 8 AB 6980', '16U', 74, 6, 16, 8).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 75, 33, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 75, 21, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '3L', 75, 9, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '15L', 75, 8, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '12U', 75, 33, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '30U', 75, 20, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '16U', 75, 37, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 75, 5, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 75, 3, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 75, 37, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '6U', 75, 12, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 75, 18, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 75, 17, 28, 5).createObject() == True
+        assert Booking('MH 17 AB 9316', '13L', 75, 6, 28, 5).createObject() == True
+        assert Booking('MH 10 AB 9617', '18U', 76, 33, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '30U', 76, 32, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '22U', 76, 24, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '14L', 76, 19, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '3L', 76, 19, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '25L', 76, 21, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '24U', 76, 13, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '7L', 76, 30, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '27L', 76, 28, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '15L', 76, 14, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '5U', 76, 34, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '11U', 76, 31, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '16U', 76, 6, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '29U', 76, 7, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '28U', 76, 5, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '17U', 76, 18, 7, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '9L', 76, 11, 7, 2).createObject() == True
+        assert Booking('MH 12 AB 8578', '22U', 77, 27, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '20L', 77, 11, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '2L', 77, 32, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '19L', 77, 14, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '11U', 77, 4, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '6U', 77, 28, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '25L', 77, 22, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '27L', 77, 14, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '1L', 77, 1, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '16U', 77, 33, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '30U', 77, 28, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '21L', 77, 6, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '4U', 77, 8, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '8L', 77, 10, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '5U', 77, 35, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '24U', 77, 20, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '14L', 77, 3, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '9L', 77, 8, 26, 5).createObject() == True
+        assert Booking('MH 12 AB 8578', '12U', 77, 20, 26, 5).createObject() == True
+        assert Booking('MH 5 AB 7650', '9L', 78, 22, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '27L', 78, 23, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '29U', 78, 4, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '24U', 78, 23, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '19L', 78, 36, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '16U', 78, 8, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '11U', 78, 26, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '30U', 78, 36, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '28U', 78, 39, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '7L', 78, 6, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '2L', 78, 33, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '14L', 78, 29, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '25L', 78, 26, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '15L', 78, 22, 15, 7).createObject() == True
+        assert Booking('MH 5 AB 7650', '13L', 78, 8, 15, 7).createObject() == True
+        assert Booking('MH 19 AB 8198', '20L', 79, 15, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '27L', 79, 10, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '18U', 79, 20, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '26L', 79, 24, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '7L', 79, 20, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '29U', 79, 17, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '9L', 79, 28, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '19L', 79, 5, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '2L', 79, 36, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '21L', 79, 36, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '17U', 79, 40, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '15L', 79, 28, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '3L', 79, 6, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '5U', 79, 7, 10, 16).createObject() == True
+        assert Booking('MH 19 AB 8198', '14L', 79, 33, 10, 16).createObject() == True
+        assert Booking('MH 11 AB 9332', '1L', 80, 11, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 80, 35, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '15L', 80, 19, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '29U', 80, 25, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 80, 40, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 80, 5, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '2L', 80, 4, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '19L', 80, 17, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '3L', 80, 38, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '9L', 80, 19, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '26L', 80, 10, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '22U', 80, 37, 4, 22).createObject() == True
+        assert Booking('MH 11 AB 9332', '21L', 80, 35, 4, 22).createObject() == True
+        assert Booking('MH 17 AB 5987', '15L', 81, 40, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '25L', 81, 3, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '3L', 81, 30, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '11U', 81, 7, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '13L', 81, 36, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '24U', 81, 3, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '19L', 81, 5, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '7L', 81, 14, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '18U', 81, 38, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '4U', 81, 15, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '14L', 81, 9, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '21L', 81, 3, 18, 9).createObject() == True
+        assert Booking('MH 17 AB 5987', '9L', 81, 3, 18, 9).createObject() == True
+        assert Booking('MH 14 AB 5997', '8L', 82, 35, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '14L', 82, 28, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '19L', 82, 15, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '22U', 82, 4, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '30U', 82, 10, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '12U', 82, 17, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '28U', 82, 21, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '13L', 82, 15, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '9L', 82, 40, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '29U', 82, 10, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '26L', 82, 34, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '11U', 82, 23, 8, 1).createObject() == True
+        assert Booking('MH 14 AB 5997', '10U', 82, 4, 8, 1).createObject() == True
+        assert Booking('MH 12 AB 9096', '7L', 83, 3, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '1L', 83, 20, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '17U', 83, 39, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '20L', 83, 2, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '9L', 83, 9, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '28U', 83, 6, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '30U', 83, 13, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '19L', 83, 12, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '11U', 83, 7, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '6U', 83, 29, 28, 26).createObject() == True
+        assert Booking('MH 12 AB 9096', '18U', 83, 33, 28, 26).createObject() == True
+        assert Booking('MH 9 AB 8797', '26L', 84, 22, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '24U', 84, 10, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '10U', 84, 6, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '9L', 84, 24, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '11U', 84, 2, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '22U', 84, 5, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '8L', 84, 32, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '30U', 84, 37, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '6U', 84, 16, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '7L', 84, 26, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '21L', 84, 33, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '1L', 84, 8, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '20L', 84, 32, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '28U', 84, 25, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '3L', 84, 7, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '23U', 84, 2, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '12U', 84, 21, 19, 17).createObject() == True
+        assert Booking('MH 9 AB 8797', '16U', 84, 13, 19, 17).createObject() == True
+        assert Booking('MH 12 AB 8578', '19L', 85, 13, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '26L', 85, 20, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '3L', 85, 31, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '6U', 85, 40, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '29U', 85, 11, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '17U', 85, 4, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '25L', 85, 9, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '9L', 85, 28, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '5U', 85, 34, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '28U', 85, 16, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '18U', 85, 32, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '24U', 85, 24, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '27L', 85, 25, 16, 15).createObject() == True
+        assert Booking('MH 12 AB 8578', '15L', 85, 12, 16, 15).createObject() == True
+        assert Booking('MH 14 AB 6870', '11U', 86, 26, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '9L', 86, 20, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '27L', 86, 16, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '5U', 86, 14, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '2L', 86, 4, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '6U', 86, 29, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '19L', 86, 38, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '15L', 86, 25, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '12U', 86, 26, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '29U', 86, 14, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '14L', 86, 16, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '28U', 86, 40, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '22U', 86, 34, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '4U', 86, 28, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '17U', 86, 25, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '26L', 86, 13, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '23U', 86, 29, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6870', '18U', 86, 3, 28, 12).createObject() == True
+        assert Booking('MH 14 AB 6518', '7L', 87, 8, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '20L', 87, 28, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '19L', 87, 28, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '13L', 87, 23, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '11U', 87, 34, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '12U', 87, 32, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '2L', 87, 32, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '15L', 87, 24, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '30U', 87, 28, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6518', '28U', 87, 1, 6, 4).createObject() == True
+        assert Booking('MH 14 AB 6870', '22U', 88, 11, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '1L', 88, 37, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '27L', 88, 6, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '14L', 88, 3, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '10U', 88, 20, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '20L', 88, 5, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '30U', 88, 33, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '3L', 88, 11, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '19L', 88, 16, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '4U', 88, 31, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '8L', 88, 40, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '7L', 88, 17, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '9L', 88, 16, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 6870', '28U', 88, 14, 20, 17).createObject() == True
+        assert Booking('MH 14 AB 9684', '23U', 89, 12, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '17U', 89, 28, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '22U', 89, 33, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '18U', 89, 9, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '21L', 89, 5, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '9L', 89, 31, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '3L', 89, 18, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '26L', 89, 15, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '12U', 89, 25, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '14L', 89, 9, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '25L', 89, 38, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '10U', 89, 36, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '4U', 89, 20, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '1L', 89, 40, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '19L', 89, 1, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '20L', 89, 26, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '5U', 89, 27, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '27L', 89, 13, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '13L', 89, 26, 5, 4).createObject() == True
+        assert Booking('MH 14 AB 9684', '8L', 89, 12, 5, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '11U', 90, 13, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '10U', 90, 32, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '1L', 90, 4, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '7L', 90, 39, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '14L', 90, 17, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '6U', 90, 37, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '24U', 90, 13, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '4U', 90, 5, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '5U', 90, 27, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '28U', 90, 32, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '29U', 90, 25, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '27L', 90, 36, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '20L', 90, 9, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '18U', 90, 16, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '3L', 90, 13, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '15L', 90, 1, 27, 7).createObject() == True
+        assert Booking('MH 12 AB 5440', '26L', 90, 30, 27, 7).createObject() == True
+        assert Booking('MH 5 AB 6693', '18U', 91, 9, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '23U', 91, 14, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '3L', 91, 24, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '2L', 91, 22, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '30U', 91, 3, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '17U', 91, 21, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '19L', 91, 23, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '26L', 91, 12, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '10U', 91, 17, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '8L', 91, 36, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '16U', 91, 3, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '27L', 91, 37, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '12U', 91, 3, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '7L', 91, 21, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '14L', 91, 25, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '13L', 91, 21, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '11U', 91, 23, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '21L', 91, 28, 7, 29).createObject() == True
+        assert Booking('MH 5 AB 6693', '1L', 91, 36, 7, 29).createObject() == True
+        assert Booking('MH 18 AB 7004', '22U', 92, 40, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '10U', 92, 35, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '9L', 92, 5, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '19L', 92, 20, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '17U', 92, 8, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '20L', 92, 17, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '5U', 92, 36, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '8L', 92, 38, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 92, 2, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 92, 31, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '7L', 92, 13, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '13L', 92, 7, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '3L', 92, 6, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '29U', 92, 6, 2, 10).createObject() == True
+        assert Booking('MH 18 AB 7004', '1L', 92, 12, 2, 10).createObject() == True
+        assert Booking('MH 12 AB 8578', '10U', 93, 10, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '2L', 93, 38, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '26L', 93, 34, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '9L', 93, 35, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '23U', 93, 22, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '8L', 93, 33, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '7L', 93, 40, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '1L', 93, 6, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '6U', 93, 23, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '5U', 93, 2, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '15L', 93, 33, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '3L', 93, 10, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '27L', 93, 7, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '29U', 93, 35, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '25L', 93, 1, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '20L', 93, 14, 21, 4).createObject() == True
+        assert Booking('MH 12 AB 8578', '19L', 93, 14, 21, 4).createObject() == True
+        assert Booking('MH 10 AB 5575', '18U', 94, 20, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '27L', 94, 24, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '12U', 94, 39, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '25L', 94, 27, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '14L', 94, 27, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '26L', 94, 23, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '5U', 94, 4, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '22U', 94, 40, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '28U', 94, 34, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '16U', 94, 23, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '3L', 94, 15, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '15L', 94, 16, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '29U', 94, 24, 22, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 94, 32, 22, 12).createObject() == True
+        assert Booking('MH 6 AB 5509', '4U', 95, 14, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '28U', 95, 13, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '30U', 95, 21, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '13L', 95, 37, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '9L', 95, 25, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '19L', 95, 17, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '29U', 95, 21, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '10U', 95, 11, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '6U', 95, 37, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '5U', 95, 10, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '25L', 95, 40, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '20L', 95, 12, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '18U', 95, 35, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '8L', 95, 5, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '24U', 95, 24, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '12U', 95, 16, 10, 2).createObject() == True
+        assert Booking('MH 6 AB 5509', '27L', 95, 17, 10, 2).createObject() == True
+        assert Booking('MH 12 AB 7062', '17U', 96, 34, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '23U', 96, 9, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '30U', 96, 10, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '16U', 96, 25, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '20L', 96, 34, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '15L', 96, 29, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '6U', 96, 31, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '8L', 96, 40, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '21L', 96, 39, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '26L', 96, 13, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '7L', 96, 28, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '27L', 96, 8, 6, 25).createObject() == True
+        assert Booking('MH 12 AB 7062', '11U', 96, 33, 6, 25).createObject() == True
+        assert Booking('MH 8 AB 8272', '7L', 97, 13, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '22U', 97, 8, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '26L', 97, 11, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '19L', 97, 25, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '14L', 97, 34, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '6U', 97, 25, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '1L', 97, 32, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '20L', 97, 23, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '29U', 97, 26, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '23U', 97, 25, 21, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '15L', 97, 36, 21, 14).createObject() == True
+        assert Booking('MH 18 AB 7004', '1L', 98, 26, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '27L', 98, 35, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '28U', 98, 13, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '15L', 98, 31, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '10U', 98, 3, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '22U', 98, 7, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '26L', 98, 34, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '17U', 98, 33, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '12U', 98, 20, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '3L', 98, 10, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '30U', 98, 1, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '11U', 98, 33, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '24U', 98, 27, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '29U', 98, 11, 16, 24).createObject() == True
+        assert Booking('MH 18 AB 7004', '21L', 98, 24, 16, 24).createObject() == True
+        assert Booking('MH 11 AB 7989', '15L', 99, 13, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '6U', 99, 12, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '24U', 99, 4, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '5U', 99, 4, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '12U', 99, 13, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '17U', 99, 29, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '14L', 99, 32, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '7L', 99, 31, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '16U', 99, 34, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '19L', 99, 10, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '2L', 99, 39, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '30U', 99, 2, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '3L', 99, 3, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '20L', 99, 28, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '1L', 99, 4, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '9L', 99, 11, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '10U', 99, 3, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '28U', 99, 35, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '26L', 99, 20, 29, 14).createObject() == True
+        assert Booking('MH 11 AB 7989', '4U', 99, 4, 29, 14).createObject() == True
+        assert Booking('MH 14 AB 5997', '5U', 100, 28, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '17U', 100, 40, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '18U', 100, 31, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '26L', 100, 24, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '13L', 100, 2, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '11U', 100, 4, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '23U', 100, 3, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '25L', 100, 32, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '24U', 100, 13, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '3L', 100, 14, 6, 21).createObject() == True
+        assert Booking('MH 14 AB 5997', '16U', 100, 8, 6, 21).createObject() == True
+        assert Booking('MH 13 AB 9993', '8L', 101, 39, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '27L', 101, 32, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '24U', 101, 35, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '9L', 101, 6, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '28U', 101, 39, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '1L', 101, 11, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '16U', 101, 30, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '2L', 101, 11, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '26L', 101, 7, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '12U', 101, 2, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '14L', 101, 23, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '17U', 101, 6, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '4U', 101, 31, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '22U', 101, 7, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '19L', 101, 8, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '3L', 101, 25, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '13L', 101, 32, 8, 7).createObject() == True
+        assert Booking('MH 13 AB 9993', '30U', 101, 29, 8, 7).createObject() == True
+        assert Booking('MH 8 AB 6980', '6U', 102, 20, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '28U', 102, 31, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '19L', 102, 4, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '27L', 102, 5, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '7L', 102, 10, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '25L', 102, 2, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '11U', 102, 18, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '12U', 102, 22, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '29U', 102, 31, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '18U', 102, 21, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '16U', 102, 17, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '14L', 102, 15, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '8L', 102, 6, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '22U', 102, 35, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '21L', 102, 16, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '30U', 102, 33, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '1L', 102, 3, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '5U', 102, 30, 10, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '13L', 102, 21, 10, 2).createObject() == True
+        assert Booking('MH 10 AB 5575', '3L', 103, 34, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '6U', 103, 3, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '10U', 103, 16, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '11U', 103, 34, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '2L', 103, 32, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '7L', 103, 37, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '29U', 103, 23, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '19L', 103, 16, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '23U', 103, 40, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '15L', 103, 32, 13, 23).createObject() == True
+        assert Booking('MH 10 AB 5575', '28U', 103, 25, 13, 23).createObject() == True
+        assert Booking('MH 5 AB 6693', '14L', 104, 28, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '26L', 104, 11, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '20L', 104, 33, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '23U', 104, 10, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '30U', 104, 17, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '11U', 104, 27, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '15L', 104, 11, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '24U', 104, 34, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '25L', 104, 5, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '8L', 104, 35, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '13L', 104, 31, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '7L', 104, 26, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '21L', 104, 24, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '17U', 104, 20, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '9L', 104, 14, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '28U', 104, 15, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '10U', 104, 35, 2, 4).createObject() == True
+        assert Booking('MH 5 AB 6693', '19L', 104, 21, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '28U', 105, 3, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '2L', 105, 18, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '29U', 105, 15, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '9L', 105, 25, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '15L', 105, 2, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '19L', 105, 1, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '21L', 105, 11, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '8L', 105, 32, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '23U', 105, 13, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '30U', 105, 14, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '13L', 105, 4, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '20L', 105, 39, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '22U', 105, 32, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '17U', 105, 27, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '18U', 105, 22, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '25L', 105, 38, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '3L', 105, 2, 5, 22).createObject() == True
+        assert Booking('MH 12 AB 5440', '16U', 105, 7, 5, 22).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 106, 33, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '30U', 106, 17, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '24U', 106, 12, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '4U', 106, 16, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '28U', 106, 1, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 106, 6, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 106, 37, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '21L', 106, 9, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 106, 38, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 106, 7, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '6U', 106, 13, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 106, 20, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 106, 17, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 106, 15, 29, 17).createObject() == True
+        assert Booking('MH 17 AB 9316', '26L', 106, 27, 29, 17).createObject() == True
+        assert Booking('MH 9 AB 8308', '2L', 107, 38, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '14L', 107, 5, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 107, 14, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '26L', 107, 40, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '23U', 107, 6, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '13L', 107, 17, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '22U', 107, 34, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '19L', 107, 3, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '5U', 107, 4, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '27L', 107, 25, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '4U', 107, 10, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '6U', 107, 10, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '7L', 107, 28, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '20L', 107, 35, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '3L', 107, 12, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '1L', 107, 15, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '8L', 107, 36, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '18U', 107, 11, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '30U', 107, 18, 10, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '10U', 107, 39, 10, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '11U', 108, 3, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '4U', 108, 13, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '29U', 108, 17, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '8L', 108, 29, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '20L', 108, 31, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '19L', 108, 34, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '5U', 108, 8, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '25L', 108, 9, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '16U', 108, 3, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '6U', 108, 10, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '9L', 108, 40, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '2L', 108, 34, 8, 18).createObject() == True
+        assert Booking('MH 16 AB 7740', '26L', 108, 34, 8, 18).createObject() == True
+        assert Booking('MH 12 AB 7062', '13L', 109, 21, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '26L', 109, 24, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '20L', 109, 21, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '7L', 109, 17, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '16U', 109, 11, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '1L', 109, 17, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '3L', 109, 16, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '18U', 109, 26, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '4U', 109, 22, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '22U', 109, 35, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '28U', 109, 18, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '6U', 109, 17, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '2L', 109, 5, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '21L', 109, 7, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '24U', 109, 13, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '10U', 109, 24, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '25L', 109, 28, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '15L', 109, 16, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '12U', 109, 10, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '30U', 109, 17, 27, 3).createObject() == True
+        assert Booking('MH 12 AB 7062', '6U', 110, 23, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '19L', 110, 4, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '29U', 110, 17, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '13L', 110, 24, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '3L', 110, 35, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '2L', 110, 31, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '18U', 110, 16, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '26L', 110, 30, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '12U', 110, 5, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '23U', 110, 3, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '16U', 110, 5, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '5U', 110, 7, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '4U', 110, 6, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '14L', 110, 14, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '20L', 110, 7, 24, 22).createObject() == True
+        assert Booking('MH 12 AB 7062', '21L', 110, 8, 24, 22).createObject() == True
+        assert Booking('MH 20 AB 8094', '21L', 111, 28, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '22U', 111, 40, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '23U', 111, 11, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '26L', 111, 12, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '17U', 111, 24, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '6U', 111, 35, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '1L', 111, 19, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '16U', 111, 13, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '15L', 111, 11, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '30U', 111, 5, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '7L', 111, 32, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '11U', 111, 1, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '25L', 111, 23, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '14L', 111, 11, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '10U', 111, 13, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '19L', 111, 6, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '29U', 111, 30, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '8L', 111, 23, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '18U', 111, 27, 21, 20).createObject() == True
+        assert Booking('MH 20 AB 8094', '5U', 111, 7, 21, 20).createObject() == True
+        assert Booking('MH 14 AB 9684', '27L', 112, 8, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '22U', 112, 27, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '16U', 112, 20, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '14L', 112, 28, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '15L', 112, 31, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '5U', 112, 22, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '12U', 112, 27, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '20L', 112, 28, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '30U', 112, 4, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '17U', 112, 29, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '4U', 112, 7, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '9L', 112, 5, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '28U', 112, 4, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '2L', 112, 1, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '3L', 112, 7, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '29U', 112, 38, 6, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '25L', 112, 3, 6, 1).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 113, 31, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '20L', 113, 22, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '26L', 113, 5, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '23U', 113, 20, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '11U', 113, 15, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '10U', 113, 19, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '21L', 113, 22, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '13L', 113, 30, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '8L', 113, 15, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '28U', 113, 14, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 113, 20, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '6U', 113, 8, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 113, 21, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '9L', 113, 14, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '18U', 113, 22, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '30U', 113, 5, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '4U', 113, 15, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '2L', 113, 28, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '1L', 113, 13, 1, 3).createObject() == True
+        assert Booking('MH 11 AB 9332', '19L', 114, 32, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '13L', 114, 32, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 114, 4, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '2L', 114, 17, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '21L', 114, 12, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '15L', 114, 20, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '30U', 114, 19, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '9L', 114, 17, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '10U', 114, 16, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '4U', 114, 11, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 114, 24, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '20L', 114, 40, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 114, 29, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '27L', 114, 34, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 114, 11, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '5U', 114, 38, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '14L', 114, 10, 7, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '11U', 114, 7, 7, 14).createObject() == True
+        assert Booking('MH 14 AB 9684', '2L', 115, 25, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '8L', 115, 9, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '28U', 115, 33, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '13L', 115, 37, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '23U', 115, 7, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '12U', 115, 32, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '21L', 115, 37, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '17U', 115, 35, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '15L', 115, 20, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '9L', 115, 24, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '1L', 115, 3, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '24U', 115, 4, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '30U', 115, 22, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '4U', 115, 15, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '20L', 115, 7, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '5U', 115, 22, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '22U', 115, 27, 26, 1).createObject() == True
+        assert Booking('MH 14 AB 9684', '16U', 115, 8, 26, 1).createObject() == True
+        assert Booking('MH 10 AB 9617', '16U', 116, 7, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '2L', 116, 21, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '12U', 116, 29, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '20L', 116, 15, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '30U', 116, 4, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '18U', 116, 36, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '28U', 116, 1, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '19L', 116, 33, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '15L', 116, 30, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '24U', 116, 14, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '5U', 116, 5, 3, 2).createObject() == True
+        assert Booking('MH 10 AB 9617', '8L', 116, 20, 3, 2).createObject() == True
+        assert Booking('MH 8 AB 6980', '22U', 117, 17, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '6U', 117, 5, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '10U', 117, 9, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '28U', 117, 29, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '19L', 117, 12, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '9L', 117, 7, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '30U', 117, 28, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '14L', 117, 3, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '20L', 117, 12, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '7L', 117, 34, 18, 16).createObject() == True
+        assert Booking('MH 8 AB 6980', '3L', 117, 5, 18, 16).createObject() == True
+        assert Booking('MH 13 AB 5137', '7L', 118, 21, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '9L', 118, 29, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '24U', 118, 1, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '27L', 118, 37, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '10U', 118, 15, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '4U', 118, 5, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '12U', 118, 11, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '8L', 118, 16, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '28U', 118, 25, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '21L', 118, 32, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '26L', 118, 26, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '29U', 118, 22, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '20L', 118, 38, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '25L', 118, 1, 15, 28).createObject() == True
+        assert Booking('MH 13 AB 5137', '11U', 118, 8, 15, 28).createObject() == True
+        assert Booking('MH 9 AB 8308', '15L', 119, 14, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '18U', 119, 15, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '29U', 119, 31, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '3L', 119, 19, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '17U', 119, 34, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '13L', 119, 16, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '24U', 119, 11, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '30U', 119, 39, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '27L', 119, 36, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '4U', 119, 10, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '6U', 119, 17, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '9L', 119, 37, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '5U', 119, 25, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '22U', 119, 12, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '21L', 119, 26, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '8L', 119, 16, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '19L', 119, 26, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '1L', 119, 22, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '12U', 119, 39, 24, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 119, 40, 24, 2).createObject() == True
+        assert Booking('MH 19 AB 8198', '3L', 120, 40, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '16U', 120, 1, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '10U', 120, 3, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '29U', 120, 25, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '30U', 120, 23, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '28U', 120, 38, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '13L', 120, 32, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '4U', 120, 26, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '11U', 120, 40, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '25L', 120, 18, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '9L', 120, 25, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '7L', 120, 4, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '22U', 120, 37, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '5U', 120, 19, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '23U', 120, 22, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '24U', 120, 35, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '12U', 120, 20, 2, 24).createObject() == True
+        assert Booking('MH 19 AB 8198', '1L', 120, 4, 2, 24).createObject() == True
+        assert Booking('MH 8 AB 8272', '9L', 121, 30, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '30U', 121, 22, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '25L', 121, 1, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '16U', 121, 1, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '11U', 121, 4, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '5U', 121, 7, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '14L', 121, 4, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '19L', 121, 4, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '18U', 121, 7, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '26L', 121, 15, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '10U', 121, 15, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '20L', 121, 21, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '7L', 121, 15, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '21L', 121, 14, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '4U', 121, 35, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '3L', 121, 33, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '17U', 121, 5, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '28U', 121, 25, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '2L', 121, 17, 19, 9).createObject() == True
+        assert Booking('MH 8 AB 8272', '8L', 121, 30, 19, 9).createObject() == True
+        assert Booking('MH 12 AB 7062', '22U', 122, 4, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '27L', 122, 30, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '15L', 122, 30, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '29U', 122, 14, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '21L', 122, 27, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '16U', 122, 15, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '11U', 122, 24, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '24U', 122, 23, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '1L', 122, 8, 27, 17).createObject() == True
+        assert Booking('MH 12 AB 7062', '13L', 122, 14, 27, 17).createObject() == True
+        assert Booking('MH 19 AB 8932', '2L', 123, 9, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '14L', 123, 11, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '23U', 123, 37, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '9L', 123, 21, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '21L', 123, 29, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '11U', 123, 33, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '3L', 123, 15, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '5U', 123, 34, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '22U', 123, 5, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '18U', 123, 35, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '8L', 123, 12, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '24U', 123, 36, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '16U', 123, 24, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '15L', 123, 34, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '6U', 123, 12, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '1L', 123, 30, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '25L', 123, 22, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '26L', 123, 17, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '30U', 123, 6, 11, 13).createObject() == True
+        assert Booking('MH 19 AB 8932', '10U', 123, 9, 11, 13).createObject() == True
+        assert Booking('MH 9 AB 8308', '4U', 124, 40, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '13L', 124, 21, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '26L', 124, 28, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '16U', 124, 29, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '19L', 124, 5, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 124, 23, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '18U', 124, 10, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '15L', 124, 36, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '1L', 124, 17, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '2L', 124, 11, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '25L', 124, 2, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '29U', 124, 23, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '3L', 124, 31, 27, 2).createObject() == True
+        assert Booking('MH 9 AB 8308', '22U', 124, 37, 27, 2).createObject() == True
+        assert Booking('MH 17 AB 8217', '24U', 125, 32, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '26L', 125, 21, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '5U', 125, 10, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '7L', 125, 19, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '21L', 125, 17, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '18U', 125, 16, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '3L', 125, 34, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '25L', 125, 4, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '15L', 125, 3, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '16U', 125, 14, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '14L', 125, 23, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '2L', 125, 40, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '13L', 125, 11, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '20L', 125, 1, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '6U', 125, 36, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '23U', 125, 23, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '1L', 125, 25, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '17U', 125, 2, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '27L', 125, 26, 23, 10).createObject() == True
+        assert Booking('MH 17 AB 8217', '22U', 125, 24, 23, 10).createObject() == True
+        assert Booking('MH 8 AB 8272', '19L', 126, 35, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '12U', 126, 20, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '26L', 126, 22, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '15L', 126, 4, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '24U', 126, 21, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '17U', 126, 39, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '25L', 126, 11, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '20L', 126, 8, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '3L', 126, 39, 12, 16).createObject() == True
+        assert Booking('MH 8 AB 8272', '10U', 126, 17, 12, 16).createObject() == True
+        assert Booking('MH 11 AB 9332', '3L', 127, 20, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 127, 34, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '5U', 127, 11, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '18U', 127, 10, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '12U', 127, 40, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '25L', 127, 12, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '11U', 127, 7, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 127, 21, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '4U', 127, 20, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '29U', 127, 36, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '23U', 127, 21, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '19L', 127, 29, 19, 23).createObject() == True
+        assert Booking('MH 11 AB 9332', '10U', 127, 31, 19, 23).createObject() == True
+        assert Booking('MH 19 AB 9404', '27L', 128, 31, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '17U', 128, 36, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '3L', 128, 4, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '25L', 128, 9, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '6U', 128, 26, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '24U', 128, 34, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '23U', 128, 30, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '13L', 128, 29, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '22U', 128, 27, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '21L', 128, 2, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '15L', 128, 33, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '16U', 128, 26, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '10U', 128, 38, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '18U', 128, 16, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '11U', 128, 10, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '26L', 128, 15, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '20L', 128, 21, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '19L', 128, 34, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '28U', 128, 7, 2, 5).createObject() == True
+        assert Booking('MH 19 AB 9404', '8L', 128, 32, 2, 5).createObject() == True
+        assert Booking('MH 10 AB 5575', '15L', 129, 39, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '20L', 129, 18, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '27L', 129, 34, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '11U', 129, 21, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '26L', 129, 35, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '30U', 129, 9, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '7L', 129, 12, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '10U', 129, 9, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '29U', 129, 26, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '25L', 129, 13, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '18U', 129, 38, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '6U', 129, 2, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '28U', 129, 32, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '5U', 129, 17, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 129, 9, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '23U', 129, 27, 26, 12).createObject() == True
+        assert Booking('MH 10 AB 5575', '9L', 129, 35, 26, 12).createObject() == True
+        assert Booking('MH 12 AB 5440', '17U', 130, 20, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '30U', 130, 21, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '21L', 130, 38, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '18U', 130, 18, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '13L', 130, 4, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '28U', 130, 31, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '9L', 130, 2, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '25L', 130, 39, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '6U', 130, 15, 2, 4).createObject() == True
+        assert Booking('MH 12 AB 5440', '20L', 130, 20, 2, 4).createObject() == True
+        assert Booking('MH 11 AB 9332', '7L', 131, 24, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '2L', 131, 40, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '3L', 131, 33, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '29U', 131, 21, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '1L', 131, 11, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '27L', 131, 17, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '12U', 131, 27, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '18U', 131, 14, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '16U', 131, 13, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '6U', 131, 14, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '24U', 131, 8, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '17U', 131, 34, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '23U', 131, 24, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 9332', '14L', 131, 36, 13, 14).createObject() == True
+        assert Booking('MH 11 AB 5703', '10U', 132, 8, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '29U', 132, 8, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '28U', 132, 21, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '26L', 132, 24, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '15L', 132, 1, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '23U', 132, 37, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '7L', 132, 14, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '13L', 132, 39, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '27L', 132, 34, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '20L', 132, 23, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '25L', 132, 19, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '11U', 132, 7, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '4U', 132, 27, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '17U', 132, 22, 12, 26).createObject() == True
+        assert Booking('MH 11 AB 5703', '9L', 132, 5, 12, 26).createObject() == True
+        assert Booking('MH 9 AB 8308', '28U', 133, 26, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '12U', 133, 10, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '29U', 133, 7, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '19L', 133, 3, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '20L', 133, 12, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '18U', 133, 3, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '23U', 133, 18, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '26L', 133, 1, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '9L', 133, 30, 28, 1).createObject() == True
+        assert Booking('MH 9 AB 8308', '10U', 133, 3, 28, 1).createObject() == True
+        assert Booking('MH 17 AB 9316', '16U', 134, 15, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '7L', 134, 26, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 134, 21, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 134, 4, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '22U', 134, 37, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 134, 33, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '1L', 134, 16, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '14L', 134, 16, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '27L', 134, 38, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '13L', 134, 23, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 134, 39, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 134, 19, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '25L', 134, 16, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '28U', 134, 20, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 134, 27, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 134, 28, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 134, 40, 22, 20).createObject() == True
+        assert Booking('MH 17 AB 9316', '5U', 135, 30, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '20L', 135, 31, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '8L', 135, 26, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '11U', 135, 19, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '15L', 135, 6, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '29U', 135, 36, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '9L', 135, 7, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '6U', 135, 4, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '18U', 135, 26, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '10U', 135, 26, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '2L', 135, 26, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '25L', 135, 27, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '14L', 135, 38, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '30U', 135, 27, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '23U', 135, 32, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '26L', 135, 5, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '4U', 135, 39, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '19L', 135, 4, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 9316', '13L', 135, 25, 3, 7).createObject() == True
+        assert Booking('MH 17 AB 8217', '11U', 136, 10, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '5U', 136, 6, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '1L', 136, 39, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '7L', 136, 14, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '20L', 136, 32, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '13L', 136, 26, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '3L', 136, 15, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '14L', 136, 31, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '10U', 136, 37, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '26L', 136, 36, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 8217', '23U', 136, 12, 9, 11).createObject() == True
+        assert Booking('MH 17 AB 5692', '1L', 137, 4, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '18U', 137, 5, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '30U', 137, 28, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '17U', 137, 16, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '19L', 137, 3, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '29U', 137, 30, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '12U', 137, 8, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '27L', 137, 22, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '9L', 137, 29, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '8L', 137, 10, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '16U', 137, 39, 3, 29).createObject() == True
+        assert Booking('MH 17 AB 5692', '6U', 137, 34, 3, 29).createObject() == True
+        assert Booking('MH 19 AB 9404', '21L', 138, 33, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '22U', 138, 16, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '14L', 138, 27, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '28U', 138, 32, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '3L', 138, 26, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '9L', 138, 32, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '23U', 138, 11, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '5U', 138, 6, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '19L', 138, 26, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '27L', 138, 17, 9, 6).createObject() == True
+        assert Booking('MH 19 AB 9404', '8L', 138, 12, 9, 6).createObject() == True
+        assert Booking('MH 11 AB 7989', '5U', 139, 26, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '8L', 139, 21, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '3L', 139, 38, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '6U', 139, 14, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '20L', 139, 32, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '26L', 139, 5, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '21L', 139, 15, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '17U', 139, 1, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '27L', 139, 21, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '30U', 139, 40, 22, 7).createObject() == True
+        assert Booking('MH 11 AB 7989', '2L', 139, 36, 22, 7).createObject() == True
+        assert Booking('MH 9 AB 8797', '6U', 140, 24, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '24U', 140, 29, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '27L', 140, 13, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '28U', 140, 36, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '20L', 140, 32, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '9L', 140, 10, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '4U', 140, 38, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '29U', 140, 21, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '11U', 140, 7, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '17U', 140, 26, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '7L', 140, 39, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '13L', 140, 1, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '18U', 140, 17, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '1L', 140, 39, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '22U', 140, 5, 14, 29).createObject() == True
+        assert Booking('MH 9 AB 8797', '16U', 140, 28, 14, 29).createObject() == True
+        assert Booking('MH 16 AB 7740', '18U', 141, 14, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '7L', 141, 3, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '19L', 141, 6, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '26L', 141, 35, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '6U', 141, 11, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '1L', 141, 15, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '5U', 141, 15, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '16U', 141, 33, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '13L', 141, 32, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '2L', 141, 22, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '12U', 141, 32, 7, 4).createObject() == True
+        assert Booking('MH 16 AB 7740', '25L', 141, 1, 7, 4).createObject() == True
+        assert Booking('MH 19 AB 5367', '1L', 142, 1, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '22U', 142, 37, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '2L', 142, 23, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '26L', 142, 34, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '7L', 142, 34, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '25L', 142, 10, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '11U', 142, 5, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '23U', 142, 8, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '8L', 142, 37, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '6U', 142, 9, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '13L', 142, 11, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '12U', 142, 25, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '30U', 142, 29, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '19L', 142, 7, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '20L', 142, 22, 2, 11).createObject() == True
+        assert Booking('MH 19 AB 5367', '17U', 142, 36, 2, 11).createObject() == True
+        assert Booking('MH 10 AB 5575', '26L', 143, 9, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '6U', 143, 33, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '8L', 143, 18, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '2L', 143, 12, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '18U', 143, 32, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '9L', 143, 13, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '25L', 143, 15, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '3L', 143, 14, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '19L', 143, 29, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '16U', 143, 5, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '11U', 143, 19, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '17U', 143, 14, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '27L', 143, 2, 26, 20).createObject() == True
+        assert Booking('MH 10 AB 5575', '24U', 143, 21, 26, 20).createObject() == True
+        assert Booking('MH 11 AB 7889', '9L', 144, 7, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '22U', 144, 19, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '4U', 144, 16, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '7L', 144, 39, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '23U', 144, 19, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '1L', 144, 9, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '13L', 144, 26, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '24U', 144, 13, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '19L', 144, 23, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '12U', 144, 25, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '20L', 144, 37, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '28U', 144, 11, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '8L', 144, 26, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '18U', 144, 39, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '16U', 144, 16, 18, 26).createObject() == True
+        assert Booking('MH 11 AB 7889', '25L', 144, 36, 18, 26).createObject() == True
+        assert Booking('MH 17 AB 5692', '7L', 145, 36, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '22U', 145, 18, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '28U', 145, 10, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '1L', 145, 26, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '6U', 145, 15, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '16U', 145, 6, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '24U', 145, 33, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '25L', 145, 30, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '5U', 145, 9, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '29U', 145, 11, 23, 6).createObject() == True
+        assert Booking('MH 17 AB 5692', '27L', 145, 38, 23, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '3L', 146, 38, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '9L', 146, 34, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '8L', 146, 2, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '25L', 146, 28, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '6U', 146, 38, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '5U', 146, 37, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '29U', 146, 37, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '19L', 146, 30, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '22U', 146, 34, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '7L', 146, 18, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '24U', 146, 2, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '27L', 146, 6, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '30U', 146, 30, 24, 6).createObject() == True
+        assert Booking('MH 13 AB 5137', '1L', 146, 19, 24, 6).createObject() == True
+        assert Booking('MH 11 AB 7989', '20L', 147, 9, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '2L', 147, 28, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '24U', 147, 16, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '22U', 147, 13, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '18U', 147, 40, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '19L', 147, 36, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '11U', 147, 27, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '25L', 147, 2, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '16U', 147, 30, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '14L', 147, 22, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '5U', 147, 6, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '6U', 147, 4, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '12U', 147, 39, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '8L', 147, 32, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '30U', 147, 3, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '23U', 147, 13, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '10U', 147, 28, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '1L', 147, 19, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '17U', 147, 34, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7989', '7L', 147, 17, 22, 8).createObject() == True
+        assert Booking('MH 11 AB 7889', '4U', 148, 32, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '29U', 148, 21, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '15L', 148, 2, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '6U', 148, 27, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '27L', 148, 11, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '3L', 148, 6, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '22U', 148, 9, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '13L', 148, 40, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '28U', 148, 31, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '9L', 148, 39, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '5U', 148, 38, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '12U', 148, 40, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '30U', 148, 23, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '25L', 148, 34, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '8L', 148, 1, 12, 14).createObject() == True
+        assert Booking('MH 11 AB 7889', '21L', 148, 14, 12, 14).createObject() == True
+        assert Booking('MH 8 AB 8272', '9L', 149, 6, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '16U', 149, 5, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '5U', 149, 9, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '12U', 149, 19, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '25L', 149, 38, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '26L', 149, 10, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '20L', 149, 11, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '6U', 149, 29, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '7L', 149, 27, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '18U', 149, 19, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '2L', 149, 20, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '8L', 149, 6, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '3L', 149, 16, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '11U', 149, 30, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '27L', 149, 18, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '15L', 149, 5, 15, 6).createObject() == True
+        assert Booking('MH 8 AB 8272', '28U', 149, 2, 15, 6).createObject() == True
+        assert Booking('MH 16 AB 7740', '25L', 150, 40, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '28U', 150, 40, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '22U', 150, 22, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '7L', 150, 9, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '13L', 150, 35, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '1L', 150, 3, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '23U', 150, 30, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '18U', 150, 1, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '10U', 150, 5, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '11U', 150, 3, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '9L', 150, 35, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '19L', 150, 35, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '2L', 150, 37, 18, 26).createObject() == True
+        assert Booking('MH 16 AB 7740', '17U', 150, 13, 18, 26).createObject() == True
 
-        assert Booking('MH 9 AB 8797', '26L', 1, 23).createObject() == True
-        assert Booking('MH 9 AB 8797', '3L', 1, 14).createObject() == True
-        assert Booking('MH 9 AB 8797', '13L', 1, 9).createObject() == True
-        assert Booking('MH 9 AB 8797', '22U', 1, 38).createObject() == True
-        assert Booking('MH 9 AB 8797', '21L', 1, 17).createObject() == True
-        assert Booking('MH 9 AB 8797', '17U', 1, 19).createObject() == True
-        assert Booking('MH 9 AB 8797', '1L', 1, 3).createObject() == True
-        assert Booking('MH 9 AB 8797', '9L', 1, 10).createObject() == True
-        assert Booking('MH 9 AB 8797', '6U', 1, 4).createObject() == True
-        assert Booking('MH 9 AB 8797', '19L', 1, 27).createObject() == True
-        assert Booking('MH 9 AB 8797', '18U', 1, 2).createObject() == True
-        assert Booking('MH 8 AB 6980', '28U', 2, 27).createObject() == True
-        assert Booking('MH 8 AB 6980', '19L', 2, 33).createObject() == True
-        assert Booking('MH 8 AB 6980', '17U', 2, 16).createObject() == True
-        assert Booking('MH 8 AB 6980', '3L', 2, 17).createObject() == True
-        assert Booking('MH 8 AB 6980', '11U', 2, 39).createObject() == True
-        assert Booking('MH 8 AB 6980', '4U', 2, 3).createObject() == True
-        assert Booking('MH 8 AB 6980', '21L', 2, 26).createObject() == True
-        assert Booking('MH 8 AB 6980', '30U', 2, 8).createObject() == True
-        assert Booking('MH 8 AB 6980', '18U', 2, 32).createObject() == True
-        assert Booking('MH 8 AB 6980', '25L', 2, 5).createObject() == True
-        assert Booking('MH 19 AB 8198', '17U', 3, 31).createObject() == True
-        assert Booking('MH 19 AB 8198', '28U', 3, 10).createObject() == True
-        assert Booking('MH 19 AB 8198', '25L', 3, 7).createObject() == True
-        assert Booking('MH 19 AB 8198', '18U', 3, 5).createObject() == True
-        assert Booking('MH 19 AB 8198', '26L', 3, 38).createObject() == True
-        assert Booking('MH 19 AB 8198', '1L', 3, 34).createObject() == True
-        assert Booking('MH 19 AB 8198', '29U', 3, 28).createObject() == True
-        assert Booking('MH 19 AB 8198', '30U', 3, 34).createObject() == True
-        assert Booking('MH 19 AB 8198', '6U', 3, 37).createObject() == True
-        assert Booking('MH 19 AB 8198', '20L', 3, 23).createObject() == True
-        assert Booking('MH 19 AB 8198', '10U', 3, 40).createObject() == True
-        assert Booking('MH 19 AB 8198', '11U', 3, 33).createObject() == True
-        assert Booking('MH 19 AB 8198', '24U', 3, 7).createObject() == True
-        assert Booking('MH 19 AB 8198', '19L', 3, 9).createObject() == True
-        assert Booking('MH 19 AB 8198', '21L', 3, 40).createObject() == True
-        assert Booking('MH 19 AB 8198', '16U', 3, 16).createObject() == True
-        assert Booking('MH 19 AB 8198', '23U', 3, 31).createObject() == True
-        assert Booking('MH 19 AB 8198', '12U', 3, 2).createObject() == True
-        assert Booking('MH 19 AB 8198', '3L', 3, 23).createObject() == True
-        assert Booking('MH 19 AB 8198', '13L', 3, 20).createObject() == True
-        assert Booking('MH 19 AB 8198', '12U', 4, 33).createObject() == True
-        assert Booking('MH 19 AB 8198', '28U', 4, 12).createObject() == True
-        assert Booking('MH 19 AB 8198', '16U', 4, 29).createObject() == True
-        assert Booking('MH 19 AB 8198', '9L', 4, 32).createObject() == True
-        assert Booking('MH 19 AB 8198', '27L', 4, 40).createObject() == True
-        assert Booking('MH 19 AB 8198', '8L', 4, 11).createObject() == True
-        assert Booking('MH 19 AB 8198', '26L', 4, 24).createObject() == True
-        assert Booking('MH 19 AB 8198', '24U', 4, 29).createObject() == True
-        assert Booking('MH 19 AB 8198', '3L', 4, 11).createObject() == True
-        assert Booking('MH 19 AB 8198', '23U', 4, 4).createObject() == True
-        assert Booking('MH 19 AB 8198', '20L', 4, 29).createObject() == True
-        assert Booking('MH 19 AB 8198', '21L', 4, 14).createObject() == True
-        assert Booking('MH 19 AB 8198', '30U', 4, 14).createObject() == True
-        assert Booking('MH 19 AB 8198', '4U', 4, 40).createObject() == True
-        assert Booking('MH 19 AB 8198', '22U', 4, 31).createObject() == True
-        assert Booking('MH 10 AB 5575', '19L', 5, 18).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 5, 26).createObject() == True
-        assert Booking('MH 10 AB 5575', '5U', 5, 34).createObject() == True
-        assert Booking('MH 10 AB 5575', '27L', 5, 30).createObject() == True
-        assert Booking('MH 10 AB 5575', '2L', 5, 17).createObject() == True
-        assert Booking('MH 10 AB 5575', '23U', 5, 2).createObject() == True
-        assert Booking('MH 10 AB 5575', '17U', 5, 10).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 5, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '24U', 5, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '7L', 5, 2).createObject() == True
-        assert Booking('MH 10 AB 5575', '8L', 5, 18).createObject() == True
-        assert Booking('MH 10 AB 5575', '16U', 5, 34).createObject() == True
-        assert Booking('MH 10 AB 5575', '3L', 5, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '25L', 5, 18).createObject() == True
-        assert Booking('MH 10 AB 5575', '18U', 5, 2).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 5, 8).createObject() == True
-        assert Booking('MH 10 AB 5575', '6U', 5, 6).createObject() == True
-        assert Booking('MH 10 AB 5575', '9L', 5, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '26L', 5, 15).createObject() == True
-        assert Booking('MH 16 AB 7222', '26L', 6, 14).createObject() == True
-        assert Booking('MH 16 AB 7222', '2L', 6, 23).createObject() == True
-        assert Booking('MH 16 AB 7222', '3L', 6, 2).createObject() == True
-        assert Booking('MH 16 AB 7222', '30U', 6, 6).createObject() == True
-        assert Booking('MH 16 AB 7222', '20L', 6, 17).createObject() == True
-        assert Booking('MH 16 AB 7222', '29U', 6, 35).createObject() == True
-        assert Booking('MH 16 AB 7222', '22U', 6, 29).createObject() == True
-        assert Booking('MH 16 AB 7222', '16U', 6, 9).createObject() == True
-        assert Booking('MH 16 AB 7222', '10U', 6, 6).createObject() == True
-        assert Booking('MH 16 AB 7222', '24U', 6, 2).createObject() == True
-        assert Booking('MH 16 AB 7222', '18U', 6, 34).createObject() == True
-        assert Booking('MH 16 AB 7222', '8L', 6, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '2L', 7, 30).createObject() == True
-        assert Booking('MH 17 AB 9316', '12U', 7, 14).createObject() == True
-        assert Booking('MH 17 AB 9316', '11U', 7, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '23U', 7, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '15L', 7, 34).createObject() == True
-        assert Booking('MH 17 AB 9316', '19L', 7, 14).createObject() == True
-        assert Booking('MH 17 AB 9316', '22U', 7, 19).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 7, 11).createObject() == True
-        assert Booking('MH 17 AB 9316', '24U', 7, 28).createObject() == True
-        assert Booking('MH 17 AB 9316', '1L', 7, 15).createObject() == True
-        assert Booking('MH 17 AB 9316', '30U', 7, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '25L', 7, 31).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 7, 9).createObject() == True
-        assert Booking('MH 17 AB 9316', '8L', 7, 32).createObject() == True
-        assert Booking('MH 17 AB 9316', '16U', 7, 9).createObject() == True
-        assert Booking('MH 17 AB 9316', '3L', 7, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '9L', 7, 22).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 7, 3).createObject() == True
-        assert Booking('MH 17 AB 9316', '18U', 7, 3).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 8, 39).createObject() == True
-        assert Booking('MH 11 AB 9332', '22U', 8, 30).createObject() == True
-        assert Booking('MH 11 AB 9332', '1L', 8, 31).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 8, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '24U', 8, 14).createObject() == True
-        assert Booking('MH 11 AB 9332', '26L', 8, 23).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 8, 22).createObject() == True
-        assert Booking('MH 11 AB 9332', '9L', 8, 1).createObject() == True
-        assert Booking('MH 11 AB 9332', '11U', 8, 4).createObject() == True
-        assert Booking('MH 11 AB 9332', '27L', 8, 33).createObject() == True
-        assert Booking('MH 11 AB 9332', '13L', 8, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '12U', 8, 21).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 8, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '25L', 8, 31).createObject() == True
-        assert Booking('MH 11 AB 9332', '17U', 8, 4).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 8, 22).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 8, 35).createObject() == True
-        assert Booking('MH 11 AB 9332', '10U', 8, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '5U', 8, 25).createObject() == True
-        assert Booking('MH 18 AB 7004', '18U', 9, 38).createObject() == True
-        assert Booking('MH 18 AB 7004', '27L', 9, 6).createObject() == True
-        assert Booking('MH 18 AB 7004', '16U', 9, 7).createObject() == True
-        assert Booking('MH 18 AB 7004', '26L', 9, 5).createObject() == True
-        assert Booking('MH 18 AB 7004', '19L', 9, 22).createObject() == True
-        assert Booking('MH 18 AB 7004', '4U', 9, 37).createObject() == True
-        assert Booking('MH 18 AB 7004', '21L', 9, 31).createObject() == True
-        assert Booking('MH 18 AB 7004', '20L', 9, 19).createObject() == True
-        assert Booking('MH 18 AB 7004', '9L', 9, 34).createObject() == True
-        assert Booking('MH 18 AB 7004', '17U', 9, 3).createObject() == True
-        assert Booking('MH 18 AB 7004', '12U', 9, 27).createObject() == True
-        assert Booking('MH 18 AB 7004', '24U', 9, 15).createObject() == True
-        assert Booking('MH 18 AB 7004', '8L', 9, 32).createObject() == True
-        assert Booking('MH 18 AB 7004', '28U', 9, 16).createObject() == True
-        assert Booking('MH 18 AB 7004', '30U', 9, 29).createObject() == True
-        assert Booking('MH 18 AB 7004', '6U', 9, 35).createObject() == True
-        assert Booking('MH 18 AB 7004', '11U', 9, 10).createObject() == True
-        assert Booking('MH 18 AB 7004', '23U', 9, 29).createObject() == True
-        assert Booking('MH 18 AB 7004', '15L', 9, 30).createObject() == True
-        assert Booking('MH 18 AB 7004', '22U', 9, 13).createObject() == True
-        assert Booking('MH 14 AB 6518', '8L', 10, 18).createObject() == True
-        assert Booking('MH 14 AB 6518', '30U', 10, 6).createObject() == True
-        assert Booking('MH 14 AB 6518', '27L', 10, 22).createObject() == True
-        assert Booking('MH 14 AB 6518', '21L', 10, 15).createObject() == True
-        assert Booking('MH 14 AB 6518', '12U', 10, 15).createObject() == True
-        assert Booking('MH 14 AB 6518', '23U', 10, 13).createObject() == True
-        assert Booking('MH 14 AB 6518', '19L', 10, 16).createObject() == True
-        assert Booking('MH 14 AB 6518', '16U', 10, 24).createObject() == True
-        assert Booking('MH 14 AB 6518', '26L', 10, 37).createObject() == True
-        assert Booking('MH 14 AB 6518', '25L', 10, 15).createObject() == True
-        assert Booking('MH 14 AB 6518', '20L', 10, 8).createObject() == True
-        assert Booking('MH 14 AB 6518', '18U', 10, 16).createObject() == True
-        assert Booking('MH 11 AB 9332', '26L', 11, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '29U', 11, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '27L', 11, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '10U', 11, 27).createObject() == True
-        assert Booking('MH 11 AB 9332', '12U', 11, 2).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 11, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 11, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '5U', 11, 10).createObject() == True
-        assert Booking('MH 11 AB 9332', '11U', 11, 3).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 11, 10).createObject() == True
-        assert Booking('MH 11 AB 9332', '13L', 11, 38).createObject() == True
-        assert Booking('MH 11 AB 9332', '6U', 11, 30).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 11, 36).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 11, 20).createObject() == True
-        assert Booking('MH 12 AB 8578', '24U', 12, 7).createObject() == True
-        assert Booking('MH 12 AB 8578', '10U', 12, 33).createObject() == True
-        assert Booking('MH 12 AB 8578', '12U', 12, 8).createObject() == True
-        assert Booking('MH 12 AB 8578', '25L', 12, 35).createObject() == True
-        assert Booking('MH 12 AB 8578', '5U', 12, 34).createObject() == True
-        assert Booking('MH 12 AB 8578', '9L', 12, 20).createObject() == True
-        assert Booking('MH 12 AB 8578', '8L', 12, 8).createObject() == True
-        assert Booking('MH 12 AB 8578', '16U', 12, 33).createObject() == True
-        assert Booking('MH 12 AB 8578', '1L', 12, 27).createObject() == True
-        assert Booking('MH 12 AB 8578', '4U', 12, 5).createObject() == True
-        assert Booking('MH 12 AB 8578', '27L', 12, 34).createObject() == True
-        assert Booking('MH 12 AB 8578', '28U', 12, 15).createObject() == True
-        assert Booking('MH 12 AB 8578', '20L', 12, 38).createObject() == True
-        assert Booking('MH 12 AB 8578', '3L', 12, 2).createObject() == True
-        assert Booking('MH 12 AB 8578', '30U', 12, 20).createObject() == True
-        assert Booking('MH 12 AB 8578', '11U', 12, 21).createObject() == True
-        assert Booking('MH 12 AB 8578', '19L', 12, 35).createObject() == True
-        assert Booking('MH 12 AB 8578', '17U', 12, 18).createObject() == True
-        assert Booking('MH 12 AB 8578', '2L', 12, 2).createObject() == True
-        assert Booking('MH 12 AB 8578', '21L', 12, 28).createObject() == True
-        assert Booking('MH 11 AB 8643', '10U', 13, 22).createObject() == True
-        assert Booking('MH 11 AB 8643', '15L', 13, 23).createObject() == True
-        assert Booking('MH 11 AB 8643', '6U', 13, 8).createObject() == True
-        assert Booking('MH 11 AB 8643', '12U', 13, 24).createObject() == True
-        assert Booking('MH 11 AB 8643', '23U', 13, 13).createObject() == True
-        assert Booking('MH 11 AB 8643', '28U', 13, 22).createObject() == True
-        assert Booking('MH 11 AB 8643', '19L', 13, 2).createObject() == True
-        assert Booking('MH 11 AB 8643', '25L', 13, 38).createObject() == True
-        assert Booking('MH 11 AB 8643', '9L', 13, 35).createObject() == True
-        assert Booking('MH 11 AB 8643', '14L', 13, 16).createObject() == True
-        assert Booking('MH 11 AB 8643', '16U', 13, 37).createObject() == True
-        assert Booking('MH 10 AB 9617', '22U', 14, 18).createObject() == True
-        assert Booking('MH 10 AB 9617', '12U', 14, 28).createObject() == True
-        assert Booking('MH 10 AB 9617', '9L', 14, 27).createObject() == True
-        assert Booking('MH 10 AB 9617', '4U', 14, 1).createObject() == True
-        assert Booking('MH 10 AB 9617', '8L', 14, 29).createObject() == True
-        assert Booking('MH 10 AB 9617', '28U', 14, 17).createObject() == True
-        assert Booking('MH 10 AB 9617', '19L', 14, 25).createObject() == True
-        assert Booking('MH 10 AB 9617', '30U', 14, 28).createObject() == True
-        assert Booking('MH 10 AB 9617', '25L', 14, 22).createObject() == True
-        assert Booking('MH 10 AB 9617', '24U', 14, 27).createObject() == True
-        assert Booking('MH 10 AB 9617', '13L', 14, 23).createObject() == True
-        assert Booking('MH 10 AB 9617', '15L', 14, 7).createObject() == True
-        assert Booking('MH 15 AB 9478', '1L', 15, 25).createObject() == True
-        assert Booking('MH 15 AB 9478', '17U', 15, 9).createObject() == True
-        assert Booking('MH 15 AB 9478', '27L', 15, 9).createObject() == True
-        assert Booking('MH 15 AB 9478', '3L', 15, 33).createObject() == True
-        assert Booking('MH 15 AB 9478', '12U', 15, 7).createObject() == True
-        assert Booking('MH 15 AB 9478', '10U', 15, 5).createObject() == True
-        assert Booking('MH 15 AB 9478', '7L', 15, 13).createObject() == True
-        assert Booking('MH 15 AB 9478', '28U', 15, 5).createObject() == True
-        assert Booking('MH 15 AB 9478', '21L', 15, 4).createObject() == True
-        assert Booking('MH 15 AB 9478', '14L', 15, 33).createObject() == True
-        assert Booking('MH 15 AB 9478', '2L', 15, 23).createObject() == True
-        assert Booking('MH 18 AB 7004', '5U', 16, 28).createObject() == True
-        assert Booking('MH 18 AB 7004', '7L', 16, 1).createObject() == True
-        assert Booking('MH 18 AB 7004', '11U', 16, 12).createObject() == True
-        assert Booking('MH 18 AB 7004', '23U', 16, 34).createObject() == True
-        assert Booking('MH 18 AB 7004', '4U', 16, 28).createObject() == True
-        assert Booking('MH 18 AB 7004', '18U', 16, 8).createObject() == True
-        assert Booking('MH 18 AB 7004', '30U', 16, 40).createObject() == True
-        assert Booking('MH 18 AB 7004', '21L', 16, 8).createObject() == True
-        assert Booking('MH 18 AB 7004', '27L', 16, 27).createObject() == True
-        assert Booking('MH 18 AB 7004', '6U', 16, 37).createObject() == True
-        assert Booking('MH 18 AB 7004', '14L', 16, 31).createObject() == True
-        assert Booking('MH 18 AB 7004', '20L', 16, 15).createObject() == True
-        assert Booking('MH 18 AB 7004', '17U', 16, 19).createObject() == True
-        assert Booking('MH 18 AB 7004', '8L', 16, 20).createObject() == True
-        assert Booking('MH 18 AB 7004', '25L', 16, 15).createObject() == True
-        assert Booking('MH 18 AB 7004', '1L', 16, 25).createObject() == True
-        assert Booking('MH 18 AB 7004', '28U', 16, 23).createObject() == True
-        assert Booking('MH 13 AB 9993', '22U', 17, 11).createObject() == True
-        assert Booking('MH 13 AB 9993', '18U', 17, 4).createObject() == True
-        assert Booking('MH 13 AB 9993', '29U', 17, 12).createObject() == True
-        assert Booking('MH 13 AB 9993', '16U', 17, 10).createObject() == True
-        assert Booking('MH 13 AB 9993', '6U', 17, 10).createObject() == True
-        assert Booking('MH 13 AB 9993', '26L', 17, 9).createObject() == True
-        assert Booking('MH 13 AB 9993', '10U', 17, 12).createObject() == True
-        assert Booking('MH 13 AB 9993', '27L', 17, 22).createObject() == True
-        assert Booking('MH 13 AB 9993', '25L', 17, 36).createObject() == True
-        assert Booking('MH 13 AB 9993', '17U', 17, 17).createObject() == True
-        assert Booking('MH 13 AB 9993', '7L', 17, 25).createObject() == True
-        assert Booking('MH 13 AB 9993', '5U', 17, 18).createObject() == True
-        assert Booking('MH 13 AB 9993', '23U', 17, 9).createObject() == True
-        assert Booking('MH 13 AB 9993', '21L', 17, 30).createObject() == True
-        assert Booking('MH 13 AB 9993', '13L', 17, 14).createObject() == True
-        assert Booking('MH 13 AB 9993', '2L', 17, 10).createObject() == True
-        assert Booking('MH 13 AB 9993', '24U', 17, 11).createObject() == True
-        assert Booking('MH 13 AB 9993', '30U', 17, 39).createObject() == True
-        assert Booking('MH 13 AB 9993', '12U', 17, 11).createObject() == True
-        assert Booking('MH 13 AB 9993', '1L', 17, 33).createObject() == True
-        assert Booking('MH 15 AB 9478', '11U', 18, 10).createObject() == True
-        assert Booking('MH 15 AB 9478', '24U', 18, 34).createObject() == True
-        assert Booking('MH 15 AB 9478', '16U', 18, 15).createObject() == True
-        assert Booking('MH 15 AB 9478', '4U', 18, 22).createObject() == True
-        assert Booking('MH 15 AB 9478', '6U', 18, 24).createObject() == True
-        assert Booking('MH 15 AB 9478', '28U', 18, 12).createObject() == True
-        assert Booking('MH 15 AB 9478', '20L', 18, 11).createObject() == True
-        assert Booking('MH 15 AB 9478', '1L', 18, 14).createObject() == True
-        assert Booking('MH 15 AB 9478', '9L', 18, 5).createObject() == True
-        assert Booking('MH 15 AB 9478', '10U', 18, 24).createObject() == True
-        assert Booking('MH 15 AB 9478', '21L', 18, 22).createObject() == True
-        assert Booking('MH 11 AB 7659', '14L', 19, 11).createObject() == True
-        assert Booking('MH 11 AB 7659', '3L', 19, 33).createObject() == True
-        assert Booking('MH 11 AB 7659', '2L', 19, 3).createObject() == True
-        assert Booking('MH 11 AB 7659', '15L', 19, 34).createObject() == True
-        assert Booking('MH 11 AB 7659', '11U', 19, 26).createObject() == True
-        assert Booking('MH 11 AB 7659', '18U', 19, 18).createObject() == True
-        assert Booking('MH 11 AB 7659', '6U', 19, 11).createObject() == True
-        assert Booking('MH 11 AB 7659', '13L', 19, 27).createObject() == True
-        assert Booking('MH 11 AB 7659', '8L', 19, 16).createObject() == True
-        assert Booking('MH 11 AB 7659', '16U', 19, 21).createObject() == True
-        assert Booking('MH 11 AB 7659', '17U', 19, 33).createObject() == True
-        assert Booking('MH 11 AB 7659', '27L', 19, 15).createObject() == True
-        assert Booking('MH 11 AB 7659', '23U', 19, 27).createObject() == True
-        assert Booking('MH 11 AB 7659', '7L', 19, 7).createObject() == True
-        assert Booking('MH 11 AB 7659', '9L', 19, 32).createObject() == True
-        assert Booking('MH 11 AB 7659', '20L', 19, 2).createObject() == True
-        assert Booking('MH 11 AB 7659', '5U', 19, 18).createObject() == True
-        assert Booking('MH 11 AB 7659', '24U', 19, 8).createObject() == True
-        assert Booking('MH 11 AB 7659', '21L', 19, 11).createObject() == True
-        assert Booking('MH 11 AB 7659', '26L', 19, 14).createObject() == True
-        assert Booking('MH 11 AB 7889', '21L', 20, 18).createObject() == True
-        assert Booking('MH 11 AB 7889', '15L', 20, 21).createObject() == True
-        assert Booking('MH 11 AB 7889', '8L', 20, 23).createObject() == True
-        assert Booking('MH 11 AB 7889', '20L', 20, 30).createObject() == True
-        assert Booking('MH 11 AB 7889', '13L', 20, 15).createObject() == True
-        assert Booking('MH 11 AB 7889', '23U', 20, 14).createObject() == True
-        assert Booking('MH 11 AB 7889', '11U', 20, 5).createObject() == True
-        assert Booking('MH 11 AB 7889', '9L', 20, 36).createObject() == True
-        assert Booking('MH 11 AB 7889', '6U', 20, 29).createObject() == True
-        assert Booking('MH 11 AB 7889', '12U', 20, 34).createObject() == True
-        assert Booking('MH 11 AB 7889', '18U', 20, 33).createObject() == True
-        assert Booking('MH 11 AB 7889', '24U', 20, 32).createObject() == True
-        assert Booking('MH 11 AB 7889', '14L', 20, 33).createObject() == True
-        assert Booking('MH 11 AB 7889', '26L', 20, 26).createObject() == True
-        assert Booking('MH 11 AB 7889', '27L', 20, 15).createObject() == True
-        assert Booking('MH 11 AB 7889', '7L', 20, 6).createObject() == True
-        assert Booking('MH 11 AB 7889', '22U', 20, 22).createObject() == True
-        assert Booking('MH 13 AB 9993', '15L', 21, 14).createObject() == True
-        assert Booking('MH 13 AB 9993', '6U', 21, 6).createObject() == True
-        assert Booking('MH 13 AB 9993', '16U', 21, 24).createObject() == True
-        assert Booking('MH 13 AB 9993', '21L', 21, 17).createObject() == True
-        assert Booking('MH 13 AB 9993', '28U', 21, 35).createObject() == True
-        assert Booking('MH 13 AB 9993', '27L', 21, 39).createObject() == True
-        assert Booking('MH 13 AB 9993', '30U', 21, 2).createObject() == True
-        assert Booking('MH 13 AB 9993', '23U', 21, 10).createObject() == True
-        assert Booking('MH 13 AB 9993', '9L', 21, 37).createObject() == True
-        assert Booking('MH 13 AB 9993', '17U', 21, 39).createObject() == True
-        assert Booking('MH 13 AB 9993', '12U', 21, 8).createObject() == True
-        assert Booking('MH 13 AB 9993', '4U', 21, 33).createObject() == True
-        assert Booking('MH 13 AB 9993', '26L', 21, 7).createObject() == True
-        assert Booking('MH 13 AB 9993', '7L', 21, 25).createObject() == True
-        assert Booking('MH 14 AB 5997', '22U', 22, 22).createObject() == True
-        assert Booking('MH 14 AB 5997', '20L', 22, 9).createObject() == True
-        assert Booking('MH 14 AB 5997', '23U', 22, 10).createObject() == True
-        assert Booking('MH 14 AB 5997', '7L', 22, 36).createObject() == True
-        assert Booking('MH 14 AB 5997', '8L', 22, 1).createObject() == True
-        assert Booking('MH 14 AB 5997', '12U', 22, 12).createObject() == True
-        assert Booking('MH 14 AB 5997', '13L', 22, 1).createObject() == True
-        assert Booking('MH 14 AB 5997', '1L', 22, 1).createObject() == True
-        assert Booking('MH 14 AB 5997', '24U', 22, 1).createObject() == True
-        assert Booking('MH 14 AB 5997', '14L', 22, 40).createObject() == True
-        assert Booking('MH 14 AB 5997', '25L', 22, 39).createObject() == True
-        assert Booking('MH 14 AB 9684', '1L', 23, 35).createObject() == True
-        assert Booking('MH 14 AB 9684', '27L', 23, 40).createObject() == True
-        assert Booking('MH 14 AB 9684', '15L', 23, 2).createObject() == True
-        assert Booking('MH 14 AB 9684', '12U', 23, 5).createObject() == True
-        assert Booking('MH 14 AB 9684', '20L', 23, 3).createObject() == True
-        assert Booking('MH 14 AB 9684', '18U', 23, 28).createObject() == True
-        assert Booking('MH 14 AB 9684', '5U', 23, 19).createObject() == True
-        assert Booking('MH 14 AB 9684', '3L', 23, 38).createObject() == True
-        assert Booking('MH 14 AB 9684', '23U', 23, 27).createObject() == True
-        assert Booking('MH 14 AB 9684', '25L', 23, 11).createObject() == True
-        assert Booking('MH 14 AB 9684', '7L', 23, 14).createObject() == True
-        assert Booking('MH 14 AB 9684', '16U', 23, 8).createObject() == True
-        assert Booking('MH 14 AB 9684', '4U', 23, 30).createObject() == True
-        assert Booking('MH 14 AB 9684', '14L', 23, 6).createObject() == True
-        assert Booking('MH 14 AB 9684', '22U', 23, 21).createObject() == True
-        assert Booking('MH 14 AB 9684', '26L', 23, 6).createObject() == True
-        assert Booking('MH 17 AB 9316', '13L', 24, 9).createObject() == True
-        assert Booking('MH 17 AB 9316', '11U', 24, 12).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 24, 16).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 24, 9).createObject() == True
-        assert Booking('MH 17 AB 9316', '14L', 24, 26).createObject() == True
-        assert Booking('MH 17 AB 9316', '5U', 24, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '21L', 24, 1).createObject() == True
-        assert Booking('MH 17 AB 9316', '20L', 24, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '30U', 24, 20).createObject() == True
-        assert Booking('MH 17 AB 9316', '23U', 24, 14).createObject() == True
-        assert Booking('MH 17 AB 9316', '28U', 24, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 24, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '4U', 24, 37).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 24, 40).createObject() == True
-        assert Booking('MH 17 AB 9316', '18U', 24, 33).createObject() == True
-        assert Booking('MH 17 AB 9316', '21L', 25, 27).createObject() == True
-        assert Booking('MH 17 AB 9316', '18U', 25, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '10U', 25, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '15L', 25, 11).createObject() == True
-        assert Booking('MH 17 AB 9316', '25L', 25, 2).createObject() == True
-        assert Booking('MH 17 AB 9316', '4U', 25, 15).createObject() == True
-        assert Booking('MH 17 AB 9316', '14L', 25, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '24U', 25, 33).createObject() == True
-        assert Booking('MH 17 AB 9316', '8L', 25, 34).createObject() == True
-        assert Booking('MH 17 AB 9316', '30U', 25, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '5U', 25, 3).createObject() == True
-        assert Booking('MH 17 AB 9316', '2L', 25, 7).createObject() == True
-        assert Booking('MH 17 AB 9316', '3L', 25, 31).createObject() == True
-        assert Booking('MH 17 AB 9316', '16U', 25, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '27L', 25, 32).createObject() == True
-        assert Booking('MH 11 AB 8643', '16U', 26, 31).createObject() == True
-        assert Booking('MH 11 AB 8643', '1L', 26, 33).createObject() == True
-        assert Booking('MH 11 AB 8643', '12U', 26, 35).createObject() == True
-        assert Booking('MH 11 AB 8643', '22U', 26, 20).createObject() == True
-        assert Booking('MH 11 AB 8643', '6U', 26, 8).createObject() == True
-        assert Booking('MH 11 AB 8643', '19L', 26, 6).createObject() == True
-        assert Booking('MH 11 AB 8643', '17U', 26, 4).createObject() == True
-        assert Booking('MH 11 AB 8643', '24U', 26, 13).createObject() == True
-        assert Booking('MH 11 AB 8643', '29U', 26, 40).createObject() == True
-        assert Booking('MH 11 AB 8643', '10U', 26, 34).createObject() == True
-        assert Booking('MH 11 AB 8643', '25L', 26, 3).createObject() == True
-        assert Booking('MH 11 AB 8643', '7L', 26, 38).createObject() == True
-        assert Booking('MH 5 AB 7650', '17U', 27, 23).createObject() == True
-        assert Booking('MH 5 AB 7650', '27L', 27, 22).createObject() == True
-        assert Booking('MH 5 AB 7650', '29U', 27, 21).createObject() == True
-        assert Booking('MH 5 AB 7650', '12U', 27, 12).createObject() == True
-        assert Booking('MH 5 AB 7650', '15L', 27, 30).createObject() == True
-        assert Booking('MH 5 AB 7650', '19L', 27, 11).createObject() == True
-        assert Booking('MH 5 AB 7650', '22U', 27, 15).createObject() == True
-        assert Booking('MH 5 AB 7650', '8L', 27, 26).createObject() == True
-        assert Booking('MH 5 AB 7650', '6U', 27, 36).createObject() == True
-        assert Booking('MH 5 AB 7650', '9L', 27, 6).createObject() == True
-        assert Booking('MH 5 AB 7650', '20L', 27, 22).createObject() == True
-        assert Booking('MH 5 AB 7650', '4U', 27, 17).createObject() == True
-        assert Booking('MH 5 AB 7650', '30U', 27, 9).createObject() == True
-        assert Booking('MH 5 AB 7650', '25L', 27, 8).createObject() == True
-        assert Booking('MH 5 AB 7650', '11U', 27, 16).createObject() == True
-        assert Booking('MH 5 AB 7650', '23U', 27, 37).createObject() == True
-        assert Booking('MH 5 AB 7650', '1L', 27, 1).createObject() == True
-        assert Booking('MH 5 AB 7650', '16U', 27, 18).createObject() == True
-        assert Booking('MH 5 AB 7650', '24U', 27, 6).createObject() == True
-        assert Booking('MH 12 AB 9096', '13L', 28, 8).createObject() == True
-        assert Booking('MH 12 AB 9096', '8L', 28, 14).createObject() == True
-        assert Booking('MH 12 AB 9096', '18U', 28, 14).createObject() == True
-        assert Booking('MH 12 AB 9096', '9L', 28, 28).createObject() == True
-        assert Booking('MH 12 AB 9096', '3L', 28, 32).createObject() == True
-        assert Booking('MH 12 AB 9096', '26L', 28, 40).createObject() == True
-        assert Booking('MH 12 AB 9096', '1L', 28, 24).createObject() == True
-        assert Booking('MH 12 AB 9096', '6U', 28, 34).createObject() == True
-        assert Booking('MH 12 AB 9096', '23U', 28, 26).createObject() == True
-        assert Booking('MH 12 AB 9096', '15L', 28, 28).createObject() == True
-        assert Booking('MH 12 AB 9096', '21L', 28, 39).createObject() == True
-        assert Booking('MH 12 AB 9096', '10U', 28, 16).createObject() == True
-        assert Booking('MH 12 AB 9096', '4U', 28, 8).createObject() == True
-        assert Booking('MH 11 AB 7989', '22U', 29, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '11U', 29, 19).createObject() == True
-        assert Booking('MH 11 AB 7989', '18U', 29, 23).createObject() == True
-        assert Booking('MH 11 AB 7989', '8L', 29, 11).createObject() == True
-        assert Booking('MH 11 AB 7989', '17U', 29, 8).createObject() == True
-        assert Booking('MH 11 AB 7989', '3L', 29, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '23U', 29, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '20L', 29, 9).createObject() == True
-        assert Booking('MH 11 AB 7989', '24U', 29, 6).createObject() == True
-        assert Booking('MH 11 AB 7989', '28U', 29, 8).createObject() == True
-        assert Booking('MH 11 AB 7989', '25L', 29, 18).createObject() == True
-        assert Booking('MH 11 AB 7989', '19L', 29, 36).createObject() == True
-        assert Booking('MH 11 AB 7989', '2L', 29, 28).createObject() == True
-        assert Booking('MH 11 AB 8643', '23U', 30, 31).createObject() == True
-        assert Booking('MH 11 AB 8643', '24U', 30, 35).createObject() == True
-        assert Booking('MH 11 AB 8643', '29U', 30, 32).createObject() == True
-        assert Booking('MH 11 AB 8643', '15L', 30, 8).createObject() == True
-        assert Booking('MH 11 AB 8643', '19L', 30, 5).createObject() == True
-        assert Booking('MH 11 AB 8643', '18U', 30, 6).createObject() == True
-        assert Booking('MH 11 AB 8643', '22U', 30, 36).createObject() == True
-        assert Booking('MH 11 AB 8643', '9L', 30, 25).createObject() == True
-        assert Booking('MH 11 AB 8643', '10U', 30, 28).createObject() == True
-        assert Booking('MH 11 AB 8643', '16U', 30, 27).createObject() == True
-        assert Booking('MH 11 AB 8643', '3L', 30, 30).createObject() == True
-        assert Booking('MH 12 AB 9096', '6U', 31, 12).createObject() == True
-        assert Booking('MH 12 AB 9096', '11U', 31, 12).createObject() == True
-        assert Booking('MH 12 AB 9096', '27L', 31, 9).createObject() == True
-        assert Booking('MH 12 AB 9096', '12U', 31, 25).createObject() == True
-        assert Booking('MH 12 AB 9096', '5U', 31, 36).createObject() == True
-        assert Booking('MH 12 AB 9096', '26L', 31, 25).createObject() == True
-        assert Booking('MH 12 AB 9096', '25L', 31, 5).createObject() == True
-        assert Booking('MH 12 AB 9096', '13L', 31, 33).createObject() == True
-        assert Booking('MH 12 AB 9096', '10U', 31, 11).createObject() == True
-        assert Booking('MH 12 AB 9096', '17U', 31, 6).createObject() == True
-        assert Booking('MH 12 AB 9096', '16U', 31, 23).createObject() == True
-        assert Booking('MH 8 AB 6980', '16U', 32, 6).createObject() == True
-        assert Booking('MH 8 AB 6980', '9L', 32, 31).createObject() == True
-        assert Booking('MH 8 AB 6980', '6U', 32, 14).createObject() == True
-        assert Booking('MH 8 AB 6980', '18U', 32, 32).createObject() == True
-        assert Booking('MH 8 AB 6980', '4U', 32, 24).createObject() == True
-        assert Booking('MH 8 AB 6980', '19L', 32, 35).createObject() == True
-        assert Booking('MH 8 AB 6980', '17U', 32, 17).createObject() == True
-        assert Booking('MH 8 AB 6980', '21L', 32, 19).createObject() == True
-        assert Booking('MH 8 AB 6980', '15L', 32, 1).createObject() == True
-        assert Booking('MH 8 AB 6980', '22U', 32, 28).createObject() == True
-        assert Booking('MH 8 AB 6980', '13L', 32, 28).createObject() == True
-        assert Booking('MH 8 AB 6980', '23U', 32, 10).createObject() == True
-        assert Booking('MH 8 AB 6980', '25L', 32, 37).createObject() == True
-        assert Booking('MH 8 AB 6980', '29U', 32, 35).createObject() == True
-        assert Booking('MH 8 AB 6980', '24U', 32, 40).createObject() == True
-        assert Booking('MH 8 AB 6980', '3L', 32, 32).createObject() == True
-        assert Booking('MH 8 AB 6980', '10U', 32, 37).createObject() == True
-        assert Booking('MH 15 AB 9478', '4U', 33, 4).createObject() == True
-        assert Booking('MH 15 AB 9478', '25L', 33, 39).createObject() == True
-        assert Booking('MH 15 AB 9478', '9L', 33, 36).createObject() == True
-        assert Booking('MH 15 AB 9478', '10U', 33, 28).createObject() == True
-        assert Booking('MH 15 AB 9478', '30U', 33, 34).createObject() == True
-        assert Booking('MH 15 AB 9478', '13L', 33, 17).createObject() == True
-        assert Booking('MH 15 AB 9478', '26L', 33, 15).createObject() == True
-        assert Booking('MH 15 AB 9478', '17U', 33, 30).createObject() == True
-        assert Booking('MH 15 AB 9478', '1L', 33, 33).createObject() == True
-        assert Booking('MH 15 AB 9478', '19L', 33, 27).createObject() == True
-        assert Booking('MH 15 AB 9478', '14L', 33, 32).createObject() == True
-        assert Booking('MH 15 AB 9478', '25L', 34, 22).createObject() == True
-        assert Booking('MH 15 AB 9478', '1L', 34, 21).createObject() == True
-        assert Booking('MH 15 AB 9478', '14L', 34, 14).createObject() == True
-        assert Booking('MH 15 AB 9478', '22U', 34, 38).createObject() == True
-        assert Booking('MH 15 AB 9478', '19L', 34, 23).createObject() == True
-        assert Booking('MH 15 AB 9478', '20L', 34, 31).createObject() == True
-        assert Booking('MH 15 AB 9478', '7L', 34, 6).createObject() == True
-        assert Booking('MH 15 AB 9478', '12U', 34, 28).createObject() == True
-        assert Booking('MH 15 AB 9478', '28U', 34, 25).createObject() == True
-        assert Booking('MH 15 AB 9478', '6U', 34, 14).createObject() == True
-        assert Booking('MH 15 AB 9478', '24U', 34, 31).createObject() == True
-        assert Booking('MH 15 AB 9478', '9L', 34, 28).createObject() == True
-        assert Booking('MH 15 AB 9478', '27L', 34, 39).createObject() == True
-        assert Booking('MH 15 AB 9478', '8L', 34, 12).createObject() == True
-        assert Booking('MH 15 AB 9478', '17U', 34, 37).createObject() == True
-        assert Booking('MH 15 AB 9478', '21L', 34, 36).createObject() == True
-        assert Booking('MH 7 AB 6536', '29U', 35, 36).createObject() == True
-        assert Booking('MH 7 AB 6536', '13L', 35, 31).createObject() == True
-        assert Booking('MH 7 AB 6536', '28U', 35, 2).createObject() == True
-        assert Booking('MH 7 AB 6536', '2L', 35, 19).createObject() == True
-        assert Booking('MH 7 AB 6536', '20L', 35, 27).createObject() == True
-        assert Booking('MH 7 AB 6536', '22U', 35, 5).createObject() == True
-        assert Booking('MH 7 AB 6536', '8L', 35, 10).createObject() == True
-        assert Booking('MH 7 AB 6536', '25L', 35, 28).createObject() == True
-        assert Booking('MH 7 AB 6536', '24U', 35, 5).createObject() == True
-        assert Booking('MH 7 AB 6536', '7L', 35, 36).createObject() == True
-        assert Booking('MH 7 AB 6536', '16U', 35, 20).createObject() == True
-        assert Booking('MH 7 AB 6536', '4U', 35, 8).createObject() == True
-        assert Booking('MH 7 AB 6536', '27L', 35, 8).createObject() == True
-        assert Booking('MH 7 AB 6536', '21L', 35, 17).createObject() == True
-        assert Booking('MH 11 AB 7659', '24U', 36, 34).createObject() == True
-        assert Booking('MH 11 AB 7659', '8L', 36, 11).createObject() == True
-        assert Booking('MH 11 AB 7659', '22U', 36, 9).createObject() == True
-        assert Booking('MH 11 AB 7659', '23U', 36, 11).createObject() == True
-        assert Booking('MH 11 AB 7659', '30U', 36, 32).createObject() == True
-        assert Booking('MH 11 AB 7659', '12U', 36, 24).createObject() == True
-        assert Booking('MH 11 AB 7659', '20L', 36, 33).createObject() == True
-        assert Booking('MH 11 AB 7659', '11U', 36, 28).createObject() == True
-        assert Booking('MH 11 AB 7659', '28U', 36, 39).createObject() == True
-        assert Booking('MH 11 AB 7659', '26L', 36, 10).createObject() == True
-        assert Booking('MH 11 AB 7659', '15L', 36, 38).createObject() == True
-        assert Booking('MH 11 AB 7659', '7L', 36, 23).createObject() == True
-        assert Booking('MH 11 AB 7659', '29U', 36, 5).createObject() == True
-        assert Booking('MH 11 AB 7659', '25L', 36, 31).createObject() == True
-        assert Booking('MH 11 AB 7659', '13L', 36, 38).createObject() == True
-        assert Booking('MH 11 AB 7659', '14L', 36, 4).createObject() == True
-        assert Booking('MH 11 AB 7659', '4U', 36, 4).createObject() == True
-        assert Booking('MH 11 AB 7659', '18U', 36, 13).createObject() == True
-        assert Booking('MH 9 AB 8797', '5U', 37, 20).createObject() == True
-        assert Booking('MH 9 AB 8797', '18U', 37, 22).createObject() == True
-        assert Booking('MH 9 AB 8797', '12U', 37, 17).createObject() == True
-        assert Booking('MH 9 AB 8797', '2L', 37, 22).createObject() == True
-        assert Booking('MH 9 AB 8797', '3L', 37, 8).createObject() == True
-        assert Booking('MH 9 AB 8797', '4U', 37, 21).createObject() == True
-        assert Booking('MH 9 AB 8797', '1L', 37, 16).createObject() == True
-        assert Booking('MH 9 AB 8797', '27L', 37, 20).createObject() == True
-        assert Booking('MH 9 AB 8797', '23U', 37, 16).createObject() == True
-        assert Booking('MH 9 AB 8797', '19L', 37, 26).createObject() == True
-        assert Booking('MH 9 AB 8797', '21L', 37, 9).createObject() == True
-        assert Booking('MH 9 AB 8797', '22U', 37, 31).createObject() == True
-        assert Booking('MH 9 AB 8797', '20L', 37, 16).createObject() == True
-        assert Booking('MH 9 AB 8797', '17U', 37, 28).createObject() == True
-        assert Booking('MH 9 AB 8797', '16U', 37, 35).createObject() == True
-        assert Booking('MH 9 AB 8797', '29U', 37, 1).createObject() == True
-        assert Booking('MH 9 AB 8797', '10U', 37, 39).createObject() == True
-        assert Booking('MH 9 AB 8797', '15L', 37, 20).createObject() == True
-        assert Booking('MH 16 AB 7740', '24U', 38, 1).createObject() == True
-        assert Booking('MH 16 AB 7740', '17U', 38, 21).createObject() == True
-        assert Booking('MH 16 AB 7740', '19L', 38, 15).createObject() == True
-        assert Booking('MH 16 AB 7740', '6U', 38, 9).createObject() == True
-        assert Booking('MH 16 AB 7740', '18U', 38, 38).createObject() == True
-        assert Booking('MH 16 AB 7740', '3L', 38, 30).createObject() == True
-        assert Booking('MH 16 AB 7740', '22U', 38, 14).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 38, 37).createObject() == True
-        assert Booking('MH 16 AB 7740', '16U', 38, 39).createObject() == True
-        assert Booking('MH 16 AB 7740', '13L', 38, 16).createObject() == True
-        assert Booking('MH 16 AB 7740', '7L', 38, 30).createObject() == True
-        assert Booking('MH 16 AB 7740', '9L', 38, 36).createObject() == True
-        assert Booking('MH 16 AB 7740', '8L', 38, 28).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 38, 2).createObject() == True
-        assert Booking('MH 16 AB 7740', '1L', 38, 17).createObject() == True
-        assert Booking('MH 16 AB 7740', '30U', 38, 28).createObject() == True
-        assert Booking('MH 16 AB 7740', '15L', 38, 11).createObject() == True
-        assert Booking('MH 20 AB 8094', '26L', 39, 26).createObject() == True
-        assert Booking('MH 20 AB 8094', '3L', 39, 11).createObject() == True
-        assert Booking('MH 20 AB 8094', '13L', 39, 28).createObject() == True
-        assert Booking('MH 20 AB 8094', '28U', 39, 15).createObject() == True
-        assert Booking('MH 20 AB 8094', '10U', 39, 21).createObject() == True
-        assert Booking('MH 20 AB 8094', '11U', 39, 3).createObject() == True
-        assert Booking('MH 20 AB 8094', '16U', 39, 20).createObject() == True
-        assert Booking('MH 20 AB 8094', '9L', 39, 12).createObject() == True
-        assert Booking('MH 20 AB 8094', '25L', 39, 10).createObject() == True
-        assert Booking('MH 20 AB 8094', '5U', 39, 8).createObject() == True
-        assert Booking('MH 20 AB 8094', '17U', 39, 22).createObject() == True
-        assert Booking('MH 20 AB 8094', '2L', 39, 29).createObject() == True
-        assert Booking('MH 20 AB 8094', '27L', 39, 27).createObject() == True
-        assert Booking('MH 18 AB 7004', '14L', 40, 22).createObject() == True
-        assert Booking('MH 18 AB 7004', '6U', 40, 14).createObject() == True
-        assert Booking('MH 18 AB 7004', '9L', 40, 37).createObject() == True
-        assert Booking('MH 18 AB 7004', '19L', 40, 37).createObject() == True
-        assert Booking('MH 18 AB 7004', '3L', 40, 38).createObject() == True
-        assert Booking('MH 18 AB 7004', '26L', 40, 24).createObject() == True
-        assert Booking('MH 18 AB 7004', '21L', 40, 28).createObject() == True
-        assert Booking('MH 18 AB 7004', '20L', 40, 39).createObject() == True
-        assert Booking('MH 18 AB 7004', '24U', 40, 31).createObject() == True
-        assert Booking('MH 18 AB 7004', '12U', 40, 5).createObject() == True
-        assert Booking('MH 18 AB 7004', '2L', 40, 17).createObject() == True
-        assert Booking('MH 18 AB 7004', '13L', 40, 16).createObject() == True
-        assert Booking('MH 18 AB 7004', '11U', 40, 3).createObject() == True
-        assert Booking('MH 18 AB 7004', '25L', 40, 25).createObject() == True
-        assert Booking('MH 19 AB 8198', '28U', 41, 9).createObject() == True
-        assert Booking('MH 19 AB 8198', '22U', 41, 8).createObject() == True
-        assert Booking('MH 19 AB 8198', '25L', 41, 2).createObject() == True
-        assert Booking('MH 19 AB 8198', '18U', 41, 4).createObject() == True
-        assert Booking('MH 19 AB 8198', '16U', 41, 14).createObject() == True
-        assert Booking('MH 19 AB 8198', '2L', 41, 39).createObject() == True
-        assert Booking('MH 19 AB 8198', '17U', 41, 1).createObject() == True
-        assert Booking('MH 19 AB 8198', '8L', 41, 25).createObject() == True
-        assert Booking('MH 19 AB 8198', '30U', 41, 28).createObject() == True
-        assert Booking('MH 19 AB 8198', '14L', 41, 40).createObject() == True
-        assert Booking('MH 16 AB 7740', '11U', 42, 29).createObject() == True
-        assert Booking('MH 16 AB 7740', '14L', 42, 15).createObject() == True
-        assert Booking('MH 16 AB 7740', '17U', 42, 8).createObject() == True
-        assert Booking('MH 16 AB 7740', '25L', 42, 12).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 42, 7).createObject() == True
-        assert Booking('MH 16 AB 7740', '24U', 42, 29).createObject() == True
-        assert Booking('MH 16 AB 7740', '15L', 42, 6).createObject() == True
-        assert Booking('MH 16 AB 7740', '8L', 42, 1).createObject() == True
-        assert Booking('MH 16 AB 7740', '22U', 42, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '28U', 42, 22).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 42, 8).createObject() == True
-        assert Booking('MH 16 AB 7740', '16U', 42, 23).createObject() == True
-        assert Booking('MH 16 AB 7740', '4U', 42, 38).createObject() == True
-        assert Booking('MH 16 AB 7740', '5U', 42, 27).createObject() == True
-        assert Booking('MH 16 AB 7740', '19L', 42, 35).createObject() == True
-        assert Booking('MH 16 AB 7740', '10U', 42, 9).createObject() == True
-        assert Booking('MH 16 AB 7740', '26L', 42, 4).createObject() == True
-        assert Booking('MH 16 AB 7740', '21L', 42, 16).createObject() == True
-        assert Booking('MH 16 AB 7740', '3L', 42, 21).createObject() == True
-        assert Booking('MH 16 AB 7740', '6U', 42, 39).createObject() == True
-        assert Booking('MH 17 AB 9316', '19L', 43, 12).createObject() == True
-        assert Booking('MH 17 AB 9316', '2L', 43, 1).createObject() == True
-        assert Booking('MH 17 AB 9316', '21L', 43, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '26L', 43, 5).createObject() == True
-        assert Booking('MH 17 AB 9316', '28U', 43, 39).createObject() == True
-        assert Booking('MH 17 AB 9316', '1L', 43, 34).createObject() == True
-        assert Booking('MH 17 AB 9316', '10U', 43, 23).createObject() == True
-        assert Booking('MH 17 AB 9316', '11U', 43, 39).createObject() == True
-        assert Booking('MH 17 AB 9316', '16U', 43, 31).createObject() == True
-        assert Booking('MH 17 AB 9316', '15L', 43, 29).createObject() == True
-        assert Booking('MH 17 AB 9316', '20L', 43, 26).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 43, 10).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 43, 20).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 43, 1).createObject() == True
-        assert Booking('MH 17 AB 9316', '24U', 43, 32).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 43, 15).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 44, 29).createObject() == True
-        assert Booking('MH 11 AB 9332', '24U', 44, 6).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 44, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 44, 16).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 44, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '11U', 44, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '15L', 44, 12).createObject() == True
-        assert Booking('MH 11 AB 9332', '26L', 44, 40).createObject() == True
-        assert Booking('MH 11 AB 9332', '10U', 44, 6).createObject() == True
-        assert Booking('MH 11 AB 9332', '17U', 44, 32).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 44, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '12U', 44, 4).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 44, 25).createObject() == True
-        assert Booking('MH 11 AB 9332', '27L', 44, 39).createObject() == True
-        assert Booking('MH 11 AB 9332', '5U', 44, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '25L', 44, 26).createObject() == True
-        assert Booking('MH 11 AB 9332', '1L', 44, 11).createObject() == True
-        assert Booking('MH 11 AB 9332', '6U', 44, 2).createObject() == True
-        assert Booking('MH 18 AB 7004', '5U', 45, 33).createObject() == True
-        assert Booking('MH 18 AB 7004', '10U', 45, 1).createObject() == True
-        assert Booking('MH 18 AB 7004', '4U', 45, 7).createObject() == True
-        assert Booking('MH 18 AB 7004', '23U', 45, 4).createObject() == True
-        assert Booking('MH 18 AB 7004', '1L', 45, 30).createObject() == True
-        assert Booking('MH 18 AB 7004', '22U', 45, 10).createObject() == True
-        assert Booking('MH 18 AB 7004', '3L', 45, 29).createObject() == True
-        assert Booking('MH 18 AB 7004', '19L', 45, 39).createObject() == True
-        assert Booking('MH 18 AB 7004', '7L', 45, 11).createObject() == True
-        assert Booking('MH 18 AB 7004', '18U', 45, 12).createObject() == True
-        assert Booking('MH 18 AB 7004', '2L', 45, 37).createObject() == True
-        assert Booking('MH 18 AB 7004', '17U', 45, 38).createObject() == True
-        assert Booking('MH 8 AB 5155', '12U', 46, 5).createObject() == True
-        assert Booking('MH 8 AB 5155', '21L', 46, 22).createObject() == True
-        assert Booking('MH 8 AB 5155', '23U', 46, 3).createObject() == True
-        assert Booking('MH 8 AB 5155', '4U', 46, 33).createObject() == True
-        assert Booking('MH 8 AB 5155', '1L', 46, 5).createObject() == True
-        assert Booking('MH 8 AB 5155', '15L', 46, 20).createObject() == True
-        assert Booking('MH 8 AB 5155', '2L', 46, 39).createObject() == True
-        assert Booking('MH 8 AB 5155', '10U', 46, 35).createObject() == True
-        assert Booking('MH 8 AB 5155', '22U', 46, 22).createObject() == True
-        assert Booking('MH 8 AB 5155', '20L', 46, 38).createObject() == True
-        assert Booking('MH 8 AB 5155', '25L', 46, 26).createObject() == True
-        assert Booking('MH 8 AB 5155', '27L', 46, 34).createObject() == True
-        assert Booking('MH 8 AB 5155', '14L', 46, 28).createObject() == True
-        assert Booking('MH 8 AB 5155', '9L', 46, 40).createObject() == True
-        assert Booking('MH 8 AB 5155', '7L', 46, 16).createObject() == True
-        assert Booking('MH 8 AB 5155', '3L', 46, 24).createObject() == True
-        assert Booking('MH 8 AB 5155', '11U', 46, 29).createObject() == True
-        assert Booking('MH 8 AB 5155', '29U', 46, 36).createObject() == True
-        assert Booking('MH 8 AB 5155', '8L', 46, 29).createObject() == True
-        assert Booking('MH 10 AB 5575', '13L', 47, 16).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 47, 22).createObject() == True
-        assert Booking('MH 10 AB 5575', '29U', 47, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '22U', 47, 15).createObject() == True
-        assert Booking('MH 10 AB 5575', '30U', 47, 17).createObject() == True
-        assert Booking('MH 10 AB 5575', '11U', 47, 34).createObject() == True
-        assert Booking('MH 10 AB 5575', '5U', 47, 37).createObject() == True
-        assert Booking('MH 10 AB 5575', '15L', 47, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '17U', 47, 39).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 47, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '27L', 47, 3).createObject() == True
-        assert Booking('MH 5 AB 6693', '2L', 48, 35).createObject() == True
-        assert Booking('MH 5 AB 6693', '30U', 48, 18).createObject() == True
-        assert Booking('MH 5 AB 6693', '27L', 48, 1).createObject() == True
-        assert Booking('MH 5 AB 6693', '19L', 48, 9).createObject() == True
-        assert Booking('MH 5 AB 6693', '20L', 48, 15).createObject() == True
-        assert Booking('MH 5 AB 6693', '25L', 48, 31).createObject() == True
-        assert Booking('MH 5 AB 6693', '8L', 48, 8).createObject() == True
-        assert Booking('MH 5 AB 6693', '17U', 48, 5).createObject() == True
-        assert Booking('MH 5 AB 6693', '9L', 48, 37).createObject() == True
-        assert Booking('MH 5 AB 6693', '14L', 48, 6).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 49, 31).createObject() == True
-        assert Booking('MH 17 AB 9316', '27L', 49, 33).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 49, 9).createObject() == True
-        assert Booking('MH 17 AB 9316', '15L', 49, 26).createObject() == True
-        assert Booking('MH 17 AB 9316', '20L', 49, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '28U', 49, 39).createObject() == True
-        assert Booking('MH 17 AB 9316', '21L', 49, 19).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 49, 24).createObject() == True
-        assert Booking('MH 17 AB 9316', '14L', 49, 23).createObject() == True
-        assert Booking('MH 17 AB 9316', '25L', 49, 37).createObject() == True
-        assert Booking('MH 17 AB 9316', '22U', 49, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '13L', 49, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '10U', 50, 33).createObject() == True
-        assert Booking('MH 16 AB 7740', '4U', 50, 27).createObject() == True
-        assert Booking('MH 16 AB 7740', '19L', 50, 39).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 50, 37).createObject() == True
-        assert Booking('MH 16 AB 7740', '17U', 50, 33).createObject() == True
-        assert Booking('MH 16 AB 7740', '9L', 50, 8).createObject() == True
-        assert Booking('MH 16 AB 7740', '14L', 50, 11).createObject() == True
-        assert Booking('MH 16 AB 7740', '20L', 50, 34).createObject() == True
-        assert Booking('MH 16 AB 7740', '13L', 50, 17).createObject() == True
-        assert Booking('MH 16 AB 7740', '8L', 50, 29).createObject() == True
-        assert Booking('MH 16 AB 7740', '3L', 50, 37).createObject() == True
-        assert Booking('MH 16 AB 7740', '25L', 50, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '18U', 50, 24).createObject() == True
-        assert Booking('MH 16 AB 7740', '21L', 50, 32).createObject() == True
-        assert Booking('MH 16 AB 7740', '26L', 50, 1).createObject() == True
-        assert Booking('MH 16 AB 7740', '11U', 50, 3).createObject() == True
-        assert Booking('MH 16 AB 7740', '5U', 50, 30).createObject() == True
-        assert Booking('MH 16 AB 7740', '24U', 50, 26).createObject() == True
-        assert Booking('MH 16 AB 7740', '12U', 50, 37).createObject() == True
-        assert Booking('MH 19 AB 8932', '16U', 51, 9).createObject() == True
-        assert Booking('MH 19 AB 8932', '28U', 51, 33).createObject() == True
-        assert Booking('MH 19 AB 8932', '9L', 51, 30).createObject() == True
-        assert Booking('MH 19 AB 8932', '24U', 51, 14).createObject() == True
-        assert Booking('MH 19 AB 8932', '18U', 51, 39).createObject() == True
-        assert Booking('MH 19 AB 8932', '20L', 51, 30).createObject() == True
-        assert Booking('MH 19 AB 8932', '14L', 51, 12).createObject() == True
-        assert Booking('MH 19 AB 8932', '10U', 51, 2).createObject() == True
-        assert Booking('MH 19 AB 8932', '11U', 51, 24).createObject() == True
-        assert Booking('MH 19 AB 8932', '1L', 51, 17).createObject() == True
-        assert Booking('MH 19 AB 8932', '2L', 51, 21).createObject() == True
-        assert Booking('MH 19 AB 8932', '4U', 51, 38).createObject() == True
-        assert Booking('MH 19 AB 8932', '25L', 51, 31).createObject() == True
-        assert Booking('MH 19 AB 8932', '12U', 51, 34).createObject() == True
-        assert Booking('MH 19 AB 8932', '29U', 51, 35).createObject() == True
-        assert Booking('MH 19 AB 8932', '5U', 51, 38).createObject() == True
-        assert Booking('MH 19 AB 8932', '15L', 51, 12).createObject() == True
-        assert Booking('MH 19 AB 8932', '3L', 51, 27).createObject() == True
-        assert Booking('MH 19 AB 8932', '22U', 51, 4).createObject() == True
-        assert Booking('MH 19 AB 8932', '6U', 51, 38).createObject() == True
-        assert Booking('MH 9 AB 8308', '8L', 52, 38).createObject() == True
-        assert Booking('MH 9 AB 8308', '16U', 52, 5).createObject() == True
-        assert Booking('MH 9 AB 8308', '13L', 52, 5).createObject() == True
-        assert Booking('MH 9 AB 8308', '5U', 52, 18).createObject() == True
-        assert Booking('MH 9 AB 8308', '26L', 52, 4).createObject() == True
-        assert Booking('MH 9 AB 8308', '30U', 52, 18).createObject() == True
-        assert Booking('MH 9 AB 8308', '1L', 52, 30).createObject() == True
-        assert Booking('MH 9 AB 8308', '18U', 52, 6).createObject() == True
-        assert Booking('MH 9 AB 8308', '11U', 52, 20).createObject() == True
-        assert Booking('MH 9 AB 8308', '10U', 52, 3).createObject() == True
-        assert Booking('MH 9 AB 8308', '23U', 52, 29).createObject() == True
-        assert Booking('MH 9 AB 8308', '6U', 52, 34).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 52, 31).createObject() == True
-        assert Booking('MH 9 AB 8308', '21L', 52, 14).createObject() == True
-        assert Booking('MH 9 AB 8308', '20L', 53, 22).createObject() == True
-        assert Booking('MH 9 AB 8308', '2L', 53, 33).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 53, 30).createObject() == True
-        assert Booking('MH 9 AB 8308', '24U', 53, 22).createObject() == True
-        assert Booking('MH 9 AB 8308', '1L', 53, 4).createObject() == True
-        assert Booking('MH 9 AB 8308', '3L', 53, 2).createObject() == True
-        assert Booking('MH 9 AB 8308', '10U', 53, 2).createObject() == True
-        assert Booking('MH 9 AB 8308', '18U', 53, 39).createObject() == True
-        assert Booking('MH 9 AB 8308', '28U', 53, 27).createObject() == True
-        assert Booking('MH 9 AB 8308', '15L', 53, 14).createObject() == True
-        assert Booking('MH 6 AB 5509', '4U', 54, 5).createObject() == True
-        assert Booking('MH 6 AB 5509', '20L', 54, 38).createObject() == True
-        assert Booking('MH 6 AB 5509', '2L', 54, 22).createObject() == True
-        assert Booking('MH 6 AB 5509', '12U', 54, 16).createObject() == True
-        assert Booking('MH 6 AB 5509', '9L', 54, 14).createObject() == True
-        assert Booking('MH 6 AB 5509', '22U', 54, 21).createObject() == True
-        assert Booking('MH 6 AB 5509', '5U', 54, 11).createObject() == True
-        assert Booking('MH 6 AB 5509', '26L', 54, 20).createObject() == True
-        assert Booking('MH 6 AB 5509', '11U', 54, 25).createObject() == True
-        assert Booking('MH 6 AB 5509', '8L', 54, 40).createObject() == True
-        assert Booking('MH 6 AB 5509', '29U', 54, 27).createObject() == True
-        assert Booking('MH 6 AB 5509', '28U', 54, 5).createObject() == True
-        assert Booking('MH 6 AB 5509', '27L', 54, 34).createObject() == True
-        assert Booking('MH 6 AB 5509', '7L', 54, 1).createObject() == True
-        assert Booking('MH 11 AB 5703', '28U', 55, 12).createObject() == True
-        assert Booking('MH 11 AB 5703', '19L', 55, 4).createObject() == True
-        assert Booking('MH 11 AB 5703', '23U', 55, 12).createObject() == True
-        assert Booking('MH 11 AB 5703', '11U', 55, 20).createObject() == True
-        assert Booking('MH 11 AB 5703', '22U', 55, 37).createObject() == True
-        assert Booking('MH 11 AB 5703', '5U', 55, 8).createObject() == True
-        assert Booking('MH 11 AB 5703', '20L', 55, 20).createObject() == True
-        assert Booking('MH 11 AB 5703', '4U', 55, 23).createObject() == True
-        assert Booking('MH 11 AB 5703', '30U', 55, 10).createObject() == True
-        assert Booking('MH 11 AB 5703', '21L', 55, 16).createObject() == True
-        assert Booking('MH 11 AB 5703', '6U', 55, 4).createObject() == True
-        assert Booking('MH 11 AB 5703', '16U', 55, 13).createObject() == True
-        assert Booking('MH 11 AB 5703', '14L', 55, 31).createObject() == True
-        assert Booking('MH 11 AB 5703', '1L', 55, 22).createObject() == True
-        assert Booking('MH 11 AB 5703', '25L', 55, 3).createObject() == True
-        assert Booking('MH 11 AB 5703', '24U', 55, 36).createObject() == True
-        assert Booking('MH 11 AB 5703', '12U', 55, 18).createObject() == True
-        assert Booking('MH 11 AB 5703', '17U', 55, 27).createObject() == True
-        assert Booking('MH 19 AB 5367', '15L', 56, 32).createObject() == True
-        assert Booking('MH 19 AB 5367', '30U', 56, 3).createObject() == True
-        assert Booking('MH 19 AB 5367', '27L', 56, 16).createObject() == True
-        assert Booking('MH 19 AB 5367', '16U', 56, 5).createObject() == True
-        assert Booking('MH 19 AB 5367', '17U', 56, 32).createObject() == True
-        assert Booking('MH 19 AB 5367', '22U', 56, 8).createObject() == True
-        assert Booking('MH 19 AB 5367', '4U', 56, 7).createObject() == True
-        assert Booking('MH 19 AB 5367', '5U', 56, 6).createObject() == True
-        assert Booking('MH 19 AB 5367', '23U', 56, 20).createObject() == True
-        assert Booking('MH 19 AB 5367', '29U', 56, 5).createObject() == True
-        assert Booking('MH 19 AB 5367', '26L', 56, 19).createObject() == True
-        assert Booking('MH 19 AB 5367', '28U', 56, 26).createObject() == True
-        assert Booking('MH 19 AB 5367', '3L', 56, 30).createObject() == True
-        assert Booking('MH 19 AB 5367', '24U', 56, 1).createObject() == True
-        assert Booking('MH 19 AB 5367', '2L', 56, 13).createObject() == True
-        assert Booking('MH 13 AB 9993', '5U', 57, 25).createObject() == True
-        assert Booking('MH 13 AB 9993', '11U', 57, 5).createObject() == True
-        assert Booking('MH 13 AB 9993', '17U', 57, 20).createObject() == True
-        assert Booking('MH 13 AB 9993', '27L', 57, 4).createObject() == True
-        assert Booking('MH 13 AB 9993', '2L', 57, 25).createObject() == True
-        assert Booking('MH 13 AB 9993', '14L', 57, 10).createObject() == True
-        assert Booking('MH 13 AB 9993', '1L', 57, 19).createObject() == True
-        assert Booking('MH 13 AB 9993', '22U', 57, 20).createObject() == True
-        assert Booking('MH 13 AB 9993', '15L', 57, 39).createObject() == True
-        assert Booking('MH 13 AB 9993', '3L', 57, 29).createObject() == True
-        assert Booking('MH 13 AB 9993', '20L', 57, 29).createObject() == True
-        assert Booking('MH 13 AB 9993', '8L', 57, 26).createObject() == True
-        assert Booking('MH 13 AB 9993', '28U', 57, 30).createObject() == True
-        assert Booking('MH 17 AB 5987', '15L', 58, 24).createObject() == True
-        assert Booking('MH 17 AB 5987', '2L', 58, 13).createObject() == True
-        assert Booking('MH 17 AB 5987', '6U', 58, 37).createObject() == True
-        assert Booking('MH 17 AB 5987', '30U', 58, 22).createObject() == True
-        assert Booking('MH 17 AB 5987', '5U', 58, 24).createObject() == True
-        assert Booking('MH 17 AB 5987', '28U', 58, 35).createObject() == True
-        assert Booking('MH 17 AB 5987', '18U', 58, 4).createObject() == True
-        assert Booking('MH 17 AB 5987', '9L', 58, 32).createObject() == True
-        assert Booking('MH 17 AB 5987', '12U', 58, 39).createObject() == True
-        assert Booking('MH 17 AB 5987', '26L', 58, 10).createObject() == True
-        assert Booking('MH 17 AB 5987', '14L', 58, 4).createObject() == True
-        assert Booking('MH 17 AB 5987', '13L', 58, 15).createObject() == True
-        assert Booking('MH 17 AB 5987', '24U', 58, 10).createObject() == True
-        assert Booking('MH 17 AB 5987', '22U', 58, 14).createObject() == True
-        assert Booking('MH 17 AB 5987', '11U', 58, 7).createObject() == True
-        assert Booking('MH 17 AB 5987', '21L', 58, 5).createObject() == True
-        assert Booking('MH 17 AB 5987', '29U', 58, 30).createObject() == True
-        assert Booking('MH 16 AB 7222', '7L', 59, 36).createObject() == True
-        assert Booking('MH 16 AB 7222', '4U', 59, 14).createObject() == True
-        assert Booking('MH 16 AB 7222', '13L', 59, 18).createObject() == True
-        assert Booking('MH 16 AB 7222', '19L', 59, 36).createObject() == True
-        assert Booking('MH 16 AB 7222', '27L', 59, 17).createObject() == True
-        assert Booking('MH 16 AB 7222', '14L', 59, 30).createObject() == True
-        assert Booking('MH 16 AB 7222', '9L', 59, 7).createObject() == True
-        assert Booking('MH 16 AB 7222', '3L', 59, 13).createObject() == True
-        assert Booking('MH 16 AB 7222', '6U', 59, 21).createObject() == True
-        assert Booking('MH 16 AB 7222', '25L', 59, 35).createObject() == True
-        assert Booking('MH 16 AB 7222', '30U', 59, 20).createObject() == True
-        assert Booking('MH 11 AB 7989', '14L', 60, 24).createObject() == True
-        assert Booking('MH 11 AB 7989', '7L', 60, 7).createObject() == True
-        assert Booking('MH 11 AB 7989', '18U', 60, 10).createObject() == True
-        assert Booking('MH 11 AB 7989', '27L', 60, 10).createObject() == True
-        assert Booking('MH 11 AB 7989', '20L', 60, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '12U', 60, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '17U', 60, 34).createObject() == True
-        assert Booking('MH 11 AB 7989', '16U', 60, 24).createObject() == True
-        assert Booking('MH 11 AB 7989', '10U', 60, 20).createObject() == True
-        assert Booking('MH 11 AB 7989', '30U', 60, 2).createObject() == True
-        assert Booking('MH 11 AB 7989', '9L', 60, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '5U', 60, 9).createObject() == True
-        assert Booking('MH 11 AB 7989', '4U', 60, 17).createObject() == True
-        assert Booking('MH 11 AB 7989', '21L', 60, 2).createObject() == True
-        assert Booking('MH 11 AB 7989', '24U', 60, 16).createObject() == True
-        assert Booking('MH 11 AB 7989', '8L', 60, 26).createObject() == True
-        assert Booking('MH 11 AB 7989', '26L', 60, 22).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 61, 11).createObject() == True
-        assert Booking('MH 16 AB 7740', '7L', 61, 35).createObject() == True
-        assert Booking('MH 16 AB 7740', '14L', 61, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '8L', 61, 37).createObject() == True
-        assert Booking('MH 16 AB 7740', '27L', 61, 10).createObject() == True
-        assert Booking('MH 16 AB 7740', '29U', 61, 40).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 61, 4).createObject() == True
-        assert Booking('MH 16 AB 7740', '10U', 61, 18).createObject() == True
-        assert Booking('MH 16 AB 7740', '24U', 61, 1).createObject() == True
-        assert Booking('MH 16 AB 7740', '3L', 61, 13).createObject() == True
-        assert Booking('MH 16 AB 7740', '18U', 61, 26).createObject() == True
-        assert Booking('MH 16 AB 7740', '26L', 61, 2).createObject() == True
-        assert Booking('MH 16 AB 7740', '20L', 61, 7).createObject() == True
-        assert Booking('MH 16 AB 7740', '5U', 61, 8).createObject() == True
-        assert Booking('MH 16 AB 7740', '13L', 61, 19).createObject() == True
-        assert Booking('MH 16 AB 7740', '15L', 61, 6).createObject() == True
-        assert Booking('MH 19 AB 8932', '1L', 62, 1).createObject() == True
-        assert Booking('MH 19 AB 8932', '17U', 62, 28).createObject() == True
-        assert Booking('MH 19 AB 8932', '7L', 62, 32).createObject() == True
-        assert Booking('MH 19 AB 8932', '14L', 62, 12).createObject() == True
-        assert Booking('MH 19 AB 8932', '20L', 62, 20).createObject() == True
-        assert Booking('MH 19 AB 8932', '19L', 62, 22).createObject() == True
-        assert Booking('MH 19 AB 8932', '22U', 62, 13).createObject() == True
-        assert Booking('MH 19 AB 8932', '8L', 62, 28).createObject() == True
-        assert Booking('MH 19 AB 8932', '6U', 62, 3).createObject() == True
-        assert Booking('MH 19 AB 8932', '13L', 62, 7).createObject() == True
-        assert Booking('MH 19 AB 8932', '23U', 62, 37).createObject() == True
-        assert Booking('MH 17 AB 8217', '14L', 63, 26).createObject() == True
-        assert Booking('MH 17 AB 8217', '1L', 63, 26).createObject() == True
-        assert Booking('MH 17 AB 8217', '9L', 63, 13).createObject() == True
-        assert Booking('MH 17 AB 8217', '18U', 63, 40).createObject() == True
-        assert Booking('MH 17 AB 8217', '19L', 63, 26).createObject() == True
-        assert Booking('MH 17 AB 8217', '22U', 63, 8).createObject() == True
-        assert Booking('MH 17 AB 8217', '13L', 63, 34).createObject() == True
-        assert Booking('MH 17 AB 8217', '29U', 63, 37).createObject() == True
-        assert Booking('MH 17 AB 8217', '25L', 63, 6).createObject() == True
-        assert Booking('MH 17 AB 8217', '4U', 63, 14).createObject() == True
-        assert Booking('MH 17 AB 8217', '15L', 63, 7).createObject() == True
-        assert Booking('MH 17 AB 8217', '28U', 63, 20).createObject() == True
-        assert Booking('MH 17 AB 8217', '26L', 63, 28).createObject() == True
-        assert Booking('MH 17 AB 8217', '16U', 63, 35).createObject() == True
-        assert Booking('MH 17 AB 8217', '3L', 63, 20).createObject() == True
-        assert Booking('MH 17 AB 8217', '12U', 63, 13).createObject() == True
-        assert Booking('MH 17 AB 8217', '21L', 63, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '2L', 64, 9).createObject() == True
-        assert Booking('MH 5 AB 6693', '23U', 64, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '17U', 64, 18).createObject() == True
-        assert Booking('MH 5 AB 6693', '27L', 64, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '26L', 64, 19).createObject() == True
-        assert Booking('MH 5 AB 6693', '19L', 64, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '1L', 64, 15).createObject() == True
-        assert Booking('MH 5 AB 6693', '14L', 64, 9).createObject() == True
-        assert Booking('MH 5 AB 6693', '21L', 64, 10).createObject() == True
-        assert Booking('MH 5 AB 6693', '20L', 64, 13).createObject() == True
-        assert Booking('MH 5 AB 6693', '7L', 64, 26).createObject() == True
-        assert Booking('MH 5 AB 6693', '25L', 64, 13).createObject() == True
-        assert Booking('MH 6 AB 5509', '30U', 65, 13).createObject() == True
-        assert Booking('MH 6 AB 5509', '21L', 65, 18).createObject() == True
-        assert Booking('MH 6 AB 5509', '27L', 65, 9).createObject() == True
-        assert Booking('MH 6 AB 5509', '29U', 65, 39).createObject() == True
-        assert Booking('MH 6 AB 5509', '19L', 65, 28).createObject() == True
-        assert Booking('MH 6 AB 5509', '28U', 65, 38).createObject() == True
-        assert Booking('MH 6 AB 5509', '16U', 65, 23).createObject() == True
-        assert Booking('MH 6 AB 5509', '10U', 65, 29).createObject() == True
-        assert Booking('MH 6 AB 5509', '24U', 65, 32).createObject() == True
-        assert Booking('MH 6 AB 5509', '23U', 65, 20).createObject() == True
-        assert Booking('MH 6 AB 5509', '14L', 65, 2).createObject() == True
-        assert Booking('MH 6 AB 5509', '8L', 65, 6).createObject() == True
-        assert Booking('MH 6 AB 5509', '22U', 65, 35).createObject() == True
-        assert Booking('MH 6 AB 5509', '15L', 65, 32).createObject() == True
-        assert Booking('MH 19 AB 8198', '4U', 66, 39).createObject() == True
-        assert Booking('MH 19 AB 8198', '5U', 66, 12).createObject() == True
-        assert Booking('MH 19 AB 8198', '13L', 66, 6).createObject() == True
-        assert Booking('MH 19 AB 8198', '9L', 66, 23).createObject() == True
-        assert Booking('MH 19 AB 8198', '10U', 66, 34).createObject() == True
-        assert Booking('MH 19 AB 8198', '21L', 66, 5).createObject() == True
-        assert Booking('MH 19 AB 8198', '2L', 66, 13).createObject() == True
-        assert Booking('MH 19 AB 8198', '1L', 66, 20).createObject() == True
-        assert Booking('MH 19 AB 8198', '16U', 66, 22).createObject() == True
-        assert Booking('MH 19 AB 8198', '11U', 66, 40).createObject() == True
-        assert Booking('MH 19 AB 8198', '23U', 66, 31).createObject() == True
-        assert Booking('MH 19 AB 8198', '7L', 66, 37).createObject() == True
-        assert Booking('MH 19 AB 8198', '22U', 66, 9).createObject() == True
-        assert Booking('MH 19 AB 8198', '25L', 66, 24).createObject() == True
-        assert Booking('MH 19 AB 8198', '24U', 66, 8).createObject() == True
-        assert Booking('MH 8 AB 8272', '27L', 67, 10).createObject() == True
-        assert Booking('MH 8 AB 8272', '2L', 67, 11).createObject() == True
-        assert Booking('MH 8 AB 8272', '19L', 67, 6).createObject() == True
-        assert Booking('MH 8 AB 8272', '6U', 67, 6).createObject() == True
-        assert Booking('MH 8 AB 8272', '13L', 67, 22).createObject() == True
-        assert Booking('MH 8 AB 8272', '17U', 67, 7).createObject() == True
-        assert Booking('MH 8 AB 8272', '20L', 67, 15).createObject() == True
-        assert Booking('MH 8 AB 8272', '12U', 67, 5).createObject() == True
-        assert Booking('MH 8 AB 8272', '23U', 67, 21).createObject() == True
-        assert Booking('MH 8 AB 8272', '16U', 67, 40).createObject() == True
-        assert Booking('MH 8 AB 8272', '18U', 67, 39).createObject() == True
-        assert Booking('MH 10 AB 5575', '18U', 68, 30).createObject() == True
-        assert Booking('MH 10 AB 5575', '4U', 68, 6).createObject() == True
-        assert Booking('MH 10 AB 5575', '29U', 68, 6).createObject() == True
-        assert Booking('MH 10 AB 5575', '2L', 68, 38).createObject() == True
-        assert Booking('MH 10 AB 5575', '16U', 68, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '9L', 68, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '7L', 68, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '13L', 68, 37).createObject() == True
-        assert Booking('MH 10 AB 5575', '1L', 68, 40).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 68, 29).createObject() == True
-        assert Booking('MH 10 AB 5575', '6U', 68, 25).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 68, 15).createObject() == True
-        assert Booking('MH 10 AB 5575', '26L', 68, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '30U', 68, 32).createObject() == True
-        assert Booking('MH 10 AB 5575', '21L', 68, 29).createObject() == True
-        assert Booking('MH 10 AB 5575', '15L', 68, 31).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 68, 3).createObject() == True
-        assert Booking('MH 8 AB 5155', '19L', 69, 11).createObject() == True
-        assert Booking('MH 8 AB 5155', '15L', 69, 3).createObject() == True
-        assert Booking('MH 8 AB 5155', '2L', 69, 24).createObject() == True
-        assert Booking('MH 8 AB 5155', '21L', 69, 40).createObject() == True
-        assert Booking('MH 8 AB 5155', '18U', 69, 10).createObject() == True
-        assert Booking('MH 8 AB 5155', '4U', 69, 9).createObject() == True
-        assert Booking('MH 8 AB 5155', '7L', 69, 13).createObject() == True
-        assert Booking('MH 8 AB 5155', '9L', 69, 24).createObject() == True
-        assert Booking('MH 8 AB 5155', '23U', 69, 18).createObject() == True
-        assert Booking('MH 8 AB 5155', '28U', 69, 35).createObject() == True
-        assert Booking('MH 8 AB 5155', '17U', 69, 15).createObject() == True
-        assert Booking('MH 8 AB 5155', '10U', 69, 39).createObject() == True
-        assert Booking('MH 8 AB 5155', '22U', 69, 38).createObject() == True
-        assert Booking('MH 8 AB 5155', '5U', 69, 37).createObject() == True
-        assert Booking('MH 8 AB 5155', '30U', 69, 35).createObject() == True
-        assert Booking('MH 8 AB 5155', '13L', 69, 34).createObject() == True
-        assert Booking('MH 8 AB 5155', '27L', 69, 11).createObject() == True
-        assert Booking('MH 8 AB 5155', '16U', 69, 33).createObject() == True
-        assert Booking('MH 8 AB 5155', '6U', 69, 10).createObject() == True
-        assert Booking('MH 6 AB 5509', '2L', 70, 31).createObject() == True
-        assert Booking('MH 6 AB 5509', '30U', 70, 40).createObject() == True
-        assert Booking('MH 6 AB 5509', '28U', 70, 3).createObject() == True
-        assert Booking('MH 6 AB 5509', '22U', 70, 3).createObject() == True
-        assert Booking('MH 6 AB 5509', '4U', 70, 23).createObject() == True
-        assert Booking('MH 6 AB 5509', '5U', 70, 30).createObject() == True
-        assert Booking('MH 6 AB 5509', '25L', 70, 23).createObject() == True
-        assert Booking('MH 6 AB 5509', '9L', 70, 16).createObject() == True
-        assert Booking('MH 6 AB 5509', '29U', 70, 28).createObject() == True
-        assert Booking('MH 6 AB 5509', '14L', 70, 23).createObject() == True
-        assert Booking('MH 6 AB 5509', '18U', 70, 28).createObject() == True
-        assert Booking('MH 6 AB 5509', '21L', 70, 5).createObject() == True
-        assert Booking('MH 6 AB 5509', '19L', 70, 32).createObject() == True
-        assert Booking('MH 6 AB 5509', '10U', 70, 6).createObject() == True
-        assert Booking('MH 6 AB 5509', '8L', 70, 35).createObject() == True
-        assert Booking('MH 6 AB 5509', '7L', 70, 1).createObject() == True
-        assert Booking('MH 6 AB 5509', '26L', 70, 37).createObject() == True
-        assert Booking('MH 6 AB 5509', '3L', 70, 9).createObject() == True
-        assert Booking('MH 16 AB 7222', '27L', 71, 7).createObject() == True
-        assert Booking('MH 16 AB 7222', '30U', 71, 29).createObject() == True
-        assert Booking('MH 16 AB 7222', '10U', 71, 6).createObject() == True
-        assert Booking('MH 16 AB 7222', '12U', 71, 7).createObject() == True
-        assert Booking('MH 16 AB 7222', '14L', 71, 7).createObject() == True
-        assert Booking('MH 16 AB 7222', '8L', 71, 30).createObject() == True
-        assert Booking('MH 16 AB 7222', '20L', 71, 21).createObject() == True
-        assert Booking('MH 16 AB 7222', '25L', 71, 18).createObject() == True
-        assert Booking('MH 16 AB 7222', '18U', 71, 11).createObject() == True
-        assert Booking('MH 16 AB 7222', '23U', 71, 12).createObject() == True
-        assert Booking('MH 16 AB 7222', '26L', 71, 10).createObject() == True
-        assert Booking('MH 16 AB 7222', '3L', 71, 21).createObject() == True
-        assert Booking('MH 16 AB 7222', '21L', 71, 35).createObject() == True
-        assert Booking('MH 16 AB 7222', '11U', 71, 13).createObject() == True
-        assert Booking('MH 16 AB 7222', '29U', 71, 10).createObject() == True
-        assert Booking('MH 16 AB 7222', '15L', 71, 19).createObject() == True
-        assert Booking('MH 12 AB 9096', '4U', 72, 40).createObject() == True
-        assert Booking('MH 12 AB 9096', '7L', 72, 1).createObject() == True
-        assert Booking('MH 12 AB 9096', '29U', 72, 28).createObject() == True
-        assert Booking('MH 12 AB 9096', '27L', 72, 30).createObject() == True
-        assert Booking('MH 12 AB 9096', '10U', 72, 15).createObject() == True
-        assert Booking('MH 12 AB 9096', '9L', 72, 25).createObject() == True
-        assert Booking('MH 12 AB 9096', '14L', 72, 39).createObject() == True
-        assert Booking('MH 12 AB 9096', '2L', 72, 5).createObject() == True
-        assert Booking('MH 12 AB 9096', '6U', 72, 40).createObject() == True
-        assert Booking('MH 12 AB 9096', '11U', 72, 6).createObject() == True
-        assert Booking('MH 12 AB 9096', '15L', 72, 31).createObject() == True
-        assert Booking('MH 12 AB 9096', '17U', 72, 32).createObject() == True
-        assert Booking('MH 12 AB 9096', '23U', 72, 11).createObject() == True
-        assert Booking('MH 12 AB 9096', '1L', 72, 37).createObject() == True
-        assert Booking('MH 12 AB 9096', '8L', 72, 20).createObject() == True
-        assert Booking('MH 12 AB 9096', '21L', 72, 9).createObject() == True
-        assert Booking('MH 12 AB 9096', '5U', 72, 28).createObject() == True
-        assert Booking('MH 12 AB 9096', '28U', 72, 32).createObject() == True
-        assert Booking('MH 12 AB 9096', '30U', 72, 39).createObject() == True
-        assert Booking('MH 19 AB 5367', '4U', 73, 37).createObject() == True
-        assert Booking('MH 19 AB 5367', '25L', 73, 17).createObject() == True
-        assert Booking('MH 19 AB 5367', '29U', 73, 32).createObject() == True
-        assert Booking('MH 19 AB 5367', '16U', 73, 32).createObject() == True
-        assert Booking('MH 19 AB 5367', '20L', 73, 30).createObject() == True
-        assert Booking('MH 19 AB 5367', '2L', 73, 14).createObject() == True
-        assert Booking('MH 19 AB 5367', '17U', 73, 4).createObject() == True
-        assert Booking('MH 19 AB 5367', '26L', 73, 8).createObject() == True
-        assert Booking('MH 19 AB 5367', '21L', 73, 40).createObject() == True
-        assert Booking('MH 19 AB 5367', '28U', 73, 10).createObject() == True
-        assert Booking('MH 19 AB 5367', '3L', 73, 29).createObject() == True
-        assert Booking('MH 19 AB 5367', '7L', 73, 22).createObject() == True
-        assert Booking('MH 19 AB 5367', '5U', 73, 24).createObject() == True
-        assert Booking('MH 8 AB 6980', '26L', 74, 14).createObject() == True
-        assert Booking('MH 8 AB 6980', '25L', 74, 31).createObject() == True
-        assert Booking('MH 8 AB 6980', '12U', 74, 10).createObject() == True
-        assert Booking('MH 8 AB 6980', '17U', 74, 34).createObject() == True
-        assert Booking('MH 8 AB 6980', '11U', 74, 9).createObject() == True
-        assert Booking('MH 8 AB 6980', '5U', 74, 15).createObject() == True
-        assert Booking('MH 8 AB 6980', '10U', 74, 14).createObject() == True
-        assert Booking('MH 8 AB 6980', '22U', 74, 4).createObject() == True
-        assert Booking('MH 8 AB 6980', '21L', 74, 14).createObject() == True
-        assert Booking('MH 8 AB 6980', '20L', 74, 6).createObject() == True
-        assert Booking('MH 8 AB 6980', '1L', 74, 15).createObject() == True
-        assert Booking('MH 8 AB 6980', '3L', 74, 27).createObject() == True
-        assert Booking('MH 8 AB 6980', '30U', 74, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '5U', 75, 26).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 75, 13).createObject() == True
-        assert Booking('MH 17 AB 9316', '2L', 75, 21).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 75, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '18U', 75, 27).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 75, 12).createObject() == True
-        assert Booking('MH 17 AB 9316', '26L', 75, 11).createObject() == True
-        assert Booking('MH 17 AB 9316', '11U', 75, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '13L', 75, 29).createObject() == True
-        assert Booking('MH 17 AB 9316', '10U', 75, 22).createObject() == True
-        assert Booking('MH 17 AB 9316', '4U', 75, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '12U', 75, 40).createObject() == True
-        assert Booking('MH 17 AB 9316', '22U', 75, 7).createObject() == True
-        assert Booking('MH 17 AB 9316', '24U', 75, 25).createObject() == True
-        assert Booking('MH 10 AB 9617', '12U', 76, 15).createObject() == True
-        assert Booking('MH 10 AB 9617', '15L', 76, 13).createObject() == True
-        assert Booking('MH 10 AB 9617', '16U', 76, 28).createObject() == True
-        assert Booking('MH 10 AB 9617', '1L', 76, 39).createObject() == True
-        assert Booking('MH 10 AB 9617', '25L', 76, 19).createObject() == True
-        assert Booking('MH 10 AB 9617', '3L', 76, 18).createObject() == True
-        assert Booking('MH 10 AB 9617', '28U', 76, 13).createObject() == True
-        assert Booking('MH 10 AB 9617', '29U', 76, 13).createObject() == True
-        assert Booking('MH 10 AB 9617', '22U', 76, 3).createObject() == True
-        assert Booking('MH 10 AB 9617', '8L', 76, 12).createObject() == True
-        assert Booking('MH 10 AB 9617', '13L', 76, 6).createObject() == True
-        assert Booking('MH 12 AB 8578', '30U', 77, 39).createObject() == True
-        assert Booking('MH 12 AB 8578', '5U', 77, 33).createObject() == True
-        assert Booking('MH 12 AB 8578', '12U', 77, 8).createObject() == True
-        assert Booking('MH 12 AB 8578', '11U', 77, 7).createObject() == True
-        assert Booking('MH 12 AB 8578', '9L', 77, 27).createObject() == True
-        assert Booking('MH 12 AB 8578', '6U', 77, 1).createObject() == True
-        assert Booking('MH 12 AB 8578', '1L', 77, 17).createObject() == True
-        assert Booking('MH 12 AB 8578', '16U', 77, 12).createObject() == True
-        assert Booking('MH 12 AB 8578', '19L', 77, 22).createObject() == True
-        assert Booking('MH 12 AB 8578', '25L', 77, 24).createObject() == True
-        assert Booking('MH 12 AB 8578', '23U', 77, 7).createObject() == True
-        assert Booking('MH 12 AB 8578', '24U', 77, 31).createObject() == True
-        assert Booking('MH 12 AB 8578', '13L', 77, 3).createObject() == True
-        assert Booking('MH 12 AB 8578', '17U', 77, 7).createObject() == True
-        assert Booking('MH 12 AB 8578', '8L', 77, 22).createObject() == True
-        assert Booking('MH 12 AB 8578', '21L', 77, 20).createObject() == True
-        assert Booking('MH 12 AB 8578', '3L', 77, 2).createObject() == True
-        assert Booking('MH 12 AB 8578', '27L', 77, 27).createObject() == True
-        assert Booking('MH 12 AB 8578', '20L', 77, 24).createObject() == True
-        assert Booking('MH 12 AB 8578', '15L', 77, 28).createObject() == True
-        assert Booking('MH 5 AB 7650', '23U', 78, 21).createObject() == True
-        assert Booking('MH 5 AB 7650', '30U', 78, 16).createObject() == True
-        assert Booking('MH 5 AB 7650', '10U', 78, 24).createObject() == True
-        assert Booking('MH 5 AB 7650', '21L', 78, 23).createObject() == True
-        assert Booking('MH 5 AB 7650', '13L', 78, 32).createObject() == True
-        assert Booking('MH 5 AB 7650', '6U', 78, 21).createObject() == True
-        assert Booking('MH 5 AB 7650', '22U', 78, 32).createObject() == True
-        assert Booking('MH 5 AB 7650', '17U', 78, 13).createObject() == True
-        assert Booking('MH 5 AB 7650', '25L', 78, 39).createObject() == True
-        assert Booking('MH 5 AB 7650', '4U', 78, 31).createObject() == True
-        assert Booking('MH 5 AB 7650', '26L', 78, 6).createObject() == True
-        assert Booking('MH 19 AB 8198', '13L', 79, 18).createObject() == True
-        assert Booking('MH 19 AB 8198', '3L', 79, 37).createObject() == True
-        assert Booking('MH 19 AB 8198', '6U', 79, 16).createObject() == True
-        assert Booking('MH 19 AB 8198', '2L', 79, 38).createObject() == True
-        assert Booking('MH 19 AB 8198', '7L', 79, 22).createObject() == True
-        assert Booking('MH 19 AB 8198', '26L', 79, 34).createObject() == True
-        assert Booking('MH 19 AB 8198', '20L', 79, 7).createObject() == True
-        assert Booking('MH 19 AB 8198', '22U', 79, 38).createObject() == True
-        assert Booking('MH 19 AB 8198', '16U', 79, 9).createObject() == True
-        assert Booking('MH 19 AB 8198', '25L', 79, 35).createObject() == True
-        assert Booking('MH 19 AB 8198', '10U', 79, 23).createObject() == True
-        assert Booking('MH 19 AB 8198', '21L', 79, 21).createObject() == True
-        assert Booking('MH 19 AB 8198', '24U', 79, 39).createObject() == True
-        assert Booking('MH 11 AB 9332', '25L', 80, 33).createObject() == True
-        assert Booking('MH 11 AB 9332', '17U', 80, 34).createObject() == True
-        assert Booking('MH 11 AB 9332', '30U', 80, 34).createObject() == True
-        assert Booking('MH 11 AB 9332', '22U', 80, 26).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 80, 7).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 80, 29).createObject() == True
-        assert Booking('MH 11 AB 9332', '27L', 80, 28).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 80, 23).createObject() == True
-        assert Booking('MH 11 AB 9332', '9L', 80, 36).createObject() == True
-        assert Booking('MH 11 AB 9332', '1L', 80, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '15L', 80, 12).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 80, 8).createObject() == True
-        assert Booking('MH 11 AB 9332', '13L', 80, 14).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 80, 21).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 80, 34).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 80, 21).createObject() == True
-        assert Booking('MH 11 AB 9332', '3L', 80, 30).createObject() == True
-        assert Booking('MH 17 AB 5987', '7L', 81, 20).createObject() == True
-        assert Booking('MH 17 AB 5987', '24U', 81, 39).createObject() == True
-        assert Booking('MH 17 AB 5987', '26L', 81, 17).createObject() == True
-        assert Booking('MH 17 AB 5987', '11U', 81, 11).createObject() == True
-        assert Booking('MH 17 AB 5987', '23U', 81, 17).createObject() == True
-        assert Booking('MH 17 AB 5987', '28U', 81, 2).createObject() == True
-        assert Booking('MH 17 AB 5987', '3L', 81, 7).createObject() == True
-        assert Booking('MH 17 AB 5987', '14L', 81, 28).createObject() == True
-        assert Booking('MH 17 AB 5987', '10U', 81, 5).createObject() == True
-        assert Booking('MH 17 AB 5987', '8L', 81, 30).createObject() == True
-        assert Booking('MH 17 AB 5987', '21L', 81, 17).createObject() == True
-        assert Booking('MH 17 AB 5987', '9L', 81, 12).createObject() == True
-        assert Booking('MH 17 AB 5987', '25L', 81, 10).createObject() == True
-        assert Booking('MH 17 AB 5987', '18U', 81, 20).createObject() == True
-        assert Booking('MH 17 AB 5987', '29U', 81, 26).createObject() == True
-        assert Booking('MH 14 AB 5997', '1L', 82, 25).createObject() == True
-        assert Booking('MH 14 AB 5997', '8L', 82, 7).createObject() == True
-        assert Booking('MH 14 AB 5997', '19L', 82, 12).createObject() == True
-        assert Booking('MH 14 AB 5997', '7L', 82, 30).createObject() == True
-        assert Booking('MH 14 AB 5997', '27L', 82, 35).createObject() == True
-        assert Booking('MH 14 AB 5997', '22U', 82, 7).createObject() == True
-        assert Booking('MH 14 AB 5997', '4U', 82, 13).createObject() == True
-        assert Booking('MH 14 AB 5997', '12U', 82, 1).createObject() == True
-        assert Booking('MH 14 AB 5997', '13L', 82, 29).createObject() == True
-        assert Booking('MH 14 AB 5997', '11U', 82, 16).createObject() == True
-        assert Booking('MH 14 AB 5997', '21L', 82, 14).createObject() == True
-        assert Booking('MH 14 AB 5997', '28U', 82, 40).createObject() == True
-        assert Booking('MH 14 AB 5997', '17U', 82, 31).createObject() == True
-        assert Booking('MH 14 AB 5997', '10U', 82, 2).createObject() == True
-        assert Booking('MH 14 AB 5997', '23U', 82, 23).createObject() == True
-        assert Booking('MH 12 AB 9096', '15L', 83, 30).createObject() == True
-        assert Booking('MH 12 AB 9096', '27L', 83, 12).createObject() == True
-        assert Booking('MH 12 AB 9096', '30U', 83, 1).createObject() == True
-        assert Booking('MH 12 AB 9096', '9L', 83, 6).createObject() == True
-        assert Booking('MH 12 AB 9096', '12U', 83, 30).createObject() == True
-        assert Booking('MH 12 AB 9096', '25L', 83, 28).createObject() == True
-        assert Booking('MH 12 AB 9096', '10U', 83, 6).createObject() == True
-        assert Booking('MH 12 AB 9096', '23U', 83, 3).createObject() == True
-        assert Booking('MH 12 AB 9096', '17U', 83, 33).createObject() == True
-        assert Booking('MH 12 AB 9096', '24U', 83, 3).createObject() == True
-        assert Booking('MH 9 AB 8797', '20L', 84, 4).createObject() == True
-        assert Booking('MH 9 AB 8797', '12U', 84, 31).createObject() == True
-        assert Booking('MH 9 AB 8797', '17U', 84, 40).createObject() == True
-        assert Booking('MH 9 AB 8797', '25L', 84, 15).createObject() == True
-        assert Booking('MH 9 AB 8797', '23U', 84, 1).createObject() == True
-        assert Booking('MH 9 AB 8797', '10U', 84, 2).createObject() == True
-        assert Booking('MH 9 AB 8797', '24U', 84, 39).createObject() == True
-        assert Booking('MH 9 AB 8797', '14L', 84, 8).createObject() == True
-        assert Booking('MH 9 AB 8797', '19L', 84, 28).createObject() == True
-        assert Booking('MH 9 AB 8797', '9L', 84, 28).createObject() == True
-        assert Booking('MH 9 AB 8797', '18U', 84, 14).createObject() == True
-        assert Booking('MH 9 AB 8797', '30U', 84, 16).createObject() == True
-        assert Booking('MH 9 AB 8797', '26L', 84, 11).createObject() == True
-        assert Booking('MH 12 AB 8578', '26L', 85, 37).createObject() == True
-        assert Booking('MH 12 AB 8578', '1L', 85, 39).createObject() == True
-        assert Booking('MH 12 AB 8578', '22U', 85, 16).createObject() == True
-        assert Booking('MH 12 AB 8578', '27L', 85, 11).createObject() == True
-        assert Booking('MH 12 AB 8578', '8L', 85, 13).createObject() == True
-        assert Booking('MH 12 AB 8578', '6U', 85, 7).createObject() == True
-        assert Booking('MH 12 AB 8578', '9L', 85, 6).createObject() == True
-        assert Booking('MH 12 AB 8578', '20L', 85, 19).createObject() == True
-        assert Booking('MH 12 AB 8578', '5U', 85, 14).createObject() == True
-        assert Booking('MH 12 AB 8578', '12U', 85, 33).createObject() == True
-        assert Booking('MH 12 AB 8578', '29U', 85, 34).createObject() == True
-        assert Booking('MH 12 AB 8578', '24U', 85, 17).createObject() == True
-        assert Booking('MH 12 AB 8578', '16U', 85, 31).createObject() == True
-        assert Booking('MH 12 AB 8578', '14L', 85, 20).createObject() == True
-        assert Booking('MH 12 AB 8578', '23U', 85, 15).createObject() == True
-        assert Booking('MH 12 AB 8578', '2L', 85, 16).createObject() == True
-        assert Booking('MH 12 AB 8578', '7L', 85, 18).createObject() == True
-        assert Booking('MH 12 AB 8578', '19L', 85, 17).createObject() == True
-        assert Booking('MH 12 AB 8578', '28U', 85, 12).createObject() == True
-        assert Booking('MH 14 AB 6870', '18U', 86, 20).createObject() == True
-        assert Booking('MH 14 AB 6870', '23U', 86, 6).createObject() == True
-        assert Booking('MH 14 AB 6870', '13L', 86, 39).createObject() == True
-        assert Booking('MH 14 AB 6870', '1L', 86, 3).createObject() == True
-        assert Booking('MH 14 AB 6870', '25L', 86, 10).createObject() == True
-        assert Booking('MH 14 AB 6870', '7L', 86, 10).createObject() == True
-        assert Booking('MH 14 AB 6870', '29U', 86, 16).createObject() == True
-        assert Booking('MH 14 AB 6870', '24U', 86, 13).createObject() == True
-        assert Booking('MH 14 AB 6870', '9L', 86, 2).createObject() == True
-        assert Booking('MH 14 AB 6870', '8L', 86, 31).createObject() == True
-        assert Booking('MH 14 AB 6870', '22U', 86, 37).createObject() == True
-        assert Booking('MH 14 AB 6870', '19L', 86, 5).createObject() == True
-        assert Booking('MH 14 AB 6870', '6U', 86, 14).createObject() == True
-        assert Booking('MH 14 AB 6870', '5U', 86, 28).createObject() == True
-        assert Booking('MH 14 AB 6870', '10U', 86, 26).createObject() == True
-        assert Booking('MH 14 AB 6870', '20L', 86, 36).createObject() == True
-        assert Booking('MH 14 AB 6870', '4U', 86, 40).createObject() == True
-        assert Booking('MH 14 AB 6870', '26L', 86, 27).createObject() == True
-        assert Booking('MH 14 AB 6870', '2L', 86, 33).createObject() == True
-        assert Booking('MH 14 AB 6870', '12U', 86, 23).createObject() == True
-        assert Booking('MH 14 AB 6518', '9L', 87, 13).createObject() == True
-        assert Booking('MH 14 AB 6518', '7L', 87, 2).createObject() == True
-        assert Booking('MH 14 AB 6518', '12U', 87, 12).createObject() == True
-        assert Booking('MH 14 AB 6518', '6U', 87, 1).createObject() == True
-        assert Booking('MH 14 AB 6518', '1L', 87, 18).createObject() == True
-        assert Booking('MH 14 AB 6518', '15L', 87, 9).createObject() == True
-        assert Booking('MH 14 AB 6518', '10U', 87, 21).createObject() == True
-        assert Booking('MH 14 AB 6518', '2L', 87, 19).createObject() == True
-        assert Booking('MH 14 AB 6518', '21L', 87, 13).createObject() == True
-        assert Booking('MH 14 AB 6518', '8L', 87, 36).createObject() == True
-        assert Booking('MH 14 AB 6518', '22U', 87, 25).createObject() == True
-        assert Booking('MH 14 AB 6870', '2L', 88, 24).createObject() == True
-        assert Booking('MH 14 AB 6870', '25L', 88, 16).createObject() == True
-        assert Booking('MH 14 AB 6870', '8L', 88, 10).createObject() == True
-        assert Booking('MH 14 AB 6870', '1L', 88, 18).createObject() == True
-        assert Booking('MH 14 AB 6870', '9L', 88, 26).createObject() == True
-        assert Booking('MH 14 AB 6870', '28U', 88, 33).createObject() == True
-        assert Booking('MH 14 AB 6870', '15L', 88, 22).createObject() == True
-        assert Booking('MH 14 AB 6870', '20L', 88, 35).createObject() == True
-        assert Booking('MH 14 AB 6870', '17U', 88, 22).createObject() == True
-        assert Booking('MH 14 AB 6870', '7L', 88, 34).createObject() == True
-        assert Booking('MH 14 AB 6870', '6U', 88, 35).createObject() == True
-        assert Booking('MH 14 AB 6870', '30U', 88, 10).createObject() == True
-        assert Booking('MH 14 AB 6870', '4U', 88, 3).createObject() == True
-        assert Booking('MH 14 AB 9684', '22U', 89, 36).createObject() == True
-        assert Booking('MH 14 AB 9684', '20L', 89, 20).createObject() == True
-        assert Booking('MH 14 AB 9684', '6U', 89, 23).createObject() == True
-        assert Booking('MH 14 AB 9684', '14L', 89, 8).createObject() == True
-        assert Booking('MH 14 AB 9684', '3L', 89, 21).createObject() == True
-        assert Booking('MH 14 AB 9684', '26L', 89, 37).createObject() == True
-        assert Booking('MH 14 AB 9684', '19L', 89, 19).createObject() == True
-        assert Booking('MH 14 AB 9684', '30U', 89, 19).createObject() == True
-        assert Booking('MH 14 AB 9684', '4U', 89, 18).createObject() == True
-        assert Booking('MH 14 AB 9684', '2L', 89, 14).createObject() == True
-        assert Booking('MH 14 AB 9684', '8L', 89, 4).createObject() == True
-        assert Booking('MH 14 AB 9684', '5U', 89, 5).createObject() == True
-        assert Booking('MH 14 AB 9684', '17U', 89, 37).createObject() == True
-        assert Booking('MH 14 AB 9684', '10U', 89, 27).createObject() == True
-        assert Booking('MH 14 AB 9684', '21L', 89, 29).createObject() == True
-        assert Booking('MH 14 AB 9684', '9L', 89, 40).createObject() == True
-        assert Booking('MH 14 AB 9684', '24U', 89, 29).createObject() == True
-        assert Booking('MH 14 AB 9684', '29U', 89, 18).createObject() == True
-        assert Booking('MH 14 AB 9684', '1L', 89, 15).createObject() == True
-        assert Booking('MH 14 AB 9684', '27L', 89, 38).createObject() == True
-        assert Booking('MH 12 AB 5440', '15L', 90, 10).createObject() == True
-        assert Booking('MH 12 AB 5440', '5U', 90, 26).createObject() == True
-        assert Booking('MH 12 AB 5440', '16U', 90, 21).createObject() == True
-        assert Booking('MH 12 AB 5440', '7L', 90, 17).createObject() == True
-        assert Booking('MH 12 AB 5440', '12U', 90, 12).createObject() == True
-        assert Booking('MH 12 AB 5440', '30U', 90, 29).createObject() == True
-        assert Booking('MH 12 AB 5440', '1L', 90, 28).createObject() == True
-        assert Booking('MH 12 AB 5440', '11U', 90, 6).createObject() == True
-        assert Booking('MH 12 AB 5440', '14L', 90, 22).createObject() == True
-        assert Booking('MH 12 AB 5440', '25L', 90, 29).createObject() == True
-        assert Booking('MH 12 AB 5440', '2L', 90, 39).createObject() == True
-        assert Booking('MH 12 AB 5440', '9L', 90, 17).createObject() == True
-        assert Booking('MH 12 AB 5440', '19L', 90, 33).createObject() == True
-        assert Booking('MH 12 AB 5440', '20L', 90, 35).createObject() == True
-        assert Booking('MH 12 AB 5440', '28U', 90, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '8L', 91, 6).createObject() == True
-        assert Booking('MH 5 AB 6693', '17U', 91, 36).createObject() == True
-        assert Booking('MH 5 AB 6693', '18U', 91, 21).createObject() == True
-        assert Booking('MH 5 AB 6693', '1L', 91, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '2L', 91, 22).createObject() == True
-        assert Booking('MH 5 AB 6693', '30U', 91, 3).createObject() == True
-        assert Booking('MH 5 AB 6693', '10U', 91, 22).createObject() == True
-        assert Booking('MH 5 AB 6693', '15L', 91, 36).createObject() == True
-        assert Booking('MH 5 AB 6693', '5U', 91, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '28U', 91, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '25L', 91, 37).createObject() == True
-        assert Booking('MH 5 AB 6693', '19L', 91, 4).createObject() == True
-        assert Booking('MH 5 AB 6693', '11U', 91, 38).createObject() == True
-        assert Booking('MH 5 AB 6693', '21L', 91, 35).createObject() == True
-        assert Booking('MH 5 AB 6693', '24U', 91, 8).createObject() == True
-        assert Booking('MH 5 AB 6693', '27L', 91, 10).createObject() == True
-        assert Booking('MH 5 AB 6693', '16U', 91, 33).createObject() == True
-        assert Booking('MH 5 AB 6693', '9L', 91, 34).createObject() == True
-        assert Booking('MH 5 AB 6693', '22U', 91, 38).createObject() == True
-        assert Booking('MH 5 AB 6693', '4U', 91, 32).createObject() == True
-        assert Booking('MH 18 AB 7004', '17U', 92, 35).createObject() == True
-        assert Booking('MH 18 AB 7004', '22U', 92, 4).createObject() == True
-        assert Booking('MH 18 AB 7004', '19L', 92, 39).createObject() == True
-        assert Booking('MH 18 AB 7004', '7L', 92, 24).createObject() == True
-        assert Booking('MH 18 AB 7004', '12U', 92, 39).createObject() == True
-        assert Booking('MH 18 AB 7004', '25L', 92, 26).createObject() == True
-        assert Booking('MH 18 AB 7004', '24U', 92, 4).createObject() == True
-        assert Booking('MH 18 AB 7004', '15L', 92, 20).createObject() == True
-        assert Booking('MH 18 AB 7004', '23U', 92, 38).createObject() == True
-        assert Booking('MH 18 AB 7004', '20L', 92, 1).createObject() == True
-        assert Booking('MH 18 AB 7004', '30U', 92, 17).createObject() == True
-        assert Booking('MH 18 AB 7004', '5U', 92, 13).createObject() == True
-        assert Booking('MH 18 AB 7004', '10U', 92, 9).createObject() == True
-        assert Booking('MH 18 AB 7004', '29U', 92, 5).createObject() == True
-        assert Booking('MH 18 AB 7004', '3L', 92, 10).createObject() == True
-        assert Booking('MH 18 AB 7004', '27L', 92, 14).createObject() == True
-        assert Booking('MH 18 AB 7004', '13L', 92, 39).createObject() == True
-        assert Booking('MH 18 AB 7004', '4U', 92, 40).createObject() == True
-        assert Booking('MH 12 AB 8578', '18U', 93, 37).createObject() == True
-        assert Booking('MH 12 AB 8578', '8L', 93, 16).createObject() == True
-        assert Booking('MH 12 AB 8578', '22U', 93, 33).createObject() == True
-        assert Booking('MH 12 AB 8578', '6U', 93, 10).createObject() == True
-        assert Booking('MH 12 AB 8578', '11U', 93, 18).createObject() == True
-        assert Booking('MH 12 AB 8578', '27L', 93, 38).createObject() == True
-        assert Booking('MH 12 AB 8578', '21L', 93, 9).createObject() == True
-        assert Booking('MH 12 AB 8578', '24U', 93, 26).createObject() == True
-        assert Booking('MH 12 AB 8578', '5U', 93, 19).createObject() == True
-        assert Booking('MH 12 AB 8578', '7L', 93, 19).createObject() == True
-        assert Booking('MH 12 AB 8578', '20L', 93, 19).createObject() == True
-        assert Booking('MH 12 AB 8578', '10U', 93, 35).createObject() == True
-        assert Booking('MH 12 AB 8578', '28U', 93, 9).createObject() == True
-        assert Booking('MH 12 AB 8578', '29U', 93, 12).createObject() == True
-        assert Booking('MH 10 AB 5575', '6U', 94, 23).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 94, 7).createObject() == True
-        assert Booking('MH 10 AB 5575', '29U', 94, 23).createObject() == True
-        assert Booking('MH 10 AB 5575', '13L', 94, 5).createObject() == True
-        assert Booking('MH 10 AB 5575', '16U', 94, 13).createObject() == True
-        assert Booking('MH 10 AB 5575', '23U', 94, 30).createObject() == True
-        assert Booking('MH 10 AB 5575', '1L', 94, 29).createObject() == True
-        assert Booking('MH 10 AB 5575', '3L', 94, 21).createObject() == True
-        assert Booking('MH 10 AB 5575', '24U', 94, 25).createObject() == True
-        assert Booking('MH 10 AB 5575', '26L', 94, 25).createObject() == True
-        assert Booking('MH 10 AB 5575', '5U', 94, 33).createObject() == True
-        assert Booking('MH 10 AB 5575', '21L', 94, 38).createObject() == True
-        assert Booking('MH 10 AB 5575', '2L', 94, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '27L', 94, 13).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 94, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '19L', 94, 12).createObject() == True
-        assert Booking('MH 10 AB 5575', '30U', 94, 6).createObject() == True
-        assert Booking('MH 10 AB 5575', '22U', 94, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 94, 11).createObject() == True
-        assert Booking('MH 10 AB 5575', '9L', 94, 36).createObject() == True
-        assert Booking('MH 6 AB 5509', '5U', 95, 24).createObject() == True
-        assert Booking('MH 6 AB 5509', '16U', 95, 29).createObject() == True
-        assert Booking('MH 6 AB 5509', '23U', 95, 1).createObject() == True
-        assert Booking('MH 6 AB 5509', '21L', 95, 2).createObject() == True
-        assert Booking('MH 6 AB 5509', '24U', 95, 40).createObject() == True
-        assert Booking('MH 6 AB 5509', '20L', 95, 21).createObject() == True
-        assert Booking('MH 6 AB 5509', '12U', 95, 24).createObject() == True
-        assert Booking('MH 6 AB 5509', '2L', 95, 40).createObject() == True
-        assert Booking('MH 6 AB 5509', '4U', 95, 12).createObject() == True
-        assert Booking('MH 6 AB 5509', '19L', 95, 16).createObject() == True
-        assert Booking('MH 12 AB 7062', '24U', 96, 2).createObject() == True
-        assert Booking('MH 12 AB 7062', '8L', 96, 14).createObject() == True
-        assert Booking('MH 12 AB 7062', '20L', 96, 13).createObject() == True
-        assert Booking('MH 12 AB 7062', '25L', 96, 38).createObject() == True
-        assert Booking('MH 12 AB 7062', '19L', 96, 32).createObject() == True
-        assert Booking('MH 12 AB 7062', '12U', 96, 14).createObject() == True
-        assert Booking('MH 12 AB 7062', '23U', 96, 2).createObject() == True
-        assert Booking('MH 12 AB 7062', '9L', 96, 2).createObject() == True
-        assert Booking('MH 12 AB 7062', '15L', 96, 3).createObject() == True
-        assert Booking('MH 12 AB 7062', '7L', 96, 28).createObject() == True
-        assert Booking('MH 12 AB 7062', '10U', 96, 40).createObject() == True
-        assert Booking('MH 12 AB 7062', '5U', 96, 23).createObject() == True
-        assert Booking('MH 12 AB 7062', '28U', 96, 37).createObject() == True
-        assert Booking('MH 12 AB 7062', '14L', 96, 7).createObject() == True
-        assert Booking('MH 12 AB 7062', '16U', 96, 25).createObject() == True
-        assert Booking('MH 12 AB 7062', '1L', 96, 22).createObject() == True
-        assert Booking('MH 12 AB 7062', '18U', 96, 27).createObject() == True
-        assert Booking('MH 12 AB 7062', '11U', 96, 8).createObject() == True
-        assert Booking('MH 8 AB 8272', '22U', 97, 10).createObject() == True
-        assert Booking('MH 8 AB 8272', '6U', 97, 4).createObject() == True
-        assert Booking('MH 8 AB 8272', '8L', 97, 11).createObject() == True
-        assert Booking('MH 8 AB 8272', '9L', 97, 4).createObject() == True
-        assert Booking('MH 8 AB 8272', '10U', 97, 7).createObject() == True
-        assert Booking('MH 8 AB 8272', '30U', 97, 24).createObject() == True
-        assert Booking('MH 8 AB 8272', '7L', 97, 4).createObject() == True
-        assert Booking('MH 8 AB 8272', '11U', 97, 3).createObject() == True
-        assert Booking('MH 8 AB 8272', '17U', 97, 8).createObject() == True
-        assert Booking('MH 8 AB 8272', '25L', 97, 31).createObject() == True
-        assert Booking('MH 8 AB 8272', '23U', 97, 18).createObject() == True
-        assert Booking('MH 8 AB 8272', '19L', 97, 24).createObject() == True
-        assert Booking('MH 8 AB 8272', '26L', 97, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '21L', 97, 33).createObject() == True
-        assert Booking('MH 8 AB 8272', '1L', 97, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '16U', 97, 19).createObject() == True
-        assert Booking('MH 8 AB 8272', '27L', 97, 10).createObject() == True
-        assert Booking('MH 8 AB 8272', '24U', 97, 20).createObject() == True
-        assert Booking('MH 18 AB 7004', '10U', 98, 33).createObject() == True
-        assert Booking('MH 18 AB 7004', '15L', 98, 22).createObject() == True
-        assert Booking('MH 18 AB 7004', '17U', 98, 6).createObject() == True
-        assert Booking('MH 18 AB 7004', '25L', 98, 18).createObject() == True
-        assert Booking('MH 18 AB 7004', '3L', 98, 34).createObject() == True
-        assert Booking('MH 18 AB 7004', '27L', 98, 31).createObject() == True
-        assert Booking('MH 18 AB 7004', '14L', 98, 1).createObject() == True
-        assert Booking('MH 18 AB 7004', '29U', 98, 15).createObject() == True
-        assert Booking('MH 18 AB 7004', '24U', 98, 18).createObject() == True
-        assert Booking('MH 18 AB 7004', '4U', 98, 21).createObject() == True
-        assert Booking('MH 18 AB 7004', '23U', 98, 5).createObject() == True
-        assert Booking('MH 18 AB 7004', '5U', 98, 24).createObject() == True
-        assert Booking('MH 18 AB 7004', '26L', 98, 21).createObject() == True
-        assert Booking('MH 11 AB 7989', '24U', 99, 1).createObject() == True
-        assert Booking('MH 11 AB 7989', '30U', 99, 26).createObject() == True
-        assert Booking('MH 11 AB 7989', '5U', 99, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '4U', 99, 10).createObject() == True
-        assert Booking('MH 11 AB 7989', '17U', 99, 17).createObject() == True
-        assert Booking('MH 11 AB 7989', '22U', 99, 39).createObject() == True
-        assert Booking('MH 11 AB 7989', '19L', 99, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '13L', 99, 7).createObject() == True
-        assert Booking('MH 11 AB 7989', '26L', 99, 35).createObject() == True
-        assert Booking('MH 11 AB 7989', '2L', 99, 18).createObject() == True
-        assert Booking('MH 11 AB 7989', '28U', 99, 23).createObject() == True
-        assert Booking('MH 11 AB 7989', '21L', 99, 20).createObject() == True
-        assert Booking('MH 11 AB 7989', '9L', 99, 36).createObject() == True
-        assert Booking('MH 11 AB 7989', '16U', 99, 4).createObject() == True
-        assert Booking('MH 11 AB 7989', '8L', 99, 2).createObject() == True
-        assert Booking('MH 11 AB 7989', '6U', 99, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '10U', 99, 10).createObject() == True
-        assert Booking('MH 11 AB 7989', '29U', 99, 17).createObject() == True
-        assert Booking('MH 11 AB 7989', '25L', 99, 24).createObject() == True
-        assert Booking('MH 14 AB 5997', '26L', 100, 23).createObject() == True
-        assert Booking('MH 14 AB 5997', '25L', 100, 11).createObject() == True
-        assert Booking('MH 14 AB 5997', '15L', 100, 31).createObject() == True
-        assert Booking('MH 14 AB 5997', '9L', 100, 29).createObject() == True
-        assert Booking('MH 14 AB 5997', '2L', 100, 36).createObject() == True
-        assert Booking('MH 14 AB 5997', '5U', 100, 8).createObject() == True
-        assert Booking('MH 14 AB 5997', '21L', 100, 39).createObject() == True
-        assert Booking('MH 14 AB 5997', '4U', 100, 10).createObject() == True
-        assert Booking('MH 14 AB 5997', '24U', 100, 18).createObject() == True
-        assert Booking('MH 14 AB 5997', '11U', 100, 25).createObject() == True
-        assert Booking('MH 14 AB 5997', '3L', 100, 37).createObject() == True
-        assert Booking('MH 13 AB 9993', '26L', 101, 18).createObject() == True
-        assert Booking('MH 13 AB 9993', '11U', 101, 3).createObject() == True
-        assert Booking('MH 13 AB 9993', '20L', 101, 32).createObject() == True
-        assert Booking('MH 13 AB 9993', '12U', 101, 17).createObject() == True
-        assert Booking('MH 13 AB 9993', '10U', 101, 35).createObject() == True
-        assert Booking('MH 13 AB 9993', '22U', 101, 16).createObject() == True
-        assert Booking('MH 13 AB 9993', '8L', 101, 1).createObject() == True
-        assert Booking('MH 13 AB 9993', '17U', 101, 13).createObject() == True
-        assert Booking('MH 13 AB 9993', '5U', 101, 17).createObject() == True
-        assert Booking('MH 13 AB 9993', '30U', 101, 35).createObject() == True
-        assert Booking('MH 13 AB 9993', '4U', 101, 1).createObject() == True
-        assert Booking('MH 13 AB 9993', '21L', 101, 9).createObject() == True
-        assert Booking('MH 13 AB 9993', '2L', 101, 37).createObject() == True
-        assert Booking('MH 13 AB 9993', '1L', 101, 40).createObject() == True
-        assert Booking('MH 13 AB 9993', '25L', 101, 25).createObject() == True
-        assert Booking('MH 13 AB 9993', '19L', 101, 27).createObject() == True
-        assert Booking('MH 13 AB 9993', '27L', 101, 3).createObject() == True
-        assert Booking('MH 13 AB 9993', '13L', 101, 12).createObject() == True
-        assert Booking('MH 8 AB 6980', '3L', 102, 18).createObject() == True
-        assert Booking('MH 8 AB 6980', '2L', 102, 13).createObject() == True
-        assert Booking('MH 8 AB 6980', '6U', 102, 15).createObject() == True
-        assert Booking('MH 8 AB 6980', '7L', 102, 24).createObject() == True
-        assert Booking('MH 8 AB 6980', '8L', 102, 4).createObject() == True
-        assert Booking('MH 8 AB 6980', '9L', 102, 25).createObject() == True
-        assert Booking('MH 8 AB 6980', '10U', 102, 7).createObject() == True
-        assert Booking('MH 8 AB 6980', '26L', 102, 30).createObject() == True
-        assert Booking('MH 8 AB 6980', '13L', 102, 22).createObject() == True
-        assert Booking('MH 8 AB 6980', '1L', 102, 30).createObject() == True
-        assert Booking('MH 8 AB 6980', '22U', 102, 18).createObject() == True
-        assert Booking('MH 8 AB 6980', '15L', 102, 32).createObject() == True
-        assert Booking('MH 8 AB 6980', '5U', 102, 13).createObject() == True
-        assert Booking('MH 8 AB 6980', '27L', 102, 10).createObject() == True
-        assert Booking('MH 8 AB 6980', '16U', 102, 16).createObject() == True
-        assert Booking('MH 8 AB 6980', '29U', 102, 21).createObject() == True
-        assert Booking('MH 8 AB 6980', '28U', 102, 1).createObject() == True
-        assert Booking('MH 8 AB 6980', '20L', 102, 17).createObject() == True
-        assert Booking('MH 8 AB 6980', '12U', 102, 6).createObject() == True
-        assert Booking('MH 8 AB 6980', '30U', 102, 13).createObject() == True
-        assert Booking('MH 10 AB 5575', '9L', 103, 19).createObject() == True
-        assert Booking('MH 10 AB 5575', '8L', 103, 21).createObject() == True
-        assert Booking('MH 10 AB 5575', '3L', 103, 14).createObject() == True
-        assert Booking('MH 10 AB 5575', '21L', 103, 37).createObject() == True
-        assert Booking('MH 10 AB 5575', '14L', 103, 16).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 103, 21).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 103, 33).createObject() == True
-        assert Booking('MH 10 AB 5575', '15L', 103, 16).createObject() == True
-        assert Booking('MH 10 AB 5575', '28U', 103, 19).createObject() == True
-        assert Booking('MH 10 AB 5575', '24U', 103, 6).createObject() == True
-        assert Booking('MH 10 AB 5575', '6U', 103, 25).createObject() == True
-        assert Booking('MH 10 AB 5575', '16U', 103, 12).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 103, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '13L', 103, 36).createObject() == True
-        assert Booking('MH 5 AB 6693', '10U', 104, 38).createObject() == True
-        assert Booking('MH 5 AB 6693', '27L', 104, 28).createObject() == True
-        assert Booking('MH 5 AB 6693', '22U', 104, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '3L', 104, 19).createObject() == True
-        assert Booking('MH 5 AB 6693', '24U', 104, 32).createObject() == True
-        assert Booking('MH 5 AB 6693', '12U', 104, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '28U', 104, 33).createObject() == True
-        assert Booking('MH 5 AB 6693', '14L', 104, 27).createObject() == True
-        assert Booking('MH 5 AB 6693', '19L', 104, 13).createObject() == True
-        assert Booking('MH 5 AB 6693', '7L', 104, 7).createObject() == True
-        assert Booking('MH 5 AB 6693', '8L', 104, 9).createObject() == True
-        assert Booking('MH 5 AB 6693', '29U', 104, 23).createObject() == True
-        assert Booking('MH 5 AB 6693', '16U', 104, 39).createObject() == True
-        assert Booking('MH 5 AB 6693', '23U', 104, 37).createObject() == True
-        assert Booking('MH 5 AB 6693', '11U', 104, 10).createObject() == True
-        assert Booking('MH 12 AB 5440', '8L', 105, 3).createObject() == True
-        assert Booking('MH 12 AB 5440', '27L', 105, 2).createObject() == True
-        assert Booking('MH 12 AB 5440', '16U', 105, 37).createObject() == True
-        assert Booking('MH 12 AB 5440', '25L', 105, 11).createObject() == True
-        assert Booking('MH 12 AB 5440', '9L', 105, 22).createObject() == True
-        assert Booking('MH 12 AB 5440', '28U', 105, 34).createObject() == True
-        assert Booking('MH 12 AB 5440', '23U', 105, 29).createObject() == True
-        assert Booking('MH 12 AB 5440', '5U', 105, 17).createObject() == True
-        assert Booking('MH 12 AB 5440', '14L', 105, 38).createObject() == True
-        assert Booking('MH 12 AB 5440', '20L', 105, 2).createObject() == True
-        assert Booking('MH 12 AB 5440', '6U', 105, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 106, 30).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 106, 26).createObject() == True
-        assert Booking('MH 17 AB 9316', '28U', 106, 35).createObject() == True
-        assert Booking('MH 17 AB 9316', '26L', 106, 14).createObject() == True
-        assert Booking('MH 17 AB 9316', '27L', 106, 18).createObject() == True
-        assert Booking('MH 17 AB 9316', '9L', 106, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 106, 24).createObject() == True
-        assert Booking('MH 17 AB 9316', '12U', 106, 30).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 106, 36).createObject() == True
-        assert Booking('MH 17 AB 9316', '5U', 106, 10).createObject() == True
-        assert Booking('MH 9 AB 8308', '15L', 107, 35).createObject() == True
-        assert Booking('MH 9 AB 8308', '16U', 107, 38).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 107, 23).createObject() == True
-        assert Booking('MH 9 AB 8308', '7L', 107, 6).createObject() == True
-        assert Booking('MH 9 AB 8308', '13L', 107, 19).createObject() == True
-        assert Booking('MH 9 AB 8308', '6U', 107, 34).createObject() == True
-        assert Booking('MH 9 AB 8308', '28U', 107, 15).createObject() == True
-        assert Booking('MH 9 AB 8308', '23U', 107, 4).createObject() == True
-        assert Booking('MH 9 AB 8308', '21L', 107, 15).createObject() == True
-        assert Booking('MH 9 AB 8308', '9L', 107, 30).createObject() == True
-        assert Booking('MH 9 AB 8308', '20L', 107, 21).createObject() == True
-        assert Booking('MH 9 AB 8308', '29U', 107, 34).createObject() == True
-        assert Booking('MH 9 AB 8308', '3L', 107, 40).createObject() == True
-        assert Booking('MH 9 AB 8308', '24U', 107, 19).createObject() == True
-        assert Booking('MH 9 AB 8308', '10U', 107, 17).createObject() == True
-        assert Booking('MH 9 AB 8308', '26L', 107, 6).createObject() == True
-        assert Booking('MH 9 AB 8308', '30U', 107, 12).createObject() == True
-        assert Booking('MH 9 AB 8308', '17U', 107, 36).createObject() == True
-        assert Booking('MH 9 AB 8308', '27L', 107, 38).createObject() == True
-        assert Booking('MH 16 AB 7740', '3L', 108, 39).createObject() == True
-        assert Booking('MH 16 AB 7740', '12U', 108, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '24U', 108, 9).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 108, 7).createObject() == True
-        assert Booking('MH 16 AB 7740', '7L', 108, 6).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 108, 14).createObject() == True
-        assert Booking('MH 16 AB 7740', '26L', 108, 23).createObject() == True
-        assert Booking('MH 16 AB 7740', '18U', 108, 38).createObject() == True
-        assert Booking('MH 16 AB 7740', '20L', 108, 35).createObject() == True
-        assert Booking('MH 16 AB 7740', '11U', 108, 9).createObject() == True
-        assert Booking('MH 16 AB 7740', '13L', 108, 13).createObject() == True
-        assert Booking('MH 16 AB 7740', '1L', 108, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '5U', 108, 11).createObject() == True
-        assert Booking('MH 16 AB 7740', '28U', 108, 7).createObject() == True
-        assert Booking('MH 12 AB 7062', '6U', 109, 15).createObject() == True
-        assert Booking('MH 12 AB 7062', '30U', 109, 4).createObject() == True
-        assert Booking('MH 12 AB 7062', '10U', 109, 26).createObject() == True
-        assert Booking('MH 12 AB 7062', '25L', 109, 8).createObject() == True
-        assert Booking('MH 12 AB 7062', '9L', 109, 16).createObject() == True
-        assert Booking('MH 12 AB 7062', '11U', 109, 39).createObject() == True
-        assert Booking('MH 12 AB 7062', '23U', 109, 16).createObject() == True
-        assert Booking('MH 12 AB 7062', '4U', 109, 40).createObject() == True
-        assert Booking('MH 12 AB 7062', '13L', 109, 14).createObject() == True
-        assert Booking('MH 12 AB 7062', '21L', 109, 8).createObject() == True
-        assert Booking('MH 12 AB 7062', '20L', 109, 25).createObject() == True
-        assert Booking('MH 12 AB 7062', '4U', 110, 5).createObject() == True
-        assert Booking('MH 12 AB 7062', '30U', 110, 34).createObject() == True
-        assert Booking('MH 12 AB 7062', '8L', 110, 10).createObject() == True
-        assert Booking('MH 12 AB 7062', '15L', 110, 14).createObject() == True
-        assert Booking('MH 12 AB 7062', '9L', 110, 7).createObject() == True
-        assert Booking('MH 12 AB 7062', '11U', 110, 18).createObject() == True
-        assert Booking('MH 12 AB 7062', '7L', 110, 29).createObject() == True
-        assert Booking('MH 12 AB 7062', '18U', 110, 12).createObject() == True
-        assert Booking('MH 12 AB 7062', '2L', 110, 9).createObject() == True
-        assert Booking('MH 12 AB 7062', '23U', 110, 19).createObject() == True
-        assert Booking('MH 12 AB 7062', '13L', 110, 24).createObject() == True
-        assert Booking('MH 12 AB 7062', '19L', 110, 10).createObject() == True
-        assert Booking('MH 12 AB 7062', '16U', 110, 33).createObject() == True
-        assert Booking('MH 12 AB 7062', '3L', 110, 30).createObject() == True
-        assert Booking('MH 12 AB 7062', '14L', 110, 9).createObject() == True
-        assert Booking('MH 12 AB 7062', '12U', 110, 10).createObject() == True
-        assert Booking('MH 12 AB 7062', '21L', 110, 17).createObject() == True
-        assert Booking('MH 12 AB 7062', '25L', 110, 1).createObject() == True
-        assert Booking('MH 12 AB 7062', '17U', 110, 34).createObject() == True
-        assert Booking('MH 20 AB 8094', '24U', 111, 10).createObject() == True
-        assert Booking('MH 20 AB 8094', '16U', 111, 31).createObject() == True
-        assert Booking('MH 20 AB 8094', '8L', 111, 37).createObject() == True
-        assert Booking('MH 20 AB 8094', '21L', 111, 7).createObject() == True
-        assert Booking('MH 20 AB 8094', '30U', 111, 30).createObject() == True
-        assert Booking('MH 20 AB 8094', '26L', 111, 4).createObject() == True
-        assert Booking('MH 20 AB 8094', '11U', 111, 21).createObject() == True
-        assert Booking('MH 20 AB 8094', '28U', 111, 22).createObject() == True
-        assert Booking('MH 20 AB 8094', '15L', 111, 6).createObject() == True
-        assert Booking('MH 20 AB 8094', '14L', 111, 18).createObject() == True
-        assert Booking('MH 20 AB 8094', '22U', 111, 23).createObject() == True
-        assert Booking('MH 20 AB 8094', '6U', 111, 28).createObject() == True
-        assert Booking('MH 20 AB 8094', '9L', 111, 1).createObject() == True
-        assert Booking('MH 20 AB 8094', '23U', 111, 18).createObject() == True
-        assert Booking('MH 20 AB 8094', '4U', 111, 29).createObject() == True
-        assert Booking('MH 20 AB 8094', '19L', 111, 34).createObject() == True
-        assert Booking('MH 20 AB 8094', '17U', 111, 8).createObject() == True
-        assert Booking('MH 20 AB 8094', '2L', 111, 24).createObject() == True
-        assert Booking('MH 20 AB 8094', '27L', 111, 6).createObject() == True
-        assert Booking('MH 14 AB 9684', '17U', 112, 19).createObject() == True
-        assert Booking('MH 14 AB 9684', '16U', 112, 36).createObject() == True
-        assert Booking('MH 14 AB 9684', '6U', 112, 38).createObject() == True
-        assert Booking('MH 14 AB 9684', '5U', 112, 22).createObject() == True
-        assert Booking('MH 14 AB 9684', '7L', 112, 37).createObject() == True
-        assert Booking('MH 14 AB 9684', '12U', 112, 3).createObject() == True
-        assert Booking('MH 14 AB 9684', '24U', 112, 24).createObject() == True
-        assert Booking('MH 14 AB 9684', '8L', 112, 4).createObject() == True
-        assert Booking('MH 14 AB 9684', '23U', 112, 13).createObject() == True
-        assert Booking('MH 14 AB 9684', '2L', 112, 2).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 113, 1).createObject() == True
-        assert Booking('MH 11 AB 9332', '4U', 113, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '17U', 113, 14).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 113, 35).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 113, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '30U', 113, 1).createObject() == True
-        assert Booking('MH 11 AB 9332', '3L', 113, 32).createObject() == True
-        assert Booking('MH 11 AB 9332', '23U', 113, 7).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 113, 2).createObject() == True
-        assert Booking('MH 11 AB 9332', '25L', 113, 38).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 113, 1).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 113, 38).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 113, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '7L', 114, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '9L', 114, 40).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 114, 10).createObject() == True
-        assert Booking('MH 11 AB 9332', '22U', 114, 2).createObject() == True
-        assert Booking('MH 11 AB 9332', '3L', 114, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 114, 24).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 114, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '1L', 114, 27).createObject() == True
-        assert Booking('MH 11 AB 9332', '10U', 114, 26).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 114, 21).createObject() == True
-        assert Booking('MH 11 AB 9332', '11U', 114, 27).createObject() == True
-        assert Booking('MH 11 AB 9332', '26L', 114, 24).createObject() == True
-        assert Booking('MH 11 AB 9332', '15L', 114, 4).createObject() == True
-        assert Booking('MH 11 AB 9332', '23U', 114, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 114, 25).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 114, 33).createObject() == True
-        assert Booking('MH 11 AB 9332', '24U', 114, 5).createObject() == True
-        assert Booking('MH 14 AB 9684', '4U', 115, 28).createObject() == True
-        assert Booking('MH 14 AB 9684', '28U', 115, 35).createObject() == True
-        assert Booking('MH 14 AB 9684', '14L', 115, 30).createObject() == True
-        assert Booking('MH 14 AB 9684', '11U', 115, 21).createObject() == True
-        assert Booking('MH 14 AB 9684', '3L', 115, 26).createObject() == True
-        assert Booking('MH 14 AB 9684', '24U', 115, 24).createObject() == True
-        assert Booking('MH 14 AB 9684', '9L', 115, 29).createObject() == True
-        assert Booking('MH 14 AB 9684', '15L', 115, 6).createObject() == True
-        assert Booking('MH 14 AB 9684', '1L', 115, 28).createObject() == True
-        assert Booking('MH 14 AB 9684', '29U', 115, 24).createObject() == True
-        assert Booking('MH 14 AB 9684', '19L', 115, 5).createObject() == True
-        assert Booking('MH 14 AB 9684', '6U', 115, 29).createObject() == True
-        assert Booking('MH 14 AB 9684', '17U', 115, 10).createObject() == True
-        assert Booking('MH 14 AB 9684', '21L', 115, 12).createObject() == True
-        assert Booking('MH 14 AB 9684', '10U', 115, 25).createObject() == True
-        assert Booking('MH 14 AB 9684', '16U', 115, 4).createObject() == True
-        assert Booking('MH 14 AB 9684', '22U', 115, 4).createObject() == True
-        assert Booking('MH 14 AB 9684', '20L', 115, 40).createObject() == True
-        assert Booking('MH 10 AB 9617', '3L', 116, 22).createObject() == True
-        assert Booking('MH 10 AB 9617', '14L', 116, 20).createObject() == True
-        assert Booking('MH 10 AB 9617', '7L', 116, 26).createObject() == True
-        assert Booking('MH 10 AB 9617', '26L', 116, 4).createObject() == True
-        assert Booking('MH 10 AB 9617', '22U', 116, 7).createObject() == True
-        assert Booking('MH 10 AB 9617', '4U', 116, 40).createObject() == True
-        assert Booking('MH 10 AB 9617', '23U', 116, 38).createObject() == True
-        assert Booking('MH 10 AB 9617', '28U', 116, 4).createObject() == True
-        assert Booking('MH 10 AB 9617', '9L', 116, 20).createObject() == True
-        assert Booking('MH 10 AB 9617', '24U', 116, 21).createObject() == True
-        assert Booking('MH 10 AB 9617', '8L', 116, 28).createObject() == True
-        assert Booking('MH 8 AB 6980', '28U', 117, 13).createObject() == True
-        assert Booking('MH 8 AB 6980', '18U', 117, 38).createObject() == True
-        assert Booking('MH 8 AB 6980', '29U', 117, 33).createObject() == True
-        assert Booking('MH 8 AB 6980', '16U', 117, 36).createObject() == True
-        assert Booking('MH 8 AB 6980', '3L', 117, 38).createObject() == True
-        assert Booking('MH 8 AB 6980', '23U', 117, 1).createObject() == True
-        assert Booking('MH 8 AB 6980', '21L', 117, 15).createObject() == True
-        assert Booking('MH 8 AB 6980', '19L', 117, 24).createObject() == True
-        assert Booking('MH 8 AB 6980', '11U', 117, 16).createObject() == True
-        assert Booking('MH 8 AB 6980', '15L', 117, 11).createObject() == True
-        assert Booking('MH 8 AB 6980', '2L', 117, 8).createObject() == True
-        assert Booking('MH 8 AB 6980', '12U', 117, 17).createObject() == True
-        assert Booking('MH 8 AB 6980', '7L', 117, 4).createObject() == True
-        assert Booking('MH 8 AB 6980', '1L', 117, 31).createObject() == True
-        assert Booking('MH 8 AB 6980', '20L', 117, 19).createObject() == True
-        assert Booking('MH 8 AB 6980', '8L', 117, 13).createObject() == True
-        assert Booking('MH 8 AB 6980', '27L', 117, 40).createObject() == True
-        assert Booking('MH 8 AB 6980', '4U', 117, 25).createObject() == True
-        assert Booking('MH 13 AB 5137', '5U', 118, 14).createObject() == True
-        assert Booking('MH 13 AB 5137', '8L', 118, 36).createObject() == True
-        assert Booking('MH 13 AB 5137', '16U', 118, 35).createObject() == True
-        assert Booking('MH 13 AB 5137', '3L', 118, 37).createObject() == True
-        assert Booking('MH 13 AB 5137', '25L', 118, 30).createObject() == True
-        assert Booking('MH 13 AB 5137', '29U', 118, 31).createObject() == True
-        assert Booking('MH 13 AB 5137', '11U', 118, 4).createObject() == True
-        assert Booking('MH 13 AB 5137', '2L', 118, 25).createObject() == True
-        assert Booking('MH 13 AB 5137', '4U', 118, 34).createObject() == True
-        assert Booking('MH 13 AB 5137', '6U', 118, 31).createObject() == True
-        assert Booking('MH 13 AB 5137', '22U', 118, 22).createObject() == True
-        assert Booking('MH 13 AB 5137', '30U', 118, 8).createObject() == True
-        assert Booking('MH 13 AB 5137', '26L', 118, 9).createObject() == True
-        assert Booking('MH 13 AB 5137', '1L', 118, 15).createObject() == True
-        assert Booking('MH 13 AB 5137', '24U', 118, 20).createObject() == True
-        assert Booking('MH 13 AB 5137', '7L', 118, 16).createObject() == True
-        assert Booking('MH 13 AB 5137', '15L', 118, 15).createObject() == True
-        assert Booking('MH 13 AB 5137', '9L', 118, 37).createObject() == True
-        assert Booking('MH 9 AB 8308', '23U', 119, 37).createObject() == True
-        assert Booking('MH 9 AB 8308', '27L', 119, 22).createObject() == True
-        assert Booking('MH 9 AB 8308', '30U', 119, 15).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 119, 6).createObject() == True
-        assert Booking('MH 9 AB 8308', '13L', 119, 12).createObject() == True
-        assert Booking('MH 9 AB 8308', '4U', 119, 21).createObject() == True
-        assert Booking('MH 9 AB 8308', '21L', 119, 26).createObject() == True
-        assert Booking('MH 9 AB 8308', '16U', 119, 24).createObject() == True
-        assert Booking('MH 9 AB 8308', '24U', 119, 31).createObject() == True
-        assert Booking('MH 9 AB 8308', '2L', 119, 35).createObject() == True
-        assert Booking('MH 9 AB 8308', '3L', 119, 32).createObject() == True
-        assert Booking('MH 9 AB 8308', '20L', 119, 29).createObject() == True
-        assert Booking('MH 9 AB 8308', '10U', 119, 13).createObject() == True
-        assert Booking('MH 9 AB 8308', '12U', 119, 35).createObject() == True
-        assert Booking('MH 9 AB 8308', '11U', 119, 19).createObject() == True
-        assert Booking('MH 19 AB 8198', '3L', 120, 21).createObject() == True
-        assert Booking('MH 19 AB 8198', '7L', 120, 18).createObject() == True
-        assert Booking('MH 19 AB 8198', '29U', 120, 5).createObject() == True
-        assert Booking('MH 19 AB 8198', '9L', 120, 33).createObject() == True
-        assert Booking('MH 19 AB 8198', '5U', 120, 3).createObject() == True
-        assert Booking('MH 19 AB 8198', '26L', 120, 13).createObject() == True
-        assert Booking('MH 19 AB 8198', '21L', 120, 31).createObject() == True
-        assert Booking('MH 19 AB 8198', '17U', 120, 5).createObject() == True
-        assert Booking('MH 19 AB 8198', '19L', 120, 26).createObject() == True
-        assert Booking('MH 19 AB 8198', '18U', 120, 22).createObject() == True
-        assert Booking('MH 19 AB 8198', '6U', 120, 23).createObject() == True
-        assert Booking('MH 19 AB 8198', '13L', 120, 19).createObject() == True
-        assert Booking('MH 8 AB 8272', '12U', 121, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '13L', 121, 10).createObject() == True
-        assert Booking('MH 8 AB 8272', '27L', 121, 35).createObject() == True
-        assert Booking('MH 8 AB 8272', '20L', 121, 39).createObject() == True
-        assert Booking('MH 8 AB 8272', '22U', 121, 12).createObject() == True
-        assert Booking('MH 8 AB 8272', '18U', 121, 3).createObject() == True
-        assert Booking('MH 8 AB 8272', '24U', 121, 9).createObject() == True
-        assert Booking('MH 8 AB 8272', '17U', 121, 19).createObject() == True
-        assert Booking('MH 8 AB 8272', '11U', 121, 36).createObject() == True
-        assert Booking('MH 8 AB 8272', '14L', 121, 7).createObject() == True
-        assert Booking('MH 8 AB 8272', '10U', 121, 39).createObject() == True
-        assert Booking('MH 8 AB 8272', '28U', 121, 34).createObject() == True
-        assert Booking('MH 8 AB 8272', '16U', 121, 35).createObject() == True
-        assert Booking('MH 8 AB 8272', '8L', 121, 30).createObject() == True
-        assert Booking('MH 12 AB 7062', '24U', 122, 39).createObject() == True
-        assert Booking('MH 12 AB 7062', '17U', 122, 39).createObject() == True
-        assert Booking('MH 12 AB 7062', '20L', 122, 25).createObject() == True
-        assert Booking('MH 12 AB 7062', '19L', 122, 38).createObject() == True
-        assert Booking('MH 12 AB 7062', '22U', 122, 26).createObject() == True
-        assert Booking('MH 12 AB 7062', '12U', 122, 31).createObject() == True
-        assert Booking('MH 12 AB 7062', '2L', 122, 11).createObject() == True
-        assert Booking('MH 12 AB 7062', '11U', 122, 32).createObject() == True
-        assert Booking('MH 12 AB 7062', '4U', 122, 29).createObject() == True
-        assert Booking('MH 12 AB 7062', '1L', 122, 16).createObject() == True
-        assert Booking('MH 12 AB 7062', '25L', 122, 18).createObject() == True
-        assert Booking('MH 12 AB 7062', '23U', 122, 12).createObject() == True
-        assert Booking('MH 12 AB 7062', '30U', 122, 29).createObject() == True
-        assert Booking('MH 12 AB 7062', '7L', 122, 25).createObject() == True
-        assert Booking('MH 19 AB 8932', '9L', 123, 34).createObject() == True
-        assert Booking('MH 19 AB 8932', '16U', 123, 5).createObject() == True
-        assert Booking('MH 19 AB 8932', '22U', 123, 8).createObject() == True
-        assert Booking('MH 19 AB 8932', '28U', 123, 22).createObject() == True
-        assert Booking('MH 19 AB 8932', '24U', 123, 20).createObject() == True
-        assert Booking('MH 19 AB 8932', '14L', 123, 39).createObject() == True
-        assert Booking('MH 19 AB 8932', '2L', 123, 34).createObject() == True
-        assert Booking('MH 19 AB 8932', '29U', 123, 34).createObject() == True
-        assert Booking('MH 19 AB 8932', '1L', 123, 37).createObject() == True
-        assert Booking('MH 19 AB 8932', '7L', 123, 35).createObject() == True
-        assert Booking('MH 19 AB 8932', '4U', 123, 14).createObject() == True
-        assert Booking('MH 19 AB 8932', '23U', 123, 24).createObject() == True
-        assert Booking('MH 19 AB 8932', '8L', 123, 20).createObject() == True
-        assert Booking('MH 19 AB 8932', '20L', 123, 2).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 124, 29).createObject() == True
-        assert Booking('MH 9 AB 8308', '11U', 124, 1).createObject() == True
-        assert Booking('MH 9 AB 8308', '8L', 124, 23).createObject() == True
-        assert Booking('MH 9 AB 8308', '4U', 124, 7).createObject() == True
-        assert Booking('MH 9 AB 8308', '29U', 124, 10).createObject() == True
-        assert Booking('MH 9 AB 8308', '17U', 124, 38).createObject() == True
-        assert Booking('MH 9 AB 8308', '16U', 124, 13).createObject() == True
-        assert Booking('MH 9 AB 8308', '1L', 124, 39).createObject() == True
-        assert Booking('MH 9 AB 8308', '28U', 124, 1).createObject() == True
-        assert Booking('MH 9 AB 8308', '5U', 124, 17).createObject() == True
-        assert Booking('MH 9 AB 8308', '6U', 124, 7).createObject() == True
-        assert Booking('MH 9 AB 8308', '19L', 124, 35).createObject() == True
-        assert Booking('MH 9 AB 8308', '30U', 124, 40).createObject() == True
-        assert Booking('MH 9 AB 8308', '21L', 124, 20).createObject() == True
-        assert Booking('MH 17 AB 8217', '7L', 125, 37).createObject() == True
-        assert Booking('MH 17 AB 8217', '15L', 125, 11).createObject() == True
-        assert Booking('MH 17 AB 8217', '30U', 125, 29).createObject() == True
-        assert Booking('MH 17 AB 8217', '11U', 125, 37).createObject() == True
-        assert Booking('MH 17 AB 8217', '24U', 125, 11).createObject() == True
-        assert Booking('MH 17 AB 8217', '29U', 125, 23).createObject() == True
-        assert Booking('MH 17 AB 8217', '17U', 125, 22).createObject() == True
-        assert Booking('MH 17 AB 8217', '27L', 125, 9).createObject() == True
-        assert Booking('MH 17 AB 8217', '28U', 125, 17).createObject() == True
-        assert Booking('MH 17 AB 8217', '8L', 125, 31).createObject() == True
-        assert Booking('MH 17 AB 8217', '25L', 125, 32).createObject() == True
-        assert Booking('MH 17 AB 8217', '5U', 125, 32).createObject() == True
-        assert Booking('MH 17 AB 8217', '18U', 125, 3).createObject() == True
-        assert Booking('MH 17 AB 8217', '12U', 125, 26).createObject() == True
-        assert Booking('MH 17 AB 8217', '13L', 125, 33).createObject() == True
-        assert Booking('MH 17 AB 8217', '1L', 125, 11).createObject() == True
-        assert Booking('MH 8 AB 8272', '26L', 126, 27).createObject() == True
-        assert Booking('MH 8 AB 8272', '27L', 126, 39).createObject() == True
-        assert Booking('MH 8 AB 8272', '17U', 126, 15).createObject() == True
-        assert Booking('MH 8 AB 8272', '5U', 126, 20).createObject() == True
-        assert Booking('MH 8 AB 8272', '2L', 126, 12).createObject() == True
-        assert Booking('MH 8 AB 8272', '16U', 126, 2).createObject() == True
-        assert Booking('MH 8 AB 8272', '15L', 126, 6).createObject() == True
-        assert Booking('MH 8 AB 8272', '23U', 126, 26).createObject() == True
-        assert Booking('MH 8 AB 8272', '8L', 126, 16).createObject() == True
-        assert Booking('MH 8 AB 8272', '1L', 126, 21).createObject() == True
-        assert Booking('MH 8 AB 8272', '30U', 126, 2).createObject() == True
-        assert Booking('MH 8 AB 8272', '10U', 126, 16).createObject() == True
-        assert Booking('MH 8 AB 8272', '21L', 126, 30).createObject() == True
-        assert Booking('MH 8 AB 8272', '3L', 126, 29).createObject() == True
-        assert Booking('MH 8 AB 8272', '12U', 126, 27).createObject() == True
-        assert Booking('MH 8 AB 8272', '22U', 126, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '28U', 126, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '4U', 127, 28).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 127, 36).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 127, 19).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 127, 28).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 127, 29).createObject() == True
-        assert Booking('MH 11 AB 9332', '3L', 127, 35).createObject() == True
-        assert Booking('MH 11 AB 9332', '15L', 127, 25).createObject() == True
-        assert Booking('MH 11 AB 9332', '10U', 127, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 127, 38).createObject() == True
-        assert Booking('MH 11 AB 9332', '23U', 127, 12).createObject() == True
-        assert Booking('MH 11 AB 9332', '5U', 127, 7).createObject() == True
-        assert Booking('MH 11 AB 9332', '30U', 127, 27).createObject() == True
-        assert Booking('MH 11 AB 9332', '22U', 127, 6).createObject() == True
-        assert Booking('MH 11 AB 9332', '29U', 127, 35).createObject() == True
-        assert Booking('MH 11 AB 9332', '24U', 127, 7).createObject() == True
-        assert Booking('MH 11 AB 9332', '12U', 127, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 127, 12).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 127, 34).createObject() == True
-        assert Booking('MH 19 AB 9404', '19L', 128, 13).createObject() == True
-        assert Booking('MH 19 AB 9404', '16U', 128, 9).createObject() == True
-        assert Booking('MH 19 AB 9404', '7L', 128, 11).createObject() == True
-        assert Booking('MH 19 AB 9404', '14L', 128, 24).createObject() == True
-        assert Booking('MH 19 AB 9404', '17U', 128, 38).createObject() == True
-        assert Booking('MH 19 AB 9404', '15L', 128, 18).createObject() == True
-        assert Booking('MH 19 AB 9404', '30U', 128, 24).createObject() == True
-        assert Booking('MH 19 AB 9404', '21L', 128, 37).createObject() == True
-        assert Booking('MH 19 AB 9404', '13L', 128, 9).createObject() == True
-        assert Booking('MH 19 AB 9404', '10U', 128, 29).createObject() == True
-        assert Booking('MH 19 AB 9404', '6U', 128, 14).createObject() == True
-        assert Booking('MH 19 AB 9404', '3L', 128, 38).createObject() == True
-        assert Booking('MH 19 AB 9404', '22U', 128, 34).createObject() == True
-        assert Booking('MH 10 AB 5575', '28U', 129, 36).createObject() == True
-        assert Booking('MH 10 AB 5575', '4U', 129, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '3L', 129, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '8L', 129, 13).createObject() == True
-        assert Booking('MH 10 AB 5575', '13L', 129, 40).createObject() == True
-        assert Booking('MH 10 AB 5575', '1L', 129, 5).createObject() == True
-        assert Booking('MH 10 AB 5575', '11U', 129, 17).createObject() == True
-        assert Booking('MH 10 AB 5575', '25L', 129, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '20L', 129, 35).createObject() == True
-        assert Booking('MH 10 AB 5575', '23U', 129, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '27L', 129, 25).createObject() == True
-        assert Booking('MH 10 AB 5575', '9L', 129, 35).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 129, 27).createObject() == True
-        assert Booking('MH 10 AB 5575', '26L', 129, 24).createObject() == True
-        assert Booking('MH 10 AB 5575', '6U', 129, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '21L', 129, 28).createObject() == True
-        assert Booking('MH 10 AB 5575', '5U', 129, 5).createObject() == True
-        assert Booking('MH 10 AB 5575', '17U', 129, 27).createObject() == True
-        assert Booking('MH 10 AB 5575', '30U', 129, 33).createObject() == True
-        assert Booking('MH 12 AB 5440', '1L', 130, 12).createObject() == True
-        assert Booking('MH 12 AB 5440', '25L', 130, 28).createObject() == True
-        assert Booking('MH 12 AB 5440', '20L', 130, 22).createObject() == True
-        assert Booking('MH 12 AB 5440', '3L', 130, 40).createObject() == True
-        assert Booking('MH 12 AB 5440', '29U', 130, 30).createObject() == True
-        assert Booking('MH 12 AB 5440', '7L', 130, 35).createObject() == True
-        assert Booking('MH 12 AB 5440', '27L', 130, 29).createObject() == True
-        assert Booking('MH 12 AB 5440', '16U', 130, 29).createObject() == True
-        assert Booking('MH 12 AB 5440', '26L', 130, 14).createObject() == True
-        assert Booking('MH 12 AB 5440', '8L', 130, 34).createObject() == True
-        assert Booking('MH 12 AB 5440', '10U', 130, 20).createObject() == True
-        assert Booking('MH 12 AB 5440', '18U', 130, 27).createObject() == True
-        assert Booking('MH 11 AB 9332', '22U', 131, 15).createObject() == True
-        assert Booking('MH 11 AB 9332', '14L', 131, 9).createObject() == True
-        assert Booking('MH 11 AB 9332', '17U', 131, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '2L', 131, 2).createObject() == True
-        assert Booking('MH 11 AB 9332', '13L', 131, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '27L', 131, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '28U', 131, 32).createObject() == True
-        assert Booking('MH 11 AB 9332', '30U', 131, 37).createObject() == True
-        assert Booking('MH 11 AB 9332', '4U', 131, 6).createObject() == True
-        assert Booking('MH 11 AB 9332', '8L', 131, 35).createObject() == True
-        assert Booking('MH 11 AB 9332', '23U', 131, 24).createObject() == True
-        assert Booking('MH 11 AB 9332', '26L', 131, 22).createObject() == True
-        assert Booking('MH 11 AB 9332', '11U', 131, 24).createObject() == True
-        assert Booking('MH 11 AB 9332', '1L', 131, 32).createObject() == True
-        assert Booking('MH 11 AB 9332', '25L', 131, 10).createObject() == True
-        assert Booking('MH 11 AB 9332', '16U', 131, 6).createObject() == True
-        assert Booking('MH 11 AB 9332', '19L', 131, 20).createObject() == True
-        assert Booking('MH 11 AB 9332', '20L', 131, 18).createObject() == True
-        assert Booking('MH 11 AB 9332', '18U', 131, 17).createObject() == True
-        assert Booking('MH 11 AB 9332', '15L', 131, 22).createObject() == True
-        assert Booking('MH 11 AB 5703', '3L', 132, 32).createObject() == True
-        assert Booking('MH 11 AB 5703', '11U', 132, 13).createObject() == True
-        assert Booking('MH 11 AB 5703', '10U', 132, 38).createObject() == True
-        assert Booking('MH 11 AB 5703', '8L', 132, 2).createObject() == True
-        assert Booking('MH 11 AB 5703', '6U', 132, 24).createObject() == True
-        assert Booking('MH 11 AB 5703', '9L', 132, 9).createObject() == True
-        assert Booking('MH 11 AB 5703', '1L', 132, 33).createObject() == True
-        assert Booking('MH 11 AB 5703', '22U', 132, 38).createObject() == True
-        assert Booking('MH 11 AB 5703', '13L', 132, 18).createObject() == True
-        assert Booking('MH 11 AB 5703', '30U', 132, 9).createObject() == True
-        assert Booking('MH 11 AB 5703', '17U', 132, 4).createObject() == True
-        assert Booking('MH 11 AB 5703', '18U', 132, 27).createObject() == True
-        assert Booking('MH 11 AB 5703', '14L', 132, 7).createObject() == True
-        assert Booking('MH 11 AB 5703', '7L', 132, 5).createObject() == True
-        assert Booking('MH 9 AB 8308', '1L', 133, 18).createObject() == True
-        assert Booking('MH 9 AB 8308', '21L', 133, 4).createObject() == True
-        assert Booking('MH 9 AB 8308', '12U', 133, 29).createObject() == True
-        assert Booking('MH 9 AB 8308', '26L', 133, 24).createObject() == True
-        assert Booking('MH 9 AB 8308', '17U', 133, 19).createObject() == True
-        assert Booking('MH 9 AB 8308', '15L', 133, 8).createObject() == True
-        assert Booking('MH 9 AB 8308', '25L', 133, 35).createObject() == True
-        assert Booking('MH 9 AB 8308', '9L', 133, 16).createObject() == True
-        assert Booking('MH 9 AB 8308', '28U', 133, 8).createObject() == True
-        assert Booking('MH 9 AB 8308', '10U', 133, 38).createObject() == True
-        assert Booking('MH 9 AB 8308', '2L', 133, 11).createObject() == True
-        assert Booking('MH 9 AB 8308', '27L', 133, 32).createObject() == True
-        assert Booking('MH 9 AB 8308', '3L', 133, 33).createObject() == True
-        assert Booking('MH 9 AB 8308', '14L', 133, 27).createObject() == True
-        assert Booking('MH 9 AB 8308', '4U', 133, 6).createObject() == True
-        assert Booking('MH 9 AB 8308', '13L', 133, 19).createObject() == True
-        assert Booking('MH 9 AB 8308', '18U', 133, 9).createObject() == True
-        assert Booking('MH 9 AB 8308', '24U', 133, 14).createObject() == True
-        assert Booking('MH 17 AB 9316', '5U', 134, 6).createObject() == True
-        assert Booking('MH 17 AB 9316', '3L', 134, 24).createObject() == True
-        assert Booking('MH 17 AB 9316', '14L', 134, 21).createObject() == True
-        assert Booking('MH 17 AB 9316', '20L', 134, 39).createObject() == True
-        assert Booking('MH 17 AB 9316', '15L', 134, 29).createObject() == True
-        assert Booking('MH 17 AB 9316', '25L', 134, 4).createObject() == True
-        assert Booking('MH 17 AB 9316', '19L', 134, 5).createObject() == True
-        assert Booking('MH 17 AB 9316', '26L', 134, 28).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 134, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '12U', 134, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '4U', 134, 12).createObject() == True
-        assert Booking('MH 17 AB 9316', '8L', 134, 25).createObject() == True
-        assert Booking('MH 17 AB 9316', '18U', 134, 35).createObject() == True
-        assert Booking('MH 17 AB 9316', '2L', 134, 30).createObject() == True
-        assert Booking('MH 17 AB 9316', '9L', 134, 20).createObject() == True
-        assert Booking('MH 17 AB 9316', '7L', 134, 22).createObject() == True
-        assert Booking('MH 17 AB 9316', '11U', 134, 40).createObject() == True
-        assert Booking('MH 17 AB 9316', '22U', 134, 7).createObject() == True
-        assert Booking('MH 17 AB 9316', '29U', 134, 19).createObject() == True
-        assert Booking('MH 17 AB 9316', '1L', 135, 24).createObject() == True
-        assert Booking('MH 17 AB 9316', '28U', 135, 32).createObject() == True
-        assert Booking('MH 17 AB 9316', '20L', 135, 12).createObject() == True
-        assert Booking('MH 17 AB 9316', '25L', 135, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '17U', 135, 21).createObject() == True
-        assert Booking('MH 17 AB 9316', '26L', 135, 22).createObject() == True
-        assert Booking('MH 17 AB 9316', '8L', 135, 17).createObject() == True
-        assert Booking('MH 17 AB 9316', '14L', 135, 8).createObject() == True
-        assert Booking('MH 17 AB 9316', '9L', 135, 38).createObject() == True
-        assert Booking('MH 17 AB 9316', '12U', 135, 29).createObject() == True
-        assert Booking('MH 17 AB 9316', '6U', 135, 3).createObject() == True
-        assert Booking('MH 17 AB 9316', '23U', 135, 4).createObject() == True
-        assert Booking('MH 17 AB 8217', '10U', 136, 3).createObject() == True
-        assert Booking('MH 17 AB 8217', '13L', 136, 29).createObject() == True
-        assert Booking('MH 17 AB 8217', '7L', 136, 22).createObject() == True
-        assert Booking('MH 17 AB 8217', '11U', 136, 22).createObject() == True
-        assert Booking('MH 17 AB 8217', '14L', 136, 1).createObject() == True
-        assert Booking('MH 17 AB 8217', '3L', 136, 6).createObject() == True
-        assert Booking('MH 17 AB 8217', '23U', 136, 7).createObject() == True
-        assert Booking('MH 17 AB 8217', '4U', 136, 9).createObject() == True
-        assert Booking('MH 17 AB 8217', '16U', 136, 39).createObject() == True
-        assert Booking('MH 17 AB 8217', '30U', 136, 39).createObject() == True
-        assert Booking('MH 17 AB 8217', '21L', 136, 23).createObject() == True
-        assert Booking('MH 17 AB 8217', '9L', 136, 1).createObject() == True
-        assert Booking('MH 17 AB 8217', '29U', 136, 19).createObject() == True
-        assert Booking('MH 17 AB 8217', '25L', 136, 23).createObject() == True
-        assert Booking('MH 17 AB 5692', '8L', 137, 14).createObject() == True
-        assert Booking('MH 17 AB 5692', '16U', 137, 1).createObject() == True
-        assert Booking('MH 17 AB 5692', '25L', 137, 10).createObject() == True
-        assert Booking('MH 17 AB 5692', '11U', 137, 12).createObject() == True
-        assert Booking('MH 17 AB 5692', '7L', 137, 16).createObject() == True
-        assert Booking('MH 17 AB 5692', '14L', 137, 14).createObject() == True
-        assert Booking('MH 17 AB 5692', '24U', 137, 29).createObject() == True
-        assert Booking('MH 17 AB 5692', '21L', 137, 3).createObject() == True
-        assert Booking('MH 17 AB 5692', '28U', 137, 22).createObject() == True
-        assert Booking('MH 17 AB 5692', '19L', 137, 6).createObject() == True
-        assert Booking('MH 17 AB 5692', '2L', 137, 29).createObject() == True
-        assert Booking('MH 17 AB 5692', '4U', 137, 39).createObject() == True
-        assert Booking('MH 17 AB 5692', '9L', 137, 15).createObject() == True
-        assert Booking('MH 17 AB 5692', '26L', 137, 2).createObject() == True
-        assert Booking('MH 19 AB 9404', '15L', 138, 30).createObject() == True
-        assert Booking('MH 19 AB 9404', '17U', 138, 16).createObject() == True
-        assert Booking('MH 19 AB 9404', '3L', 138, 17).createObject() == True
-        assert Booking('MH 19 AB 9404', '5U', 138, 34).createObject() == True
-        assert Booking('MH 19 AB 9404', '13L', 138, 29).createObject() == True
-        assert Booking('MH 19 AB 9404', '9L', 138, 8).createObject() == True
-        assert Booking('MH 19 AB 9404', '26L', 138, 10).createObject() == True
-        assert Booking('MH 19 AB 9404', '10U', 138, 11).createObject() == True
-        assert Booking('MH 19 AB 9404', '14L', 138, 26).createObject() == True
-        assert Booking('MH 19 AB 9404', '8L', 138, 14).createObject() == True
-        assert Booking('MH 19 AB 9404', '18U', 138, 21).createObject() == True
-        assert Booking('MH 19 AB 9404', '16U', 138, 28).createObject() == True
-        assert Booking('MH 19 AB 9404', '23U', 138, 36).createObject() == True
-        assert Booking('MH 19 AB 9404', '22U', 138, 24).createObject() == True
-        assert Booking('MH 19 AB 9404', '20L', 138, 40).createObject() == True
-        assert Booking('MH 19 AB 9404', '29U', 138, 12).createObject() == True
-        assert Booking('MH 19 AB 9404', '4U', 138, 7).createObject() == True
-        assert Booking('MH 19 AB 9404', '1L', 138, 14).createObject() == True
-        assert Booking('MH 19 AB 9404', '27L', 138, 8).createObject() == True
-        assert Booking('MH 11 AB 7989', '21L', 139, 7).createObject() == True
-        assert Booking('MH 11 AB 7989', '12U', 139, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '29U', 139, 9).createObject() == True
-        assert Booking('MH 11 AB 7989', '15L', 139, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '2L', 139, 15).createObject() == True
-        assert Booking('MH 11 AB 7989', '16U', 139, 11).createObject() == True
-        assert Booking('MH 11 AB 7989', '27L', 139, 40).createObject() == True
-        assert Booking('MH 11 AB 7989', '13L', 139, 14).createObject() == True
-        assert Booking('MH 11 AB 7989', '26L', 139, 36).createObject() == True
-        assert Booking('MH 11 AB 7989', '18U', 139, 16).createObject() == True
-        assert Booking('MH 11 AB 7989', '14L', 139, 30).createObject() == True
-        assert Booking('MH 11 AB 7989', '30U', 139, 11).createObject() == True
-        assert Booking('MH 11 AB 7989', '28U', 139, 37).createObject() == True
-        assert Booking('MH 11 AB 7989', '6U', 139, 1).createObject() == True
-        assert Booking('MH 11 AB 7989', '20L', 139, 5).createObject() == True
-        assert Booking('MH 11 AB 7989', '10U', 139, 14).createObject() == True
-        assert Booking('MH 11 AB 7989', '3L', 139, 28).createObject() == True
-        assert Booking('MH 11 AB 7989', '1L', 139, 18).createObject() == True
-        assert Booking('MH 9 AB 8797', '16U', 140, 25).createObject() == True
-        assert Booking('MH 9 AB 8797', '19L', 140, 26).createObject() == True
-        assert Booking('MH 9 AB 8797', '13L', 140, 34).createObject() == True
-        assert Booking('MH 9 AB 8797', '25L', 140, 32).createObject() == True
-        assert Booking('MH 9 AB 8797', '30U', 140, 29).createObject() == True
-        assert Booking('MH 9 AB 8797', '11U', 140, 23).createObject() == True
-        assert Booking('MH 9 AB 8797', '7L', 140, 25).createObject() == True
-        assert Booking('MH 9 AB 8797', '3L', 140, 21).createObject() == True
-        assert Booking('MH 9 AB 8797', '1L', 140, 22).createObject() == True
-        assert Booking('MH 9 AB 8797', '21L', 140, 17).createObject() == True
-        assert Booking('MH 9 AB 8797', '9L', 140, 5).createObject() == True
-        assert Booking('MH 9 AB 8797', '22U', 140, 10).createObject() == True
-        assert Booking('MH 16 AB 7740', '13L', 141, 7).createObject() == True
-        assert Booking('MH 16 AB 7740', '22U', 141, 14).createObject() == True
-        assert Booking('MH 16 AB 7740', '15L', 141, 26).createObject() == True
-        assert Booking('MH 16 AB 7740', '17U', 141, 16).createObject() == True
-        assert Booking('MH 16 AB 7740', '4U', 141, 22).createObject() == True
-        assert Booking('MH 16 AB 7740', '5U', 141, 25).createObject() == True
-        assert Booking('MH 16 AB 7740', '11U', 141, 19).createObject() == True
-        assert Booking('MH 16 AB 7740', '29U', 141, 27).createObject() == True
-        assert Booking('MH 16 AB 7740', '25L', 141, 33).createObject() == True
-        assert Booking('MH 16 AB 7740', '27L', 141, 14).createObject() == True
-        assert Booking('MH 16 AB 7740', '19L', 141, 37).createObject() == True
-        assert Booking('MH 16 AB 7740', '20L', 141, 17).createObject() == True
-        assert Booking('MH 16 AB 7740', '12U', 141, 17).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 141, 33).createObject() == True
-        assert Booking('MH 16 AB 7740', '8L', 141, 1).createObject() == True
-        assert Booking('MH 16 AB 7740', '30U', 141, 16).createObject() == True
-        assert Booking('MH 16 AB 7740', '16U', 141, 24).createObject() == True
-        assert Booking('MH 16 AB 7740', '21L', 141, 27).createObject() == True
-        assert Booking('MH 16 AB 7740', '18U', 141, 22).createObject() == True
-        assert Booking('MH 19 AB 5367', '24U', 142, 17).createObject() == True
-        assert Booking('MH 19 AB 5367', '13L', 142, 28).createObject() == True
-        assert Booking('MH 19 AB 5367', '18U', 142, 24).createObject() == True
-        assert Booking('MH 19 AB 5367', '26L', 142, 34).createObject() == True
-        assert Booking('MH 19 AB 5367', '5U', 142, 39).createObject() == True
-        assert Booking('MH 19 AB 5367', '22U', 142, 28).createObject() == True
-        assert Booking('MH 19 AB 5367', '19L', 142, 39).createObject() == True
-        assert Booking('MH 19 AB 5367', '1L', 142, 33).createObject() == True
-        assert Booking('MH 19 AB 5367', '2L', 142, 14).createObject() == True
-        assert Booking('MH 19 AB 5367', '9L', 142, 23).createObject() == True
-        assert Booking('MH 19 AB 5367', '3L', 142, 36).createObject() == True
-        assert Booking('MH 19 AB 5367', '29U', 142, 27).createObject() == True
-        assert Booking('MH 19 AB 5367', '28U', 142, 24).createObject() == True
-        assert Booking('MH 19 AB 5367', '11U', 142, 24).createObject() == True
-        assert Booking('MH 19 AB 5367', '6U', 142, 15).createObject() == True
-        assert Booking('MH 10 AB 5575', '8L', 143, 3).createObject() == True
-        assert Booking('MH 10 AB 5575', '15L', 143, 39).createObject() == True
-        assert Booking('MH 10 AB 5575', '17U', 143, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '26L', 143, 23).createObject() == True
-        assert Booking('MH 10 AB 5575', '24U', 143, 32).createObject() == True
-        assert Booking('MH 10 AB 5575', '10U', 143, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '28U', 143, 26).createObject() == True
-        assert Booking('MH 10 AB 5575', '12U', 143, 9).createObject() == True
-        assert Booking('MH 10 AB 5575', '18U', 143, 40).createObject() == True
-        assert Booking('MH 10 AB 5575', '27L', 143, 1).createObject() == True
-        assert Booking('MH 10 AB 5575', '21L', 143, 4).createObject() == True
-        assert Booking('MH 10 AB 5575', '5U', 143, 33).createObject() == True
-        assert Booking('MH 10 AB 5575', '29U', 143, 11).createObject() == True
-        assert Booking('MH 11 AB 7889', '16U', 144, 25).createObject() == True
-        assert Booking('MH 11 AB 7889', '10U', 144, 15).createObject() == True
-        assert Booking('MH 11 AB 7889', '29U', 144, 9).createObject() == True
-        assert Booking('MH 11 AB 7889', '11U', 144, 18).createObject() == True
-        assert Booking('MH 11 AB 7889', '14L', 144, 18).createObject() == True
-        assert Booking('MH 11 AB 7889', '30U', 144, 34).createObject() == True
-        assert Booking('MH 11 AB 7889', '17U', 144, 10).createObject() == True
-        assert Booking('MH 11 AB 7889', '20L', 144, 29).createObject() == True
-        assert Booking('MH 11 AB 7889', '3L', 144, 12).createObject() == True
-        assert Booking('MH 11 AB 7889', '23U', 144, 1).createObject() == True
-        assert Booking('MH 17 AB 5692', '20L', 145, 37).createObject() == True
-        assert Booking('MH 17 AB 5692', '22U', 145, 21).createObject() == True
-        assert Booking('MH 17 AB 5692', '23U', 145, 19).createObject() == True
-        assert Booking('MH 17 AB 5692', '16U', 145, 40).createObject() == True
-        assert Booking('MH 17 AB 5692', '15L', 145, 39).createObject() == True
-        assert Booking('MH 17 AB 5692', '10U', 145, 36).createObject() == True
-        assert Booking('MH 17 AB 5692', '28U', 145, 28).createObject() == True
-        assert Booking('MH 17 AB 5692', '25L', 145, 29).createObject() == True
-        assert Booking('MH 17 AB 5692', '9L', 145, 4).createObject() == True
-        assert Booking('MH 17 AB 5692', '14L', 145, 20).createObject() == True
-        assert Booking('MH 17 AB 5692', '13L', 145, 22).createObject() == True
-        assert Booking('MH 13 AB 5137', '8L', 146, 35).createObject() == True
-        assert Booking('MH 13 AB 5137', '22U', 146, 5).createObject() == True
-        assert Booking('MH 13 AB 5137', '20L', 146, 33).createObject() == True
-        assert Booking('MH 13 AB 5137', '19L', 146, 3).createObject() == True
-        assert Booking('MH 13 AB 5137', '17U', 146, 35).createObject() == True
-        assert Booking('MH 13 AB 5137', '27L', 146, 14).createObject() == True
-        assert Booking('MH 13 AB 5137', '18U', 146, 16).createObject() == True
-        assert Booking('MH 13 AB 5137', '7L', 146, 3).createObject() == True
-        assert Booking('MH 13 AB 5137', '9L', 146, 29).createObject() == True
-        assert Booking('MH 13 AB 5137', '12U', 146, 13).createObject() == True
-        assert Booking('MH 13 AB 5137', '30U', 146, 34).createObject() == True
-        assert Booking('MH 13 AB 5137', '2L', 146, 23).createObject() == True
-        assert Booking('MH 13 AB 5137', '16U', 146, 32).createObject() == True
-        assert Booking('MH 13 AB 5137', '6U', 146, 18).createObject() == True
-        assert Booking('MH 13 AB 5137', '28U', 146, 35).createObject() == True
-        assert Booking('MH 13 AB 5137', '25L', 146, 14).createObject() == True
-        assert Booking('MH 13 AB 5137', '29U', 146, 19).createObject() == True
-        assert Booking('MH 13 AB 5137', '1L', 146, 22).createObject() == True
-        assert Booking('MH 13 AB 5137', '4U', 146, 22).createObject() == True
-        assert Booking('MH 13 AB 5137', '10U', 146, 27).createObject() == True
-        assert Booking('MH 11 AB 7989', '28U', 147, 13).createObject() == True
-        assert Booking('MH 11 AB 7989', '9L', 147, 40).createObject() == True
-        assert Booking('MH 11 AB 7989', '17U', 147, 19).createObject() == True
-        assert Booking('MH 11 AB 7989', '1L', 147, 16).createObject() == True
-        assert Booking('MH 11 AB 7989', '27L', 147, 1).createObject() == True
-        assert Booking('MH 11 AB 7989', '12U', 147, 19).createObject() == True
-        assert Booking('MH 11 AB 7989', '7L', 147, 26).createObject() == True
-        assert Booking('MH 11 AB 7989', '2L', 147, 40).createObject() == True
-        assert Booking('MH 11 AB 7989', '19L', 147, 14).createObject() == True
-        assert Booking('MH 11 AB 7989', '8L', 147, 18).createObject() == True
-        assert Booking('MH 11 AB 7989', '5U', 147, 34).createObject() == True
-        assert Booking('MH 11 AB 7989', '21L', 147, 21).createObject() == True
-        assert Booking('MH 11 AB 7989', '25L', 147, 40).createObject() == True
-        assert Booking('MH 11 AB 7989', '11U', 147, 14).createObject() == True
-        assert Booking('MH 11 AB 7989', '15L', 147, 38).createObject() == True
-        assert Booking('MH 11 AB 7989', '23U', 147, 21).createObject() == True
-        assert Booking('MH 11 AB 7989', '24U', 147, 23).createObject() == True
-        assert Booking('MH 11 AB 7989', '29U', 147, 23).createObject() == True
-        assert Booking('MH 11 AB 7989', '16U', 147, 32).createObject() == True
-        assert Booking('MH 11 AB 7989', '14L', 147, 26).createObject() == True
-        assert Booking('MH 11 AB 7889', '13L', 148, 9).createObject() == True
-        assert Booking('MH 11 AB 7889', '6U', 148, 34).createObject() == True
-        assert Booking('MH 11 AB 7889', '16U', 148, 38).createObject() == True
-        assert Booking('MH 11 AB 7889', '10U', 148, 5).createObject() == True
-        assert Booking('MH 11 AB 7889', '1L', 148, 13).createObject() == True
-        assert Booking('MH 11 AB 7889', '22U', 148, 14).createObject() == True
-        assert Booking('MH 11 AB 7889', '19L', 148, 9).createObject() == True
-        assert Booking('MH 11 AB 7889', '18U', 148, 3).createObject() == True
-        assert Booking('MH 11 AB 7889', '25L', 148, 22).createObject() == True
-        assert Booking('MH 11 AB 7889', '29U', 148, 30).createObject() == True
-        assert Booking('MH 11 AB 7889', '7L', 148, 24).createObject() == True
-        assert Booking('MH 11 AB 7889', '17U', 148, 15).createObject() == True
-        assert Booking('MH 11 AB 7889', '21L', 148, 24).createObject() == True
-        assert Booking('MH 11 AB 7889', '11U', 148, 31).createObject() == True
-        assert Booking('MH 11 AB 7889', '4U', 148, 7).createObject() == True
-        assert Booking('MH 11 AB 7889', '27L', 148, 19).createObject() == True
-        assert Booking('MH 11 AB 7889', '2L', 148, 40).createObject() == True
-        assert Booking('MH 11 AB 7889', '8L', 148, 11).createObject() == True
-        assert Booking('MH 11 AB 7889', '9L', 148, 34).createObject() == True
-        assert Booking('MH 8 AB 8272', '18U', 149, 33).createObject() == True
-        assert Booking('MH 8 AB 8272', '24U', 149, 1).createObject() == True
-        assert Booking('MH 8 AB 8272', '4U', 149, 33).createObject() == True
-        assert Booking('MH 8 AB 8272', '11U', 149, 35).createObject() == True
-        assert Booking('MH 8 AB 8272', '19L', 149, 14).createObject() == True
-        assert Booking('MH 8 AB 8272', '25L', 149, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '10U', 149, 32).createObject() == True
-        assert Booking('MH 8 AB 8272', '2L', 149, 2).createObject() == True
-        assert Booking('MH 8 AB 8272', '1L', 149, 30).createObject() == True
-        assert Booking('MH 8 AB 8272', '16U', 149, 40).createObject() == True
-        assert Booking('MH 8 AB 8272', '3L', 149, 40).createObject() == True
-        assert Booking('MH 8 AB 8272', '26L', 149, 38).createObject() == True
-        assert Booking('MH 8 AB 8272', '5U', 149, 20).createObject() == True
-        assert Booking('MH 8 AB 8272', '23U', 149, 6).createObject() == True
-        assert Booking('MH 8 AB 8272', '30U', 149, 18).createObject() == True
-        assert Booking('MH 8 AB 8272', '27L', 149, 33).createObject() == True
-        assert Booking('MH 8 AB 8272', '22U', 149, 33).createObject() == True
-        assert Booking('MH 16 AB 7740', '7L', 150, 31).createObject() == True
-        assert Booking('MH 16 AB 7740', '15L', 150, 30).createObject() == True
-        assert Booking('MH 16 AB 7740', '14L', 150, 30).createObject() == True
-        assert Booking('MH 16 AB 7740', '23U', 150, 22).createObject() == True
-        assert Booking('MH 16 AB 7740', '26L', 150, 10).createObject() == True
-        assert Booking('MH 16 AB 7740', '9L', 150, 15).createObject() == True
-        assert Booking('MH 16 AB 7740', '19L', 150, 4).createObject() == True
-        assert Booking('MH 16 AB 7740', '1L', 150, 22).createObject() == True
-        assert Booking('MH 16 AB 7740', '12U', 150, 11).createObject() == True
-        assert Booking('MH 16 AB 7740', '11U', 150, 21).createObject() == True
-        assert Booking('MH 16 AB 7740', '27L', 150, 36).createObject() == True
-        assert Booking('MH 16 AB 7740', '28U', 150, 26).createObject() == True
-        assert Booking('MH 16 AB 7740', '22U', 150, 8).createObject() == True
-        assert Booking('MH 16 AB 7740', '2L', 150, 34).createObject() == True
-        assert Booking('MH 16 AB 7740', '6U', 150, 20).createObject() == True
 
 def main():
     unittest.main(verbosity=2)

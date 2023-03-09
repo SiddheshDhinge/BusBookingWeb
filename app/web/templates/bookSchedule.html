@@ -12,15 +12,17 @@
         grid-template-columns: 1fr 3fr;
         row-gap: 1px;
     }
-
     .table-cell {
         background-color: lightgreen;
         padding: 2vh;
         border: 1px solid black;
     }
-
     .table-cell-header {
         background-color: burlywood;
+    }
+    .submit-btn-div{
+        grid-column-start: 1;
+        grid-column-end: -1
     }
 
     {# Stop Container Styles #}
@@ -52,6 +54,24 @@
     #trip-status-warning{
         display: none;
     }
+
+
+    {# Seat Editor Extra #}
+    .bus-cell-enable{
+        cursor: pointer;
+    }
+    .bus-cell-selected{
+        background-color: rgb(226, 111, 111) !important;
+        border: 1px solid rgb(248, 0, 0) !important;
+    }
+    .bus-cell-booked-male{
+        background-color: rgb(111, 197, 226) !important;
+        cursor: default;
+    }
+    .bus-cell-booked-female{
+        background-color: pink !important;
+        cursor: default;
+    }
 </style>
 <link rel="stylesheet" href="/css/busSeatEditor.css">
 {% endblock %}
@@ -61,105 +81,190 @@
             View Schedule Details
         </div>
         
-        <div class="main-table-grid">
-            <div class="table-cell table-cell-header">
-                From City
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['from_city']['city-name']}}
-            </div>
+        <form action="{{url_for('confirmBookSchedule')}}" method="POST">
+            <div class="main-table-grid">
+                <div class="table-cell table-cell-header">
+                    From City
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['from_city']['city-name']}}
+                </div>
 
-            <div class="table-cell table-cell-header">
-                To City
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['to_city']['city-name']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                From Date/Time
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
-                {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                To Date/Time
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
-                {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Bus Number Plate
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['bus']['bus-number-plate']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Bus Type
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['bus']['bus-bus-type']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Schedule Fair Fees
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Select Seat
-            </div>
-            <div class="table-cell">
-                <div>
-                    <div class="bus">
-                        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-                        <div id="bus-floor-1" class="bus-floor">
+                <div class="table-cell table-cell-header">
+                    To City
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['to_city']['city-name']}}
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    From Date/Time
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
+                    {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    To Date/Time
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
+                    {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    Bus Number Plate
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['bus']['bus-number-plate']}}
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    Bus Type
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['bus']['bus-bus-type']}}
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    Schedule Fair Fees
+                </div>
+                <div class="table-cell">
+                    {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
+                </div>
 
+                <div class="table-cell table-cell-header">
+                    Select Passenger
+                </div>
+                <div class="table-cell">
+                    <select id="passenger-selector" name="passenger-id">
+                    {% for passengerObj in response_data['data']['list-passenger'] %}
+                        <option data-passenger-gender="{{passengerObj['passenger-gender']}}" value="{{passengerObj['passenger-id']}}"> {{passengerObj['passenger-name']}} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    Select Seat
+                </div>
+                <div class="table-cell">
+                    <input type="hidden" id="seat-selector" name="seat-seat-no">
+                    <div>
+                        <div class="bus">
+                            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                            <div id="bus-floor-1" class="bus-floor">
+
+                            </div>
                         </div>
-                    </div>
-                    <br><br>
-                    
-                    <div class="bus">
-                        <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-                        <div id="bus-floor-2" class="bus-floor">
-                    
+                        <br><br>
+                        
+                        <div class="bus">
+                            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                            <div id="bus-floor-2" class="bus-floor">
+                        
+                            </div>
                         </div>
+                        <br><br>
+            
                     </div>
-                    <br><br>
-        
+                </div>
+                
+                <div class="table-cell table-cell-header">
+                    Select Boarding Stop
+                </div>
+                <div class="table-cell">
+                    <select id="stop-selector" name="booking-from-stop-id">
+                    {% for stopCityObj in response_data['data']['schedule']['stop'] %}
+                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="table-cell table-cell-header">
+                    Select Dropping Stop
+                </div>
+                <div class="table-cell">
+                    <select id="stop-selector" name="booking-to-stop-id">
+                    {% for stopCityObj in response_data['data']['schedule']['stop'] %}
+                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="table-cell submit-btn-div">
+                    <button type="submit">Book Ticket</button>
                 </div>
             </div>
-            
-            <div class="table-cell table-cell-header">
-                Select Passenger
-            </div>
-            <div class="table-cell">
-                <select id="passenger-selector" name="passenger-id">
-                {% for passengerObj in response_data['data']['list-passenger'] %}
-                    <option value="{{passengerObj['passenger-id']}}"> {{passengerObj['passenger-name']}} </option>
-                {% endfor %}
-                </select>
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Select Boarding Stop
-            </div>
-            <div class="table-cell">
-                <select id="stop-selector" name="stop-id">
-                {% for stopCityObj in response_data['data']['schedule']['stop'] %}
-                    <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
-                {% endfor %}
-                </select>
-            </div>
+        </form>
+        <div id="json-data">
+            {% for bookingPassengerObj in response_data['data']['list-booking'] %}
+                <div data-seat-no="{{bookingPassengerObj['booking']['seat-seat-no']}}" data-passenger-gender="{{bookingPassengerObj['passenger']['passenger-gender']}}">
+                </div>
+            {% endfor %}
         </div>
         
+        <script>
+            let prevSelectedSeat = null;
+            function selectSeat(e)
+            {
+                const element = e.target;
+
+                if(element.dataset.isEnabled === "false" || element.hasAttribute("data-passenger-gender"))
+                {
+                    return;
+                }
+
+                const seatNumber = element.dataset.seatNo;
+                
+                if(prevSelectedSeat !== null)
+                {
+                    prevSelectedSeat.classList.remove("bus-cell-selected");
+                }
+
+                element.classList.add("bus-cell-selected");
+                document.getElementById('seat-selector').value = seatNumber;
+                prevSelectedSeat = element;
+            }
+            function assignPassengerGender(floorElement)
+            {
+                const seats = floorElement.getElementsByTagName('div');
+                const seatGenderDataEle = document.getElementById('json-data').children;
+                console.log(seatGenderDataEle);
+                const seatGenderDataObj = {};
+                for(let i=0; i<seatGenderDataEle.length; i++)
+                {
+                    const seatNo = seatGenderDataEle[i].dataset.seatNo;
+                    const passengerGender = seatGenderDataEle[i].dataset.passengerGender;
+                    seatGenderDataObj[seatNo] = passengerGender;
+                }
+
+                console.log(seatGenderDataObj);
+
+                for(let i=0; i< seats.length; i++)
+                {
+                    const curSeat = seats[i];
+                    if(curSeat.dataset.isEnabled === "false")
+                        continue;
+
+                    curSeatPassengerGender = seatGenderDataObj[curSeat.dataset.seatNo];
+                    if(curSeatPassengerGender === undefined)
+                        continue;
+
+                    curSeat.dataset.passengerGender = curSeatPassengerGender;
+                    if(curSeatPassengerGender === "M")
+                    {
+                        curSeat.classList.add("bus-cell-booked-male");
+                    }
+                    else if(curSeatPassengerGender === 'F')
+                    {
+                        curSeat.classList.add("bus-cell-booked-female");
+                    }
+                }
+
+            }
+
+        </script>
         <script>
             let response_data = null
             const formData = new FormData();
@@ -195,11 +300,13 @@
                 changeTotalFloors();
                 setSeats(floor1);
                 nameSeats(floor1, 1);
-
+                assignPassengerGender(floor1);
+                
                 if(totalFloors == 2)
                 {
                     setSeats(floor2);
                     nameSeats(floor2, floorRows +1);
+                    assignPassengerGender(floor2);
                 }
             }
 
@@ -227,6 +334,7 @@
                     floorElement.appendChild(seat);
                     seat.innerText = i;
                     seat.classList.add("bus-cell");
+                    seat.addEventListener('click', selectSeat);
                     if(busType == "SEAT")
                     {
                         seat.classList.add("bus-cell-seat");
@@ -268,12 +376,13 @@
                         seatNumber = seatNumber + floorRows;
                     }
                     seats[i].innerText = seatNumber + floorTag;
-                    seats[i].dataset.seatNumber = seatNumber + floorTag;
-                    const isEnabled = response_data['data']['list-seat'][seats[i].dataset.seatNumber]['seat-is-enabled'];
+                    seats[i].dataset.seatNo = seatNumber + floorTag;
+                    const isEnabled = response_data['data']['list-seat'][seats[i].dataset.seatNo]['seat-is-enabled'];
                     seats[i].dataset.isEnabled = isEnabled;
                     
                     if(isEnabled == false)
                     {
+                        seats[i].classList.remove('bus-cell-enable');
                         seats[i].classList.add('bus-cell-disable');
                     }
                     seatNumber++;
