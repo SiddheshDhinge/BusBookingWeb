@@ -333,15 +333,24 @@ class ComplexOperation:
     
 
     def getBookedPassengers(self, scheduleId: int):
-        queryResult = DB_session.query(Booking, Passenger)\
+        FromStop = aliased(Stop)
+        ToStop = aliased(Stop)
+
+        queryResult = DB_session.query(Booking, Passenger, Customer, FromStop, ToStop)\
             .join(Passenger, Booking.passengerId == Passenger.passengerId)\
+            .join(Customer, Customer.username == Passenger.username)\
+            .join(FromStop, FromStop.stopId == Booking.fromStopId)\
+            .join(ToStop, ToStop.stopId == Booking.toStopId)\
             .filter(Booking.scheduleId == scheduleId).all()
         
         self.response_data[label.data][Booking.objListName] = [
             {
                 Booking.objName : bookingObj.serialize(),
-                Passenger.objName : passengerObj.serialize()
-            } for bookingObj, passengerObj in queryResult
+                Passenger.objName : passengerObj.serialize(),
+                Customer.objName : customerObj.serialize(),
+                f'from-{Stop.objName}' : fromStopObj.serialize(),
+                f'to-{Stop.objName}' : toStopObj.serialize()
+            } for bookingObj, passengerObj, customerObj, fromStopObj, toStopObj in queryResult
         ]
         return self.response_data
     

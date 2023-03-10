@@ -65,7 +65,7 @@ timeBlockNight = 'time-night' #}
                 </select>
 
                 <label for="agency">Owner:</label>
-                <input id="agency" type="text" name="owner-username" list="ownerList" />
+                <input id="agency" type="text" name="owner-agency-name" list="ownerList" />
                 <datalist id="ownerList">
                     {% for owner in response_data['data']['owner'] %}
                         <option value="{{owner['username']}}"> {{owner['username']}} </option>

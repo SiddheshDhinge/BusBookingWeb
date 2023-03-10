@@ -9,7 +9,6 @@ from .model.model_city import City
 from .model.model_stop import Stop
 from .model.model_booking import Booking
 from .model.model_at import At
-from .model.database import DB_session
 from .model.session_manager import getSessionStatus
 from .model.complex_operations import ComplexOperation
 from . import label, label_reason
@@ -108,7 +107,7 @@ class ControllerCustomer:
         username = session[label.username]
         session[label.schedule_id] = scheduleId
         
-        self.response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= None, useOwnerUsername= False)
+        self.response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= None, useOwnerUsername= False)
         self.response_data[label.data][Passenger.objListName] = ComplexOperation().getCustomerPassengers(customerUsername= username)[label.data][Passenger.objListName]
         self.response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
         self.response_data[label.options] = {
@@ -122,7 +121,7 @@ class ControllerCustomer:
     def handleConfirmBookSchedule(self):
         scheduleId = session[label.schedule_id]
         session.pop(label.schedule_id)
-        scheduleObj = ComplexOperation().getSchedule(scheduleId= scheduleId, owner_username= None, useOwnerUsername= False)
+        scheduleObj = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= None, useOwnerUsername= False)
         numberPlate = scheduleObj[label.data][Schedule.objName][Bus.objName][label.bus_numberPlate]
         seatNo = request.form.get(label.seat_seatNo)
         passengerId = request.form.get(label.passenger_id)
@@ -134,8 +133,7 @@ class ControllerCustomer:
 
         if(result == True):
             flash(label_reason.bookingCreationSuccess)
-            session[label.booking_id] = bookingObj.bookingId
-            return redirect(url_for('viewBookingDetails'))
+            return redirect(url_for('viewBookingDetails', bookingId= bookingObj.bookingId))
         else:
             flash(label_reason.bookingCreationFailed)
             return redirect(url_for('landingCustomer'))

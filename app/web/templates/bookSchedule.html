@@ -124,7 +124,7 @@
                     Bus Type
                 </div>
                 <div class="table-cell">
-                    {{response_data['data']['schedule']['bus']['bus-bus-type']}}
+                    {{response_data['data']['schedule']['bus']['bus-type']}}
                 </div>
                 
                 <div class="table-cell table-cell-header">
@@ -149,7 +149,7 @@
                     Select Seat
                 </div>
                 <div class="table-cell">
-                    <input type="hidden" id="seat-selector" name="seat-seat-no">
+                    <input type="hidden" id="seat-selector" name="seat-no">
                     <div>
                         <div class="bus">
                             <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
@@ -175,7 +175,7 @@
                 </div>
                 <div class="table-cell">
                     <select id="stop-selector" name="booking-from-stop-id">
-                    {% for stopCityObj in response_data['data']['schedule']['stop'] %}
+                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
                         <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
                     {% endfor %}
                     </select>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="table-cell">
                     <select id="stop-selector" name="booking-to-stop-id">
-                    {% for stopCityObj in response_data['data']['schedule']['stop'] %}
+                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
                         <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
                     {% endfor %}
                     </select>
@@ -199,7 +199,7 @@
         </form>
         <div id="json-data">
             {% for bookingPassengerObj in response_data['data']['list-booking'] %}
-                <div data-seat-no="{{bookingPassengerObj['booking']['seat-seat-no']}}" data-passenger-gender="{{bookingPassengerObj['passenger']['passenger-gender']}}">
+                <div data-seat-no="{{bookingPassengerObj['booking']['seat-no']}}" data-passenger-gender="{{bookingPassengerObj['passenger']['passenger-gender']}}">
                 </div>
             {% endfor %}
         </div>
@@ -230,7 +230,7 @@
             {
                 const seats = floorElement.getElementsByTagName('div');
                 const seatGenderDataEle = document.getElementById('json-data').children;
-                console.log(seatGenderDataEle);
+                // console.log(seatGenderDataEle);
                 const seatGenderDataObj = {};
                 for(let i=0; i<seatGenderDataEle.length; i++)
                 {
@@ -239,7 +239,7 @@
                     seatGenderDataObj[seatNo] = passengerGender;
                 }
 
-                console.log(seatGenderDataObj);
+                // console.log(seatGenderDataObj);
 
                 for(let i=0; i< seats.length; i++)
                 {
@@ -291,7 +291,7 @@
             
             function jsonLoaded()
             {
-                busType = response_data['data']['bus']['bus-bus-type'];
+                busType = response_data['data']['bus']['bus-type'];
                 totalFloors = response_data['data']['bus']['bus-total-floors'];
                 floorRows = response_data['data']['bus']['bus-floor-rows'];
                 floorColumns = response_data['data']['bus']['bus-floor-columns'];

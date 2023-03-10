@@ -11,7 +11,6 @@ from .model.model_booking import Booking
 from .model.model_at import At
 from .model.complex_operations import ComplexOperation
 from .model.session_manager import getSessionStatus
-# from model.session_manager import getSessionStatus, addActiveSession
 
 from . import label, label_reason
 
@@ -86,6 +85,27 @@ class ControllerOperator:
         return redirect(url_for('landingOperator'))
 
     
+    def handleViewOperatorScheduleDetails(self):
+        scheduleId = request.form.get(label.schedule_id, None)
+            
+        if not scheduleId:
+            flash(label_reason.invalidScheduleIdError)
+            return redirect(url_for('viewOperatorSchedules'))
+        
+        response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= None, useOwnerUsername= False)
+        response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
+
+        if not response_data[label.success]:
+            flash(label_reason.invalidScheduleIdError)
+            return redirect(url_for('viewSchedules'))
+        
+        response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+        
+        # return jsonify(response_data)
+        return render_template('viewOperatorScheduleDetails.html', response_data= response_data)
+
 
     # def handleViewAllOperator(self):
     #     if Operator.isLoggedOn() == False:

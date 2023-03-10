@@ -94,7 +94,7 @@
                 Seat Number
             </div>
             <div class="table-cell">
-                {{ response_data['data']['booking']['seat-seat-no'] }}
+                {{ response_data['data']['booking']['seat-no'] }}
             </div>
 
             <div class="table-cell table-cell-header">
@@ -119,6 +119,13 @@
             <div class="table-cell">
                 {{ response_data['data']['schedule']['schedule-to-date'] }} <br>
                 {{ response_data['data']['schedule']['schedule-drop-time'] }}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Fair Fees Paid
+            </div>
+            <div class="table-cell">
+                &#8377; {{ response_data['data']['schedule']['schedule-fair-fees'] }}
             </div>
             
             <div class="table-cell table-cell-header">
@@ -179,7 +186,7 @@
                         Bus Type
                     </div>
                     <div class="table-cell">
-                        {{ response_data['data']['bus']['bus-bus-type'] }}
+                        {{ response_data['data']['bus']['bus-type'] }}
                     </div>
                 </div>
             </div>
@@ -203,13 +210,6 @@
                         {{ response_data['data']['operator']['operator-contact'] }}
                     </div>
                 </div>
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Fair Fees Paid
-            </div>
-            <div class="table-cell">
-                &#8377; {{ response_data['data']['schedule']['schedule-fair-fees'] }}
             </div>
             
             <div class="table-cell table-cell-header">

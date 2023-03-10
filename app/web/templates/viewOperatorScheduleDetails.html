@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+{% block css %}
+<style>
+    .component-main {
+        font-size: larger;
+        text-align: center;
+    }
+
+    .main-table-grid {
+        background-color: black;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        row-gap: 1px;
+    }
+
+    .table-cell {
+        background-color: lightgreen;
+        padding: 2vh;
+        border: 1px solid black;
+    }
+
+    .table-cell-header {
+        background-color: burlywood;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="component-main">
+        <div class="main-title">
+            View Schedule Details
+        </div>
+        
+        <div class="main-table-grid">
+            <div class="table-cell table-cell-header">
+                From City
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['from_city']['city-name']}}
+            </div>
+
+            <div class="table-cell table-cell-header">
+                To City
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['to_city']['city-name']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Departure Date / Time
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
+                {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Dropping Date / Time
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
+                {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Number Plate
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['bus']['bus-number-plate']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Type
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['bus']['bus-type']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Bus Operator
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['operator-username']}}
+            </div>
+            
+            <div class="table-cell table-cell-header">
+                Schedule Fair Fees
+            </div>
+            <div class="table-cell">
+                {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
+            </div>
+            
+            
+            <div class="table-cell table-cell-header">
+                Stops <br>
+            </div>
+            <div class="table-cell">
+                <!-- Display Stops -->
+                <div id="stop-display-container" class="main-table-grid">
+                    {% for stopObj in response_data['data']['schedule']['list-stop'] %}
+                        {% if stopObj %}
+                        <div class="table-cell table-cell-header">
+                            {{loop.index}}.
+                        </div>
+                        <div class="table-cell stop-table-cell">
+                            <input type="hidden" value="{{stopObj['city']['city-id']}}"/>
+                            <input type="hidden" value="{{stopObj['stop']['stop-id']}}"/>
+                            {{stopObj['stop']['stop-name']}} <br>
+                            {{stopObj['stop']['stop-address']}} <br>
+                            {{stopObj['city']['city-name']}}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% from 'tmp.html' import viewBusPassengerDetails %}
+            {{ viewBusPassengerDetails(response_data= response_data) }}
+            
+        </div>
+    </div>
+{% endblock %}

@@ -40,7 +40,7 @@ class ControllerOwner:
     def handleLogin(self):
         username = request.form.get(label.owner_username)
         password = request.form.get(label.owner_password)
-        result = Owner(username=username, password=password, agencyName=None, contact=None, currentSesssion=None).loginOwner()
+        result = Owner(username=username, password=password, agencyName=None, contact=None).loginOwner()
         self.response_data[label.success] = result
         
         if(result == True):
@@ -54,7 +54,7 @@ class ControllerOwner:
     
     @Owner.requireLogin
     def handleLogout(self):
-        result = Owner(None, None, None, None, currentSesssion=None).logoutOwner()
+        result = Owner(None, None, None, None).logoutOwner()
         self.response_data[label.success] = result
 
         if(result == True):
@@ -70,7 +70,7 @@ class ControllerOwner:
         contact = request.form.get(label.owner_contact)
         username = session[label.username]
 
-        ownerObj = Owner(username=username, password=None, name=name, contact=contact)
+        ownerObj = Owner(username=username, password=None, agencyName=name, contact=contact)
         result = ownerObj.updateInformation()
         self.response_data[label.success] = result
 
@@ -193,6 +193,7 @@ class ControllerOwner:
         
         username = session[label.username]
         response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= username)
+        response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
 
         if not response_data[label.success]:
             flash(label_reason.invalidScheduleIdError)
@@ -204,6 +205,7 @@ class ControllerOwner:
         
         # return jsonify(response_data)
         return render_template('viewScheduleDetails.html', response_data= response_data)
+
 
     def handleScheduleStopUpdation(self, sequence):
         # Validating Stops

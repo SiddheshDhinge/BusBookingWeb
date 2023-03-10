@@ -46,7 +46,7 @@ for scheduleId, numberPlate in enumerate(scheduleBuses):
     # Booking
     totalBookings = random.randint(10, 20)
     tmpSeatNos = random.sample(seatNos, totalBookings)
-    availableStops = ComplexOperation().getSchedulesStop(search_scheduleId= int(scheduleId))
+    availableStops = ComplexOperation().getSchedulesStop(scheduleId= int(scheduleId +1))
     for _ in range(0, totalBookings):
         seatNo = tmpSeatNos[_]
         passengerId = random.randint(1, 40)

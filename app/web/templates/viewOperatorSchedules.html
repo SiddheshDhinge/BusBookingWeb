@@ -68,9 +68,9 @@
                     <div class="table-cell">
                         {{rowObj['bus']['bus-number-plate']}}
                     </div>
-                    <div class="table-cell stops">
-                        <form action="{{url_for('view')}}">
-                            
+                    <div class="table-cell">
+                        <form action="{{url_for('viewOperatorScheduleDetails')}}" method="POST">
+                            <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}" >
                             <button type="submit">View More</button>
                         </form>
                     </div>

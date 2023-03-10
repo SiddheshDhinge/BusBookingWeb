@@ -69,7 +69,7 @@ stop_id = 'stop-id'
 stop_name = 'stop-name'
 stop_address = 'stop-address'
 
-At_sequence = 'at-sequence'
+at_sequence = 'at-sequence'
 
 schedule_id = 'schedule-id'
 schedule_fromDate = 'schedule-from-date'

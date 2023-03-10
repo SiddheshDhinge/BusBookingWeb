@@ -16,18 +16,16 @@ class Owner(Base):
         CheckConstraint('contact ~* \'^[0-9]{10}$\''),
     )
 
-    currentSession = None
     username = Column('username', String(16), primary_key=True)
     password = Column('password', String(32), nullable=False)
     agencyName = Column('agencyName', String(64), nullable=False)
     contact = Column('contact', String(10), nullable=False)
 
-    def __init__(self, username: str, password: str, agencyName: str, contact: str, currentSesssion: str = None):
+    def __init__(self, username: str, password: str, agencyName: str, contact: str):
         self.username = username
         self.password = password
         self.agencyName = agencyName
         self.contact = contact
-        self.currentSession = currentSesssion
 
     def __repr__(self):
         return f"{self.__tablename__} => {self.password}, {self.agencyName}, {self.contact}"

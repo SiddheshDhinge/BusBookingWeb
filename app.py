@@ -323,7 +323,7 @@ def viewScheduleDetails():
 @app.route('/updatestops', methods=['POST'])
 @Owner.requireLogin
 def updateStops():
-    sequence = request.form.get(label.stop_sequence, None)
+    sequence = request.form.get(label.at_sequence, None)
     # Validating Schedule
 
     scheduleId = request.form.get(label.schedule_id, None)
@@ -332,7 +332,7 @@ def updateStops():
         return redirect(url_for("viewSchedules"))
     
     username = session[label.username]
-    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, owner_username= username)
+    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, ownerUsername= username)
     if not result:
         flash(label_reason.invalidScheduleIdError)
         return redirect(url_for("viewSchedules"))
@@ -353,7 +353,7 @@ def updateTripStatus():
         return redirect(url_for("viewSchedules"))
     
     username = session[label.username]
-    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, owner_username= username)
+    result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, ownerUsername= username)
     if not result:
         flash(label_reason.invalidScheduleIdError)
         return redirect(url_for("viewSchedules"))
@@ -396,7 +396,7 @@ def updateOperatorProfile():
 
 
 # View all Operator's Assigned Schedules
-@app.route('/viewoperatorschedules')
+@app.route('/viewoperatorschedules', methods=['GET'])
 @Operator.requireLogin
 def viewOperatorSchedules():
     username = session[label.username]
@@ -405,6 +405,13 @@ def viewOperatorSchedules():
         label.nav_btn : label.btn_logout
     }
     return render_template('viewOperatorSchedules.html', response_data= response_data)
+
+
+@app.route('/viewoperatorscheduledetails', methods=['POST'])
+@Operator.requireLogin
+def viewOperatorScheduleDetails():
+    return ControllerOperator().handleViewOperatorScheduleDetails()
+
 
 # OPERATOR END
 
@@ -535,7 +542,7 @@ def viewSchedules():
         }
 
         response_data = ComplexOperation().getAllSchedules(filters= filters)
-        response_data[label.data][City.objName] = ComplexOperation().getAllCity(search= None)[label.data][City.objListName]
+        response_data[label.data][City.objListName] = ComplexOperation().getAllCity(search= None)[label.data][City.objListName]
         response_data[label.options] = {
             label.nav_btn : label.btn_logout,
             label.owner_username : session[label.username],
@@ -554,7 +561,8 @@ def viewSchedules():
         # return form for filling filters of schedules
         response_data = ComplexOperation().getAllCity(search= None)
         response_data[label.options] = {
-            label.nav_btn : label.btn_logout
+            label.nav_btn : label.btn_logout,
+            label.accessType : session[label.accessType]
         }
         return render_template('viewSchedules.html', response_data= response_data)
 
