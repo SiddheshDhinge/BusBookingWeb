@@ -62,6 +62,17 @@ class ControllerCustomer:
             return redirect(url_for('landingCustomer'))
 
 
+    def handleChangePassword(self):
+        username = session[label.username]
+        password = request.form.get(label.customer_password)
+        result = Customer(username= username, password= password, name= None, contact= None).updatePassword()
+        if(result == True):
+            flash(label_reason.userPasswordUpdateSuccess)
+        else:
+            flash(label_reason.userPasswordUpdateFailed)
+        return redirect(url_for('landingCustomer'))
+
+
     def handleUpdateAccountProfile(self):
         name = request.form.get(label.customer_name)
         contact = request.form.get(label.customer_contact)

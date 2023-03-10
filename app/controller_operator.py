@@ -20,26 +20,10 @@ class ControllerOperator:
         self.response_data = {}
 
 
-    def handleAccountCreation(self):
-        username = request.form.get(label.operator_username)
-        password = request.form.get(label.operator_password)
-        name = request.form.get(label.operator_name)
-        contact = request.form.get(label.operator_contact)
-        address = request.form.get(label.operator_address)
-        result = Operator(username=username, password=password, name=name, address=address, contact=contact).createOperator()
-        self.response_data[label.success] = result
-        if(result == True):
-            flash(label_reason.userCreationSuccess)
-            return redirect(url_for('login', role= Operator.accessType))
-        else:
-            flash(label_reason.userCreationFailed)
-            return redirect(url_for('signUp', role= Operator.accessType))
-
-
     def handleLogin(self):
         username = request.form.get(label.operator_username)
         password = request.form.get(label.operator_password)
-        result = Operator(username=username, password=password, name=None, address=None, contact=None).loginOperator()
+        result = Operator(username=username, password=password, name=None, contact=None, ownerUsername=None).loginOperator()
         self.response_data[label.success] = result
           
         if(result == True):
@@ -55,7 +39,7 @@ class ControllerOperator:
 
     @Operator.requireLogin
     def handleLogout(self):
-        result = Operator(username=None, password=None, name=None, address=None, contact=None).logoutOperator()
+        result = Operator(username=None, password=None, name=None, contact=None, ownerUsername=None).logoutOperator()
         self.response_data[label.success] = result
 
         if(result == True):
@@ -68,13 +52,23 @@ class ControllerOperator:
             return redirect(url_for('landingOperator'))
 
 
+    def handleChangePassword(self):
+        username = session[label.username]
+        password = request.form.get(label.operator_password)
+        result = Operator(username= username, password= password, name= None, contact= None, ownerUsername= None).updatePassword()
+        if(result == True):
+            flash(label_reason.userPasswordUpdateSuccess)
+        else:
+            flash(label_reason.userPasswordUpdateFailed)
+        return redirect(url_for('landingOperator'))
+
+
     def handleUpdateAccountProfile(self):
         name = request.form.get(label.operator_name)
         contact = request.form.get(label.operator_contact)
-        address = request.form.get(label.operator_address).strip()
         username = session[label.username]
 
-        operatorObj = Operator(username=username, password=None, name=name, address=address, contact=contact)
+        operatorObj = Operator(username=username, password=None, name=name, contact=contact, ownerUsername=None)
         result = operatorObj.updateInformation()
         self.response_data[label.success] = result
         

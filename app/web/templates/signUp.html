@@ -30,7 +30,11 @@
 
 {% block content %}
     <main>
-        <form action= "{{ url_for('signUp', role= response_data['role']) }}" class="shadow-sm" method="POST">
+        {% if response_data['role'] == 'operator' %}
+            <form action= "{{ url_for('registerOperator') }}" class="shadow-sm" method="POST">
+        {% else %}
+            <form action= "{{ url_for('signUp', role= response_data['role']) }}" class="shadow-sm" method="POST">
+        {% endif %}
             <div class="mb-2">
                 <label for="username" class="form-label">Username</label>
                 <input required type="text" name="{{response_data['label']['username']}}" id="username" class="form-control" placeholder="username">
@@ -55,12 +59,6 @@
                 <label for="contact" class="form-label">Contact</label>
                 <input required type="text" name="{{response_data['label']['contact']}}" id="contact" class="form-control" placeholder="1234567890">
             </div>
-            {% if response_data['role'] == 'operator' %}
-                <div class="mb-2">
-                    <label for="address" class="form-label">Address</label>
-                    <textarea required type="text" name="{{response_data['label']['address']}}" id="address" class="form-control" placeholder="XX Street, Near XXXX, XXXX City,..." rows="3"></textarea>
-                </div>
-            {% endif %}
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </main>

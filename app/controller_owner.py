@@ -65,6 +65,32 @@ class ControllerOwner:
             return redirect(url_for('landingOwner'))
 
 
+    def handleChangePassword(self):
+        username = session[label.username]
+        password = request.form.get(label.owner_password)
+        result = Owner(username= username, password= password, agencyName= None, contact= None).updatePassword()
+        if(result == True):
+            flash(label_reason.userPasswordUpdateSuccess)
+        else:
+            flash(label_reason.userPasswordUpdateFailed)
+        return redirect(url_for('landingOwner'))
+
+
+    def handleOperatorAccountCreation(self):
+        username = request.form.get(label.operator_username)
+        password = request.form.get(label.operator_password)
+        name = request.form.get(label.operator_name)
+        contact = request.form.get(label.operator_contact)
+        ownerUsername = session[label.username]
+        result = Operator(username=username, password=password, name=name, contact=contact, ownerUsername= ownerUsername).createOperator()
+        self.response_data[label.success] = result
+        if(result == True):
+            flash(label_reason.userCreationSuccess)
+        else:
+            flash(label_reason.userCreationFailed)
+        return redirect(url_for('landingOwner'))
+
+
     def handleUpdateAccountProfile(self):
         name = request.form.get(label.owner_agencyName)
         contact = request.form.get(label.owner_contact)

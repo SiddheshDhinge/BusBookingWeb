@@ -19,18 +19,18 @@ class Operator(Base):
     username = Column('username', String(16), primary_key=True)
     password = Column('password', String(32), nullable=False)
     name = Column('name', String(64), nullable=False)
-    address = Column('address', String(128), nullable=False)
     contact = Column('contact', String(10), nullable=False)
+    ownerUsername = Column('ownerUsername', String(16), ForeignKey('Owner.username'), nullable= False)
     
-    def __init__(self, username: str, password: str, name: str, address: str, contact: str):
+    def __init__(self, username: str, password: str, name: str, contact: str, ownerUsername: str):
         self.username = username
         self.password = password
         self.name = name
-        self.address = address
         self.contact = contact
+        self.ownerUsername = ownerUsername
 
     def __repr__(self):
-        return f"{self.__tablename__} => ({self.username}) : {self.password}, {self.name}, {self.address}, {self.contact}"
+        return f"{self.__tablename__} => ({self.username}) : {self.password}, {self.name}, {self.contact}, {self.ownerUsername}"
 
     def createOperator(self):
         try:
@@ -70,26 +70,37 @@ class Operator(Base):
         else:
             return True
 
+
+    def updatePassword(self):
+        try:
+            DB_session.query(Operator)\
+                .filter(Operator.username == self.username)\
+                .update({
+                    Operator.password : self.password
+                })
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
+
+
     def updateInformation(self):
         try:
             if(self.name):
-                DB_session.query(Operator).filter(Operator.username == self.username).update(
-                    {
+                DB_session.query(Operator)\
+                    .filter(Operator.username == self.username)\
+                    .update({
                         Operator.name : self.name
-                    }
-                )
+                    })
             if(self.contact):
-                DB_session.query(Operator).filter(Operator.username == self.username).update(
-                    {
+                DB_session.query(Operator)\
+                    .filter(Operator.username == self.username)\
+                    .update({
                         Operator.contact : self.contact
-                    }
-                )
-            if(self.address):
-                DB_session.query(Operator).filter(Operator.username == self.username).update(
-                    {
-                        Operator.address : self.address
-                    }
-                )
+                    })
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -103,7 +114,7 @@ class Operator(Base):
             label.operator_username: self.username,
             label.operator_name: self.name,
             label.operator_contact: self.contact,
-            label.operator_address: self.address
+            label.owner_username : self.ownerUsername,
         }
 
     @staticmethod

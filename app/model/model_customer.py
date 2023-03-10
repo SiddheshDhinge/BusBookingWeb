@@ -69,18 +69,36 @@ class Customer(Base):
             return True
             
             
+    def updatePassword(self):
+        try:
+            DB_session.query(Customer)\
+                .filter(Customer.username == self.username)\
+                .update({
+                    Customer.password : self.password
+                })
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
+
+
     def updateInformation(self):
         try:
             if(self.name):
-                DB_session.query(Customer).filter(Customer.username == self.username).update(
-                {
-                    Customer.name : self.name
-                })
+                DB_session.query(Customer)\
+                    .filter(Customer.username == self.username)\
+                    .update({
+                        Customer.name : self.name
+                    })
             if(self.contact):
-                DB_session.query(Customer).filter(Customer.username == self.username).update(
-                {
-                    Customer.contact : self.contact
-                })
+                DB_session.query(Customer)\
+                    .filter(Customer.username == self.username)\
+                    .update({
+                        Customer.contact : self.contact
+                    })
             DB_session.commit()
         except Exception as e:
             print(e)

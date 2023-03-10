@@ -164,7 +164,7 @@
             </div>
             
             <div class="table-cell table-cell-header">
-                Bus Details
+                Agency Details
             </div>
             <div class="table-cell">
                 <div class="main-table-grid">
@@ -174,7 +174,21 @@
                     <div class="table-cell">
                         {{ response_data['data']['owner']['owner-agency-name'] }}
                     </div>
+                    
+                    <div class="table-cell table-cell-header">
+                        Agency Contact
+                    </div>
+                    <div class="table-cell">
+                        {{ response_data['data']['owner']['owner-contact'] }}
+                    </div>
+                </div>
+            </div>
 
+            <div class="table-cell table-cell-header">
+                Bus Details
+            </div>
+            <div class="table-cell">
+                <div class="main-table-grid">
                     <div class="table-cell table-cell-header">
                         Bus Number
                     </div>

@@ -68,18 +68,37 @@ class Owner(Base):
         else:
             return True
 
+
+    def updatePassword(self):
+        try:
+            DB_session.query(Owner)\
+                .filter(Owner.username == self.username)\
+                .update({
+                    Owner.password : self.password
+                })
+            DB_session.commit()
+        except Exception as e:
+            print(e)
+            DB_session.rollback()
+            return False
+        else:
+            return True
+
+
     def updateInformation(self):
         try:
             if(self.agencyName):
-                DB_session.query(Owner).filter(Owner.username == self.username).update(
-                {
-                    Owner.agencyName : self.agencyName
-                })
+                DB_session.query(Owner)\
+                    .filter(Owner.username == self.username)\
+                    .update({
+                        Owner.agencyName : self.agencyName
+                    })
             if(self.contact):
-                DB_session.query(Owner).filter(Owner.username == self.username).update(
-                {
-                    Owner.contact : self.contact
-                })
+                DB_session.query(Owner)\
+                    .filter(Owner.username == self.username)\
+                    .update({
+                        Owner.contact : self.contact
+                    })
             DB_session.commit()
         except Exception as e:
             print(e)

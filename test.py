@@ -72,21 +72,21 @@ class Tests(unittest.TestCase):
         assert Customer('laurar', 'abc', 'Laura Reed', '5555551241').createCustomer() == True
 
 
-        assert Operator('Manish', 'abc1', 'MB', 'L1', '4411225549').createOperator() == True
-        assert Operator('Guarav', 'abc2', 'GS', 'L2', '7475869421').createOperator() == True
-        assert Operator('Ketan', 'abc3', 'KM', 'L3', '1122337495').createOperator() == True
-        assert Operator('Akshay', 'abc4', 'AJ', 'L4', '5566442576').createOperator() == True
-        assert Operator('Lokesh', 'abc5', 'LD', 'L5', '9988743615').createOperator() == True
-        assert Operator('timothyb', 'abc', 'Timothy Bennett', '1234 Main St', '5555551227').createOperator() == True
-        assert Operator('rachelc', 'abc', 'Rachel Campbell', '5678 First Ave', '5555551228').createOperator() == True
-        assert Operator('michaelg', 'abc', 'Michael Green', '9101 Park Dr', '5555551229').createOperator() == True
-        assert Operator('jenniferl', 'abc', 'Jennifer Larson', '1212 Oak Ave', '5555551230').createOperator() == True
-        assert Operator('davidm', 'abc', 'David Mason', '3434 Maple St', '5555551231').createOperator() == True
-        assert Operator('sarahp', 'abc', 'Sarah Peterson', '5656 Pine Ave', '5555551232').createOperator() == True
-        assert Operator('matthewr', 'abc', 'Matthew Roberts', '7878 Cedar St', '5555551233').createOperator() == True
-        assert Operator('lisaq', 'abc', 'Lisa Quinn', '9090 Birch Ave', '5555551234').createOperator() == True
-        assert Operator('katherinet', 'abc', 'Katherine Taylor', '1111 Willow St', '5555551235').createOperator() == True
-        assert Operator('johnd', 'abc', 'John Davis', '3333 Maple Ave', '5555551236').createOperator() == True
+        assert Operator('Manish', 'abc1', 'MB', '4411225549', 'Chintan').createOperator() == True
+        assert Operator('Guarav', 'abc2', 'GS', '7475869421', 'Chintan').createOperator() == True
+        assert Operator('Ketan', 'abc3', 'KM', '1122337495', 'Siddhesh').createOperator() == True
+        assert Operator('Akshay', 'abc4', 'AJ', '5566442576', 'Siddhesh').createOperator() == True
+        assert Operator('Lokesh', 'abc5', 'LD', '9988743615', 'Siddhesh').createOperator() == True
+        assert Operator('timothyb', 'abc', 'Timothy Bennett', '5555551227', 'Siddhesh').createOperator() == True
+        assert Operator('rachelc', 'abc', 'Rachel Campbell', '5555551228', 'Siddhesh').createOperator() == True
+        assert Operator('michaelg', 'abc', 'Michael Green', '5555551229', 'Manas').createOperator() == True
+        assert Operator('jenniferl', 'abc', 'Jennifer Larson', '5555551230', 'Manas').createOperator() == True
+        assert Operator('davidm', 'abc', 'David Mason', '5555551231', 'Shubham').createOperator() == True
+        assert Operator('sarahp', 'abc', 'Sarah Peterson', '5555551232', 'Shubham').createOperator() == True
+        assert Operator('matthewr', 'abc', 'Matthew Roberts', '5555551233', 'Shubham').createOperator() == True
+        assert Operator('lisaq', 'abc', 'Lisa Quinn', '5555551234', 'Sahil').createOperator() == True
+        assert Operator('katherinet', 'abc', 'Katherine Taylor', '5555551235', 'Sahil').createOperator() == True
+        assert Operator('johnd', 'abc', 'John Davis', '5555551236', 'Sahil').createOperator() == True
 
 
         assert Passenger('P1', 'M', 23, '7414714714', 'Tanmay').createObject() == True

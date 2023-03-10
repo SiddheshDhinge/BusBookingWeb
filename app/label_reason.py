@@ -12,6 +12,8 @@ userLogoutSuccess = 'You have been logged Out'
 userLogoutFailed = 'log out failed.... try again...'
 userAccountUpdateSuccess = 'Successfully Updated account'
 userAccountUpdateFailed = 'Account updation failed'
+userPasswordUpdateSuccess = 'Successfully Changed Password'
+userPasswordUpdateFailed = 'Password reset Failed...'
 
 #service
 busRegistrationSuccess = 'Successfully registered the bus!'

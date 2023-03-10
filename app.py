@@ -99,8 +99,6 @@ def signUp(role):
     if(request.method == 'POST'):
         if(role == Owner.accessType):
             return ControllerOwner().handleAccountCreation()
-        elif(role == Operator.accessType):
-            return ControllerOperator().handleAccountCreation()
         elif(role == Customer.accessType):
             return ControllerCustomer().handleAccountCreation()
         else:
@@ -111,8 +109,6 @@ def signUp(role):
         }
         if role == Owner.accessType:
             response_data[label.name_labels] = label.owner_all_label
-        elif role == Operator.accessType:
-            response_data[label.name_labels] = label.operator_all_label
         elif role == Customer.accessType:
             response_data[label.name_labels] = label.customer_all_label
         else:
@@ -179,6 +175,31 @@ def logout():
         return label_reason.error
     
 
+@app.route('/changepassword', methods=['GET', 'POST'])
+def changePassword():
+    if(request.method == 'POST'):
+        role = session[label.accessType]
+        if(role == Owner.accessType):
+            return ControllerOwner().handleChangePassword()
+        elif(role == Operator.accessType):
+            return ControllerOperator().handleChangePassword()
+        elif(role == Customer.accessType):
+            return ControllerCustomer().handleChangePassword()
+        else:
+            flash(label_reason.error)
+            return redirect(url_for('changePassword'))
+    else:
+        role = session[label.accessType]
+        response_data = {}
+        if(role == Owner.accessType):
+            response_data[label.name_labels] = label.owner_all_label
+        elif(role == Operator.accessType):
+            response_data[label.name_labels] = label.operator_all_label
+        elif(role == Customer.accessType):
+            response_data[label.name_labels] = label.customer_all_label
+            
+        return render_template('changePassword.html', response_data= response_data)
+
 # COMMON END
 
 # OWNER BEGIN
@@ -226,6 +247,20 @@ def viewBus():
 @Owner.requireLogin
 def viewBusDetails():
     return ControllerOwner().handleViewBusDetails()
+
+
+# Register Operator
+@app.route('/registeroperator', methods=['GET', 'POST'])
+@Owner.requireLogin
+def registerOperator():
+    if(request.method == 'POST'):
+        return ControllerOwner().handleOperatorAccountCreation()
+    else:
+        response_data = {
+            label.name_labels : label.operator_all_label,
+            label.role : Operator.accessType
+        }
+        return render_template('signUp.html', response_data= response_data)
 
 
 # Update Owners profile

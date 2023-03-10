@@ -29,13 +29,11 @@ operator_username = 'operator-username'
 operator_password = 'operator-password'
 operator_name = 'operator-name'
 operator_contact = 'operator-contact'
-operator_address = 'operator-address'
 operator_all_label = {
     'username' : operator_username,
     'password' : operator_password,
     'name' : operator_name,
     'contact' : operator_contact,
-    'address' : operator_address,
 }
 
 customer_username = 'customer-username'
