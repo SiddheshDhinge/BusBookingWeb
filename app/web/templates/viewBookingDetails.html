@@ -129,6 +129,17 @@
             </div>
             
             <div class="table-cell table-cell-header">
+                Trip Status
+            </div>
+            <div class="table-cell">
+                {% if response_data['data']['schedule']['schedule-is-complete'] == true %}
+                    Completed
+                {% else %}
+                    Incomplete
+                {% endif %}
+            </div>
+            
+            <div class="table-cell table-cell-header">
                 Passenger Details
             </div>
             <div class="table-cell">

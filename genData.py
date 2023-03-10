@@ -42,19 +42,19 @@ def randomPad(a, b):
 #         print(data)
 
 
-for scheduleId, numberPlate in enumerate(scheduleBuses):
-    # Booking
-    totalBookings = random.randint(10, 20)
-    tmpSeatNos = random.sample(seatNos, totalBookings)
-    availableStops = ComplexOperation().getSchedulesStop(scheduleId= int(scheduleId +1))
-    for _ in range(0, totalBookings):
-        seatNo = tmpSeatNos[_]
-        passengerId = random.randint(1, 40)
-        fromStopId = 1 if (len(availableStops) == 0) else availableStops[0]['stop']['stop-id']
-        toStopId = 1 if (len(availableStops) == 0) else availableStops[-1]['stop']['stop-id']
-        data = (numberPlate, seatNo, scheduleId +1, passengerId, fromStopId, toStopId)
+# for scheduleId, numberPlate in enumerate(scheduleBuses):
+#     # Booking
+#     totalBookings = random.randint(10, 20)
+#     tmpSeatNos = random.sample(seatNos, totalBookings)
+#     availableStops = ComplexOperation().getSchedulesStop(scheduleId= int(scheduleId +1))
+#     for _ in range(0, totalBookings):
+#         seatNo = tmpSeatNos[_]
+#         passengerId = random.randint(1, 40)
+#         fromStopId = 1 if (len(availableStops) == 0) else availableStops[0]['stop']['stop-id']
+#         toStopId = 1 if (len(availableStops) == 0) else availableStops[-1]['stop']['stop-id']
+#         data = (numberPlate, seatNo, scheduleId +1, passengerId, fromStopId, toStopId)
 
-        print(data)
+#         print(data)
 
 
 # for _ in range(1, 151):
@@ -87,3 +87,8 @@ for scheduleId, numberPlate in enumerate(scheduleBuses):
 
 # Schedule(fromDate: str, toDate: str, departureTime: str, dropTime: str, fairFees: int, fromCity: int, toCity: int, numberPlate: str, username: str)
 # assert Schedule('2019-12-01', '2019-12-31', '08:00:00', '11:00:00', 5000, 1, 6, 'MH 12 AB 1234', 'Manish').createObject() == True
+
+
+# Make random trip complete
+# for scheduleId in (random.sample(range(1, 153), 70)):
+#     ComplexOperation().updateTripStatus(scheduleId= scheduleId)

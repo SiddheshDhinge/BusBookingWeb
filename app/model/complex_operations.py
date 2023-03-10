@@ -174,6 +174,16 @@ class ComplexOperation:
         return self.response_data
 
 
+    def getOwnerOperators(self, ownerUsername):
+        queryResult = DB_session.query(Operator)\
+            .filter(Operator.ownerUsername == ownerUsername).all()
+        
+        self.response_data[label.data][Operator.objListName] = [
+            operatorObj.serialize() for operatorObj in queryResult
+        ]
+        return self.response_data
+    
+
     # rework needed
     def getOperatorSchedules(self, operatorUsername):
         City1 = aliased(City)
@@ -184,6 +194,7 @@ class ComplexOperation:
             .join(City2, City2.cityId == Schedule.toCity)\
             .join(Bus, Owner)\
             .filter(Schedule.username == operatorUsername)\
+            .filter(Schedule.isComplete == False)\
             .all()
         
         self.response_data[label.data] = [
@@ -217,11 +228,6 @@ class ComplexOperation:
         return stopObjList
 
 
-    def getAllOperators(self):
-        queryResult = DB_session.query(Operator).all()
-        return queryResult
-    
-
     def getCustomerPassengers(self, customerUsername):
         queryResult = DB_session.query(Passenger)\
             .filter(Passenger.username == customerUsername).all()
@@ -239,7 +245,8 @@ class ComplexOperation:
             .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
             .join(Owner, Owner.username == Bus.username)\
             .join(Passenger, Passenger.passengerId == Booking.passengerId)\
-            .filter(Passenger.username == customerUsername).all()
+            .filter(Passenger.username == customerUsername)\
+            .order_by(Schedule.isComplete).all()
 
         self.response_data[label.data] = [
             {

@@ -99,12 +99,3 @@ class ControllerOperator:
         
         # return jsonify(response_data)
         return render_template('viewOperatorScheduleDetails.html', response_data= response_data)
-
-
-    # def handleViewAllOperator(self):
-    #     if Operator.isLoggedOn() == False:
-    #         self.response_data[label.success] = label.authReq
-    #         return
-
-    #     qryResult = ComplexOperation().getAllOperators()
-    #     self.response_data = [operatorObj.serialize() for operatorObj in qryResult]

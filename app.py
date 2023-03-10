@@ -263,6 +263,12 @@ def registerOperator():
         return render_template('signUp.html', response_data= response_data)
 
 
+@app.route('/viewoperator', methods=['GET'])
+@Owner.requireLogin
+def viewOperator():
+    return ControllerOwner().handleViewOperator()
+
+
 # Update Owners profile
 @app.route('/updateownerprofile', methods=['GET', 'POST'])
 @Owner.requireLogin
@@ -339,11 +345,14 @@ def addSchedule():
     else:
         username = session[label.username]
         allCity = ComplexOperation().getAllCity(search= None)
+        allOperators = ComplexOperation().getOwnerOperators(ownerUsername= username)
         response_data = ComplexOperation().getOwnerBuses(ownerUsername= username)
+        response_data[label.data].update(allOperators[label.data])
         response_data[label.data].update(allCity[label.data])
         response_data[label.options] = {
             label.nav_btn : label.btn_logout
         }
+        
         return render_template('addSchedule.html', response_data= response_data)
 
 
@@ -412,7 +421,6 @@ def landingOperator():
             label.nav_btn : label.btn_logout
         }
     })
-
 
 
 # Update Operators profile

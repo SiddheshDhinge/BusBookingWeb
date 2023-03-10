@@ -37,7 +37,11 @@
     <br><br>
     
     <label for="operatorusername">Operator User Name:</label>
-    <input type="text" id="operatorusername" name="operator-username">
+    <select id="operatorusername" name="operator-username">
+        {% for operatorObj in response_data['data']['list-operator'] %}
+            <option value="{{operatorObj['operator-username']}}"> {{operatorObj['operator-name']}} </option>
+        {% endfor %}
+    </select>
     <br><br>
 
     <label for="fairfees">Fair Fees:</label>

@@ -91,6 +91,17 @@ class ControllerOwner:
         return redirect(url_for('landingOwner'))
 
 
+    def handleViewOperator(self):
+        username = session[label.username]
+        self.response_data = ComplexOperation().getOwnerOperators(ownerUsername= username)
+        self.response_data[label.options] = {
+            label.nav_btn : label.btn_logout
+        }
+
+        # return jsonify(self.response_data)
+        return render_template('viewOperator.html', response_data= self.response_data)
+
+
     def handleUpdateAccountProfile(self):
         name = request.form.get(label.owner_agencyName)
         contact = request.form.get(label.owner_contact)

@@ -64,7 +64,7 @@ timeBlockNight = 'time-night' #}
                     {% endfor %}
                 </select>
 
-                <label for="agency">Owner:</label>
+                <label for="agency">Agency Name:</label>
                 <input id="agency" type="text" name="owner-agency-name" list="ownerList" />
                 <datalist id="ownerList">
                     {% for owner in response_data['data']['owner'] %}
@@ -172,7 +172,7 @@ timeBlockNight = 'time-night' #}
                     </div>
 
                     <div class="table-cell">
-                        {{rowObj['schedule']['schedule-fair-fees']}}
+                        &#8377; {{rowObj['schedule']['schedule-fair-fees']}}
                     </div>
 
                     <div class="table-cell">

@@ -56,7 +56,11 @@
             
             {% for bookingObj in response_data['data'] %}
                 <div class="table-cell">
-                    {{loop.index}}
+                    {% if bookingObj['schedule']['schedule-is-complete'] %}
+                        <img src="media/small-check-mark-icon.svg">
+                    {% else %}
+                        {{loop.index}}
+                    {% endif %}
                 </div>
                 <div class="table-cell">
                     {{bookingObj['city']['city-name']}}
