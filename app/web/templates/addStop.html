@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<form id='stopForm' action="{{ url_for('addStop') }}" method="POST">
+<form id='stopForm' action="{{ url_for('.addStop') }}" method="POST">
     <label for="name">Stop Name:</label>
     <input type="text" id="name" name="stop-name"><br><br>
 

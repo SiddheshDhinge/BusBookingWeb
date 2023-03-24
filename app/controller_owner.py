@@ -31,10 +31,10 @@ class ControllerOwner:
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.userCreationSuccess)
-            return redirect(url_for('login', role= Owner.accessType))
+            return redirect(url_for('.login', role= Owner.accessType))
         else:
             flash(label_reason.userCreationFailed)
-            return redirect(url_for('signUp', role= Owner.accessType))
+            return redirect(url_for('.signUp', role= Owner.accessType))
 
 
     def handleLogin(self):
@@ -46,10 +46,10 @@ class ControllerOwner:
         if(result == True):
             flash(label_reason.userLoginSuccess)
             session.permanent = True
-            return redirect(url_for('landingOwner'))
+            return redirect(url_for('.landingOwner'))
         else:
             flash(label_reason.userLoginFailed)
-            return redirect(url_for('login', role= Owner.accessType))
+            return redirect(url_for('.login', role= Owner.accessType))
     
     
     @Owner.requireLogin
@@ -59,12 +59,13 @@ class ControllerOwner:
 
         if(result == True):
             flash(label_reason.userLogoutSuccess)
-            return redirect(url_for('chooseLogin'))
+            return redirect(url_for('.chooseLogin'))
         else:
             flash(label_reason.userLogoutFailed)
-            return redirect(url_for('landingOwner'))
+            return redirect(url_for('.landingOwner'))
 
 
+    @Owner.requireLogin
     def handleChangePassword(self):
         username = session[label.username]
         password = request.form.get(label.owner_password)
@@ -73,7 +74,7 @@ class ControllerOwner:
             flash(label_reason.userPasswordUpdateSuccess)
         else:
             flash(label_reason.userPasswordUpdateFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleOperatorAccountCreation(self):
@@ -88,7 +89,7 @@ class ControllerOwner:
             flash(label_reason.userCreationSuccess)
         else:
             flash(label_reason.userCreationFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleViewOperator(self):
@@ -115,7 +116,7 @@ class ControllerOwner:
             flash(label_reason.userAccountUpdateSuccess)
         else:
             flash(label_reason.userAccountUpdateFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleBusRegistration(self):
@@ -134,7 +135,7 @@ class ControllerOwner:
             self.handleSeatCreation(numberPlate= numberPlate)
         else:
             flash(label_reason.busRegistrationFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleSeatCreation(self, numberPlate):
@@ -173,7 +174,7 @@ class ControllerOwner:
             flash(label_reason.cityCreationSuccess)
         else:
             flash(label_reason.cityCreationFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleStopCreation(self):
@@ -186,7 +187,7 @@ class ControllerOwner:
             flash(label_reason.stopCreationSuccess)
         else:
             flash(label_reason.stopCreationFailed)
-        return redirect(url_for('landingOwner'))
+        return redirect(url_for('.landingOwner'))
 
 
     def handleScheduleCreation(self):
@@ -210,10 +211,10 @@ class ControllerOwner:
         if(result == True):
             flash(label_reason.scheduleCreationSuccess)
             session[label.schedule_id] = scheduleObj.scheduleId
-            return redirect(url_for('viewScheduleDetails'))
+            return redirect(url_for('.viewScheduleDetails'))
         else:
             flash(label_reason.scheduleCreationFailed)
-            return redirect(url_for('landingOwner'))
+            return redirect(url_for('.landingOwner'))
     
 
     def handleViewScheduleDetails(self):
@@ -226,7 +227,7 @@ class ControllerOwner:
             scheduleId = int(scheduleId)
         except:
             flash(label_reason.invalidScheduleIdError)
-            return redirect(url_for('viewSchedules'))
+            return redirect(url_for('.viewSchedules'))
         
         username = session[label.username]
         response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= username)
@@ -234,7 +235,7 @@ class ControllerOwner:
 
         if not response_data[label.success]:
             flash(label_reason.invalidScheduleIdError)
-            return redirect(url_for('viewSchedules'))
+            return redirect(url_for('.viewSchedules'))
         
         response_data[label.options] = {
             label.nav_btn : label.btn_logout

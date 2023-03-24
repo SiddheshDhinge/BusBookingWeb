@@ -129,7 +129,7 @@
                 {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == true %}
                     Completed
                 {% else %}
-                    <form class="invisible-form" action="{{url_for('updateTripStatus')}}" method="POST">
+                    <form class="invisible-form" action="{{url_for('.updateTripStatus')}}" method="POST">
                         <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
                         <fieldset id="trip-status">
                             <label for="trip-complete">complete</label>
@@ -174,7 +174,7 @@
                     </div>
                     <div class="btn-wrapper">
                         <button class="editor-btn" id="addBtn" type="button">Add Stop</button>
-                        <form class="invisible-form" action="{{url_for('updateStops')}}" method="POST">
+                        <form class="invisible-form" action="{{url_for('.updateStops')}}" method="POST">
                             <input id="at-sequence" name="at-sequence" type="hidden" />
                             <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
                             <button class="editor-btn">Save Sequence</button>

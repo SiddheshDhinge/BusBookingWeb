@@ -48,7 +48,7 @@
                 {{rowObj['bus-type']}}
             </div>
             <div class="table-cell">
-                <form action="{{url_for('viewBusDetails')}}" method="POST">
+                <form action="{{url_for('.viewBusDetails')}}" method="POST">
                     <input type="hidden" name="bus-number-plate" value="{{rowObj['bus-number-plate']}}" />
                     <button type="submit">View More</button>
                 </form>

@@ -48,7 +48,7 @@ timeBlockNight = 'time-night' #}
 {% block content %}
     <div class="component-main">
         <div class="main-title">
-            <form action="{{url_for('viewSchedules')}}" method="POST">
+            <form action="{{url_for('.viewSchedules')}}" method="POST">
                 
                 <label for="fromcity">From City:</label>
                 <select id="fromcity" name="filter-from-city">
@@ -177,13 +177,13 @@ timeBlockNight = 'time-night' #}
 
                     <div class="table-cell">
                         {% if (rowObj['owner']['owner-username'] == response_data['options']['owner-username']) and response_data['options']['access-type'] == 'owner' %}
-                            <form action="{{url_for('viewScheduleDetails')}}" method="POST">
+                            <form action="{{url_for('.viewScheduleDetails')}}" method="POST">
                                 <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
                                 <button type="submit">View More</button>
                             </form>
                         {% endif %}
                         {% if response_data['options']['access-type'] == 'customer' %}
-                            <form action="{{url_for('bookSchedule')}}" method="POST">
+                            <form action="{{url_for('.bookSchedule')}}" method="POST">
                                 <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
                                 <button type="submit">Book Schedule</button>
                             </form>

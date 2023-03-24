@@ -131,7 +131,7 @@ class Customer(Base):
             if Customer.isLoggedOn() == False:
                 #Not logged in 
                 flash(label_reason.loginInRequired)
-                return redirect(url_for('login', role='customer'))
+                return redirect(url_for('.login', role='customer'))
             else:
                 #Customer is Logined
                 return func(*args, **kwargs)

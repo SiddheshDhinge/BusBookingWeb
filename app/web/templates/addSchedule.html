@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<form id='stopForm' action="{{ url_for('addSchedule') }}" method="POST">
+<form id='stopForm' action="{{ url_for('.addSchedule') }}" method="POST">
 
     <label for="cid1">From City:</label>
     <select id="cid1" name="schedule-from-city-id">

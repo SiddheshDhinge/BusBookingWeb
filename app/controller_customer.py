@@ -28,10 +28,10 @@ class ControllerCustomer:
         self.response_data[label.success] = result
         if(result == True):
             flash(label_reason.userCreationSuccess)
-            return redirect(url_for('login', role= Customer.accessType))
+            return redirect(url_for('.login', role= Customer.accessType))
         else:
             flash(label_reason.userCreationFailed)
-            return redirect(url_for('signUp', role= Customer.accessType))
+            return redirect(url_for('.signUp', role= Customer.accessType))
 
 
     def handleLogin(self):
@@ -43,10 +43,10 @@ class ControllerCustomer:
         if(result == True):
             flash(label_reason.userLoginSuccess)
             session.permanent = True
-            return redirect(url_for('landingCustomer'))
+            return redirect(url_for('.landingCustomer'))
         else:
             flash(label_reason.userLoginFailed)
-            return redirect(url_for('login', role= Customer.accessType))
+            return redirect(url_for('.login', role= Customer.accessType))
             
 
     @Customer.requireLogin
@@ -56,12 +56,13 @@ class ControllerCustomer:
 
         if(result == True):
             flash(label_reason.userLogoutSuccess)
-            return redirect(url_for('chooseLogin'))
+            return redirect(url_for('.chooseLogin'))
         else:
             flash(label_reason.userLogoutFailed)
-            return redirect(url_for('landingCustomer'))
+            return redirect(url_for('.landingCustomer'))
 
 
+    @Customer.requireLogin
     def handleChangePassword(self):
         username = session[label.username]
         password = request.form.get(label.customer_password)
@@ -70,7 +71,7 @@ class ControllerCustomer:
             flash(label_reason.userPasswordUpdateSuccess)
         else:
             flash(label_reason.userPasswordUpdateFailed)
-        return redirect(url_for('landingCustomer'))
+        return redirect(url_for('.landingCustomer'))
 
 
     def handleUpdateAccountProfile(self):
@@ -86,7 +87,7 @@ class ControllerCustomer:
             flash(label_reason.userAccountUpdateSuccess)
         else:
             flash(label_reason.userAccountUpdateFailed)
-        return redirect(url_for('landingCustomer'))
+        return redirect(url_for('.landingCustomer'))
 
 
     def handleRegisterPassenger(self):    
@@ -101,7 +102,7 @@ class ControllerCustomer:
             flash(label_reason.passengerCreationSuccess)
         else:
             flash(label_reason.passengerCreationFailed)
-        return redirect(url_for('landingCustomer'))
+        return redirect(url_for('.landingCustomer'))
 
 
     def handleViewPassengers(self):
@@ -144,10 +145,10 @@ class ControllerCustomer:
 
         if(result == True):
             flash(label_reason.bookingCreationSuccess)
-            return redirect(url_for('viewBookingDetails', bookingId= bookingObj.bookingId))
+            return redirect(url_for('.viewBookingDetails', bookingId= bookingObj.bookingId))
         else:
             flash(label_reason.bookingCreationFailed)
-            return redirect(url_for('landingCustomer'))
+            return redirect(url_for('.landingCustomer'))
 
 
     def handleViewBooking(self):

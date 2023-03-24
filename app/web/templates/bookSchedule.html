@@ -81,7 +81,7 @@
             View Schedule Details
         </div>
         
-        <form action="{{url_for('confirmBookSchedule')}}" method="POST">
+        <form action="{{url_for('.confirmBookSchedule')}}" method="POST">
             <div class="main-table-grid">
                 <div class="table-cell table-cell-header">
                     From City
@@ -262,7 +262,7 @@
             let response_data = null
             const formData = new FormData();
             formData.append("bus-number-plate", "{{response_data['data']['schedule']['bus']['bus-number-plate']}}")
-            const data_url = "{{ url_for('getBusDetails') }}";
+            const data_url = "{{ url_for('.getBusDetails') }}";
             fetch(data_url, {
                 body : formData,
                 method : "POST"

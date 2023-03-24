@@ -31,9 +31,9 @@
 {% block content %}
     <main>
         {% if response_data['role'] == 'operator' %}
-            <form action= "{{ url_for('registerOperator') }}" class="shadow-sm" method="POST">
+            <form action= "{{ url_for('.registerOperator') }}" class="shadow-sm" method="POST">
         {% else %}
-            <form action= "{{ url_for('signUp', role= response_data['role']) }}" class="shadow-sm" method="POST">
+            <form action= "{{ url_for('.signUp', role= response_data['role']) }}" class="shadow-sm" method="POST">
         {% endif %}
             <div class="mb-2">
                 <label for="username" class="form-label">Username</label>

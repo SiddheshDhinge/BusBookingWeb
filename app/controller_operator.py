@@ -30,11 +30,11 @@ class ControllerOperator:
             # Successful login redirect to landing page
             flash(label_reason.userLoginSuccess)
             session.permanent = True
-            return redirect(url_for('landingOperator'))
+            return redirect(url_for('.landingOperator'))
         else:
             # failed login try again
             flash(label_reason.userLoginFailed)
-            return redirect(url_for('login', role= Operator.accessType))
+            return redirect(url_for('.login', role= Operator.accessType))
     
 
     @Operator.requireLogin
@@ -45,13 +45,14 @@ class ControllerOperator:
         if(result == True):
             # Logout Success
             flash(label_reason.userLogoutSuccess)
-            return redirect(url_for('chooseLogin'))
+            return redirect(url_for('.chooseLogin'))
         else:
             # Logout Failed
             flash(label_reason.userLogoutFailed)
-            return redirect(url_for('landingOperator'))
+            return redirect(url_for('.landingOperator'))
 
 
+    @Operator.requireLogin
     def handleChangePassword(self):
         username = session[label.username]
         password = request.form.get(label.operator_password)
@@ -60,7 +61,7 @@ class ControllerOperator:
             flash(label_reason.userPasswordUpdateSuccess)
         else:
             flash(label_reason.userPasswordUpdateFailed)
-        return redirect(url_for('landingOperator'))
+        return redirect(url_for('.landingOperator'))
 
 
     def handleUpdateAccountProfile(self):
@@ -76,7 +77,7 @@ class ControllerOperator:
             flash(label_reason.userAccountUpdateSuccess)
         else:
             flash(label_reason.userAccountUpdateFailed)
-        return redirect(url_for('landingOperator'))
+        return redirect(url_for('.landingOperator'))
 
     
     def handleViewOperatorScheduleDetails(self):
@@ -84,14 +85,14 @@ class ControllerOperator:
             
         if not scheduleId:
             flash(label_reason.invalidScheduleIdError)
-            return redirect(url_for('viewOperatorSchedules'))
+            return redirect(url_for('.viewOperatorSchedules'))
         
         response_data = ComplexOperation().getSchedule(scheduleId= scheduleId, ownerUsername= None, useOwnerUsername= False)
         response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
 
         if not response_data[label.success]:
             flash(label_reason.invalidScheduleIdError)
-            return redirect(url_for('viewSchedules'))
+            return redirect(url_for('.viewSchedules'))
         
         response_data[label.options] = {
             label.nav_btn : label.btn_logout

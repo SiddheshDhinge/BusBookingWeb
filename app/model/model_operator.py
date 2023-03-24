@@ -132,7 +132,7 @@ class Operator(Base):
             if Operator.isLoggedOn() == False:
                 #Not logged in 
                 flash(label_reason.loginInRequired)
-                return redirect(url_for('login', role='operator'))
+                return redirect(url_for('.login', role='operator'))
             else:
                 #Operator is Logined
                 return func(*args, **kwargs)

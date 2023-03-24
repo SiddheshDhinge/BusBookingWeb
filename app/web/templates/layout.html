@@ -31,21 +31,21 @@
                     {% if response_data['options'] and response_data['options']['nav-btn'] %}
                         {% if 'signUp' in response_data['options']['nav-btn'] %}
                             <li>
-                                <form method="get" action="{{url_for('chooseSignUp')}}">
+                                <form method="get" action="{{url_for('request_routes.chooseSignUp')}}">
                                     <button class="login-btn">SignUp</button>
                                 </form>
                             </li>
                         {% endif %}
                         {% if 'logIn' in response_data['options']['nav-btn'] %}
                             <li>
-                                <form method="get" action="{{url_for('chooseLogin')}}">
+                                <form method="get" action="{{url_for('request_routes.chooseLogin')}}">
                                     <button class="login-btn">Login</button>
                                 </form>
                             </li>
                         {% endif %}
                         {% if 'logOut' in response_data['options']['nav-btn'] %}
                             <li>
-                                <form method="POST" action="{{url_for('logout')}}">
+                                <form method="POST" action="{{url_for('request_routes.logout')}}">
                                     <button class="logout-btn">Logout</button>
                                 </form>
                             </li>

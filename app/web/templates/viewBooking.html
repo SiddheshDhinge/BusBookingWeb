@@ -79,7 +79,7 @@
                     {{bookingObj['schedule']['bus-number-plate']}}
                 </div>
                 <div class="table-cell">
-                    <form action="{{url_for('viewBookingDetails', bookingId= bookingObj['booking']['booking-id'])}}" method="GET">
+                    <form action="{{url_for('.viewBookingDetails', bookingId= bookingObj['booking']['booking-id'])}}" method="GET">
                         <button type="submit">View Ticket</button>
                     </form>
                 </div>

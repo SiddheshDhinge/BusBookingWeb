@@ -96,7 +96,7 @@
             let response_data = null
             const formData = new FormData();
             formData.append("bus-number-plate", "{{response_data['options']['bus-number-plate']}}")
-            const data_url = "{{ url_for('getBusDetails') }}";
+            const data_url = "{{ url_for('.getBusDetails') }}";
             fetch(data_url, {
                 body : formData,
                 method : "POST"

@@ -129,7 +129,7 @@ class Owner(Base):
             if Owner.isLoggedOn() == False:
                 #Not logged in 
                 flash(label_reason.loginInRequired)
-                return redirect(url_for('login', role='owner'))
+                return redirect(url_for('.login', role='owner'))
             else:
                 #Owner is Logined
                 return func(*args, **kwargs)
