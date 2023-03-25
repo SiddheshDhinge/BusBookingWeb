@@ -53,22 +53,32 @@
                     {% endif %}
                 </ul>
             </nav>
-        </header>
+
         <!-- Flash message rendering component -->
-        {% with messages = get_flashed_messages() %}  
+        {% with messages = get_flashed_messages(with_categories=true) %}  
             {% if messages %}
-                {% for message in messages %}  
-                <div id="flash-message-container" class="flash-message-success">
-                    <div class="flash-message">
-                        <strong>&#9432;</strong> {{ message }} 
-                    </div>
-                    <button id="flash-message-btn">
-                        &#10006;
-                    </button>
-                </div>
+                {% for category, message in messages %}  
+                    {% if category == 'success' %}
+                        <div id="flash-message-container" class="flash-message-success">
+                    {% endif %}
+                    {% if category == 'error' %}
+                        <div id="flash-message-container" class="flash-message-error">
+                    {% endif %}
+                    {% if category == 'warning' %}
+                        <div id="flash-message-container" class="flash-message-warning">
+                    {% endif %}
+                            <div class="flash-message">
+                                <strong>&#9432;</strong> {{ message }} 
+                            </div>
+                            <button id="flash-message-btn">
+                                &#10006;
+                            </button>
+                        </div>
                 {% endfor %}
             {% endif %}  
         {% endwith %} 
+        
+        </header>
         
         <!-- Main Content -->
         <div class="content-container ">

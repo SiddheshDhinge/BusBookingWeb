@@ -45,9 +45,52 @@ scheduleDateFailed = 'Please Enter a valid Date!'
 sourceDestinatioFailed = 'Please Enter a valid Source and destination City!'
 
 
+#flash level
+flashLevel = {
+    error : 'error',
+    authenticationFailed : 'error',
+    loginInRequired : 'warning',
+    userCreationFailed : 'error',
+    userCreationSuccess : 'success',
+    userLoginSuccess : 'success',
+    userLoginFailed : 'error',
+    userLogoutSuccess : 'success',
+    userLogoutFailed : 'error',
+    userAccountUpdateSuccess : 'success',
+    userAccountUpdateFailed : 'error',
+    userPasswordUpdateSuccess : 'success',
+    userPasswordUpdateFailed : 'error',
+    busRegistrationSuccess : 'success',
+    busInvalidTypeFailed : 'error',
+    busRegistrationFailed : 'error',
+    cityCreationSuccess : 'success',
+    cityCreationFailed : 'error',
+    stopCreationSuccess : 'success',
+    stopCreationFailed : 'error',
+    scheduleCreationSuccess : 'success',
+    scheduleCreationFailed : 'error',
+    scheduleStopUpdationSuccess : 'success',
+    scheduleStopUpdationFailed : 'error',
+    passengerCreationSuccess : 'success',
+    passengerCreationFailed : 'error',
+    bookingCreationSuccess : 'success',
+    bookingCreationFailed : 'error',
+    invalidStopSequenceError : 'warning',
+    invalidScheduleIdError : 'warning',
+    tripUpdationSuccess : 'success',
+    invalidTripStatusError : 'error',
+    invalidBusError : 'warning',
+    enterFilter : 'warning',
+    filterNoMatch : 'warning',
+    filterMatch : 'success',
+    scheduleDateFailed : 'warning',
+    sourceDestinatioFailed : 'warning',
+}
+
+
 #Custom Message flashing
 # NOT IMPLEMENTED
 from flask import flash
 
-def flashMessage(messageLabel):
-    flash(message= messageLabel[0], category= messageLabel[1])
+def flashMessage(message):
+    flash(message= message, category= flashLevel[message])

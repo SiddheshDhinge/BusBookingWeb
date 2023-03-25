@@ -3,7 +3,8 @@ from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
 from .. import label, label_reason
-from flask import flash, url_for, redirect
+from ..label_reason import flashMessage
+from flask import url_for, redirect
 
 class Customer(Base):
     __tablename__ = 'Customer'
@@ -130,7 +131,7 @@ class Customer(Base):
         def wrap(*args, **kwargs):
             if Customer.isLoggedOn() == False:
                 #Not logged in 
-                flash(label_reason.loginInRequired)
+                flashMessage(label_reason.loginInRequired)
                 return redirect(url_for('.login', role='customer'))
             else:
                 #Customer is Logined

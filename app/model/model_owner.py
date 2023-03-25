@@ -4,6 +4,7 @@ from sqlalchemy import exc
 from .session_manager import getSessionStatus, addActiveSession, removeSession
 from .database import Base, DB_session
 from .. import label, label_reason
+from ..label_reason import flashMessage
 
 class Owner(Base):
     __tablename__ = 'Owner'
@@ -128,7 +129,7 @@ class Owner(Base):
         def wrap(*args, **kwargs):
             if Owner.isLoggedOn() == False:
                 #Not logged in 
-                flash(label_reason.loginInRequired)
+                flashMessage(label_reason.loginInRequired)
                 return redirect(url_for('.login', role='owner'))
             else:
                 #Owner is Logined

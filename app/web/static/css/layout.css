@@ -13,7 +13,6 @@ body {
 }
 
 header {
-    height: 12vh;
     /* background-color: #fabc3d; */
     border-bottom: 2px solid #00000033;
     background: whitesmoke;
@@ -54,6 +53,7 @@ header nav span a h1 {
     font-size: 2em;
     font-weight: 600;
     color: #f4492a;
+    margin: 0;
 }
 
 header nav ul {
@@ -101,13 +101,16 @@ header nav ul li form {
 .flash-message-error{
     background-color: lightcoral;
 }
+.flash-message-warning{
+    background-color: rgb(252, 252, 89);
+}
 .flash-message-success{
     background-color: lightgreen;
 }
 #flash-message-container{
-    position: fixed;
+    position: absolute;
     z-index: 1000;
-    top: 12vh;
+    top: 100%;
     left: 0;
     right: 0;
     height: 7vh;

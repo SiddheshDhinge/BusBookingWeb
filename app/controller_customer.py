@@ -11,7 +11,9 @@ from .model.model_booking import Booking
 from .model.model_at import At
 from .model.session_manager import getSessionStatus
 from .model.complex_operations import ComplexOperation
+
 from . import label, label_reason
+from .label_reason import flashMessage
 
 class ControllerCustomer:
 
@@ -27,10 +29,10 @@ class ControllerCustomer:
         result = Customer(username=username, password=password, name=name, contact=contact).createCustomer()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.userCreationSuccess)
+            flashMessage(label_reason.userCreationSuccess)
             return redirect(url_for('.login', role= Customer.accessType))
         else:
-            flash(label_reason.userCreationFailed)
+            flashMessage(label_reason.userCreationFailed)
             return redirect(url_for('.signUp', role= Customer.accessType))
 
 
@@ -41,11 +43,11 @@ class ControllerCustomer:
         self.response_data[label.success] = result
         
         if(result == True):
-            flash(label_reason.userLoginSuccess)
+            flashMessage(label_reason.userLoginSuccess)
             session.permanent = True
             return redirect(url_for('.landingCustomer'))
         else:
-            flash(label_reason.userLoginFailed)
+            flashMessage(label_reason.userLoginFailed)
             return redirect(url_for('.login', role= Customer.accessType))
             
 
@@ -55,10 +57,10 @@ class ControllerCustomer:
         self.response_data[label.success] = result
 
         if(result == True):
-            flash(label_reason.userLogoutSuccess)
+            flashMessage(label_reason.userLogoutSuccess)
             return redirect(url_for('.chooseLogin'))
         else:
-            flash(label_reason.userLogoutFailed)
+            flashMessage(label_reason.userLogoutFailed)
             return redirect(url_for('.landingCustomer'))
 
 
@@ -68,9 +70,9 @@ class ControllerCustomer:
         password = request.form.get(label.customer_password)
         result = Customer(username= username, password= password, name= None, contact= None).updatePassword()
         if(result == True):
-            flash(label_reason.userPasswordUpdateSuccess)
+            flashMessage(label_reason.userPasswordUpdateSuccess)
         else:
-            flash(label_reason.userPasswordUpdateFailed)
+            flashMessage(label_reason.userPasswordUpdateFailed)
         return redirect(url_for('.landingCustomer'))
 
 
@@ -84,9 +86,9 @@ class ControllerCustomer:
         self.response_data[label.success] = result
 
         if(result == True):
-            flash(label_reason.userAccountUpdateSuccess)
+            flashMessage(label_reason.userAccountUpdateSuccess)
         else:
-            flash(label_reason.userAccountUpdateFailed)
+            flashMessage(label_reason.userAccountUpdateFailed)
         return redirect(url_for('.landingCustomer'))
 
 
@@ -99,9 +101,9 @@ class ControllerCustomer:
         result = Passenger(name= name, gender= gender, age= age, contact=contact, username= username).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.passengerCreationSuccess)
+            flashMessage(label_reason.passengerCreationSuccess)
         else:
-            flash(label_reason.passengerCreationFailed)
+            flashMessage(label_reason.passengerCreationFailed)
         return redirect(url_for('.landingCustomer'))
 
 
@@ -144,10 +146,10 @@ class ControllerCustomer:
         result = bookingObj.createObject()
 
         if(result == True):
-            flash(label_reason.bookingCreationSuccess)
+            flashMessage(label_reason.bookingCreationSuccess)
             return redirect(url_for('.viewBookingDetails', bookingId= bookingObj.bookingId))
         else:
-            flash(label_reason.bookingCreationFailed)
+            flashMessage(label_reason.bookingCreationFailed)
             return redirect(url_for('.landingCustomer'))
 
 

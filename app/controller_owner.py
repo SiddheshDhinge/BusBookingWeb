@@ -1,4 +1,4 @@
-from flask import render_template, session, request, jsonify, flash, redirect, url_for
+from flask import render_template, session, request, jsonify, redirect, url_for
 from .model.model_owner import Owner
 from .model.model_customer import Customer
 from .model.model_operator import Operator
@@ -14,6 +14,7 @@ from .model.session_manager import getSessionStatus
 from .model.complex_operations import ComplexOperation
 
 from . import label, label_reason
+from .label_reason import flashMessage
 import json
 
 class ControllerOwner:
@@ -30,10 +31,10 @@ class ControllerOwner:
         result = Owner(username=username, password=password, agencyName=name, contact=contact).createOwner()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.userCreationSuccess)
+            flashMessage(label_reason.userCreationSuccess)
             return redirect(url_for('.login', role= Owner.accessType))
         else:
-            flash(label_reason.userCreationFailed)
+            flashMessage(label_reason.userCreationFailed)
             return redirect(url_for('.signUp', role= Owner.accessType))
 
 
@@ -44,11 +45,11 @@ class ControllerOwner:
         self.response_data[label.success] = result
         
         if(result == True):
-            flash(label_reason.userLoginSuccess)
+            flashMessage(label_reason.userLoginSuccess)
             session.permanent = True
             return redirect(url_for('.landingOwner'))
         else:
-            flash(label_reason.userLoginFailed)
+            flashMessage(label_reason.userLoginFailed)
             return redirect(url_for('.login', role= Owner.accessType))
     
     
@@ -58,10 +59,10 @@ class ControllerOwner:
         self.response_data[label.success] = result
 
         if(result == True):
-            flash(label_reason.userLogoutSuccess)
+            flashMessage(label_reason.userLogoutSuccess)
             return redirect(url_for('.chooseLogin'))
         else:
-            flash(label_reason.userLogoutFailed)
+            flashMessage(label_reason.userLogoutFailed)
             return redirect(url_for('.landingOwner'))
 
 
@@ -71,9 +72,9 @@ class ControllerOwner:
         password = request.form.get(label.owner_password)
         result = Owner(username= username, password= password, agencyName= None, contact= None).updatePassword()
         if(result == True):
-            flash(label_reason.userPasswordUpdateSuccess)
+            flashMessage(label_reason.userPasswordUpdateSuccess)
         else:
-            flash(label_reason.userPasswordUpdateFailed)
+            flashMessage(label_reason.userPasswordUpdateFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -86,9 +87,9 @@ class ControllerOwner:
         result = Operator(username=username, password=password, name=name, contact=contact, ownerUsername= ownerUsername).createOperator()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.userCreationSuccess)
+            flashMessage(label_reason.userCreationSuccess)
         else:
-            flash(label_reason.userCreationFailed)
+            flashMessage(label_reason.userCreationFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -113,9 +114,9 @@ class ControllerOwner:
         self.response_data[label.success] = result
 
         if(result == True):
-            flash(label_reason.userAccountUpdateSuccess)
+            flashMessage(label_reason.userAccountUpdateSuccess)
         else:
-            flash(label_reason.userAccountUpdateFailed)
+            flashMessage(label_reason.userAccountUpdateFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -131,10 +132,10 @@ class ControllerOwner:
         self.response_data[label.success] = result
 
         if(result == True):
-            flash(label_reason.busRegistrationSuccess)
+            flashMessage(label_reason.busRegistrationSuccess)
             self.handleSeatCreation(numberPlate= numberPlate)
         else:
-            flash(label_reason.busRegistrationFailed)
+            flashMessage(label_reason.busRegistrationFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -171,9 +172,9 @@ class ControllerOwner:
         result = City(name= cityName).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.cityCreationSuccess)
+            flashMessage(label_reason.cityCreationSuccess)
         else:
-            flash(label_reason.cityCreationFailed)
+            flashMessage(label_reason.cityCreationFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -184,9 +185,9 @@ class ControllerOwner:
         result = Stop(name= stopName, address= stopAddress, cityId= cityId).createObject()
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.stopCreationSuccess)
+            flashMessage(label_reason.stopCreationSuccess)
         else:
-            flash(label_reason.stopCreationFailed)
+            flashMessage(label_reason.stopCreationFailed)
         return redirect(url_for('.landingOwner'))
 
 
@@ -209,11 +210,11 @@ class ControllerOwner:
 
         self.response_data[label.success] = result
         if(result == True):
-            flash(label_reason.scheduleCreationSuccess)
+            flashMessage(label_reason.scheduleCreationSuccess)
             session[label.schedule_id] = scheduleObj.scheduleId
             return redirect(url_for('.viewScheduleDetails'))
         else:
-            flash(label_reason.scheduleCreationFailed)
+            flashMessage(label_reason.scheduleCreationFailed)
             return redirect(url_for('.landingOwner'))
     
 
@@ -226,7 +227,7 @@ class ControllerOwner:
                 session.pop(label.schedule_id, None)
             scheduleId = int(scheduleId)
         except:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for('.viewSchedules'))
         
         username = session[label.username]
@@ -234,7 +235,7 @@ class ControllerOwner:
         response_data[label.data][Booking.objListName] = ComplexOperation().getBookedPassengers(scheduleId= scheduleId)[label.data][Booking.objListName]
 
         if not response_data[label.success]:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for('.viewSchedules'))
         
         response_data[label.options] = {
@@ -249,7 +250,7 @@ class ControllerOwner:
         # Validating Stops
         if not sequence:
             # Empty Field Submitted
-            flash(label_reason.invalidStopSequenceError)
+            flashMessage(label_reason.invalidStopSequenceError)
             return redirect(url_for("viewScheduleDetails"))
         
         stopSequence = []
@@ -267,7 +268,7 @@ class ControllerOwner:
 
         if invalidFlag:
             # Field either not selected or tampered
-            flash(label_reason.invalidStopSequenceError)
+            flashMessage(label_reason.invalidStopSequenceError)
             return redirect(url_for("viewScheduleDetails"))
         
         scheduleId = request.form.get(label.schedule_id, None)
@@ -275,10 +276,10 @@ class ControllerOwner:
 
         if result:
             # Successfully updated
-            flash(label_reason.scheduleStopUpdationSuccess)
+            flashMessage(label_reason.scheduleStopUpdationSuccess)
         else:
             # Invalid Stop Id entered
-            flash(label_reason.scheduleStopUpdationFailed)
+            flashMessage(label_reason.scheduleStopUpdationFailed)
         
         return redirect(url_for("viewScheduleDetails"))
     
@@ -286,10 +287,10 @@ class ControllerOwner:
     def handleTripStatusUpdation(self):
         tripStatus = request.form.get(label.schedule_isComplete, None)
         if not tripStatus or tripStatus != "complete":
-            flash(label_reason.invalidTripStatusError)
+            flashMessage(label_reason.invalidTripStatusError)
             return redirect(url_for("viewScheduleDetails"))
 
         scheduleId = request.form.get(label.schedule_id)
         ComplexOperation().updateTripStatus(scheduleId= scheduleId)
-        flash(label_reason.tripUpdationSuccess)
+        flashMessage(label_reason.tripUpdationSuccess)
         return redirect(url_for("viewScheduleDetails"))

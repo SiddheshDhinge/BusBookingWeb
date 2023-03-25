@@ -1,5 +1,6 @@
 # Import App Modules
 from app import label, label_reason
+from app.label_reason import flashMessage
 from app.controller_owner import ControllerOwner
 from app.controller_operator import ControllerOperator
 from app.controller_customer import ControllerCustomer
@@ -18,7 +19,7 @@ from app.model.model_at import At
 
 
 # Import Dependencies
-from flask import render_template, session, flash, request, jsonify, redirect, url_for
+from flask import render_template, session, request, jsonify, redirect, url_for
 
 
 class CommonRequestHandler:
@@ -67,7 +68,7 @@ class CommonRequestHandler:
                 response_data[label.name_labels] = label.customer_all_label
             else:
                 #Tried to access invalid role, returned role choice
-                return redirect(url_for('chooseSignUp'))
+                return redirect(url_for('.chooseSignUp'))
             
             #Returned valid role login
             response_data[label.role] = role
@@ -106,7 +107,7 @@ class CommonRequestHandler:
                 response_data[label.name_labels] = label.customer_all_label
             else:
                 #Tried to access invalid role, returned role choice
-                return redirect(url_for('chooseLogin'))
+                return redirect(url_for('.chooseLogin'))
             
             #Returned valid role login
             response_data[label.role] = role
@@ -137,8 +138,8 @@ class CommonRequestHandler:
             elif(role == Customer.accessType):
                 return ControllerCustomer().handleChangePassword()
             else:
-                flash(label_reason.error)
-                return redirect(url_for('changePassword'))
+                flashMessage(label_reason.error)
+                return redirect(url_for('.changePassword'))
         else:
             role = session[label.accessType]
             response_data = {}
@@ -153,7 +154,7 @@ class CommonRequestHandler:
 
 
     def layout(self):
-        flash(label_reason.loginInRequired)
+        flashMessage(label_reason.loginInRequired)
         return render_template('easterEgg.html', response_data= {
             label.options : {
                 label.nav_btn : label.btn_login_signup
@@ -197,8 +198,8 @@ class OwnerRequestHandler:
         if(request.method == 'POST'):
             if(request.form[label.bus_busType] not in ('SEAT', 'SLEEP')):
                 #invalid bus type
-                flash(label_reason.busInvalidTypeFailed)
-                return redirect(url_for('landingOwner'))
+                flashMessage(label_reason.busInvalidTypeFailed)
+                return redirect(url_for('.landingOwner'))
             else:
                 #create bus
                 return ControllerOwner().handleBusRegistration()
@@ -335,13 +336,13 @@ class OwnerRequestHandler:
 
         scheduleId = request.form.get(label.schedule_id, None)
         if not scheduleId:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for("viewSchedules"))
         
         username = session[label.username]
         result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, ownerUsername= username)
         if not result:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for("viewSchedules"))
 
         # Set return point        
@@ -355,13 +356,13 @@ class OwnerRequestHandler:
         # Validating Schedule
         scheduleId = request.form.get(label.schedule_id, None)
         if not scheduleId:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for("viewSchedules"))
         
         username = session[label.username]
         result = ComplexOperation().isScheduleOfOwner(scheduleId= scheduleId, ownerUsername= username)
         if not result:
-            flash(label_reason.invalidScheduleIdError)
+            flashMessage(label_reason.invalidScheduleIdError)
             return redirect(url_for("viewSchedules"))
 
         # Set return point        
@@ -480,8 +481,8 @@ class CustomCommonRequestHandler:
     # View All Schedules (works with filters => (see ComplexOperation))
     def viewSchedules(self):
         if((Owner.isLoggedOn() or Customer.isLoggedOn()) == False):
-            flash(label_reason.loginInRequired)
-            return redirect(url_for('chooseLogin'))
+            flashMessage(label_reason.loginInRequired)
+            return redirect(url_for('.chooseLogin'))
         
         if(request.method == 'POST'):
             # create filters
@@ -491,13 +492,13 @@ class CustomCommonRequestHandler:
         
             #cant accept empty from and to city
             if not(fromCity and toCity):
-                flash(label_reason.sourceDestinatioFailed)
-                return redirect(url_for('viewSchedules'))
+                flashMessage(label_reason.sourceDestinatioFailed)
+                return redirect(url_for('.viewSchedules'))
 
             #cant accept empty schedule date
             if not fromDate:
-                flash(label_reason.scheduleDateFailed)
-                return redirect(url_for('viewSchedules'))
+                flashMessage(label_reason.scheduleDateFailed)
+                return redirect(url_for('.viewSchedules'))
 
             timeBlock = request.form.get(label.filterTimeBlock, 'all')
             busType = request.form.get(label.filterBusType, 'all')
@@ -529,10 +530,10 @@ class CustomCommonRequestHandler:
             }        
             if(len(response_data[label.data][Schedule.objName]) == 0):
                 # No results
-                flash(label_reason.filterNoMatch)
+                flashMessage(label_reason.filterNoMatch)
             else:
                 # Results found
-                flash(label_reason.filterMatch)
+                flashMessage(label_reason.filterMatch)
             # return jsonify(response_data)
             return render_template('viewSchedules.html', response_data= response_data)
 
@@ -558,8 +559,8 @@ class APIRequstHandler:
     # View Specific Bus Details API
     def getBusDetails(self):
         if((Owner.isLoggedOn() or Customer.isLoggedOn()) == False):
-            flash(label_reason.loginInRequired)
-            return redirect(url_for('chooseLogin'))
+            flashMessage(label_reason.loginInRequired)
+            return redirect(url_for('.chooseLogin'))
         
         numberPlate = request.form.get(label.bus_numberPlate)
         response_data = ComplexOperation().getBusDetails(numberPlate= numberPlate, ownerUsername= None, useOwnerUsername= False)
