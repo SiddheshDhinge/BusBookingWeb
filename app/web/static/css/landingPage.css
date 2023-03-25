@@ -1,0 +1,52 @@
+h2{
+    margin: 0;
+    padding: 0;
+}
+hr{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(22, 22, 22);
+    margin-bottom: 1vh;
+}
+.landing-page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-header-container{
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+.landing-page-action{
+    background-color: lightblue;
+    width: 80vw;
+    border: 1px rgb(97, 97, 97) solid;
+    border-radius: 5px;
+    padding: 2vh;
+    margin: 1vh;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 200ms;
+}
+.landing-page-action:hover{
+    background-color: rgb(61, 122, 255);
+}
+.user-profile-img{
+    height: 100%;
+    border: 1px black solid;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+.user-profile-img:hover{
+    background-color: rgb(104, 203, 236);
+}

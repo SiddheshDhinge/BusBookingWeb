@@ -72,13 +72,18 @@ class Operator(Base):
             return True
 
 
-    def updatePassword(self):
+    def updatePassword(self, oldPassword):
         try:
-            DB_session.query(Operator)\
+            result = DB_session.query(Operator)\
                 .filter(Operator.username == self.username)\
+                .filter(Operator.password == oldPassword)\
                 .update({
                     Operator.password : self.password
                 })
+            
+            if result == 0:
+                return False
+            
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -117,6 +122,12 @@ class Operator(Base):
             label.operator_contact: self.contact,
             label.owner_username : self.ownerUsername,
         }
+
+    def getOperator(self):
+        operatorObj = DB_session.query(Operator)\
+            .filter(Operator.username == self.username).first()
+        return operatorObj
+    
 
     @staticmethod
     def isLoggedOn():

@@ -15,33 +15,39 @@ role = 'role'
 # end
 
 owner_username = 'owner-username'
+owner_old_password = 'owner-old-password'
 owner_password = 'owner-password'
 owner_agencyName = 'owner-agency-name'
 owner_contact = 'owner-contact'
 owner_all_label = {
     'username' : owner_username,
+    'old-password' : owner_old_password,
     'password' : owner_password,
     'name' : owner_agencyName,
     'contact' : owner_contact,
 }
 
 operator_username = 'operator-username'
+operator_old_password = 'operator-old-password'
 operator_password = 'operator-password'
 operator_name = 'operator-name'
 operator_contact = 'operator-contact'
 operator_all_label = {
     'username' : operator_username,
+    'old-password' : operator_old_password,
     'password' : operator_password,
     'name' : operator_name,
     'contact' : operator_contact,
 }
 
 customer_username = 'customer-username'
+customer_old_password = 'customer-old-password'
 customer_password = 'customer-password'
 customer_name = 'customer-name'
 customer_contact = 'customer-contact'
 customer_all_label = {
     'username' : customer_username,
+    'old-password' : owner_old_password,
     'password' : customer_password,
     'name' : customer_name,
     'contact' : customer_contact,

@@ -70,13 +70,18 @@ class Owner(Base):
             return True
 
 
-    def updatePassword(self):
+    def updatePassword(self, oldPassword):
         try:
-            DB_session.query(Owner)\
+            result = DB_session.query(Owner)\
                 .filter(Owner.username == self.username)\
+                .filter(Owner.password == oldPassword)\
                 .update({
                     Owner.password : self.password
                 })
+            
+            if result == 0:
+                return False
+            
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -114,6 +119,12 @@ class Owner(Base):
             label.owner_agencyName: self.agencyName,
             label.owner_contact: self.contact
         }
+
+    def getOwner(self):
+        ownerObj = DB_session.query(Owner)\
+            .filter(Owner.username == self.username).first()
+        return ownerObj
+    
 
     @staticmethod
     def isLoggedOn():

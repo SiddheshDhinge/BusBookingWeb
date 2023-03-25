@@ -1,19 +1,64 @@
 {% extends "layout.html" %}
-
+{% block css %}
+    <link rel="stylesheet" href="/css/landingPage.css" />
+{% endblock %}
 {% block content %}
-<h1>
-    Welcome Owner!
-</h1>
-<a href="{{ url_for('.updateOwnerProfile') }}"> Update Profile </a><br><br>
-<a href="{{ url_for('.changePassword') }}"> Reset Password </a><br><br>
-<a href="{{ url_for('.addBus') }}"> Register Bus </a><br><br>
-<a href="{{ url_for('.viewBus') }}"> View Bus </a><br><br>
-<a href="{{ url_for('.registerOperator') }}"> Register Operator </a><br><br>
-<a href="{{ url_for('.viewOperator') }}"> View My Operators </a><br><br>
-<a href="{{ url_for('.addCity') }}"> Add City </a><br><br>
-<a href="{{ url_for('.viewCity') }}"> View City </a><br><br>
-<a href="{{ url_for('.addStop') }}"> Add Stop </a><br><br>
-<a href="{{ url_for('.viewStop') }}"> View Stop </a><br><br>
-<a href="{{ url_for('.addSchedule') }}"> Add Schedule </a><br><br>
-<a href="{{ url_for('.viewSchedules') }}"> View Schedules </a><br><br>
+<div class="landing-page-container">
+    <div class="user-header-container">
+        <h2>
+            Welcome, {{ response_data['data']['owner']['owner-agency-name'] }}!
+        </h2>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Your Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Username</th>
+                                    <td>{{ response_data['data']['owner']['owner-username'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Password</th>
+                                    <td>******</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Agency Name</th>
+                                    <td>{{ response_data['data']['owner']['owner-agency-name'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Contact</th>
+                                    <td>{{ response_data['data']['owner']['owner-contact'] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <img class="user-profile-img" src="media/user-128.svg"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    </div>
+    <hr>
+
+    <a class="landing-page-action" href="{{ url_for('.updateOwnerProfile') }}"> Update Profile </a>
+    <a class="landing-page-action" href="{{ url_for('.changePassword') }}"> Reset Password </a>
+    <a class="landing-page-action" href="{{ url_for('.addBus') }}"> Register Bus </a>
+    <a class="landing-page-action" href="{{ url_for('.viewBus') }}"> View Bus </a>
+    <a class="landing-page-action" href="{{ url_for('.registerOperator') }}"> Register Operator </a>
+    <a class="landing-page-action" href="{{ url_for('.viewOperator') }}"> View My Operators </a>
+    <a class="landing-page-action" href="{{ url_for('.addCity') }}"> Add City </a>
+    <a class="landing-page-action" href="{{ url_for('.viewCity') }}"> View City </a>
+    <a class="landing-page-action" href="{{ url_for('.addStop') }}"> Add Stop </a>
+    <a class="landing-page-action" href="{{ url_for('.viewStop') }}"> View Stop </a>
+    <a class="landing-page-action" href="{{ url_for('.addSchedule') }}"> Add Schedule </a>
+    <a class="landing-page-action" href="{{ url_for('.viewSchedules') }}"> View Schedules </a>
+</div>
 {% endblock %}

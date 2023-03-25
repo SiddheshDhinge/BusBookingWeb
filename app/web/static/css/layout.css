@@ -60,6 +60,8 @@ header nav ul {
     list-style: none;
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 header nav ul li {
@@ -99,10 +101,10 @@ header nav ul li form {
 /* FLASH MESSAGE START */
 
 .flash-message-error{
-    background-color: lightcoral;
+    background-color: var(--bs-danger);
 }
 .flash-message-warning{
-    background-color: rgb(252, 252, 89);
+    background-color: var(--bs-warning);
 }
 .flash-message-success{
     background-color: lightgreen;

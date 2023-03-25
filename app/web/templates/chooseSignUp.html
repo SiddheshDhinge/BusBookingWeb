@@ -1,15 +1,42 @@
 {% extends "layout.html" %}
+{% block css %}
+<style>
+    .signup-user-container{
+        display: flex;
+        height: 80vh;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .signup-user{
+        background-color: rgb(255, 200, 200);
+        width: 20vh;
+        height: 20vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px gray solid;
+        border-radius: 5%;
+        cursor: pointer;
+        text-decoration: none;
+        color: rgb(39, 39, 39);
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: all 200ms;
+    }
+    .signup-user:hover{
+        background-color: rgb(255, 95, 95);
+        color: white;
+        box-shadow: 0 0 10px grey;
+    }
+</style>
+{% endblock %}
 {% block content %}
-<ul>
-    <li>
-        <form method="get" action="{{ url_for('.signUp', role='owner') }}">
-            <button class="login-btn">SignUp Owner</button>
-        </form>
-    </li>
-    <li>
-        <form method="get" action="{{ url_for('.signUp', role='customer') }}">
-            <button class="login-btn">SignUp Customer</button>
-        </form>
-    </li>
-</ul>
+<div class="signup-user-container">
+    <a class="signup-user" href="{{ url_for('.signUp', role='owner') }}">
+        Agency
+    </a>
+    <a class="signup-user" href="{{ url_for('.signUp', role='customer') }}">
+        Customer
+    </a>
+</div>
 {% endblock %}

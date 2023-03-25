@@ -1,92 +1,66 @@
 {% extends "layout.html" %}
 {% block css %}
-<style>
-    .component-main {
-        font-size: larger;
-        text-align: center;
-    }
-
-    .main-table-grid {
-        background-color: black;
-        display: grid;
-        grid-template-columns: .2fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        row-gap: 1px;
-    }
-
-    .table-cell {
-        background-color: lightgreen;
-        padding: 2vh;
-        border: 1px solid black;
-    }
-
-    .table-cell-header {
-        background-color: burlywood;
-    }
-
-</style>
+    <link rel="stylesheet" href="/css/tables.css">
+    <style>
+        img{
+            width: 20px;
+        }
+    </style>
 {% endblock %}
 {% block content %}
-    <div class="component-main">
-        <div class="main-title">
-            View Schedule Details
-        </div>
+    <div>
+        <h2 class="main-title">
+            My All Bookings
+        </h2>
         
-        <div class="main-table-grid">
-            <div class="table-cell table-cell-header">
-                #
-            </div>
-            <div class="table-cell table-cell-header">
-                To City
-            </div>
-            <div class="table-cell table-cell-header">
-                Departure Date/Time
-            </div>
-            <div class="table-cell table-cell-header">
-                Passengers Name
-            </div>
-            <div class="table-cell table-cell-header">
-                Agency Name
-            </div>
-            <div class="table-cell table-cell-header">
-                Bus Number Plate
-            </div>
-            <div class="table-cell table-cell-header">
-                View Details
-            </div>
-            
+        <table class="table table-primary table-striped table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">To City</th>
+                    <th scope="col">Departure Date/Time</th>
+                    <th scope="col">Passengers Name</th>
+                    <th scope="col">Agency Name</th>
+                    <th scope="col">Bus Number Plate</th>
+                    <th scope="col">View Details</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for bookingObj in response_data['data'] %}
-                <div class="table-cell">
-                    {% if bookingObj['schedule']['schedule-is-complete'] %}
-                        <img src="media/small-check-mark-icon.svg">
-                    {% else %}
-                        {{loop.index}}
-                    {% endif %}
-                </div>
-                <div class="table-cell">
-                    {{bookingObj['city']['city-name']}}
-                </div>
-                <div class="table-cell">
-                    {{bookingObj['schedule']['schedule-from-date']}} <br>
-                    {{bookingObj['schedule']['schedule-departure-time']}}
-                </div>
-                <div class="table-cell">
-                    {{bookingObj['passenger']['passenger-name']}}
-                </div>
-                <div class="table-cell">
-                    {{bookingObj['owner']['owner-agency-name']}}
-                </div>
-                <div class="table-cell">
-                    {{bookingObj['schedule']['bus-number-plate']}}
-                </div>
-                <div class="table-cell">
-                    <form action="{{url_for('.viewBookingDetails', bookingId= bookingObj['booking']['booking-id'])}}" method="GET">
-                        <button type="submit">View Ticket</button>
-                    </form>
-                </div>
+                {% if bookingObj %}
+                <tr>
+                    <th scope="row">
+                        {% if bookingObj['schedule']['schedule-is-complete'] %}
+                            <img src="media/small-check-mark-icon.svg">
+                        {% else %}
+                            {{loop.index}}
+                        {% endif %}
+                    </th>
+                    <td>
+                        {{bookingObj['city']['city-name']}}
+                    </td>
+                    <td>
+                        {{bookingObj['schedule']['schedule-from-date']}} <br>
+                        {{bookingObj['schedule']['schedule-departure-time']}}
+                    </td>
+                    <td>
+                        {{bookingObj['passenger']['passenger-name']}}
+                    </td>
+                    <td>
+                        {{bookingObj['owner']['owner-agency-name']}}
+                    </td>
+                    <td>
+                        {{bookingObj['schedule']['bus-number-plate']}}
+                    </td>
+                    <td>    
+                        <form action="{{url_for('.viewBookingDetails', bookingId= bookingObj['booking']['booking-id'])}}" method="GET">
+                            <button type="submit" class="btn btn-primary">View Ticket</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endif %}
             {% endfor %}
-
-         </div>
-         <script>
-         </script>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

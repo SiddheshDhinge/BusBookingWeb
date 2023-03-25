@@ -67,8 +67,9 @@ class ControllerCustomer:
     @Customer.requireLogin
     def handleChangePassword(self):
         username = session[label.username]
+        oldPassword = request.form.get(label.customer_old_password)
         password = request.form.get(label.customer_password)
-        result = Customer(username= username, password= password, name= None, contact= None).updatePassword()
+        result = Customer(username= username, password= password, name= None, contact= None).updatePassword(oldPassword= oldPassword)
         if(result == True):
             flashMessage(label_reason.userPasswordUpdateSuccess)
         else:

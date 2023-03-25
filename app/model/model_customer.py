@@ -70,13 +70,18 @@ class Customer(Base):
             return True
             
             
-    def updatePassword(self):
+    def updatePassword(self, oldPassword):
         try:
-            DB_session.query(Customer)\
+            result = DB_session.query(Customer)\
                 .filter(Customer.username == self.username)\
+                .filter(Customer.password == oldPassword)\
                 .update({
                     Customer.password : self.password
                 })
+            
+            if result == 0:
+                return False
+            
             DB_session.commit()
         except Exception as e:
             print(e)
@@ -114,6 +119,11 @@ class Customer(Base):
             label.customer_name : self.name,
             label.customer_contact : self.contact
         }
+
+    def getCustomer(self):
+        customerObj = DB_session.query(Customer)\
+            .filter(Customer.username == self.username).first()
+        return customerObj
 
 
     @staticmethod

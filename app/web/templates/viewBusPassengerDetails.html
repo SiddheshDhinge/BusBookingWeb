@@ -1,0 +1,69 @@
+{% macro viewBusPassengerDetails(response_data) -%}
+    <style>
+        .passenger-table-grid {
+            background-color: black;
+            display: grid;
+            grid-template-columns: .3fr .3fr 1fr 1fr 1fr 1fr;
+            row-gap: 1px;
+        }
+
+        .table-entire-row{
+            grid-column-start: 1;
+            grid-column-end: -1;
+        }
+    </style>
+
+    <h3 class="main-title-secondary">
+        Passengers Details
+    </h3>
+    <table class="table table-secondary table-striped table-bordered border-secondary">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Seat No</th>
+            <th scope="col">Passenger</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Boarding Stop</th>
+            <th scope="col">Dropping Stop</th>
+        </tr>
+        
+        {% for bookingObj in response_data['data']['list-booking'] %}
+        <tr>
+            <th scope="row">
+                {{ loop.index }}.
+            </th>
+
+           <td>
+               {{bookingObj['booking']['seat-no']}}
+           </td>
+           
+           <td>
+               {% set passengerName = bookingObj['passenger']['passenger-name'] %}
+               {% set passengerContact = bookingObj['passenger']['passenger-contact'] %}
+               {% set passengerAge = bookingObj['passenger']['passenger-age'] %}
+               {% if bookingObj['passenger']['passenger-gender'] == 'M' %}
+                   {% set passengerGender = 'Male' %}
+               {% else %}
+                   {% set passengerGender = 'Female' %}
+               {% endif %}
+
+               {{passengerName}} <br>
+               [{{passengerAge}} {{passengerGender}}] <br>
+               ({{passengerContact}})
+           </td>
+
+           <td>
+               {{bookingObj['customer']['customer-name']}} <br>
+               ({{bookingObj['customer']['customer-contact']}})
+           </td>
+
+           <td>
+               {{bookingObj['from-stop']['stop-name']}}
+           </td>
+
+           <td>
+               {{bookingObj['to-stop']['stop-name']}}
+           </td>
+        </tr>
+        {% endfor %}
+    </div>
+{%- endmacro %}

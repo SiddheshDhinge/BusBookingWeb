@@ -56,8 +56,9 @@ class ControllerOperator:
     @Operator.requireLogin
     def handleChangePassword(self):
         username = session[label.username]
+        oldPassword = request.form.get(label.operator_old_password)
         password = request.form.get(label.operator_password)
-        result = Operator(username= username, password= password, name= None, contact= None, ownerUsername= None).updatePassword()
+        result = Operator(username= username, password= password, name= None, contact= None, ownerUsername= None).updatePassword(oldPassword= oldPassword)
         if(result == True):
             flashMessage(label_reason.userPasswordUpdateSuccess)
         else:

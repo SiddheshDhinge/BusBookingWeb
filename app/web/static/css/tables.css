@@ -1,0 +1,28 @@
+.main-title{
+    background-color: lightcoral;
+    text-align: center;
+    padding: 2vh;
+    transition: all 200ms;
+}
+.main-title:hover{
+    background-color: rgb(240, 96, 96);
+    color: white;
+}
+.main-title-secondary{
+    background-color: rgb(246, 182, 255);
+    text-align: center;
+    padding: 1.5vh;
+    transition: all 200ms;
+}
+.main-title-secondary:hover{
+    background-color: rgb(243, 156, 255);
+    color: white;
+}
+.table, h2, h3{
+    margin: 0;
+    padding: 0;
+}
+th, td{
+    text-align: center;
+    vertical-align: middle;
+}

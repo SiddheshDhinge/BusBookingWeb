@@ -1,14 +1,25 @@
 {% extends "layout.html" %}
+{% block css %}
+<style>
+    form{
+        padding: 10vw;
+    }
+
+</style>
+{% endblock %}
 {% block content %}
+
 <form action="{{ url_for('.updateOperatorProfile') }}" method="POST">
-
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="{{ response_data['label']['name'] }}"><br><br>
-
-    <label for="contact">Contact:</label>
-    <input type="text" id="contact" name="{{ response_data['label']['contact'] }}"><br><br>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="name" placeholder="John Doe" name="{{ response_data['label']['name'] }}">
+        <label for="name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="contact" placeholder="9876543210" name="{{ response_data['label']['contact'] }}">
+        <label for="contact">Contact</label>
+    </div>
     
-    <input type="submit">
-
+    {# <button type="button">Primary</button> #}
+    <button type="submit" class="btn btn-primary"> Submit </button>
 </form>
 {% endblock %}

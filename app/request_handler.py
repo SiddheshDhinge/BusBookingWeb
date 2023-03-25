@@ -185,11 +185,17 @@ class OwnerRequestHandler:
     # Landing Page for Owner
     @Owner.requireLogin
     def landingOwner(self):
-        return render_template('landingOwner.html', response_data= {
+        username = session[label.username]
+        ownerObj = Owner(username= username, password= None, agencyName= None, contact= None).getOwner()
+        response_data = {
+            label.data : {
+                Owner.objName : ownerObj.serialize(),
+            },
             label.options : {
                 label.nav_btn : label.btn_logout
             }
-        })
+        }
+        return render_template('landingOwner.html', response_data= response_data)
 
 
     # Bus Registration
@@ -376,11 +382,19 @@ class OperatorRequestHandler:
     # Landing Page for Operator
     @Operator.requireLogin
     def landingOperator(self):
-        return render_template('landingOperator.html', response_data= {
+        username = session[label.username]
+        operatorObj = Operator(username= username, password= None, name= None, contact= None, ownerUsername= None).getOperator()
+        ownerObj = Owner(username= operatorObj.ownerUsername, password= None, agencyName= None, contact= None).getOwner()
+        response_data = {
+            label.data : {
+                Operator.objName : operatorObj.serialize(),
+                Owner.objName : ownerObj.serialize(),
+            },
             label.options : {
                 label.nav_btn : label.btn_logout
             }
-        })
+        }
+        return render_template('landingOperator.html', response_data= response_data)
 
 
     # Update Operators profile
@@ -418,11 +432,17 @@ class CustomerRequestHandler:
     # Landing Page for Customer
     @Customer.requireLogin
     def landingCustomer(self):
-        return render_template('landingCustomer.html', response_data= {
+        username = session[label.username]
+        customerObj = Customer(username= username, password= None, name= None, contact= None).getCustomer()
+        response_data = {
+            label.data : {
+                Customer.objName : customerObj.serialize(),
+            },
             label.options : {
                 label.nav_btn : label.btn_logout
             }
-        })
+        }
+        return render_template('landingCustomer.html', response_data= response_data)
 
 
     # Update Customer profile
