@@ -491,7 +491,6 @@ class CustomerRequestHandler:
         return ControllerCustomer().handleViewBooking()
 
 
-    @Customer.requireLogin
     def viewBookingDetails(self, bookingId):
         return ControllerCustomer().handleViewBookingDetails(bookingId= bookingId)
         

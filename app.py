@@ -13,6 +13,7 @@ createAllTables()
 
 
 # Import Dependencies
+from waitress import serve
 from flask import Flask
 from flask_uuid import FlaskUUID
 import os
@@ -34,9 +35,5 @@ app.register_blueprint(requestRoutes)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
-
-# for waitress
-# def create_app():
-#    return app
+    serve(app, host='0.0.0.0', port=8080)
+    # app.run(debug=True)
