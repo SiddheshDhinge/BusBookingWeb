@@ -1,28 +1,6 @@
 {% extends "layout.html" %}
 {% block css %}
-    <style>
-        .component-main{
-            font-size: larger;
-            text-align: center;
-        }
-        .main-table-grid {
-            background-color: black;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-            row-gap: 1px;
-        }
-
-        .table-cell {
-            background-color: lightgreen;
-            padding: 2vh;
-            border: 1px solid black;
-        }
-
-        .table-cell-header{
-            background-color: burlywood;
-        }
-
-    </style>
+    <link rel="stylesheet" href="/css/tables.css">
 {% endblock %}
 {# 
 '''
@@ -46,151 +24,172 @@ timeBlockEvening = 'time-evening'
 timeBlockNight = 'time-night' #}
 
 {% block content %}
-    <div class="component-main">
-        <div class="main-title">
-            <form action="{{url_for('.viewSchedules')}}" method="POST">
-                
-                <label for="fromcity">From City:</label>
-                <select id="fromcity" name="filter-from-city">
-                    {% for cityObj in response_data['data']['list-city'] %}
-                        <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
-                    {% endfor %}
-                </select>
-
-                <label for="tocity">To City:</label>
-                <select id="tocity" name="filter-to-city">
-                    {% for cityObj in response_data['data']['list-city'] %}
-                        <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
-                    {% endfor %}
-                </select>
-
-                <label for="agency">Agency Name:</label>
-                <input id="agency" type="text" name="owner-agency-name" list="ownerList" />
-                <datalist id="ownerList">
-                    {% for owner in response_data['data']['owner'] %}
-                        <option value="{{owner['username']}}"> {{owner['username']}} </option>
-                    {% endfor %}
-                </datalist>
-
-                <label for="fromdate">Date:</label>
-                <input id="fromdate" type="date" name="filter-date">
-
-                <label for="timegroup">Time:</label>
-                <fieldset id="timegroup">
-                    <label for="time-morning">Morning:</label>
-                    <input id="time-morning" type="radio" value="time-morning" name="filter-time-block">
-                    <label for="time-noon">Noon:</label>
-                    <input id="time-noon" type="radio" value="time-noon" name="filter-time-block">
-                    <label for="time-evening">Evening:</label>
-                    <input id="time-evening" type="radio" value="time-evening" name="filter-time-block">
-                    <label for="time-night">Night:</label>
-                    <input id="time-night" type="radio" value="time-night" name="filter-time-block">
-                    <label for="time-all">All:</label>
-                    <input id="time-all" type="radio" value="all" name="filter-time-block" checked>
-                </fieldset>
-
-                <label for="bustype">Bus Type:</label>
-                <fieldset id="bustype">
-                    <label for="sleep">SLEEP:</label>
-                    <input id="sleep" type="radio" value="SLEEP" name="filter-bus-type">
-                    <label for="seat">SEAT:</label>
-                    <input id="seat" type="radio" value="SEAT" name="filter-bus-type">
-                    <label for="all">all:</label>
-                    <input id="all" type="radio" value="all" name="filter-bus-type" checked>
-                </fieldset>
-
-                <label for="sortprice">Sort Price:</label>
-                <fieldset id="sortprice">
-                    <label for="sortasc">Ascending:</label>
-                    <input id="sortasc" type="radio" value="asc" name="filter-sort-price">
-                    <label for="sortdesc">Descending:</label>
-                    <input id="sortdesc" type="radio" value="desc" name="filter-sort-price">
-                    <label for="nosort">Don't Sort:</label>
-                    <input id="nosort" type="radio" value="no" name="filter-sort-price" checked>
-                </fieldset>
-                
-                {% if response_data['options']['access-type'] == 'owner' %}
-                    
-                    <label for="trip-status">Trip Status:</label>
-                    <fieldset id="trip-status">
-                        <label for="trip-complete">Completed</label>
-                        <input id="trip-complete" type="radio" value="complete" name="filter-trip-status">
-                        <label for="trip-incomplete">Incomplete</label>
-                        <input id="trip-incomplete" type="radio" value="incomplete" name="filter-trip-status" checked>
-                    </fieldset>
-                {% endif %}
-
-                <input type="submit">
-            </form>
+    <div>
+        <h2 class="main-title">
             View Schedules
+        </h2>
+        <div class="search-options">
+            <form action="{{url_for('.viewSchedules')}}" method="POST" class="d-flex justify-content-center flex-column">
+                <div class="input-group">
+                    <div class="form-floating">
+                        <select id="fromcity" class="form-select" name="filter-from-city">
+                            {% for cityObj in response_data['data']['list-city'] %}
+                                <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
+                            {% endfor %}
+                        </select>
+                        <label for="fromcity">From City</label>
+                    </div>
+                    <div class="form-floating">
+                        <select id="tocity" class="form-select" name="filter-to-city">
+                            {% for cityObj in response_data['data']['list-city'] %}
+                                <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
+                            {% endfor %}
+                        </select>
+                        <label for="tocity">To City</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="fromdate" name="filter-date">
+                        <label for="fromdate">Date</label>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="agency" name="owner-agency-name" placeholder="All" autocomplete="off">
+                        <label for="agency">Agency Name</label>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <fieldset class="form-group border rounded p-3 w-100">
+                        <legend class="col-form-label float-none w-auto p-0">
+                            Bus Type
+                        </legend>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="SLEEP" name="filter-bus-type" id="sleep">
+                                    <label class="form-check-label" for="sleep">Sleeping</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="SEAT" name="filter-bus-type" id="seat">
+                                    <label class="form-check-label" for="seat">Seating</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="all" name="filter-bus-type" id="all" checked>
+                                    <label class="form-check-label" for="all">All</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="input-group">
+                    <fieldset class="form-group border rounded p-3 w-100">
+                        <legend class="col-form-label float-none w-auto p-0">
+                            Departure Time
+                        </legend>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="time-morning" name="filter-time-block" id="time-morning">
+                                    <label class="form-check-label" for="time-morning">Morning</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="time-noon" name="filter-time-block" id="time-noon">
+                                    <label class="form-check-label" for="time-noon">Noon</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="time-evening" name="filter-time-block" id="time-evening">
+                                    <label class="form-check-label" for="time-evening">Evening</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="time-night" name="filter-time-block" id="time-night">
+                                    <label class="form-check-label" for="time-night">Night</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="all" name="filter-time-block" id="time-all" checked>
+                                    <label class="form-check-label" for="time-all">All</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="input-group">
+                    <fieldset class="form-group border rounded p-3 w-100">
+                        <legend class="col-form-label float-none w-auto p-0">
+                            Sort Price
+                        </legend>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="asc" name="filter-sort-price" id="sortasc">
+                                    <label class="form-check-label" for="sortasc">Ascending</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="desc" name="filter-sort-price" id="sortdesc">
+                                    <label class="form-check-label" for="sortdesc">Descending</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" value="no" name="filter-sort-price" id="nosort" checked>
+                                    <label class="form-check-label" for="nosort">Don't Sort</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2 mb-2 m-auto w-50">Search</button>
+            </form>
         </div>
-        <div class="main-table-grid">
-            <div class="table-cell-header table-cell">
-                From City
-            </div>
-            <div class="table-cell-header table-cell">
-                To City
-            </div>
-            <div class="table-cell-header table-cell">
-                From Date/Time
-            </div>
-            <div class="table-cell-header table-cell">
-                To Date/Time
-            </div>
-            <div class="table-cell-header table-cell">
-                Operator
-            </div>
-            <div class="table-cell-header table-cell">
-                Fair Fees
-            </div>
-            <div class="table-cell-header table-cell">
-                Options
-            </div>
-
+        
+        <table class="table table-primary table-striped table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Trip</th>
+                    <th scope="col">Departure Date/Time</th>
+                    <th scope="col">Dropping Date/Time</th>
+                    <th scope="col">Fair Fees</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for rowObj in response_data['data']['schedule'] %}
                 {% if rowObj['schedule'] %}
-                    <div class="table-cell">
-                        {{rowObj['from_city']['city-name']}}
-                    </div>
-
-                    <div class="table-cell">
+                <tr>
+                    <th scope="row">
+                        {{ loop.index }}.
+                    </th>
+                    <td>
+                        {{rowObj['from_city']['city-name']}} -To-
                         {{rowObj['to_city']['city-name']}}
-                    </div>
-                    
-                    <div class="table-cell">
+                    </td>
+                    <td>
                         {{rowObj['schedule']['schedule-from-date']}} <br> 
                         {{rowObj['schedule']['schedule-departure-time']}}
-                    </div>
-
-                    <div class="table-cell">
+                    </td>
+                    <td>
                         {{rowObj['schedule']['schedule-to-date']}} <br> 
                         {{rowObj['schedule']['schedule-drop-time']}}
-                    </div>
-
-                    <div class="table-cell">
-                        {{rowObj['schedule']['operator-username']}}
-                    </div>
-
-                    <div class="table-cell">
+                    </td>
+                    <td>
                         &#8377; {{rowObj['schedule']['schedule-fair-fees']}}
-                    </div>
-
-                    <div class="table-cell">
+                    </td>
+                    <td>
                         {% if (rowObj['owner']['owner-username'] == response_data['options']['owner-username']) and response_data['options']['access-type'] == 'owner' %}
                             <form action="{{url_for('.viewScheduleDetails')}}" method="POST">
                                 <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
-                                <button type="submit">View More</button>
+                                <button class="btn btn-primary" type="submit">View More</button>
                             </form>
                         {% endif %}
                         {% if response_data['options']['access-type'] == 'customer' %}
                             <form action="{{url_for('.bookSchedule')}}" method="POST">
                                 <input type="hidden" name="schedule-id" value="{{rowObj['schedule']['schedule-id']}}"/>
-                                <button type="submit">Book Schedule</button>
+                                <button class="btn btn-primary" type="submit">Book Schedule</button>
                             </form>
                         {% endif %}
-                    </div>
+                    </td>
+                </tr>
                 {% endif %}
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

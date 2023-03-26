@@ -1,62 +1,75 @@
 {% extends "layout.html" %}
+{% block css %}
+<style>
+    form{
+        padding: 10vw;
+    }
+
+</style>
+{% endblock %}
 {% block content %}
-<form id='stopForm' action="{{ url_for('.addSchedule') }}" method="POST">
+<form action="{{ url_for('.addSchedule') }}" method="POST">
+    <div class="form-floating mb-3">
+        <select class="form-select" id="cid1" name="schedule-from-city-id">
+            {% for cityObj in response_data['data']['list-city'] %}
+                <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
+            {% endfor %}
+        </select>
+        <label for="cid1">From City</label>
+    </div>
 
-    <label for="cid1">From City:</label>
-    <select id="cid1" name="schedule-from-city-id">
-        {% for cityObjList in response_data['data']['list-city'] %}
-            <option value="{{cityObjList['city-id']}}"> {{cityObjList['city-name']}} </option>
-        {% endfor %}
-    </select>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="cid2" name="schedule-to-city-id">
+            {% for cityObj in response_data['data']['list-city'] %}
+                <option value="{{cityObj['city-id']}}"> {{cityObj['city-name']}} </option>
+            {% endfor %}
+        </select>
+        <label for="cid2">To City</label>
+    </div>
 
-    <br><br>
-    
-    <label for="cid2">To City:</label>
-    <select id="cid2" name="schedule-to-city-id">
-        {% for cityObjList in response_data['data']['list-city'] %}
-            <option value="{{cityObjList['city-id']}}"> {{cityObjList['city-name']}} </option>
-        {% endfor %}
-    </select>
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="fromdate" name="schedule-from-date" autocomplete="off">
+        <label for="fromdate">From Date</label>
+    </div>
 
-    <br><br>
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="todate" name="schedule-to-date" autocomplete="off">
+        <label for="todate">To Date</label>
+    </div>
 
-    <label for="fromdate">From Date:</label>
-    <input id="fromdate" type="date" name="schedule-from-date">
-    <br><br>
+    <div class="form-floating mb-3">
+        <input type="time" class="form-control" id="fromtime" name="schedule-departure-time" autocomplete="off">
+        <label for="fromtime">From Time</label>
+    </div>
 
-    <label for="todate">To Date:</label>
-    <input id="todate" type="date" name="schedule-to-date">
-    <br><br>
+    <div class="form-floating mb-3">
+        <input type="time" class="form-control" id="totime" name="schedule-drop-time" autocomplete="off">
+        <label for="totime">To Time</label>
+    </div>
 
-    <label for="fromtime">From Time:</label>
-    <input id="fromtime" type="time" name="schedule-departure-time">
-    <br><br>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="operatorusername" name="operator-username">
+            {% for operatorObj in response_data['data']['list-operator'] %}
+                <option value="{{operatorObj['operator-username']}}"> {{operatorObj['operator-name']}} </option>
+            {% endfor %}
+        </select>
+        <label for="operatorusername">Operator Name</label>
+    </div>
 
-    <label for="totime">To Time:</label>
-    <input id="totime" type="time" name="schedule-drop-time">
-    <br><br>
-    
-    <label for="operatorusername">Operator User Name:</label>
-    <select id="operatorusername" name="operator-username">
-        {% for operatorObj in response_data['data']['list-operator'] %}
-            <option value="{{operatorObj['operator-username']}}"> {{operatorObj['operator-name']}} </option>
-        {% endfor %}
-    </select>
-    <br><br>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="fairfees" name="schedule-fair-fees" autocomplete="off">
+        <label for="fairfees">Fair Fees</label>
+    </div>
 
-    <label for="fairfees">Fair Fees:</label>
-    <input type="text" id="fairfees" name="schedule-fair-fees">
-    <br><br>
-    
-    <label for="bid">Assign bus:</label>
-    <select id="bid" name="bus-number-plate">
-        {% for busObj in response_data['data']['list-bus'] %}
-            <option value="{{busObj['bus-number-plate']}}"> {{busObj['bus-number-plate']}} </option>
-        {% endfor %}
-    </select>
-    <br><br>
-    
-    <input type="submit">
+    <div class="form-floating mb-3">
+        <select class="form-select" id="bid" name="bus-number-plate">
+            {% for busObj in response_data['data']['list-bus'] %}
+                <option value="{{busObj['bus-number-plate']}}"> {{busObj['bus-number-plate']}} </option>
+            {% endfor %}
+        </select>
+        <label for="bid">Assign Bus</label>
+    </div>
 
+    <button type="submit" class="btn btn-primary"> Submit </button>
 </form>
 {% endblock %}

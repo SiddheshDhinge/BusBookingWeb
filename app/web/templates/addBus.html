@@ -1,140 +1,156 @@
-{% extends "layout.html" %}
-{% block css %}
-    <style>
-        fieldset{
-            border: 0 none;
-            display: inline;
-        }
-        .bus{
-            border: 1px solid grey;
-            border-radius: 5%;
-            display: inline-flex;
-            align-items: flex-start;
-            padding: 10px;
-        }
-        .bus-steering-wheel{
-            width: 50px;
-            margin-right: 10px;
-        }
-        .bus-floor{
-            display: grid;
-            padding: 10px;
-            border: 1px solid grey;
-            border-radius: 2%;
-            grid-template-rows: repeat(3, 1fr);
-            grid-template-columns: repeat(5, 1fr);
-            grid-auto-flow: column;
-            column-gap: 10px;
-            width: fit-content;
-        }
-        .bus-cell{
-            height: 50px;
-            transition: width 1s;
-        }
-        .bus-cell-seat{
-            width: 50px;
-        }
-        .bus-cell-sleep{
-            width: 80px;
-        }
-        .bus-cell-enable{
-            background-color: lightblue;
-            border: 1px solid grey;
-            border-radius: 5%;
-        }
-        .bus-cell-disable{
-            background-color: rgb(177, 177, 177);
-            border: 1px solid grey;
-            border-radius: 5%;
-        }
-        .bus-waliking-gap{
-            grid-column-start: span 5;
-            height: 15px;
-            transition: height 1s;
-        }
-        .bus-cell-selected{
-            border: 1px solid red;
-            border-radius: 5%;
-        }
-    </style>
+{% extends "layout.html" %}{% block css %}
+<style>
+    .bus{
+        border: 1px solid grey;
+        border-radius: 5%;
+        display: inline-flex;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .bus-steering-wheel{
+        width: 50px;
+        margin-right: 10px;
+    }
+    .bus-floor{
+        display: grid;
+        padding: 10px;
+        border: 1px solid grey;
+        border-radius: 2%;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-flow: column;
+        column-gap: 10px;
+        width: fit-content;
+    }
+    .bus-cell{
+        height: 50px;
+        transition: width 1s;
+    }
+    .bus-cell-seat{
+        width: 50px;
+    }
+    .bus-cell-sleep{
+        width: 80px;
+    }
+    .bus-cell-enable{
+        background-color: lightblue;
+        border: 1px solid grey;
+        border-radius: 5%;
+    }
+    .bus-cell-disable{
+        background-color: rgb(177, 177, 177);
+        border: 1px solid grey;
+        border-radius: 5%;
+    }
+    .bus-waliking-gap{
+        grid-column-start: span 5;
+        height: 15px;
+        transition: height 1s;
+    }
+    .bus-cell-selected{
+        border: 1px solid red;
+        border-radius: 5%;
+    }
+</style>
+
+<style>
+    form{
+        padding: 10vw;
+    }
+
+</style>
 {% endblock %}
-
 {% block content %}
-<div class="component-main">
+<div>
+    <form action="{{ url_for('.addBus') }}" method="POST" onsubmit="submitForm(event)">
 
-    <!-- 
-        Bus : 
-        numberPlate
-        busType
-        totalFloors
-        floorRows
-        floorColumns
-        walkingGapRow
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="plate" name="bus-number-plate" autocomplete="off" placeholder="Number Plate" required>
+            <label for="plate">Number Plate</label>
+        </div>
 
-        Seat :
-        seatNo
-        isEnabled
-     -->
-
-    <form action="{{ url_for('.addBus') }}" method="post" onsubmit="submitForm(event)">
-    
-        <label for="plate">Number Plate:</label>
-        <input type="text" id="plate" name="bus-number-plate" required><br><br>
-    
-        <label for="seat-type-selector">Seat Type:</label>
-        <fieldset id="seat-type-selector">
-            <label for="bus-seat-type-seat">SEAT:</label>
-            <input id="bus-seat-type-seat" onclick="changeSeatType(event)" type="radio" name="bus-type" value="SEAT" required>
-            <label for="bus-seat-type-sleep">SLEEP:</label>
-            <input id="bus-seat-type-sleep" onclick="changeSeatType(event)" type="radio" name="bus-type" value="SLEEP">
+        <fieldset class="form-group mb-3 border rounded p-3 w-100">
+            <legend class="col-form-label float-none w-auto p-0">
+                Seat Type
+            </legend>
+            <div class="row">
+                <div class="col-sm-12">
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" value="SEAT" name="bus-type" onclick="changeSeatType(event)" id="bus-seat-type-seat" required>
+                    <label class="form-check-label" for="bus-seat-type-seat">Seating</label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" value="SLEEP" name="bus-type" onclick="changeSeatType(event)" id="bus-seat-type-sleep">
+                    <label class="form-check-label" for="bus-seat-type-sleep">Sleeping</label>
+                </div>
+                </div>
+            </div>
         </fieldset>
-        <br><br>
 
-        <label for="total-floors-selector">Number of Floors:</label>
-        <fieldset id="total-floors-selector">
-            <label for="single-floor">Single Floor</label>
-            <input id="single-floor" onclick="changeTotalFloors(event)" type="radio" value="1" name="bus-total-floors" required/>
-            <label for="double-floor">Double Floor</label>
-            <input id="double-floor" onclick="changeTotalFloors(event)" type="radio" value="2" name="bus-total-floors" />
+        <fieldset class="form-group mb-3 border rounded p-3 w-100">
+            <legend class="col-form-label float-none w-auto p-0">
+                Number of Floors
+            </legend>
+            <div class="row">
+                <div class="col-sm-12">
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" value="1" name="bus-total-floors" onclick="changeTotalFloors(event)" id="single-floor" required>
+                    <label class="form-check-label" for="single-floor">Single Floor</label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" value="2" name="bus-total-floors" onclick="changeTotalFloors(event)" id="double-floor">
+                    <label class="form-check-label" for="double-floor">Double Floor</label>
+                </div>
+                </div>
+            </div>
         </fieldset>
-        <br><br>
 
-        <label>Edit Floor Layout:</label><br>
-        <label for="bus-floor-rows">Rows</label>
-        <input onchange="changeSeats(event)" id="bus-floor-rows" type="number" name="bus-floor-rows" required />
-        <label for="bus-floor-columns">Columns</label>
-        <input onchange="changeSeats(event)" id="bus-floor-columns" type ="number" name="bus-floor-columns" required />
-        <br><br>
-        
-        <label>Walking Gap Row:</label><br>
-        <label for="bus-walking-gap-row">Row Number:</label>
-        <input id="bus-walking-gap-row" type="number" onchange="handleWalkingGap(event)" name="bus-walking-gap-row" required />
-        <br><br>
+        <fieldset class="form-group mb-3 border rounded p-3 w-100">
+            <legend class="col-form-label float-none w-auto p-0">
+                Edit Floor Layout
+            </legend>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="bus-floor-rows" name="bus-floor-rows" onchange="changeSeats(event)" placeholder="3" autocomplete="off" required>
+                        <label for="bus-floor-rows">Rows</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="bus-floor-columns" name="bus-floor-columns" onchange="changeSeats(event)" placeholder="5" autocomplete="off" required>
+                        <label for="bus-floor-columns">Columns</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
 
-        <button onclick="allowSeatSelection(event)">Select Seats</button>
-        <button onclick="disableSeats(event)">Enable / Disable Seats</button>
-        <br><br>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="bus-walking-gap-row" name="bus-walking-gap-row" onchange="handleWalkingGap(event)" placeholder="2" autocomplete="off" required>
+            <label for="bus-walking-gap-row">Walking Gap Row</label>
+        </div>
+
+        <button class="btn btn-secondary" onclick="allowSeatSelection(event)">Select Seats</button>
+        <button class="btn btn-secondary" onclick="disableSeats(event)">Enable / Disable Seats</button>
+
+        <div class="mb-3 mt-3">
+            <div class="bus">
+                <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                <div id="bus-floor-1" class="bus-floor">
         
-        <div class="bus">
-            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-            <div id="bus-floor-1" class="bus-floor">
-    
+                </div>
+            </div>
+            <div class="bus mb-3">
+                <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                <div id="bus-floor-2" class="bus-floor">
+            
+                </div>
             </div>
         </div>
-        <br><br>
-        
-        <div class="bus">
-            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-            <div id="bus-floor-2" class="bus-floor">
-        
-            </div>
-        </div>
-        <br><br>
 
         <input id="seats-status" type="hidden" name="list-seat" />
-        <input type="submit" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
-        
+    
     <script>
         let totalRows = 3, totalColumns = 5;
         let secondFloorExists = true;

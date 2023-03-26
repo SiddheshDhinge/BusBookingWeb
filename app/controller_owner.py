@@ -252,7 +252,7 @@ class ControllerOwner:
         if not sequence:
             # Empty Field Submitted
             flashMessage(label_reason.invalidStopSequenceError)
-            return redirect(url_for("viewScheduleDetails"))
+            return redirect(url_for(".viewScheduleDetails"))
         
         stopSequence = []
         invalidFlag = False
@@ -270,7 +270,7 @@ class ControllerOwner:
         if invalidFlag:
             # Field either not selected or tampered
             flashMessage(label_reason.invalidStopSequenceError)
-            return redirect(url_for("viewScheduleDetails"))
+            return redirect(url_for(".viewScheduleDetails"))
         
         scheduleId = request.form.get(label.schedule_id, None)
         result = ComplexOperation().updateScheduleStop(scheduleId=scheduleId, stopSequence= stopSequence)
@@ -282,16 +282,16 @@ class ControllerOwner:
             # Invalid Stop Id entered
             flashMessage(label_reason.scheduleStopUpdationFailed)
         
-        return redirect(url_for("viewScheduleDetails"))
+        return redirect(url_for(".viewScheduleDetails"))
     
     
     def handleTripStatusUpdation(self):
         tripStatus = request.form.get(label.schedule_isComplete, None)
         if not tripStatus or tripStatus != "complete":
             flashMessage(label_reason.invalidTripStatusError)
-            return redirect(url_for("viewScheduleDetails"))
+            return redirect(url_for(".viewScheduleDetails"))
 
         scheduleId = request.form.get(label.schedule_id)
         ComplexOperation().updateTripStatus(scheduleId= scheduleId)
         flashMessage(label_reason.tripUpdationSuccess)
-        return redirect(url_for("viewScheduleDetails"))
+        return redirect(url_for(".viewScheduleDetails"))

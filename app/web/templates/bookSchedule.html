@@ -74,129 +74,145 @@
     }
 </style>
 <link rel="stylesheet" href="/css/busSeatEditor.css">
+<link rel="stylesheet" href="/css/tables.css">
 {% endblock %}
 {% block content %}
-    <div class="component-main">
-        <div class="main-title">
+    <div>
+        <h2 class="main-title">
             View Schedule Details
-        </div>
+        </h2>
         
-        <form action="{{url_for('.confirmBookSchedule')}}" method="POST">
-            <div class="main-table-grid">
-                <div class="table-cell table-cell-header">
-                    From City
-                </div>
-                <div class="table-cell">
-                    {{response_data['data']['schedule']['from_city']['city-name']}}
-                </div>
-
-                <div class="table-cell table-cell-header">
-                    To City
-                </div>
-                <div class="table-cell">
-                    {{response_data['data']['schedule']['to_city']['city-name']}}
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    From Date/Time
-                </div>
-                <div class="table-cell">
-                    {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
-                    {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    To Date/Time
-                </div>
-                <div class="table-cell">
-                    {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
-                    {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    Bus Type
-                </div>
-                <div class="table-cell">
-                    {{response_data['data']['schedule']['bus']['bus-type']}}
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    Schedule Fair Fees
-                </div>
-                <div class="table-cell">
-                    &#8377; {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
-                </div>
-
-                <div class="table-cell table-cell-header">
-                    Select Passenger
-                </div>
-                <div class="table-cell">
-                    <select id="passenger-selector" name="passenger-id">
-                    {% for passengerObj in response_data['data']['list-passenger'] %}
-                        <option data-passenger-gender="{{passengerObj['passenger-gender']}}" value="{{passengerObj['passenger-id']}}"> {{passengerObj['passenger-name']}} </option>
-                    {% endfor %}
-                    </select>
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    Select Seat
-                </div>
-                <div class="table-cell">
-                    <input type="hidden" id="seat-selector" name="seat-no">
-                    <div>
-                        <div class="bus">
-                            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-                            <div id="bus-floor-1" class="bus-floor">
-
+        <form action="{{ url_for('.confirmBookSchedule') }}" method="POST">
+            <table class="table table-primary table-striped table-bordered border-primary">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            From City
+                        </th>
+                        <td>
+                            {{response_data['data']['schedule']['from_city']['city-name']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            To City
+                        </th>
+                        <td>
+                            {{response_data['data']['schedule']['to_city']['city-name']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            From Date/Time
+                        </th>
+                        <td>
+                            {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
+                            {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            To Date/Time
+                        </th>
+                        <td>
+                            {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
+                            {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Bus Type
+                        </th>
+                        <td>
+                            {{response_data['data']['schedule']['bus']['bus-type']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Schedule Fair Fees
+                        </th>
+                        <td>
+                            &#8377; {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Select Passenger
+                        </th>
+                        <td>
+                            <div class="form-floating w-50 m-auto">
+                                <select id="passenger-selector" class="form-select" name="passenger-id">
+                                    {% for passengerObj in response_data['data']['list-passenger'] %}
+                                        <option data-passenger-gender="{{passengerObj['passenger-gender']}}" value="{{passengerObj['passenger-id']}}"> {{passengerObj['passenger-name']}} </option>
+                                    {% endfor %}
+                                </select>
+                                <label for="passenger-selector">Passenger</label>
                             </div>
-                        </div>
-                        <br><br>
-                        
-                        <div class="bus">
-                            <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
-                            <div id="bus-floor-2" class="bus-floor">
-                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Select Seat
+                        </th>
+                        <td>
+                            <input type="hidden" id="seat-selector" name="seat-no">
+                            <div>
+                                <div class="bus">
+                                    <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                                    <div id="bus-floor-1" class="bus-floor">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="bus">
+                                    <img class="bus-steering-wheel" src="/media/car-steering-wheel.svg" >
+                                    <div id="bus-floor-2" class="bus-floor">
+                                
+                                    </div>
+                                </div>
+                                <br>
                             </div>
-                        </div>
-                        <br><br>
-            
-                    </div>
-                </div>
-                
-                <div class="table-cell table-cell-header">
-                    Select Boarding Stop
-                </div>
-                <div class="table-cell">
-                    <select id="stop-selector" name="booking-from-stop-id">
-                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
-                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
-                    {% endfor %}
-                    </select>
-                </div>
-
-                <div class="table-cell table-cell-header">
-                    Select Dropping Stop
-                </div>
-                <div class="table-cell">
-                    <select id="stop-selector" name="booking-to-stop-id">
-                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
-                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
-                    {% endfor %}
-                    </select>
-                </div>
-
-                <div class="table-cell submit-btn-div">
-                    <button type="submit">Book Ticket</button>
-                </div>
-            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Select Boarding Stop
+                        </th>
+                        <td>
+                            <div class="form-floating w-50 m-auto">
+                                <select id="from-stop-selector" class="form-select" name="booking-from-stop-id">
+                                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
+                                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
+                                    {% endfor %}
+                                </select>
+                                <label for="from-stop-selector">Boarding Stop</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Select Dropping Stop
+                        </th>
+                        <td>
+                            <div class="form-floating w-50 m-auto">
+                                <select id="to-stop-selector" class="form-select" name="booking-to-stop-id">
+                                    {% for stopCityObj in response_data['data']['schedule']['list-stop'] %}
+                                        <option value="{{stopCityObj['stop']['stop-id']}}"> {{stopCityObj['stop']['stop-name']}} </option>
+                                    {% endfor %}
+                                </select>
+                                <label for="to-stop-selector">Dropping Stop</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="2">
+                            <button class="btn btn-primary" type="submit">Book Ticket</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </form>
-        <div id="json-data">
-            {% for bookingPassengerObj in response_data['data']['list-booking'] %}
-                <div data-seat-no="{{bookingPassengerObj['booking']['seat-no']}}" data-passenger-gender="{{bookingPassengerObj['passenger']['passenger-gender']}}">
-                </div>
-            {% endfor %}
-        </div>
-        
+
         <script>
             let prevSelectedSeat = null;
             function selectSeat(e)

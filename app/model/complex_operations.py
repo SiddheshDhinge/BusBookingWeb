@@ -50,8 +50,7 @@ class ComplexOperation:
         else:
             queryResult = DB_session.query(Stop, City).join(City).all()
         
-        self.response_data.clear()
-        self.response_data[label.data] = [
+        self.response_data[label.data][Stop.objListName] = [
             {
                 Stop.objName : stopObj.serialize(),
                 City.objName : cityObj.serialize(),

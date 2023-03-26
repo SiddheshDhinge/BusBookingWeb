@@ -4,31 +4,29 @@
     form{
         padding: 10vw;
     }
-
 </style>
 {% endblock %}
 {% block content %}
 <form action="{{ url_for('.registerPassenger') }}" method="POST">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="name" placeholder="John Doe" name="passenger-name">
+        <input type="text" class="form-control" id="name" placeholder="John Doe" name="passenger-name" autocomplete="off">
         <label for="name">Passenger Name</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="number" class="form-control" id="age" placeholder="45" name="passenger-age">
+        <input type="number" class="form-control" id="age" placeholder="45" name="passenger-age" autocomplete="off">
         <label for="age">Passenger Age</label>
     </div>
-    <fieldset class="form-group mb-3">
-        <legend class="col-form-label">
+    <fieldset class="form-group mb-3 border rounded p-3">
+        <legend class="col-form-label float-none w-auto p-0">
             Passenger Gender
         </legend>
         <div class="row">
             <div class="col-sm-12">
-            <div class="form-check d-inline-block">
-                {# <label for="gender">Passenger Gender:</label> #}
+            <div class="form-check-inline">
                 <input class="form-check-input" type="radio" value="M" name="passenger-gender" id="gender-male">
                 <label class="form-check-label" for="gender-male">Male</label>
             </div>
-            <div class="form-check">
+            <div class="form-check-inline">
                 <input class="form-check-input" type="radio" value="F" name="passenger-gender" id="gender-female">
                 <label class="form-check-label" for="gender-female">Female</label>
             </div>
@@ -36,7 +34,7 @@
         </div>
     </fieldset>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="age" placeholder="9876543210" name="passenger-contact">
+        <input type="text" class="form-control" id="age" placeholder="9876543210" name="passenger-contact" autocomplete="off">
         <label for="age">Passenger Contact</label>
     </div>
     

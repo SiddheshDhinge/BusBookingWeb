@@ -176,7 +176,13 @@
                                 Passenger Gender
                             </th>
                             <td>
-                                {{ response_data['data']['passenger']['passenger-gender'] }}
+                                {% set passengerGender = response_data['data']['passenger']['passenger-gender'] %}
+                                {% if passengerGender == 'M' %}
+                                    Male
+                                {% endif %}
+                                {% if passengerGender == 'F' %}
+                                    Female
+                                {% endif %}
                             </td>
                         </tr>
                         <tr>

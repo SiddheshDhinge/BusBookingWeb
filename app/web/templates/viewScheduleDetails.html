@@ -36,7 +36,10 @@
     }
     .single-stop{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1.5fr 1fr;
+        column-gap: 5%;
+        align-items: center;
+        justify-content: center;
     }
     .invisible-form{
         display: inline;
@@ -44,356 +47,404 @@
     .editor-btn{
         padding: 5px;
         border: 1px solid grey;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all 200ms;
+    }
+    .editor-btn:hover{
+        background-color: rgb(110, 110, 255);
     }
     fieldset{
         border:0 none;
         display: inline;
     }
     #trip-status-warning{
-        display: none;
+        color: rgb(255, 57, 57);
     }
 </style>
+<link rel="stylesheet" href="/css/tables.css">
 {% endblock %}
 {% block content %}
-    <div class="component-main">
-        <div class="main-title">
+<div>
+    <div class="main-title">
+        <h2>
             View Schedule Details
-        </div>
-        
-        <div class="main-table-grid">
-            <div class="table-cell table-cell-header">
-                From City
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['from_city']['city-name']}}
-            </div>
-
-            <div class="table-cell table-cell-header">
-                To City
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['to_city']['city-name']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                From Date/Time
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
+        </h2>
+    </div>
+    <table class="table table-primary table-striped table-bordered border-primary">
+        <tbody>
+            <tr>
+                <th scope="row">
+                    From City
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['from_city']['city-name']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    To City
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['to_city']['city-name']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Departure Date / Time
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['schedule']['schedule-from-date']}} - 
                 {{response_data['data']['schedule']['schedule']['schedule-departure-time']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                To Date/Time
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
-                {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Bus Number Plate
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['bus']['bus-number-plate']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Bus Type
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['bus']['bus-type']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Bus Operator
-            </div>
-            <div class="table-cell">
-                {{response_data['data']['schedule']['schedule']['operator-username']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Schedule Fair Fees
-            </div>
-            <div class="table-cell">
-                &#8377; {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Schedule Trip Status <br>
-                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
-                    <button class="editor-btn" onclick="editTripStatus()">Edit</button>
-                {% endif %}
-            </div>
-            <div class="table-cell">
-                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == true %}
-                    Completed
-                {% else %}
-                    <form class="invisible-form" action="{{url_for('.updateTripStatus')}}" method="POST">
-                        <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
-                        <fieldset id="trip-status">
-                            <label for="trip-complete">complete</label>
-                            <input onclick="tripComplete()" id="trip-complete" type="radio" value="complete" name="schedule-is-complete" disabled="true">
-                            <label for="trip-incomplete">incomplete</label>
-                            <input onclick="tripIncomplete()" id="trip-incomplete" type="radio" value="incomplete" name="schedule-is-complete" checked>
-                        </fieldset>
-                        <button id="save-trip-status" disabled="true">Save</button>
-                        <br>
-                        <p id="trip-status-warning">Warning: Once changed To Complete, trip Status can't be changed.</p>
-                    </form>
-                {% endif %}
-            </div>
-            
-            <div class="table-cell table-cell-header">
-                Stops <br>
-                {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
-                    <button class="editor-btn" onclick="editStops(this)">Edit</button>
-                {% endif %}
-            </div>
-            <div class="table-cell">
-                <!-- Edit Stops -->
-                
-                <div id="stop-editor-container" class="stop-container-wrapper">
-                    <div id="stop-container" class="stop-container">
-                        <!-- Stops here -->
-                        <!--
-                        <div class="single-stop">
-                            <div class="city-selector">
-                                <select onchange="citySelectionChanged()">
-                                    <option value="-1">--SELECT CITY--</option>
-                                </select>
-                            </div>
-                            <div class="stop-selector">
-                                <select onchange="updateStops()">
-                                    <option value="-1">--SELECT STOP--</option>
-                                </select>
-                            </div>
-                            <button onclick="removeSingleStop(this)">Remove</button>
-                        </div>
-                        --> 
-                    </div>
-                    <div class="btn-wrapper">
-                        <button class="editor-btn" id="addBtn" type="button">Add Stop</button>
-                        <form class="invisible-form" action="{{url_for('.updateStops')}}" method="POST">
-                            <input id="at-sequence" name="at-sequence" type="hidden" />
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Dropping Date / Time
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['schedule']['schedule-to-date']}} -
+                    {{response_data['data']['schedule']['schedule']['schedule-drop-time']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Bus Number Plate
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['bus']['bus-number-plate']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Bus Type
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['bus']['bus-type']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Bus Operator
+                </th>
+                <td>
+                    {{response_data['data']['schedule']['schedule']['operator-username']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Schedule Fair Fees
+                </th>
+                <td>
+                    &#8377; {{response_data['data']['schedule']['schedule']['schedule-fair-fees']}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Schedule Trip Status <br>
+                    {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
+                        <img class="editor-btn" onclick="editTripStatus()" src="/media/pen.svg">
+                    {% endif %}
+                    
+                </th>
+                <td>
+                    {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == true %}
+                        Completed
+                    {% else %}
+                        <form class="invisible-form" action="{{url_for('.updateTripStatus')}}" method="POST">
                             <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
-                            <button class="editor-btn">Save Sequence</button>
+                            
+                            <fieldset class="form-group mb-3 p-3 d-inline">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" value="complete" name="schedule-is-complete" onclick="tripComplete()" id="trip-complete" disabled="true">
+                                            <label class="form-check-label" for="trip-complete">Complete</label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" value="incomplete" name="schedule-is-complete" onclick="tripIncomplete()" id="trip-incomplete" checked>
+                                            <label class="form-check-label" for="trip-incomplete">Incomplete</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <button id="save-trip-status" class="btn btn-primary" disabled="true">Save</button>
+                            
+                            <p id="trip-status-warning" hidden>Warning: Once changed To Complete, trip Status can't be changed.</p>
                         </form>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Stops <br>
+                    {% if response_data['data']['schedule']['schedule']['schedule-is-complete'] == false %}
+                        <img class="editor-btn" onclick="editStops(this)" src="/media/pen.svg">
+                    {% endif %}
+                </th>
+                <td>
+                    <!-- Edit Stops -->
+                    <div id="stop-editor-container" class="stop-container-wrapper" hidden="true">
+                        <div id="stop-container" class="stop-container">
+                            <!-- Stops here -->
+                            <!--
+                            <div class="single-stop mb-3">
+                                <div class="form-floating city-selector">
+                                    <select class="form-select" onchange="citySelectionChanged()">
+                                        <option value="-1">--SELECT CITY--</option>
+                                    </select>
+                                    <label>City</label>
+                                </div>
+
+                                <div class="form-floating stop-selector">
+                                    <select class="form-select" onchange="updateStops()">
+                                        <option value="-1">--SELECT STOP--</option>
+                                    </select>
+                                    <label>Stop</label>
+                                </div>
+
+                                <button class="btn btn-danger h-75 w-75 m-auto" onclick="removeSingleStop(this)">Remove</button>
+                            </div>
+                            --> 
+                        </div>
+                        <div class="btn-wrapper">
+                            <button class="btn btn-primary" id="addBtn" type="button">Add Stop</button>
+                            <form class="invisible-form" action="{{url_for('.updateStops')}}" method="POST">
+                                <input id="at-sequence" name="at-sequence" type="hidden" />
+                                <input name="schedule-id" type="hidden" value="{{response_data['data']['schedule']['schedule']['schedule-id']}}" />
+                                <button class="btn btn-primary">Save Sequence</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                    
+                    <!-- Display Stops -->
+                    <table id="stop-display-container" class="table table-primary table-striped table-bordered border-secondary">
+                        {% for stopObj in response_data['data']['schedule']['list-stop'] %}
+                            {% if stopObj %}
+                            <tr class="w-100">
+                                <th scope="row">
+                                    {{loop.index}}.
+                                </th>
+                                <td>
+                                    <input type="hidden" value="{{stopObj['city']['city-id']}}">
+                                    <input type="hidden" value="{{stopObj['stop']['stop-id']}}">
+                                    {{stopObj['stop']['stop-name']}} <br>
+                                    {{stopObj['stop']['stop-address']}}, 
+                                    {{stopObj['city']['city-name']}}
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-                <!-- Display Stops -->
-                <div id="stop-display-container" class="main-table-grid">
-                    {% for stopObj in response_data['data']['schedule']['list-stop'] %}
-                        {% if stopObj %}
-                        <div class="table-cell table-cell-header">
-                            {{loop.index}}.
-                        </div>
-                        <div class="table-cell stop-table-cell">
-                            <input type="hidden" value="{{stopObj['city']['city-id']}}"/>
-                            <input type="hidden" value="{{stopObj['stop']['stop-id']}}"/>
-                            {{stopObj['stop']['stop-name']}} <br>
-                            {{stopObj['stop']['stop-address']}} <br>
-                            {{stopObj['city']['city-name']}}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
+    {% from 'viewBusPassengerDetails.html' import viewBusPassengerDetails %}
+    {{ viewBusPassengerDetails(response_data) }}
+        
+    <script>
+        stop_editor_container = null;
+        stop_display_container = null;
 
-            {% from 'tmp.html' import viewBusPassengerDetails %}
-            {{ viewBusPassengerDetails(response_data) }}
-
-        </div>
-        <script>
-            stop_editor_container = null;
-            stop_display_container = null;
-
-            window.onload = function()
+        window.onload = function()
+        {
+            stop_editor_container = document.querySelector("#stop-editor-container");
+            stop_display_container = document.querySelector("#stop-display-container");
+        }   
+        function editStops(element)
+        {
+            if(stop_editor_container.hidden === true)
             {
-                stop_editor_container = document.querySelector("#stop-editor-container");
-                stop_editor_container.style.display = "none";
-                stop_display_container = document.querySelector("#stop-display-container");
+                stop_editor_container.hidden = false;
+                stop_display_container.hidden = true;
             }
-            function editStops(element)
+            else
             {
-                if(stop_editor_container.style.display === "block")
-                {
-                    stop_editor_container.style.display = "none";
-                    stop_display_container.style.display = "grid";
-                }
-                else
-                {
-                    stop_editor_container.style.display = "block";
-                    stop_display_container.style.display = "none";
-                }
+                stop_editor_container.hidden = true;
+                stop_display_container.hidden = false;
             }
+        }
 
-            function editTripStatus()
+        function editTripStatus()
+        {
+            if(document.getElementById("trip-status-warning").hidden === true)
             {
-                if(document.getElementById("trip-status-warning").style.display === "none")
-                {
-                    document.getElementById("trip-status-warning").style.display = "block";
-                    document.getElementById("trip-complete").disabled = false;
-                }
-                else
-                {
-                    document.getElementById("trip-status-warning").style.display = "none";
-                    document.getElementById("trip-complete").disabled = true;
-                    document.getElementById("trip-incomplete").checked = true;
-                    document.getElementById("save-trip-status").disabled = true;
-                }
+                document.getElementById("trip-status-warning").hidden = false;
+                document.getElementById("trip-complete").disabled = false;
             }
-
-            function tripComplete()
+            else
             {
-                document.getElementById("save-trip-status").disabled = false;
-            }
-
-            function tripIncomplete()
-            {
+                document.getElementById("trip-status-warning").hidden = true;
+                document.getElementById("trip-complete").disabled = true;
+                document.getElementById("trip-incomplete").checked = true;
                 document.getElementById("save-trip-status").disabled = true;
             }
-        </script>
+        }
 
-        <script>
-            let response_data = null
-            let stopIdArray = []
-            const data_url = "{{response_data['options']['ip']}}/getstopsbycity";
-            fetch(data_url)
-            .then((response) => response.json())
-            .then((json) => {
-                response_data = json;
-                loadStops();
-                updateStops();
-                console.log(response_data)
-            });
-            
-            const stopContainer = document.getElementById('stop-container');
-            document.getElementById('addBtn').addEventListener('click', addSingleStop);
+        function tripComplete()
+        {
+            document.getElementById("save-trip-status").disabled = false;
+        }
+
+        function tripIncomplete()
+        {
+            document.getElementById("save-trip-status").disabled = true;
+        }
+    </script>
+
+    <script>
+        let response_data = null
+        let stopIdArray = []
+        const data_url = "{{response_data['options']['ip']}}/getstopsbycity";
+        fetch(data_url)
+        .then((response) => response.json())
+        .then((json) => {
+            response_data = json;
+            loadStops();
+            updateStops();
+            //console.log(response_data)
+        });
+        
+        const stopContainer = document.getElementById('stop-container');
+        document.getElementById('addBtn').addEventListener('click', addSingleStop);
 
 
-            function addSingleStop(){
-                // Create single stop element 
-                const singleStopDiv = document.createElement("div");
-                singleStopDiv.classList.add("single-stop");
-                stopContainer.appendChild(singleStopDiv);
+        function addSingleStop(){
+            // Create single stop element 
+            const singleStopDiv = document.createElement("div");
+            singleStopDiv.classList.add("single-stop");
+            singleStopDiv.classList.add("mb-3");
+            stopContainer.appendChild(singleStopDiv);
 
-                // create City selector element
-                const citySelectorDiv = document.createElement("div");
-                citySelectorDiv.classList.add("city-selector");
-                stopContainer.appendChild(citySelectorDiv);
-                const citySelectorSelect = document.createElement("select");
-                citySelectorSelect.addEventListener("change", citySelectionChanged);
-                citySelectorDiv.appendChild(citySelectorSelect);
-                singleStopDiv.appendChild(citySelectorDiv);
+            // create City selector element
+            const citySelectorDiv = document.createElement("div");
+            citySelectorDiv.classList.add("city-selector");
+            citySelectorDiv.classList.add("form-floating");
 
-                // create Stop selector element
-                const stopSelectorDiv = document.createElement("div");
-                stopSelectorDiv.classList.add("stop-selector");
-                const stopSelectorSelect = document.createElement("select");
-                stopSelectorSelect.addEventListener("change", updateStops);
-                stopSelectorDiv.appendChild(stopSelectorSelect);
-                singleStopDiv.appendChild(stopSelectorDiv);
+            const citySelectorSelect = document.createElement("select");
+            citySelectorSelect.classList.add("form-select");
+            citySelectorSelect.addEventListener("change", citySelectionChanged);
+            citySelectorDiv.appendChild(citySelectorSelect);
+            const citySelectorLabel = document.createElement("label");
+            citySelectorLabel.innerText = "City";
+            citySelectorDiv.appendChild(citySelectorLabel);
+            singleStopDiv.appendChild(citySelectorDiv);
 
-                // Add dummy selected option
+            // create Stop selector element
+            const stopSelectorDiv = document.createElement("div");
+            stopSelectorDiv.classList.add("stop-selector");
+            stopSelectorDiv.classList.add("form-floating");
+
+            const stopSelectorSelect = document.createElement("select");
+            stopSelectorSelect.classList.add("form-select");
+            stopSelectorSelect.addEventListener("change", updateStops);
+            stopSelectorDiv.appendChild(stopSelectorSelect);
+            const stopSelectorLabel = document.createElement("label");
+            stopSelectorLabel.innerText = "Stop";
+            stopSelectorDiv.appendChild(stopSelectorLabel);
+            singleStopDiv.appendChild(stopSelectorDiv);
+
+            // Add dummy selected option
+            const cityOption = document.createElement("option");
+            cityOption.value = -1;
+            cityOption.innerText = "--SELECT CITY--";
+            citySelectorSelect.appendChild(cityOption);
+
+            const stopOption = document.createElement("option");
+            stopOption.value = -1;
+            stopOption.innerText = "--SELECT STOP--";
+            stopSelectorSelect.appendChild(stopOption);
+
+            // create Remove Button element
+            const removeButton = document.createElement("button");
+            removeButton.className = "btn btn-danger h-75 w-75 m-auto";
+            removeButton.setAttribute('onclick','removeSingleStop(this)');
+            removeButton.innerHTML = "Remove";
+            singleStopDiv.appendChild(removeButton);
+
+            // add city options inside citySelector
+            Object.keys(response_data['data']).forEach(key => {
                 const cityOption = document.createElement("option");
-                cityOption.value = -1;
-                cityOption.innerText = "--SELECT CITY--";
+                cityOption.value = response_data['data'][key]['city-id']
+                cityOption.innerText = key;
                 citySelectorSelect.appendChild(cityOption);
+            });
+        }
 
+        function removeSingleStop(object)
+        {
+            stopContainer.removeChild(object.parentElement);
+            updateStops();
+        }
+
+        function citySelectionChanged(e)
+        {
+            citySelectionChangedHandler(e.target);
+        }
+        function citySelectionChangedHandler(element)
+        {
+            cityId = element.value;
+            cityName = element.options[element.selectedIndex].text;
+            stopSelectorSelect = element.parentElement.nextElementSibling.firstElementChild;
+            stopSelectorSelect.innerHTML = "";
+
+            // Add dummy selected option
+            const stopOption = document.createElement("option");
+            stopOption.value = -1;
+            stopOption.innerText = "--SELECT STOP--";
+            stopSelectorSelect.appendChild(stopOption);
+
+            // Add other options
+            response_data['data'][cityName]['list-stop'].forEach(stopObj => {
                 const stopOption = document.createElement("option");
-                stopOption.value = -1;
-                stopOption.innerText = "--SELECT STOP--";
+                stopOption.value = stopObj['stop-id'];
+                stopOption.innerText = stopObj['stop-name'];
                 stopSelectorSelect.appendChild(stopOption);
+            });
+        }
 
-                // create Remove Button element
-                const removeButton = document.createElement("button");
-                removeButton.setAttribute('onclick','removeSingleStop(this)');
-                removeButton.innerHTML = "Remove";
-                singleStopDiv.appendChild(removeButton);
-
-                // add city options inside citySelector
-                Object.keys(response_data['data']).forEach(key => {
-                    const cityOption = document.createElement("option");
-                    cityOption.value = response_data['data'][key]['city-id']
-                    cityOption.innerText = key;
-                    citySelectorSelect.appendChild(cityOption);
-                });
-            }
-
-            function removeSingleStop(object)
+        function updateStops()
+        {
+            stopIdArray = []
+            document.querySelectorAll(".stop-selector").forEach(element =>
             {
-                stopContainer.removeChild(object.parentElement);
-                updateStops();
-            }
+                stopIdArray.push(element.firstElementChild.value)
+            });
 
-            function citySelectionChanged(e)
+            const payload = document.getElementById("at-sequence")
+            payload.value = "";
+            stopIdArray.forEach(element => {
+                payload.value += element + ",";
+            });
+
+            //console.log(stopIdArray);
+        }
+
+        function loadStops()
+        {
+            stopsArray = []
+            document.querySelectorAll("#stop-display-container td").forEach(element =>
             {
-                citySelectionChangedHandler(e.target);
-            }
-            function citySelectionChangedHandler(element)
+                const cityIdInput = element.firstElementChild;
+                const stopIdInput = cityIdInput.nextElementSibling;
+
+                stopsArray.push({0 : cityIdInput.value, 1 : stopIdInput.value});
+            });
+
+            for(let i=0; i< stopsArray.length; i++)
             {
-                cityId = element.value;
-                cityName = element.options[element.selectedIndex].text;
-                stopSelectorSelect = element.parentElement.nextElementSibling.firstElementChild;
-                stopSelectorSelect.innerHTML = "";
+                addSingleStop();
+                const addedSingleStop = document.getElementById("stop-container").lastElementChild;
+                const citySelectorSelect = addedSingleStop.querySelector(".city-selector > select");
+                const stopSelectorSelect = addedSingleStop.querySelector(".stop-selector > select");
 
-                // Add dummy selected option
-                const stopOption = document.createElement("option");
-                stopOption.value = -1;
-                stopOption.innerText = "--SELECT STOP--";
-                stopSelectorSelect.appendChild(stopOption);
-
-                // Add other options
-                response_data['data'][cityName]['list-stop'].forEach(stopObj => {
-                    const stopOption = document.createElement("option");
-                    stopOption.value = stopObj['stop-id'];
-                    stopOption.innerText = stopObj['stop-name'];
-                    stopSelectorSelect.appendChild(stopOption);
-                });
+                citySelectorSelect.value = stopsArray[i][0];
+                citySelectionChangedHandler(citySelectorSelect);
+                stopSelectorSelect.value = stopsArray[i][1];
             }
-
-            function updateStops()
-            {
-                stopIdArray = []
-                document.querySelectorAll(".stop-selector").forEach(element =>
-                {
-                    stopIdArray.push(element.firstElementChild.value)
-                });
-
-                const payload = document.getElementById("at-sequence")
-                payload.value = "";
-                stopIdArray.forEach(element => {
-                    payload.value += element + ",";
-                });
-
-                console.log(stopIdArray);
-            }
-
-            function loadStops()
-            {
-                stopsArray = []
-                document.querySelectorAll(".stop-table-cell").forEach(element =>
-                {
-                    const cityIdInput = element.firstElementChild;
-                    const stopIdInput = cityIdInput.nextElementSibling;
-
-                    stopsArray.push({0 : cityIdInput.value, 1 : stopIdInput.value});
-                });
-
-                for(let i=0; i< stopsArray.length; i++)
-                {
-                    addSingleStop();
-                    const addedSingleStop = document.getElementById("stop-container").lastElementChild;
-                    const citySelectorSelect = addedSingleStop.querySelector(".city-selector > select");
-                    const stopSelectorSelect = addedSingleStop.querySelector(".stop-selector > select");
-
-                    citySelectorSelect.value = stopsArray[i][0];
-                    citySelectionChangedHandler(citySelectorSelect);
-                    stopSelectorSelect.value = stopsArray[i][1];
-                }
-            }
-        </script>
-    </div>
+        }
+    </script>
+</div>
 {% endblock %}

@@ -1,55 +1,55 @@
 {% extends "layout.html" %}
 {% block css %}
 <style>
-    .component-main {
-        font-size: larger;
-        text-align: center;
+    .search-options{
+        background-color: rgb(159, 217, 255);
     }
-
-    .main-table-grid {
-        background-color: black;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 1px;
-    }
-
-    .table-cell {
-        background-color: lightgreen;
-        padding: 2vh;
-        border: 1px solid black;
-    }
-
-    .table-cell-header {
-        background-color: burlywood;
+    .search-options > form{
+        padding: 1vh;
+        justify-content: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 </style>
+<link rel="stylesheet" href="/css/tables.css">
 {% endblock %}
 {% block content %}
-    <div class="component-main">
-        <div class="main-title">
+    <div>
+        <h2 class="main-title">
             View Cities
+        </h2>
+        <div class="search-options">
             <form action="{{ url_for('.viewCity') }}" method="POST">
-                <label for="name">City Name: </label>
-                <input type="text" name="search">
-                <button type="submit">Search</button>
+                <div class="form-floating d-inline-block w-75">
+                    <input type="text" class="form-control" id="name" placeholder="City Name" name="search" autocomplete="off">
+                    <label for="name">Search City Name</label>
+                </div>
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
-        <div class="main-table-grid">
-            <div class="table-cell-header table-cell">
-                City ID
-            </div>
-            <div class="table-cell-header table-cell">
-                City Name
-            </div>
-
-            {% for cityObj in response_data['data']['list-city'] %}
-            <div class="table-cell">
-                {{cityObj['city-id']}}
-            </div>
-            <div class="table-cell">
-                {{cityObj['city-name']}}
-            </div>
+        
+        <table class="table table-primary table-striped table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">City Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cityObj in response_data['data']['list-city'] %}
+                {% if cityObj %}
+                <tr>
+                    <th scope="row">
+                        {{ loop.index }}.
+                    </th>
+                    <td>
+                        {{cityObj['city-name']}}
+                    </td>
+                </tr>
+                {% endif %}
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}
