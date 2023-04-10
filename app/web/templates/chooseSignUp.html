@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block css %}
 <style>
+    :root{
+        --btn-red-color: rgb(255, 62, 62);
+    }
     .signup-user-container{
         display: flex;
         height: 80vh;
@@ -8,23 +11,23 @@
         align-items: center;
     }
     .signup-user{
-        background-color: rgb(255, 200, 200);
+        background-color: rgb(216, 216, 255);
+        color: var(--btn-red-color);
         width: 20vh;
         height: 20vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px gray solid;
-        border-radius: 5%;
+        border: 4px var(--btn-red-color) solid;
+        border-radius: 10%;
         cursor: pointer;
         text-decoration: none;
-        color: rgb(39, 39, 39);
         font-size: 1.5em;
         font-weight: bold;
         transition: all 200ms;
     }
     .signup-user:hover{
-        background-color: rgb(255, 95, 95);
+        background-color: var(--btn-red-color);
         color: white;
         box-shadow: 0 0 10px grey;
     }

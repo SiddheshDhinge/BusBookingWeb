@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block css %}
 <style>
+    :root{
+        --btn-blue-color: rgb(62, 62, 255);
+    }
     .login-user-container{
         display: flex;
         height: 80vh;
@@ -9,22 +12,22 @@
     }
     .login-user{
         background-color: rgb(216, 216, 255);
+        color: var(--btn-blue-color);
         width: 20vh;
         height: 20vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px gray solid;
-        border-radius: 5%;
+        border: 4px var(--btn-blue-color) solid;
+        border-radius: 10%;
         cursor: pointer;
         text-decoration: none;
-        color: rgb(39, 39, 39);
         font-size: 1.5em;
         font-weight: bold;
         transition: all 200ms;
     }
     .login-user:hover{
-        background-color: rgb(95, 95, 255);
+        background-color: var(--btn-blue-color);
         color: white;
         box-shadow: 0 0 10px grey;
     }
