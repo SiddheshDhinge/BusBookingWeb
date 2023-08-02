@@ -27,7 +27,6 @@ app = Flask(__name__, static_url_path="", static_folder="app/web/static", templa
 FlaskUUID(app)
 app.secret_key = os.environ['app_secret']
 app.permanent_session_lifetime = timedelta(minutes= 15)
-ip_address = os.environ['ip_address']
 
 
 # Register Routes Blueprint

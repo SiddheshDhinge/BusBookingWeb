@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 db_name = os.getenv('db_name')
+db_server = os.getenv('db_server')
 db_username = os.getenv('db_username')
 db_password = os.getenv('db_password')
 Base = declarative_base()
@@ -13,7 +14,7 @@ DB_session = None
 DB_engine = None
 
 def connectDB():
-    connectionURL = f'postgresql+psycopg2://{db_username}:{db_password}@localhost/{db_name}'
+    connectionURL = f'postgresql+psycopg2://{db_username}:{db_password}@{db_server}/{db_name}'
     global DB_engine
     DB_engine = create_engine(url=connectionURL, echo=True)
     # engine = create_engine("sqlite:///mydb.db", echo=True)
