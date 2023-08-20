@@ -1,8 +1,19 @@
 import colorama
 colorama.init()
 from termcolor import colored
-#Establish database session
+
+from dotenv import load_dotenv
+import os
+# Load Environments
+load_dotenv() # Load .env file
+# Load environment specific file
+if os.getenv("DEBUG") == "True":
+    load_dotenv(".dev.env")
+else:
+    load_dotenv(".prod.env")
+    
 from app.model.database import connectDB, createAllTables, dropAllTables
+#Establish database session
 connectDB()
 # Import All other Models
 from app.model.model_owner import Owner

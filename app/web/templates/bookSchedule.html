@@ -213,6 +213,11 @@
             </table>
         </form>
 
+        <div id="json-data">
+            {% for bookingObj in response_data['data']['list-booking'] %}
+                <div data-passenger-gender="{{bookingObj['passenger']['passenger-gender']}}" data-seat-no="{{bookingObj['booking']['seat-no']}}"></div>
+            {% endfor %}
+        </div>
         <script>
             let prevSelectedSeat = null;
             function selectSeat(e)

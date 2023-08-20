@@ -67,7 +67,8 @@ class ComplexOperation:
             .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
-            .join(Bus, Owner)\
+            .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+            .join(Owner, Owner.username == Bus.username)\
             .filter(Schedule.scheduleId == scheduleId)
         
         if(useOwnerUsername == True):
@@ -110,7 +111,8 @@ class ComplexOperation:
             .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
-            .join(Bus, Owner)\
+            .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+            .join(Owner, Bus.username == Owner.username)\
         
         #date based filtering
         if(filters[label.filterDate]):
@@ -191,7 +193,8 @@ class ComplexOperation:
             .select_from(Schedule)\
             .join(City1, City1.cityId == Schedule.fromCity)\
             .join(City2, City2.cityId == Schedule.toCity)\
-            .join(Bus, Owner)\
+            .join(Bus, Bus.numberPlate == Schedule.numberPlate)\
+            .join(Owner, Owner.username == Bus.username)\
             .filter(Schedule.username == operatorUsername)\
             .filter(Schedule.isComplete == False)\
             .all()
